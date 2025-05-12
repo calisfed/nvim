@@ -1,0 +1,43 @@
+# This is your rocks.nvim plugins declaration file.
+# Here is a small yet pretty detailed example on how to use it:
+#
+# [plugins]
+# nvim-treesitter = "semver_version"  # e.g. "1.0.0"
+
+# List of non-Neovim rocks.
+# This includes things like `toml` or other lua packages.
+[rocks]
+
+# List of Neovim plugins to install alongside their versions.
+# If the plugin name contains a dot then you must add quotes to the key name!
+[plugins]
+"rocks.nvim" = "2.29.1" # rocks.nvim can also manage itself :D
+"rocks-git.nvim" = "1.5.1"
+"rocks-config.nvim" = "1.6.0"
+# "rocks-lazy.nvim" = "scm"
+
+"oil.nvim" = "2.9.0"
+"mini.nvim" = "0.9.0"
+nvim-treesitter = "0.9.2"
+fzf-lua = "0.0.1337"
+nvim-lspconfig = "0.1.8"
+"mason.nvim" = "1.10.0"
+"mason-tool-installer.nvim" = "scm"
+nvim-cmp = "0.0.1"
+"mason-lspconfig.nvim" = "1.29.0"
+# "eldritch" = { git = "eldritch-theme/eldritch.nvim" }
+
+[plugins.eldritch]
+git = "eldritch-theme/eldritch.nvim" 
+
+# [bundles.colors]
+# items = [
+#   # { git = "eldritch-theme/eldritch.nvim" }
+#   # "eldritch-theme/eldritch.nvim"
+#    # "diegoulloao/neofusion.nvim",
+# ]
+# # config = "plugins/colors"
+
+# [config]
+# plugins_dir = "plugins/"
+# auto_setup = false
