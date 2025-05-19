@@ -14,13 +14,16 @@ return {
 				['<C-j>'] = { 'show', 'show_documentation', 'hide_documentation' },
 				['<C-e>'] = { 'hide', 'fallback' },
 
-
 				['<Tab>'] = {
 					function(cmp)
 						if cmp.snippet_active() then return cmp.accept()
 						else return cmp.select_and_accept() end
 					end,
+					function ()
+						require('neotab').tabout()
+					end,
 					'snippet_forward',
+
 					'fallback'
 				},
 				['<S-Tab>'] = { 'snippet_backward', 'fallback' },

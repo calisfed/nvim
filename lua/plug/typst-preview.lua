@@ -12,10 +12,9 @@ return
 			debug = true,
 
 			-- Custom format string to open the output link provided with %s
-			-- Example: open_cmd = 'firefox %s -P typst-preview --class typst-preview'
 			open_cmd = 'qutebrowser %s',
-			-- open_cmd = 'zathura ',
 			-- open_cmd = 'firefox-developer-edition %s -P typst-preview --class typst-preview',
+			-- open_cmd = 'firefox-developer-edition %s',
 
 			-- Custom port to open the preview server. Default is random.
 			-- Example: port = 8000

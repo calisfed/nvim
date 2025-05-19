@@ -1,5 +1,6 @@
 return {
 	-- Colorscheme
+
 	{ enabled = true,  'EdenEast/nightfox.nvim',                    priority = 1000, },
 	{ enabled = false, 'diegoulloao/neofusion.nvim',                priority = 1000, },
 	{ enabled = false, 'eldritch-theme/eldritch.nvim',              priority = 1000, },
@@ -7,19 +8,30 @@ return {
 	{ enabled = false, 'olivercederborg/poimandres.nvim',           priority = 1000, },
 	{ enabled = false, 'rose-pine/neovim',                          priority = 1000, name = 'rose-pine', },
 	{ enabled = false, 'sainnhe/sonokai',                           priority = 1000, },
+	{ enabled = false, "rktjmp/lush.nvim", }, -- interactive, create own colorscheme
 
-	-- Code
+	-- Core
+	{ enabled = true,  'neovim/nvim-lspconfig', },          -- lspconfig
+	{ enabled = true,  'nvim-treesitter/nvim-treesitter', }, -- Color text
+	{ enabled = true,  'nvim-telescope/telescope.nvim', },  -- lua fzf search
+	{ enabled = true,  'aaronik/treewalker.nvim', },        -- move around with code syntax aware
+	{ enabled = true,  'nvimdev/lspsaga.nvim', },           -- Many config for lsp
 
+	-- QoL
+
+	{ enabled = true,  'echasnovski/mini.nvim', },              -- Many plugins in one
+	{ enabled = true,  'stevearc/oil.nvim', },                  -- File explorer
 	{ enabled = true,  'jiaoshijie/undotree', },                -- undo,        but tree
 	{ enabled = true,  'lambdalisue/suda.vim', },               -- auto read/write file with sudo
-	{ enabled = true,  'neovim/nvim-lspconfig', },              -- lspconfig
-	{ enabled = true,  'nvim-treesitter/nvim-treesitter', },    -- Color text
-	{ enabled = true,  'nvimdev/lspsaga.nvim', },               -- Many config for lsp
-	{ enabled = true,  'nvim-telescope/telescope.nvim', },      -- lua fzf search
-	{ enabled = true,  'aaronik/treewalker.nvim', },            -- move around with code syntax aware
 	{ enabled = true,  'jake-stewart/multicursor.nvim', },      -- multi cursor
 	{ enabled = true,  'hamidi-dev/kaleidosearch.nvim', },      -- Color keyword
 	{ enabled = true,  'SunnyTamang/select-undo.nvim', },       -- select part to undo
+	{ enabled = true,  'HawkinsT/pathfinder.nvim', },           -- enhanced gf gF gx
+	{ enabled = true,  'leath-dub/snipe.nvim', },               -- fast buffer select
+	{ enabled = true,  'folke/todo-comments.nvim', },           -- Color keywore
+	{ enabled = true,  'kawre/neotab.nvim', },                  --tabout of parantheses
+	{ enabled = true,  'norcalli/nvim-colorizer.lua', },        -- Show color
+	{ enabled = true,  'tridactyl/vim-tridactyl', },            -- Tridactyl (Firefox extension)
 	{ enabled = false, 'Bilal2453/luvit-meta', },               -- part of lua dev
 	{ enabled = false, 'NStefan002/screenkey.nvim', },          -- show what key typing
 	{ enabled = false, 'akinsho/toggleterm.nvim', },            -- toggle terminal
@@ -32,22 +44,40 @@ return {
 	{ enabled = false, 'stevearc/conform.nvim', },              -- Lightweight, powerful formatter
 	{ enabled = false, 'tpope/vim-sleuth', },                   -- Auto adjust shiftwidth and expandtab
 	{ enabled = false, 'yarospace/lua-console.nvim', },         --    lua console
-	{ enabled = true, 'andrewferrier/debugprint.nvim', }, -- print debug statement instead of DAP
-
-	{ enabled = true,  'HawkinsT/pathfinder.nvim', },           -- enhanced gf gF gx
-	{ enabled = true,  'leath-dub/snipe.nvim', },               -- fast buffer select
-	{ enabled = false, "miroshQa/debugmaster.nvim", },          -- dap-ui alternative, aka adebug mode
 	{ enabled = false, 'DanWlker/toolbox.nvim', },              -- place to put all custom function
 	{ enabled = false, 'DimitrisDimitropoulos/yasp.nvim', },    -- simple way to manage your snippets in a completion engine agnostic way
 	{ enabled = false, 'ThePrimeagen/harpoon', },               -- quick navigate with saved buffers
 	{ enabled = false, 'ThePrimeagen/refactoring.nvim' },       -- refactoring library based off the refactoring book
-	{ enabled = false, 'igorlfs/nvim-dap-view', },              -- DAP view replace ui
-	{ enabled = false, 'mfussenegger/nvim-dap', },              -- debug adapter protocol
-	{ enabled = false, 'rcarriga/nvim-dap-ui', },               -- debug adapter protocol ui
 	{ enabled = false, 'stevearc/overseer.nvim', },             -- A task runner and job management plugin for Neovim
 	{ enabled = false, 'stevearc/quicker.nvim', },              -- Improved UI and workflow for the Neovim quickfix
+	{ enabled = false, 'abecodes/tabout.nvim', },               -- tabout of parantheses
+	{ enabled = false, 'altermo/ultimate-autopair.nvim' },      -- autopairs, replaced by mini.pair
+	{ enabled = false, 'folke/which-key.nvim', },               -- Keymapping helper, currently replaced by mini.clue
+	{ enabled = false, 'goolord/alpha-nvim', },                 -- Dashboard, replaced by mini.starter
+	{ enabled = false, 'max397574/better-escape.nvim', },       -- Better Escape with jj, jk, ...., replaced by minmi.keymap
+	{ enabled = false, 'rmagatti/auto-session' },               -- Session,   replaced by mini.session
+	{ enabled = false, 'tris203/precognition.nvim', },          -- Show movement keys
+	{ enabled = false, 'uga-rosa/ccc.nvim', },                  -- Show color
+	{ enabled = false, 'windwp/nvim-autopairs' },               -- autopair,  replaced by mini.pair
+	{ enabled = false, 'xzbdmw/clasp.nvim' },                   -- autopair,  replaced by mini.pair
+	{ enabled = false, 'sQVe/sort.nvim', },                     -- Sort, considering re-try
+	{ enabled = true,  'danymat/neogen', },                     -- Annotation toolkit
+	-- html
+	{ enabled = true,  'windwp/nvim-ts-autotag' },              -- Auto close tag for htmlmtoc
+	{ enabled = false, 'rest-nvim/rest.nvim' },                 -- Fast REST api
+
+	-- Debugging
+
+	{ enabled = true,  'andrewferrier/debugprint.nvim', }, -- print debug statement instead of DAP
+	{ enabled = false, 'igorlfs/nvim-dap-view', },        -- DAP view replace ui
+	{ enabled = false, 'mfussenegger/nvim-dap', },        -- debug adapter protocol
+	{ enabled = false, 'rcarriga/nvim-dap-ui', },         -- debug adapter protocol ui
+	{ enabled = false, 'jay-babu/mason-nvim-dap.nvim', }, -- Mason integration
+	-- { enabled = false, 'nvim-neotest/nvim-nio', },        -- debug adapter protocol ui
+	{ enabled = false, "miroshQa/debugmaster.nvim", },    -- dap-ui alternative, aka adebug mode
 
 	-- Completion
+
 	{ enabled = true,  'saghen/blink.cmp', },                      -- better completion
 	{ enabled = false, 'Dan7h3x/signup.nvim', },                   -- LSP Sign help
 	{ enabled = false, 'ZWindL/orphans.nvim', },                   -- check if plugins haven't been update for a while
@@ -57,46 +87,40 @@ return {
 	{ enabled = false, 'rachartier/tiny-code-action.nvim', },      -- require telescope/fzf for code actions
 	{ enabled = false, 'rachartier/tiny-inline-diagnostic.nvim', }, -- inline diagnostic
 
-	{ enabled = true,  'echasnovski/mini.nvim', },        -- Many plugins in one { enabled = true, cond = true, 'stevearc/oil.nvim', }, -- File explorer
-	{ enabled = true,  'folke/todo-comments.nvim', },     -- Color keywore
-	{ enabled = true,  'kawre/neotab.nvim', },            --tabout of parantheses
-	{ enabled = true,  'norcalli/nvim-colorizer.lua', },  -- Show color
-	{ enabled = true,  'tridactyl/vim-tridactyl', },      -- Tridactyl (Firefox extension)
-	{ enabled = false, 'abecodes/tabout.nvim', },         -- tabout of parantheses
-	{ enabled = false, 'altermo/ultimate-autopair.nvim' }, -- autopairs, replaced by mini.pair
-	{ enabled = false, 'folke/which-key.nvim', },         -- Keymapping helper, currently replaced by mini.clue
-	{ enabled = false, 'goolord/alpha-nvim', },           -- Dashboard, replaced by mini.starter
-	{ enabled = false, 'max397574/better-escape.nvim', }, -- Better Escape with jj, jk, ...., replaced by minmi.keymap
-	{ enabled = false, 'rmagatti/auto-session' },         -- Session,   replaced by mini.session
-	{ enabled = false, 'tris203/precognition.nvim', },    -- Show movement keys
-	{ enabled = false, 'uga-rosa/ccc.nvim', },            -- Show color
-	{ enabled = false, 'windwp/nvim-autopairs' },         -- autopair,  replaced by mini.pair
-	{ enabled = false, 'xzbdmw/clasp.nvim' },             -- autopair,  replaced by mini.pair
-	{ enabled = false, 'sQVe/sort.nvim', },               -- Sort, considering re-try
+	-- Note
 
-	{ enabled = true,  'nvim-telekasten/telekasten.nvim' }, -- zettekasten for neovim, only drawback is telescope
-	{ enabled = true,  'nvim-telekasten/calendar-vim' },   -- addon for telekasten
-	{ enabled = true,  'OXY2DEV/markview.nvim', },         --A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-	{ enabled = true,  'chomosuke/typst-preview.nvim', },  -- typst preview
-	{ enabled = true,  '3rd/image.nvim', },                -- show image in neovim with kitty  protocol or uebzugpp
-	{ enabled = true,  'jbyuki/nabla.nvim', }, -- take scientific note (like formula), math
-	{ enabled = true, 'jbyuki/venn.nvim', },           -- drawing diagram, pretty fun
-	{ enabled = true, 'Myzel394/easytables.nvim', },   -- markdown table,WIP
-	{ enabled = true, 'vidocqh/data-viewer.nvim', },   -- Lightweight neovim plugin provides a table view for inspect data files such as csv, tsv
-	{ enabled = true, 'HakonHarnes/img-clip.nvim', },  -- Effortlessly embed images into any markup language,like LaTeX, Markdown or Typst.
-
-
-	-- NOTE: comparable with markview, will check in the future
-	{ enabled = false, 'MeanderingProgrammer/render-markdown.nvim', }, -- improve viewing markdown in neovim
-	{ enabled = false, 'kaarmu/typst.vim', },           -- Note, can conceal, but let try markview first
-	{ enabled = false, 'hat0uma/csvview.nvim', },       -- A comfortable CSV/TSV editing plugin for Neovim.
-	{ enabled = false, 'caliguIa/zendiagram.nvim' },    -- A minimal, good looking diagnostic float window for Neovim.
-	{ enabled = false, 'marcocofano/excalidraw.nvim', }, -- A nvim plugin to help managing excalidraw diagrams in markdown files., WIP
+	{ enabled = true,  'OXY2DEV/markview.nvim', },                    --A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+	{ enabled = false, 'hedyhli/markdown-toc.nvim', },                --A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+	{ enabled = true,  'chomosuke/typst-preview.nvim', },             -- typst preview
+	{ enabled = false, 'iamcco/markdown-preview.nvim' },              -- markdown preview on browser
+	{ enabled = true,  'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
+	{ enabled = true,  '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
+	{ enabled = true,  'jbyuki/nabla.nvim', },                        -- take scientific note (like formula), math
+	{ enabled = true,  'jbyuki/venn.nvim', },                         -- drawing diagram, pretty fun
+	{ enabled = true,  'Myzel394/easytables.nvim', },                 -- markdown table,WIP
+	{ enabled = true,  'vidocqh/data-viewer.nvim', },                 -- Lightweight neovim plugin provides a table view for inspect data files such as csv, tsv
+	{ enabled = true,  'HakonHarnes/img-clip.nvim', },                -- Effortlessly embed images into any markup language,like LaTeX, Markdown or Typst.
+	{ enabled = true,  'jghauser/follow-md-links.nvim' },             -- follow markdown links, paths, refs,...
+	{ enabled = false, 'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins, currently not use because of export not good
+	{ enabled = false, 'nvim-telekasten/telekasten.nvim' },           -- zettekasten for neovim, only drawback is telescope
+	{ enabled = false, 'nvim-telekasten/calendar-vim' },              -- addon for telekasten
+	{ enabled = true,  'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
+	{ enabled = false, 'allaman/emoji.nvim' },                        -- Emoji insert
+	{ enabled = false, 'MeanderingProgrammer/render-markdown.nvim', }, -- improve viewing markdown in neovim, compare with markview but less support
+	{ enabled = false, 'kaarmu/typst.vim', },                         -- Note, can conceal, but let try markview first
+	{ enabled = false, 'hat0uma/csvview.nvim', },                     -- A comfortable CSV/TSV editing plugin for Neovim.
+	{ enabled = false, 'caliguIa/zendiagram.nvim' },                  -- A minimal, good looking diagnostic float window for Neovim.
+	{ enabled = false, 'marcocofano/excalidraw.nvim', },              -- A nvim plugin to help managing excalidraw diagrams in markdown files., WIP
 	{ enabled = false, 'obsidian-nvim/obsidian.nvim', },              -- Obsidian neovim
 	{ enabled = false, 'junegunn/limelight.vim', },                   -- hyper focus writing in neovim,highlight only the writing part
-	{ enabled = false, 'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins
+	{ enabled = false, 'nvim-orgmode/orgmode', },                     -- USAGE organize, replaced by above plugins, use neorg
+	{ enabled = false, "pxwg/latex-conceal.nvim", },                  -- faster latex conceal
+	{ enabled = false, "lervag/vimtex" },                             -- for TEX writting
+	{ enabled = true,  'chrisbra/unicode.vim' },                      -- enter unicode
+	{ enabled = true,  'gu-fan/easydigraph.vim' },                    -- some digraph
 
 	-- Eye candy plugins, turn on when bored
+
 	{ enabled = false, 'iguanacucumber/highlight-actions.nvim', }, -- higlight action
 	{ enabled = false, 'tamton-aquib/duck.nvim', },               -- duck/dog/cat follow cursor
 	{ enabled = false, 'nvzone/volt', },                          -- from nvchad, tool for create interactive UI in neovim
@@ -107,5 +131,4 @@ return {
 	{ enabled = false, 'meznaric/key-analyzer.nvim' },            -- analyze keymap used
 	{ enabled = false, 'sphamba/smear-cursor.nvim' },             -- smear cursor
 	{ enabled = false, 'wildfunctions/myeyeshurt', },             -- resting eye after a while
-	{ enabled = false, 'shrynx/line-numbers.nvim', } -- show both line number and relative line number
 }

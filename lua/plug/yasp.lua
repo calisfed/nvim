@@ -1,6 +1,5 @@
  return {
 	 enabled = false,
-	 cond = false,
     'DimitrisDimitropoulos/yasp.nvim',
     -- lazy loading is not required, since it is handled internally
     lazy = false,

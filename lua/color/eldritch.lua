@@ -19,5 +19,6 @@ return{
       -- vim.cmd.highlight 'LineNr guifg=#a0a0a0'
       -- vim.cmd.highlight 'MatchParen guibg=inverse'
       -- autocmd BufEnter * hi MatchParen guibg=inverse
+      vim.cmd.colorscheme 'eldritch'
     end
   }

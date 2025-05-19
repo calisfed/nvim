@@ -42,37 +42,48 @@ return {
 
 		-- [[ Configure Telescope ]]
 		-- See `:help telescope` and `:help telescope.setup()`
+
+
 		local actions = require("telescope.actions")
+		local action_state = require("telescope.actions.state")
+
+		local function copy_all_results(prompt_bufnr)
+			local picker = action_state.get_current_picker(prompt_bufnr)
+			local results = {}
+
+			for entry in picker.manager:iter() do
+				table.insert(results, entry.value)
+			end
+
+			local content = table.concat(results, "\n")
+			vim.fn.setreg("+", content) -- Copies to system clipboard
+			vim.notify("Copied " .. #results .. " entries to clipboard", vim.log.levels.INFO)
+		end
+
+		local function toggle_all(prompt_bufnr)
+			local picker = action_state.get_current_picker(prompt_bufnr)
+			for entry in picker.manager:iter() do
+				picker._multi:toggle(entry)
+			end
+		end
 		require('telescope').setup {
-			-- You can put your default mappings / updates / etc. in here
-			--  All the info you're looking for is in `:help telescope.setup()`
-			--
-			-- defaults = require("telescope.themes").get_ivy({
-			-- 		layout_config = { height = 0.30 },
-			-- 	}),
-
 			defaults = {
-				mappings = {
-					i = {
-						['<c-enter>'] = 'to_fuzzy_refine',
-						["<esc>"] = actions.close,
-						['<C-k>'] = actions.move_selection_previous,
-						['<C-j>'] = actions.move_selection_next,
-
-					},
-				},
-
-				pickers = {
-					find_files = {
-						-- sorter = require('telescope.sorters').get_levenshtein_sorter()
-					}
-				}
+				mappings = { i = {
+					['<c-enter>'] = 'to_fuzzy_refine',
+					["<esc>"] = actions.close,
+					['<C-k>'] = actions.move_selection_previous,
+					['<C-j>'] = actions.move_selection_next,
+					['<leader>Y'] = copy_all_results,
+				}, },
 			},
-			-- pickers = {}
-			extensions = {
-				['ui-select'] = {
-					require('telescope.themes').get_ivy(),
+
+			pickers = {
+				find_files = {
+					sorter = require('telescope.sorters').get_generic_fuzzy_sorter(),
 				},
+			},
+			extensions = {
+				['ui-select'] = {},
 				thesaurus = {
 					provider = 'freedictionaryapi'
 				},
@@ -105,14 +116,17 @@ return {
 			return opts
 		end
 
+
 		-- See `:help telescope.builtin`
 		-- local ut = require('personal.utils')
 		local CallTelescope = function(input, opts)
-			-- opts = opts or {}
-			opts.layout_config = opts.layout_config or { height = 0.30 }
-			opts.previewer =  opts.previewr or true
+			opts = opts or {}
+			-- opts.layout_config = opts.layout_config or { height = 0.30 }
+			-- opts.previewer =  opts.previewer or true
 			local theme = opts.theme or require('telescope.themes').get_ivy(opts)
-			input(theme)
+
+			-- input(theme)
+			input(opts)
 		end
 
 		vim.keymap.set('n', '<Space>sh', function() CallTelescope(require('telescope.builtin').help_tags, {}) end, { desc = 'Search helps' })
@@ -129,8 +143,9 @@ return {
 		vim.keymap.set('n', '<Space>sl', function() CallTelescope(require('telescope.builtin').loclist, {}) end, { desc = 'Search location list' })
 		vim.keymap.set('n', '<Space>sj', function() CallTelescope(require('telescope.builtin').jumplist, {}) end, { desc = 'Search jump list' })
 		vim.keymap.set('n', '<Space>st', function() CallTelescope(require('telescope.builtin').treesitter, {}) end, { desc = 'Search treesitter' })
+		vim.keymap.set('n', '<Space>s.', function() CallTelescope(require('telescope.builtin').resume, {}) end, { desc = 'Search resume' })
 		vim.keymap.set('n', '<Space>sT', function() require('telescope').extensions.thesaurus.lookup() end, { desc = 'Search thesaurus' })
-
+		vim.keymap.set('n', '<Space>sa', ":Telescope ", { desc = 'Telescope ready' })
 	end,
 
 }

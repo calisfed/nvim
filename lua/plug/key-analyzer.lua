@@ -1,6 +1,5 @@
 return {
   enabled = false,
-  cond = false,
   "meznaric/key-analyzer.nvim",
   opts = {
     -- Name of the command to use for the plugin

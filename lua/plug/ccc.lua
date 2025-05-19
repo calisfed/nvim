@@ -3,7 +3,6 @@ return {
   'uga-rosa/ccc.nvim',
   event = "VeryLazy",
   -- enabled = false,
-  -- cond = false,
   config = function ()
     vim.opt.termguicolors = true
 

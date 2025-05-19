@@ -31,7 +31,7 @@ return { -- Autocompletion
   },
   config = function()
     -- See `:help cmp`
-    local cmp = require 'cmp'
+    local cmp = require 'plug.nvim-cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
 

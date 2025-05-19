@@ -5,6 +5,23 @@ return { -- Collection of various small independent plugins/modules
 	lazy = false,
 	enabled = false,
 	config = function()
+		require('mini.surround').setup()
+		require('mini.move').setup()
+		require('mini.align').setup()
+		-- require('mini.operators').setup({exchange = { prefix = "" }})
+		require('mini.pairs').setup()
+		require('mini.animate').setup( { scroll = { enable = false, } })
+		require('mini.splitjoin').setup()
+		require('mini.test').setup()
+		require('mini.trailspace').setup()
+		require('mini.bracketed').setup()
+		require('mini.cursorword').setup({ delay = 50, }) -- for some reason it didn't show
+		vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', { underline = true })
+		require('mini.misc').setup()
+		vim.keymap.set({ 'n', 'v' }, "<leader>zz", "<cmd>lua require'mini.misc'.zoom()<cr>", { desc = "Zoom" })
+		require('mini.icons').setup({ style = 'ascii', })
+		require('mini.extra').setup()
+
 		local spec = require('mini.ai').gen_spec
 		require('mini.ai').setup {
 			n_lines = 500,
@@ -85,7 +102,6 @@ return { -- Collection of various small independent plugins/modules
 				delay = 200,
 			}
 		})
-		require('mini.surround').setup()
 		require('mini.statusline').setup(
 			{
 				-- Content of statusline as functions which return statusline string. See
@@ -136,7 +152,6 @@ return { -- Collection of various small independent plugins/modules
 		--   return ''
 		-- end
 
-		require('mini.align').setup()
 		-- require('mini.indentscope').setup {
 		--   symbol = '╎',
 		--   options = { try_as_border = true },
@@ -147,21 +162,15 @@ return { -- Collection of various small independent plugins/modules
 		--   },
 		-- }
 
-		require('mini.move').setup()
-
-		-- require('mini.operators').setup({exchange = { prefix = "" }})
-		require('mini.pairs').setup()
-		-- require('mini.animate').setup()
-		require('mini.splitjoin').setup()
-		require('mini.test').setup()
-		require('mini.trailspace').setup()
-		require('mini.bracketed').setup()
-		require('mini.cursorword').setup({ delay = 50, }) -- for some reason it didn't show
-			vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', { underline = true })
-		require('mini.misc').setup()
-		vim.keymap.set({ 'n', 'v' }, "<leader>zz", "<cmd>lua require'mini.misc'.zoom()<cr>", { desc = "Zoom" })
-		require('mini.icons').setup({
-			style = 'glyph', -- glyph || ascii
+		require('mini.comment').setup({
+			options = {
+				custom_commentstring = nil,
+				ignore_blank_line = true,
+				start_of_line = false,
+				pad_comment_parts = true,
+			},
+			mappings = { comment = 'gc', comment_line = 'gcc', comment_visual = 'gc', textobject = 'gc', },
+			hooks = { pre = function() end, post = function() end, },
 		})
 
 		-- require('mini.pick').setup(
@@ -207,7 +216,6 @@ return { -- Collection of various small independent plugins/modules
 		-- vim.keymap.set('n', '<leader>sZ', "<cmd>Telescope live_grep cwd=/usr/lib/zig/std/<cr>", { desc = "search text in zig lib" })
 
 
-		require('mini.extra').setup()
 		require('mini.sessions').setup( -- No need to copy this inside `setup()`. Will be used automatically.
 			{
 				-- Whether to read default session if Neovim opened without file arguments
@@ -256,14 +264,14 @@ return { -- Collection of various small independent plugins/modules
 			items = {
 				-- require'mini.starter'.sections.telescope(),
 
-				{ name = 'Edit new buffer', action = 'enew',                                                                                     section = 'Commands' },
-				-- { name = 'Config Neovim',   action = 'Telescope find_files cwd=~/.config/nvim/', section = 'Commands' },
-				-- { name = 'Files in cwd',    action = 'Telescope find_files',                     section = 'Commands' },
-				{ name = 'Config Neovim',   action = ':lua MiniPick.builtin.files({},{source = {cwd = "~/.config/nvim/"}})',                     section = 'Commands' },
-				{ name = 'Files in cwd',    action = ':lua MiniPick.builtin.files({},{source = {cwd =require"personal.utils".get_git_root()}})', section = 'Commands' },
+				{ name = 'Edit new buffer', action = 'enew',                                     section = 'Commands' },
+				{ name = 'Config Neovim',   action = 'Telescope find_files cwd=~/.config/nvim', section = 'Commands' },
+				{ name = 'Files in cwd',    action = 'Telescope find_files',section = 'Commands' },
+				-- { name = 'Config Neovim',   action = ':lua MiniPick.builtin.files({},{source = {cwd = "~/.config/nvim/"}})',                     section = 'Commands' },
+				-- { name = 'Files in cwd',    action = ':lua MiniPick.builtin.files({},{source = {cwd =require"personal.utils".get_git_root()}})', section = 'Commands' },
 				-- { name = 'Recent file',     action = ':e#',                                                                                      section = 'Commands' },
-				{ name = 'Update plugins',  action = 'Lazy sync',                                                                                section = 'Commands' },
-				{ name = 'Quit Neovim',     action = 'qall',                                                                                     section = 'Commands' },
+				{ name = 'Update plugins',  action = 'Lazy sync',                                section = 'Commands' },
+				{ name = 'Quit Neovim',     action = 'qall',                                     section = 'Commands' },
 
 				require 'mini.starter'.sections.recent_files(3, true),
 				-- require 'mini.starter'.sections.sessions(5, true),
@@ -346,5 +354,22 @@ return { -- Collection of various small independent plugins/modules
 		map_combo('t', 'jk', '<BS><BS><C-\\><C-n>')
 		map_combo('t', 'kj', '<BS><BS><C-\\><C-n>')
 
+		-- local hipatterns = require('mini.hipatterns')
+		-- hipatterns.setup({
+		-- 	highlighters = {
+		-- 		-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+		-- 		fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+		-- 		hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+		-- 		todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+		-- 		note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+
+		-- 		-- Highlight hex color strings (`#rrggbb`) using that color
+		-- 		hex_color = hipatterns.gen_highlighter.hex_color(),
+		-- 	},
+		-- })
+
+		-- Choose background and foreground
+		-- this only work on Kitty and Ghostty
+		-- require('mini.hues').setup( { background = '#11262d', foreground = '#c0c8cc', accent = 'blue', saturation= 'high', n_hues = 8, })
 	end,
 }

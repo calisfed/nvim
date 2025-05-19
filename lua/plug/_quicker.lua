@@ -1,5 +1,4 @@
-return
-  {
-    "stevearc/quicker.nvim",
-    enabled = false,
-  }
+return {
+	"stevearc/quicker.nvim",
+	enabled = false,
+}

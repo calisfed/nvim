@@ -1,7 +1,6 @@
 return
   {
     enabled = false,
-    cond = false,
     -- lazy = false,
     branch = "main",
     'Dan7h3x/signup.nvim',
