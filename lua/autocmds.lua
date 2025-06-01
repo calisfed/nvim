@@ -107,9 +107,9 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 -- ]]
 
 vim.filetype.add {
-	pattern ={
+	pattern = {
 		-- [ ".*/hypr/*.conf" ] = "hyprlang",
-		[ ".*/tridactyl/.*"] = "tridactyl"
+		[".*/tridactyl/.*"] = "tridactyl"
 	},
 	-- extension = { htmx = 'htmx' }
 }
@@ -325,15 +325,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 
 
 
-vim.diagnostic.config {
-	-- virtual_text = false,
-	virtual_lines = false,
-	virtual_text = false,
-	-- virtual_lines = {
-	--   current_line = false,
-	-- },
-}
-
 -- local group = vim.api.nvim_create_augroup('OoO', {})
 -- local function au(typ, pattern, cmdOrFn)
 -- 	if type(cmdOrFn) == 'function' then
@@ -423,3 +414,98 @@ vim.keymap.set("n", "gE", function() jumpWithVirtLineDiags(-1) end, { desc = "�
 -- end
 
 -- vim.o.statuscolumn = "%{%v:lua._status_col()%}"
+
+
+
+
+-- vim.diagnostic.config {
+-- 	-- virtual_text = false,
+-- 	virtual_lines = false,
+-- 	virtual_text = false,
+-- 	-- virtual_lines = {
+-- 	--   current_line = false,
+-- 	-- },
+-- }
+
+
+vim.diagnostic.config({
+	signs = {
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+			[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+			[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+			[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+		},
+		text = {
+			[vim.diagnostic.severity.ERROR] = "X",
+			[vim.diagnostic.severity.HINT] = "?",
+			[vim.diagnostic.severity.INFO] = "I",
+			[vim.diagnostic.severity.WARN] = "!",
+		},
+	},
+	update_in_insert = true,
+	virtual_text = false,
+	float = { border = 'single' }
+
+	-- virtual_lines = { current_line = true },
+})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+	vim.lsp.handlers.hover, {
+		border = 'single'
+	}
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+	vim.lsp.handlers.signature_help, {
+		border = 'single'
+	}
+)
+
+
+---
+-- function Treeify()
+-- 	-- get start and end pos
+-- 	vim.cmd([[ execute "normal! \<ESC>" ]])
+-- 	local start_line = vim.fn.getcharpos("'<")[2]
+-- 	local end_line = vim.fn.getcharpos("'>")[2]
+-- 	vim.cmd([[ execute "normal! gv" ]])
+
+-- 	local lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
+-- 	local stack = {}
+-- 	local new_lines = {}
+
+-- 	  for i, line in ipairs(lines) do
+-- 	    local indent = line:match("^%s*") or ""
+-- 	    local level = #indent / 2
+
+-- 	    -- remove stack items deeper than current
+-- 	    while #stack > level do table.remove(stack) end
+
+-- 	    local is_last = true
+-- 	    for j = i+1, #lines do
+-- 	      local next_indent = lines[j]:match("^%s*") or ""
+-- 	      if #next_indent / 2 == level then
+-- 	        is_last = false
+-- 	        break
+-- 	      elseif #next_indent / 2 < level then
+-- 	        break
+-- 	      end
+-- 	    end
+
+-- 	    local prefix = ""
+-- 	    if level > 0 then
+-- 	      for l = 1, level - 1 do
+-- 	        -- prefix = prefix .. "│   "
+-- 	        prefix = prefix .. "  "
+-- 	      end
+-- 	      prefix = prefix .. (is_last and " └── " or " ├── ")
+-- 	    end
+
+-- 	    table.insert(new_lines, prefix .. line:gsub("^%s*", ""))
+-- 	    stack[level + 1] = true
+-- 	  end
+
+-- 	  vim.api.nvim_buf_set_lines(0, start_line, end_line, false, new_lines)
+
+-- end
+

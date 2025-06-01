@@ -12,9 +12,9 @@ return
 			debug = true,
 
 			-- Custom format string to open the output link provided with %s
-			open_cmd = 'qutebrowser %s',
+			-- open_cmd = 'qutebrowser %s',
 			-- open_cmd = 'firefox-developer-edition %s -P typst-preview --class typst-preview',
-			-- open_cmd = 'firefox-developer-edition %s',
+			open_cmd = 'firefox-developer-edition %s',
 
 			-- Custom port to open the preview server. Default is random.
 			-- Example: port = 8000

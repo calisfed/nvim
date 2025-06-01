@@ -1,7 +1,9 @@
 return {
 	'saghen/blink.cmp',
 	lazy = false,
-	dependencies = 'rafamadriz/friendly-snippets',
+	-- dependencies = 'rafamadriz/friendly-snippets',
+
+dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
 	version = '*',
 	-- build = 'cargo build --release',
 	-- build = 'nix run .#build-plugin',
@@ -14,6 +16,7 @@ return {
 				['<C-j>'] = { 'show', 'show_documentation', 'hide_documentation' },
 				['<C-e>'] = { 'hide', 'fallback' },
 
+				-- ['<Tab>'] = {},
 				['<Tab>'] = {
 					function(cmp)
 						if cmp.snippet_active() then return cmp.accept()
@@ -26,6 +29,7 @@ return {
 
 					'fallback'
 				},
+
 				['<S-Tab>'] = { 'snippet_backward', 'fallback' },
 				['<C-l>'] = { 'snippet_forward'},
 				['<C-h>'] = { 'snippet_backward'},
@@ -64,6 +68,8 @@ return {
 				keymap = { preset = 'inherit' },
 				completion = { menu = { auto_show = true } },
 			},
+
+snippets = { preset = 'luasnip' },
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {

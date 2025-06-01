@@ -2,8 +2,8 @@ return {
 	-- Colorscheme
 
 	{ enabled = true,  'EdenEast/nightfox.nvim',                    priority = 1000, },
-	{ enabled = false, 'diegoulloao/neofusion.nvim',                priority = 1000, },
-	{ enabled = false, 'eldritch-theme/eldritch.nvim',              priority = 1000, },
+	{ enabled = true,  'diegoulloao/neofusion.nvim',                priority = 1000, },
+	{ enabled = true,  'eldritch-theme/eldritch.nvim',              priority = 1000, },
 	{ enabled = false, 'folke/tokyonight.nvim',                     priority = 1000, },
 	{ enabled = false, 'olivercederborg/poimandres.nvim',           priority = 1000, },
 	{ enabled = false, 'rose-pine/neovim',                          priority = 1000, name = 'rose-pine', },
@@ -21,6 +21,7 @@ return {
 
 	{ enabled = true,  'echasnovski/mini.nvim', },              -- Many plugins in one
 	{ enabled = true,  'stevearc/oil.nvim', },                  -- File explorer
+	{ enabled = false,  'A7Lavinraj/fyler.nvim' },               -- like oil.nvim but have tree-view
 	{ enabled = true,  'jiaoshijie/undotree', },                -- undo,        but tree
 	{ enabled = true,  'lambdalisue/suda.vim', },               -- auto read/write file with sudo
 	{ enabled = true,  'jake-stewart/multicursor.nvim', },      -- multi cursor
@@ -40,7 +41,7 @@ return {
 	{ enabled = false, 'kevinhwang91/nvim-ufo', },              -- fold
 	{ enabled = false, 'lewis6991/gitsigns.nvim', },            -- gitsigns
 	{ enabled = false, 'lukas-reineke/indent-blankline.nvim', }, -- highlight part of waking code
-	{ enabled = false, 'shellRaining/hlchunk.nvim', },          --highlight part of working code
+	{ enabled = true,  'shellRaining/hlchunk.nvim', },          --highlight part of working code
 	{ enabled = false, 'stevearc/conform.nvim', },              -- Lightweight, powerful formatter
 	{ enabled = false, 'tpope/vim-sleuth', },                   -- Auto adjust shiftwidth and expandtab
 	{ enabled = false, 'yarospace/lua-console.nvim', },         --    lua console
@@ -62,9 +63,13 @@ return {
 	{ enabled = false, 'xzbdmw/clasp.nvim' },                   -- autopair,  replaced by mini.pair
 	{ enabled = false, 'sQVe/sort.nvim', },                     -- Sort, considering re-try
 	{ enabled = true,  'danymat/neogen', },                     -- Annotation toolkit
+	{ enabled = true,  'cksidharthan/mentor.nvim' },            -- random tips after open nvim
+	{ enabled = true,  'rubiin/fortune.nvim' },                 -- Inspiration and Wisdom quotes, go with dashboard plugins like mini or alpha
+	{ enabled = true,  'monaqa/dial.nvim' },                    -- increment/decrement base on various rules
+
 	-- html
-	{ enabled = true,  'windwp/nvim-ts-autotag' },              -- Auto close tag for htmlmtoc
-	{ enabled = false, 'rest-nvim/rest.nvim' },                 -- Fast REST api
+	{ enabled = true,  'windwp/nvim-ts-autotag' }, -- Auto close tag for htmlmtoc
+	{ enabled = false, 'rest-nvim/rest.nvim' },   -- Fast REST api
 
 	-- Debugging
 
@@ -91,7 +96,7 @@ return {
 
 	{ enabled = true,  'OXY2DEV/markview.nvim', },                    --A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
 	{ enabled = false, 'hedyhli/markdown-toc.nvim', },                --A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-	{ enabled = true,  'chomosuke/typst-preview.nvim', },             -- typst preview
+	{ enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview
 	{ enabled = false, 'iamcco/markdown-preview.nvim' },              -- markdown preview on browser
 	{ enabled = true,  'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
 	{ enabled = true,  '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp

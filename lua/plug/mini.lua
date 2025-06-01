@@ -136,17 +136,16 @@ return { -- Collection of various small independent plugins/modules
 					end,
 					-- Content for inactive window(s)
 					inactive = nil,
-
 				},
-
 				-- Whether to use icons by default
 				use_icons = true,
-
 				-- Whether to set Vim's settings for statusline (make it always shown)
 				set_vim_settings = true,
 			}
-
 		)
+
+
+
 		---@diagnostic disable-next-line: duplicate-set-field
 		-- statusline.section_location = function()
 		--   return ''
@@ -277,7 +276,8 @@ return { -- Collection of various small independent plugins/modules
 				-- require 'mini.starter'.sections.sessions(5, true),
 				require 'mini.starter'.sections.recent_files(3, false),
 			},
-			header = [[
+			header =
+				[[
 																						 
 			████ ██████           █████      ██
 		 ███████████             █████ 
@@ -287,7 +287,16 @@ return { -- Collection of various small independent plugins/modules
  ███████████ ███    ███ █████████ █████ █████ ████ █████
 ██████  █████████████████████ ████ █████ █████ ████ ██████
 ]],
-			footer = '',
+
+			-- dashboard.nvim reference
+			footer = function ()
+				local quotes = require("fortune").get_fortune()
+				local quote = ""
+				for _	, q	 in ipairs(quotes) do
+					quote = quote .. '\n' .. q
+				end
+				return quote
+			end,
 			content_hooks = {
 				require 'mini.starter'.gen_hook.adding_bullet('  ', true),
 				require 'mini.starter'.gen_hook.indexing('all', { 'Commands', 'Sessions' }),
@@ -335,13 +344,14 @@ return { -- Collection of various small independent plugins/modules
 		local map_multistep = require('mini.keymap').map_multistep
 
 		-- map_multistep('i', '<Tab>',   { 'pmenu_next' })
-		map_multistep('i', '<Tab>', { 'pmenu_accept', })
+		-- map_multistep('i', '<Tab>', { 'pmenu_accept', })
 
 		-- map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
 		map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
 		map_multistep('i', '<BS>', { 'minipairs_bs' })
-		local map_combo = require('mini.keymap').map_combo
+		-- map_multistep('i', '<Tab>', {'blink_accept', 'jump_after_tsnode', 'jump_after_close'})
 
+		local map_combo = require('mini.keymap').map_combo
 		-- Support most common modes. This can also contain 't', but would
 		-- only mean to press `<Esc>` inside terminal.
 		local mode = { 'i', 'c', 'x', 's' }
@@ -372,4 +382,5 @@ return { -- Collection of various small independent plugins/modules
 		-- this only work on Kitty and Ghostty
 		-- require('mini.hues').setup( { background = '#11262d', foreground = '#c0c8cc', accent = 'blue', saturation= 'high', n_hues = 8, })
 	end,
+
 }

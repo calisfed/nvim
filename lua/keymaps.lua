@@ -76,8 +76,10 @@ vim.keymap.set({ 'c' }, "<M-l>", "lua ", { desc = '[K] ua ready' })
 -- vim.keymap.set('n', "<leader>ss", ":source %<cr>", { desc = '[K] Source this file' })
 
 -- vim.keymap.set('n', 'gf', utils.fix_gf, { desc = '[K] Better gf' })
-vim.keymap.set('n', '<leader>tt', '<cmd>s@false@true<cr>', { desc = '[K] Toggle false to true' })
-vim.keymap.set('n', '<leader>tf', '<cmd>s@true@false<cr>', { desc = '[K] Toggle true to false' })
+
+-- Replaced by dial.nvim
+-- vim.keymap.set('n', '<leader>tt', '<cmd>s@false@true<cr>', { desc = '[K] Toggle false to true' })
+-- vim.keymap.set('n', '<leader>tf', '<cmd>s@true@false<cr>', { desc = '[K] Toggle true to false' })
 
 -- vim.keymap.set({"s","v","n","i"}, "<C-l>", "<cmd>lua vim.snippet.jump(1)<cr>")
 -- vim.keymap.set({"s","v","n","i"}, "<C-h>", "<cmd>lua vim.snippet.jump(-1)<cr>")
@@ -85,3 +87,4 @@ vim.keymap.set('n', '<leader>tf', '<cmd>s@true@false<cr>', { desc = '[K] Toggle 
 
 -- vim.keymap.set('n', '<leader>cm', utils.c_man, {desc = '[K] Get man page of nearest previous function'})
 vim.keymap.set('n', '<leader>cm', "<cmd>lua require('personal.man').run()<cr>", { desc = '[K] Get man page of nearest previous function' })
+

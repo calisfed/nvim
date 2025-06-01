@@ -18,7 +18,7 @@ vim.opt.linebreak = true      -- Wrap long lines at a character in 'breakat'
 -- vim.opt.textwidth = 80        -- Maximum width of text that is being inserted
 -- vim.cmd 'set fo-=1tcro'       -- :help fo-table
 
-vim.opt.showtabline = 0     -- Always show tabs
+vim.opt.showtabline = 1     -- 0 for no show, 1 shows if more than 1 tab, 2 always shows
 vim.opt.tabstop = 2         -- Insert 2 spaces for a tab
 vim.opt.softtabstop = 2     -- Number of spaces tabs count for while editing
 vim.opt.shiftwidth = 2      -- the number of spaces inserted for each indentation
