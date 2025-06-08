@@ -5,6 +5,7 @@ return {
 
   dependencies = {
     { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    "erooke/blink-cmp-latex",
   },
   version = '*',
   -- build = 'cargo build --release',
@@ -82,15 +83,33 @@ return {
         default = function(ctx)
           local success, node = pcall(vim.treesitter.get_node)
           if vim.bo.filetype == 'lua' then
-            return { 'lsp', 'buffer', 'path'  }
+            return { 'lsp', 'buffer', 'path' }
           elseif success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
             return { 'buffer' }
           else
-            return { 'lsp', 'path', 'snippets', 'buffer' }
+            return { 'lsp', 'path', 'snippets', 'buffer', 'latex' }
           end
         end,
-        providers = { },
-      }}
+        providers = {
+          latex = {
+            name = "Latex",
+            module = "blink-cmp-latex",
+            opts = {
+              -- set to true to insert the latex command instead of the symbol
+              insert_command = function(ctx)
+                local ft = vim.api.nvim_get_option_value("filetype", {
+                  scope = "local",
+                  buf = ctx.bufnr,
+                })
+                if ft == "tex" then
+                  return true
+                end
+                return false
+              end
+            },},
+        },
+      }
+    }
   end
 
 }
