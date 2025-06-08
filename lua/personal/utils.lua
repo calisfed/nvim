@@ -47,7 +47,6 @@ function M.get_git_root()
   return vim.fn.fnamemodify(dot_git_path, ':h')
 end
 
-
 M.toggle = {
   diagnostic = function()
     local config = vim.diagnostic.config
@@ -69,9 +68,13 @@ end
 
 -- Add a character at EOL
 M.add_last_charv2 = function()
+  local mode = vim.api.nvim_get_mode().mode
   local key = string.char(vim.fn.getchar())
   local cmd = '<Esc>mmA' .. key .. '<Esc>`m'
   vim.api.nvim_input(cmd)
+  if mode == "i" then
+    vim.api.nvim_input("a")
+  end
 end
 
 -- Change last character
@@ -116,7 +119,6 @@ function M.c_man()
   vim.cmd("vert Man " .. num .. " " .. str)
 end
 
-
 function M.trim_path(path, num_components) -- Split the path into components using '/' as the delimiter
   -- Example usage:
   -- local full_path = "/home/user/projects/nvim/config/init.lua"
@@ -141,14 +143,17 @@ function M.shorten_path(path, max_length)
   -- print(shortened_path)
   -- Output: "/h/u/p/nvim/config/init.lua" or "home/user/projects/nvim/config/init.lua"
   if #path <= max_length then
-    return path end
+    return path
+  end
   local components = {}
   for component in path:gmatch("[^/]+") do
-    table.insert(components, component) end
+    table.insert(components, component)
+  end
   -- Ensure we always keep the last two components (parent directory and file)
   local file_component = table.remove(components)
   local parent_component = table.remove(components)
-  for i = 1, #components do components[i] = components[i]:sub(1, 1)
+  for i = 1, #components do
+    components[i] = components[i]:sub(1, 1)
   end
 
   local shortened_path = '/' .. table.concat(components, "/") .. '/' .. parent_component .. '/' .. file_component
@@ -160,11 +165,10 @@ function M.shorten_path(path, max_length)
   return shortened_path
 end
 
-
 function M.url_encode(str)
   --usage:
   -- /home/v/.config -> %2Fhome%2Fv%2F.config
-  return str:gsub("([^%w])",function(c)
+  return str:gsub("([^%w])", function(c)
     return string.format("%%%02X", string.byte(c))
   end)
 end
@@ -173,7 +177,5 @@ function M.url_decode(str)
   return str:gsub("%%(%x%x)",
     function(hex) return string.char(tonumber(hex, 16)) end)
 end
-
-
 
 return M

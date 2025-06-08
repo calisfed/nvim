@@ -61,22 +61,8 @@ require('lazy').setup({
 	}
 })
 
-require 'options'
-require 'autocmds'
-require 'keymaps'
+require('options')
+require('autocmds')
+require('keymaps')
 require('cool.quickfix')
 require('cool.close_qf_with_q')
--- require('personal.nvim-treesitter-asciidoc.plugin')
-require("nvim-treesitter.parsers").get_parser_configs().asciidoc = {
-  install_info = {
-    url = "https://github.com/cathaysia/tree-sitter-asciidoc",
-    files = {
-			"tree-sitter-asciidoc/src/parser.c",
-			"tree-sitter-asciidoc/src/scanner.c",
-			"tree-sitter-asciidoc_inline/src/parser.c",
-			"tree-sitter-asciidoc_inline/src/scanner.c",
-    },
-    branch = "master",
-  },
-}
-

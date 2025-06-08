@@ -30,7 +30,7 @@ return {
 							library = {
 								'${3rd}/luv/library',
 								unpack(vim.api.nvim_get_runtime_file('', true)),
-								-- 									vim.env.VIMRUNTIME,
+								vim.env.VIMRUNTIME,
 								"/usr/share/awesome/lib",
 							},
 							-- If lua_ls is really slow on your computer, you can try this instead:
@@ -122,7 +122,7 @@ return {
 			-- htmx = {},
 			-- },
 			asm_lsp = {},
-		-- ltex_plus = {},
+			-- ltex_plus = {},
 			html = {
 				filetypes = { "markdown", "html", "javascript", "typescript" },
 			}

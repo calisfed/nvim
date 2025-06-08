@@ -38,9 +38,8 @@ vim.keymap.set({ 'n', 'i' }, '<S-cr>', "<cmd>call append(line('.') - 1, repeat([
 
 
 -- vim.keymap.set({ 'n', 'v' }, ';', ':lua require"utils".add_last_char(string.char(vim.fn.getchar()))<cr>', { desc = '[K] Add ; EOL', silent = true })
-vim.keymap.set('n', '<M-;>', utils.add_last_charv2, { desc = '[K] Add ; EOL', silent = true })
+vim.keymap.set({'n','i'}, '<M-;>', utils.add_last_charv2, { desc = '[K] Add ; EOL', silent = true })
 vim.keymap.set('n', 'c;', utils.change_last_char, { desc = '[K] Change EOL char' })
-
 -- Buffer
 
 vim.keymap.set({ 'n', 'v' }, ']b', ':bnext<cr>', { desc = '[K] Buffer next' })
@@ -69,7 +68,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>f', utils.indent_and_return, { desc = '[K]
 
 
 vim.keymap.set({ 'c' }, "<M-.>", "\\(.*\\)", { desc = '[K] One eye Kirby' })
-vim.keymap.set({ 'c' }, "<M-l>", "lua ", { desc = '[K] ua ready' })
+vim.keymap.set({ 'c' }, "<M-l>", "lua ", { desc = '[K] Lua ready' })
 
 -- vim.keymap.set('n', "<leader>tv", ":vsp term://zsh<cr>", { desc = '[K] Open term in vertical split' })
 -- vim.keymap.set('n', "<leader>th", ":sp term://zsh<cr>", { desc = '[K] Open term in horizontal split' })
@@ -88,3 +87,4 @@ vim.keymap.set({ 'c' }, "<M-l>", "lua ", { desc = '[K] ua ready' })
 -- vim.keymap.set('n', '<leader>cm', utils.c_man, {desc = '[K] Get man page of nearest previous function'})
 vim.keymap.set('n', '<leader>cm', "<cmd>lua require('personal.man').run()<cr>", { desc = '[K] Get man page of nearest previous function' })
 
+vim.keymap.set('n', "<M-s>", "<cmd>source %<cr>", {desc = "[K] Source current file"})

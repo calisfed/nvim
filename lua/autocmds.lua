@@ -8,6 +8,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
+
+
+vim.api.nvim_create_autocmd('FocusLost', {
+    desc = "Copy to clipboard on FocusLost",
+-- set -g focus-events on <== tmux
+    callback = function()
+        vim.fn.setreg("+", vim.fn.getreg("0"))
+    end,
+})
 -- vim.api.nvim_create_autocmd('BufWritePre', {
 --   desc = 'Auto indent whole document',
 --   group = vim.api.nvim_create_augroup('utils_indent',{ clear = true}),
@@ -133,6 +142,15 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.b.miniindentscope_disable = true
 		vim.b.minisessions_disable = true
 		vim.b.minitrailspace_disable = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "help" },
+	callback = function()
+		vim.opt_local.nu = true
+		vim.opt_local.rnu = true
+    vim.opt_local.wrap = true
 	end,
 })
 
@@ -508,4 +526,3 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 -- 	  vim.api.nvim_buf_set_lines(0, start_line, end_line, false, new_lines)
 
 -- end
-
