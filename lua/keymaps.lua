@@ -13,8 +13,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>Q', vim.diagnostic.setqflist, { desc = '[K
 
 -- vim.keymap.set({ 'n', 'v' }, '<leader>x', utils.system_open, { desc = '[K] Open file under cursor' }) -- gx default
 -- vim.keymap.set({ 'n', 'v' }, '<leader>x', utils.open_local_file_in_new_buffer, { desc = '[K] Open file under cursor' }) -- gf default
-vim.keymap.set({ 'n', 'v' }, '<leader>q', ':q<cr>', { desc = '[K] Quit' })
-vim.keymap.set({ 'n', 'v' }, '<leader>w', ':w<cr>', { desc = '[K] Write' })
+vim.keymap.set({ 'n', 'v' }, '<leader>q', '<cmd>q<cr>', { desc = '[K] Quit' })
+vim.keymap.set({ 'n', 'v' }, '<leader>w', '<cmd>w<cr>', { desc = '[K] Write' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>p', [["_dP]], { desc = 'Multiple paste' }) -- Without yank to clipboard
 -- vim.keymap.set({ 'n', 'v' }, '<leader>P', [["+dP]], { desc = 'Multiple paste' }) -- Without yank to clipboard
 vim.keymap.set({ 'n', 'x' }, 'P', [["0p]], { desc = '[K] paste from yank register' })
@@ -28,26 +28,26 @@ vim.keymap.set({ 'n', 'x' }, 'P', [["0p]], { desc = '[K] paste from yank registe
 vim.keymap.set({ 'n', 'v' }, '<leader>X', '<cmd>!chmod +x %<CR>', { desc = '[K] Make file executable' })
 
 -- Resize with arrows
-vim.keymap.set({ 'n', 'v' }, '<C-Up>', ':resize -2<CR>', { desc = '[K] .' })
-vim.keymap.set({ 'n', 'v' }, '<C-Down>', ':resize +2<CR>', { desc = '[K] .' })
-vim.keymap.set({ 'n', 'v' }, '<C-Left>', ':vertical resize +2<CR>', { desc = '[K] .' })
-vim.keymap.set({ 'n', 'v' }, '<C-Right>', ':vertical resize -2<CR>', { desc = '[K] .' })
+vim.keymap.set({ 'n', 'v' }, '<C-Up>', '<cmd>resize -2<CR>', { desc = '[K] .' })
+vim.keymap.set({ 'n', 'v' }, '<C-Down>', '<cmd>resize +2<CR>', { desc = '[K] .' })
+vim.keymap.set({ 'n', 'v' }, '<C-Left>', '<cmd>vertical resize +2<CR>', { desc = '[K] .' })
+vim.keymap.set({ 'n', 'v' }, '<C-Right>', '<cmd>vertical resize -2<CR>', { desc = '[K] .' })
 
 -- Add line above cursor (oposite of 'o')
 vim.keymap.set({ 'n', 'i' }, '<S-cr>', "<cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = '[K] Append live above' })
 
 
--- vim.keymap.set({ 'n', 'v' }, ';', ':lua require"utils".add_last_char(string.char(vim.fn.getchar()))<cr>', { desc = '[K] Add ; EOL', silent = true })
-vim.keymap.set({'n','i'}, '<M-;>', utils.add_last_charv2, { desc = '[K] Add ; EOL', silent = true })
+-- vim.keymap.set({ 'n', 'v' }, ';', '<cmd>lua require"utils".add_last_char(string.char(vim.fn.getchar()))<cr>', { desc = '[K] Add ; EOL', silent = true })
+vim.keymap.set({ 'n', 'i' }, '<M-;>', utils.add_last_charv2, { desc = '[K] Add ; EOL', silent = true })
 vim.keymap.set('n', 'c;', utils.change_last_char, { desc = '[K] Change EOL char' })
 -- Buffer
 
-vim.keymap.set({ 'n', 'v' }, ']b', ':bnext<cr>', { desc = '[K] Buffer next' })
-vim.keymap.set({ 'n', 'v' }, '[b', ':bprevious<cr>', { desc = '[K] Buffer previous' })
--- vim.keymap.set({ 'n', 'v' }, '<leader>bd', ':bdelete<cr>', { desc = '[K] Buffer delete' })
+vim.keymap.set({ 'n', 'v' }, ']b', '<cmd>bnext<cr>', { desc = '[K] Buffer next' })
+vim.keymap.set({ 'n', 'v' }, '[b', '<cmd>bprevious<cr>', { desc = '[K] Buffer previous' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>bd', '<cmd>bdelete<cr>', { desc = '[K] Buffer delete' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>bw', utils.bufwipe, { desc = '[K] Wipe buffers' })
 vim.keymap.set({ 'n', 'v' }, '<C-w>b', utils.bufwipe, { desc = '[K] Wipe buffer' })
-vim.keymap.set({ 'n', 'v' }, '<C-c>', ':bdelete<cr>', { desc = '[K] Buffer delete' })
+vim.keymap.set({ 'n', 'v' }, '<C-c>', '<cmd>bdelete<cr>', { desc = '[K] Buffer delete' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>td', utils.toggle.diagnostic, { desc = '[K] Toggle Diagnostic' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>tl', '<cmd>lua require("base.lsp_lines").toggle()<cr>', { desc = '[K] Toggle lsp_lines' })
@@ -70,9 +70,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>f', utils.indent_and_return, { desc = '[K]
 vim.keymap.set({ 'c' }, "<M-.>", "\\(.*\\)", { desc = '[K] One eye Kirby' })
 vim.keymap.set({ 'c' }, "<M-l>", "lua ", { desc = '[K] Lua ready' })
 
--- vim.keymap.set('n', "<leader>tv", ":vsp term://zsh<cr>", { desc = '[K] Open term in vertical split' })
--- vim.keymap.set('n', "<leader>th", ":sp term://zsh<cr>", { desc = '[K] Open term in horizontal split' })
--- vim.keymap.set('n', "<leader>ss", ":source %<cr>", { desc = '[K] Source this file' })
+-- vim.keymap.set('n', "<leader>tv", "<cmd>vsp term://zsh<cr>", { desc = '[K] Open term in vertical split' })
+-- vim.keymap.set('n', "<leader>th", "<cmd>sp term://zsh<cr>", { desc = '[K] Open term in horizontal split' })
+-- vim.keymap.set('n', "<leader>ss", "<cmd>source %<cr>", { desc = '[K] Source this file' })
 
 -- vim.keymap.set('n', 'gf', utils.fix_gf, { desc = '[K] Better gf' })
 
@@ -87,4 +87,7 @@ vim.keymap.set({ 'c' }, "<M-l>", "lua ", { desc = '[K] Lua ready' })
 -- vim.keymap.set('n', '<leader>cm', utils.c_man, {desc = '[K] Get man page of nearest previous function'})
 vim.keymap.set('n', '<leader>cm', "<cmd>lua require('personal.man').run()<cr>", { desc = '[K] Get man page of nearest previous function' })
 
-vim.keymap.set('n', "<M-s>", "<cmd>source %<cr>", {desc = "[K] Source current file"})
+vim.keymap.set('n', "<M-s>", "<cmd>source %<cr>", { desc = "[K] Source current file" })
+
+vim.keymap.set({ 'n', 'v' }, 'K', '<cmd>lua vim.lsp.buf.hover({border="single",max_height=25,max_width=120})<cr>', { desc = '[K] Code Hover' })
+vim.keymap.set({ 'n', 'v' }, '<C-k>', '<cmd>lua vim.lsp.buf.signature_help({border="single",max_height=25,max_width=120})<cr>', { desc = '[K] Signature help' })
