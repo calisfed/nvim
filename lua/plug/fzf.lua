@@ -23,7 +23,12 @@ return {
         ['--tiebreak'] = 'begin',
       },
       files = {
-        no_ignore = true,          -- respect ".gitignore"  by default
+        no_ignore = true, -- respect ".gitignore"  by default
+        -- prompt = "",
+        cwd_prompt = false,
+      },
+      grep = {
+        prompt = "TODO >"
       }
     }
 
