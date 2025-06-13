@@ -7,4 +7,5 @@ return {
 	{ enabled = false, 'wildfunctions/myeyeshurt',     opts = {} },   -- resting eye after a while
 	{ enabled = false, 'shrynx/line-numbers.nvim',     opts = {}, },  -- show both line number and relative line number
 	{ enabled = false, 'SunnyTamang/select-undo.nvim', opts = {} },   -- select part to undo
+  { enabled = false,  'jghauser/follow-md-links.nvim', lazy = false},             -- follow markdown links, paths, refs,...
 }
