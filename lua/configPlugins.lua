@@ -17,7 +17,7 @@ return {
   { enabled = false, 'nvim-telescope/telescope.nvim', },   -- lua fzf search
   { enabled = true,  'aaronik/treewalker.nvim', },         -- move around with code syntax aware
   { enabled = true,  'ibhagwan/fzf-lua', },                -- fzf search
-  { enabled = false,  'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
+  { enabled = false, 'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
 
 
   -- Plugins that many others require
@@ -27,7 +27,7 @@ return {
   { enabled = true,  'nvim-neotest/nvim-nio', }, -- debug adapter protocol ui
 
   -- QoL
-
+  { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
   { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
   { enabled = true,  'stevearc/oil.nvim', },                   -- file explorer
   { enabled = true,  'jiaoshijie/undotree', },                 -- undo, but tree
