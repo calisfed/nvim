@@ -1,5 +1,4 @@
-return
-{
+return {
   enabled = false,
   "folke/noice.nvim",
   event = "VeryLazy",
@@ -14,22 +13,42 @@ return
 
   opts = {
     cmdline = {
+      view = 'cmdline',
       opts = {
-        position = '50%',
-        size = {
-          width = '50%',
-        },
+        -- position = '100%',
+        -- size = {
+        --   width = '100%',
+        -- },
         relative = {
           type = "win",
           winid = 0,
         },
-          border = {
-            -- style = 'single',
-          }
+        border = {
+          -- style = 'single',
+          -- padding = 1,
+          -- style = { "", "", "", "", "", "", "", "" },
+        }
       },
       -- format = {
       --   cmdline = { pattern = "^:%s+", icon = "", lang = "vim" },
       -- }
     },
+    lsp = {
+      hover = { enabled = false },
+      signature = { enabled = false, },
+      message = { enabled = false },
+    },
+    messages = {
+      enabled = false,
+    },
+    popmenu = {
+      enabled = false,
+    },
+    preset = {
+      long_message_to_split = true, -- long messages will be sent to a split
+      lsp_doc_border = true,    -- add a border to hover docs and signature help
+    }
+
+
   },
 }

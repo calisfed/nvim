@@ -19,7 +19,7 @@ return
 							workspaces = {
 								notes = '~/notes',
 							},
-							index = "index.norg", -- The name of the main (root) .norg file
+							-- index = "index.norg", -- The name of the main (root) .norg file
 						},
 					},
 					-- ['core.completion'] = {

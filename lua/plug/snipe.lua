@@ -49,7 +49,7 @@ return {
 			local snipe = require("snipe")
 			local cmd = snipe.config.sort == "last" and "ls t" or "ls"
 			local buf = require("snipe.buffer").get_buffers(cmd)
-			snipe.ui_select_menu = require("snipe.menu"):new { position = "center", dictionary = "123qweasdzxc", open_win_override = { border = "single" } }
+			snipe.ui_select_menu = require("snipe.menu"):new { position = "center", dictionary = "1234qwerasdfzxc", open_win_override = { border = "single" } }
 			snipe.ui_select_menu:add_new_buffer_callback(snipe.default_keymaps)
 			snipe.ui_select_menu:add_new_buffer_callback(function(m) vim.keymap.set("n", "<esc>", function() m:close() end, { nowait = true, buffer = m.buf }) end)
 			snipe.ui_select_menu:add_new_buffer_callback(function(m) vim.keymap.set("n", "v",

@@ -17,9 +17,9 @@ return {
     return {
       keymap = {
         -- preset = 'super-tab'
-        ['<C-j>'] = { 'show', 'show_documentation', 'hide_documentation' },
-        ['<C-e>'] = { 'hide', 'fallback' },
-        ['<Esc>'] = { 'hide', 'fallback' },
+        -- ['<C-j>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>'] = { 'hide', 'show', 'fallback' },
+        -- ['<Esc>'] = { 'hide', 'fallback' },
 
         ['<Tab>'] = {
           function(cmp)
@@ -47,7 +47,6 @@ return {
 
         ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-
         ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
       },
       appearance = {
@@ -63,12 +62,15 @@ return {
           },
         },
         documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 100,
           window = { border = 'single' }
         },
       },
       signature = {
         enabled = true,
-        window = { border = 'single' }
+        show_documentation = false,
+        window = { border = 'single' },
       },
       cmdline = {
         keymap = { preset = 'inherit' },
@@ -106,7 +108,8 @@ return {
                 end
                 return false
               end
-            },},
+            },
+          },
         },
       }
     }
