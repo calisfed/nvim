@@ -20,37 +20,40 @@ return {
         -- end
       },
       fzf_opts = {
-        ['--tiebreak'] = 'begin'
+        ['--tiebreak'] = 'begin',
       },
+      files = {
+        no_ignore = true,          -- respect ".gitignore"  by default
+      }
     }
 
-		local function from_git_root()
-			local function is_git_repo()
-				vim.fn.system("git rev-parse --is-inside-work-tree")
-				return vim.v.shell_error == 0
-			end
+    local function from_git_root()
+      local function is_git_repo()
+        vim.fn.system("git rev-parse --is-inside-work-tree")
+        return vim.v.shell_error == 0
+      end
 
-			local function get_git_root()
-				local dot_git_path = vim.fn.finddir(".git", ".;")
-				return vim.fn.fnamemodify(dot_git_path, ":h")
-			end
+      local function get_git_root()
+        local dot_git_path = vim.fn.finddir(".git", ".;")
+        return vim.fn.fnamemodify(dot_git_path, ":h")
+      end
 
-			local opts = {}
-			if is_git_repo() then
-				opts = {
-					cwd = get_git_root(),
-				}
-			end
-			return opts
-		end
+      local opts = {}
+      if is_git_repo() then
+        opts = {
+          cwd = get_git_root(),
+        }
+      end
+      return opts
+    end
 
 
     vim.keymap.set({ 'n', 'v' }, '<leader>sh', '<cmd>FzfLua help_tags<CR>', { desc = 'Search Help' })
     vim.keymap.set({ 'n', 'v' }, '<leader>sk', '<cmd>FzfLua keymaps<CR>', { desc = 'Search Keymaps' })
     -- vim.keymap.set({ 'n', 'v' }, '<leader>ss', '<cmd>FzfLua files<CR>', { desc = 'Search Files' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>ss', function () require('fzf-lua').files(from_git_root()) end, { desc = 'Search Files' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>sg', function () require('fzf-lua').live_grep(from_git_root()) end, { desc = 'Search Files' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>sw', function () require('fzf-lua').grep_cword(from_git_root()) end, { desc = 'Search Files' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>ss', function() require('fzf-lua').files(from_git_root()) end, { desc = 'Search Files' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>sg', function() require('fzf-lua').live_grep(from_git_root()) end, { desc = 'Search Files' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>sw', function() require('fzf-lua').grep_cword(from_git_root()) end, { desc = 'Search Files' })
     vim.keymap.set({ 'n', 'v' }, '<leader>sf', '<cmd>FzfLua git_files<CR>', { desc = 'Search Files' })
     -- vim.keymap.set({ 'n', 'v' }, '<leader>sw', '<cmd>FzfLua grep_cword<CR>', { desc = 'Search current Word' })
     -- vim.keymap.set({ 'n', 'v' }, '<leader>sg', '<cmd>FzfLua live_grep<CR>', { desc = 'Search by Grep' })
