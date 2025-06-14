@@ -10,6 +10,7 @@ return {
     -- "echasnovski/mini.pick",         -- optional
     -- "folke/snacks.nvim",             -- optional
   },
+  cmd = {'Neogit'},
   config = function()
     local neogit = require("neogit")
     neogit.setup {
