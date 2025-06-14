@@ -36,7 +36,8 @@ vim.opt.incsearch = true    -- While typing a search command, show where the pat
 
 vim.opt.conceallevel = 2    -- so that `` is visible in markdown files
 -- vim.opt.formatoptions = vim.opt.fo:gsub('cro','') -- Avoid comments to continue on new lines
-vim.opt.updatetime = 300    -- Faster completion
+vim.opt.updatetime = 200    -- Faster completion
+vim.opt.ttimeoutlen = 5
 vim.opt.mouse = 'a'         -- Enable mouse mode
 vim.opt.clipboard = 'unnamedplus'                -- Sync clipboard between OS and Neovim
 vim.opt.cmdheight = 1                            -- More space in the neovim command line for displaying messages

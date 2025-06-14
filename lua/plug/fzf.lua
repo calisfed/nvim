@@ -6,6 +6,11 @@ return {
   config = function()
     -- calling `setup` is optional for customization
     require('fzf-lua').setup {
+      keymap = {
+        builtin = {
+          ["<Esc>"] = "abort",
+        }
+      },
       winops = {
         border = 'single',
         preview = {

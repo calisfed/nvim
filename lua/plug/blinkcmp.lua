@@ -69,8 +69,12 @@ return {
       },
       signature = {
         enabled = true,
-        show_documentation = false,
-        window = { border = 'single' },
+        -- show_documentation = true,
+        window = {
+          border = 'single',
+          show_documentation = true,
+          direction_priority = { 's' }, -- {'s'} | {'n'}
+        },
       },
       cmdline = {
         keymap = { preset = 'inherit' },
@@ -88,6 +92,8 @@ return {
             return { 'lsp', 'buffer', 'path' }
           elseif success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
             return { 'buffer' }
+          elseif vim.bo.filetype == 'vim' and vim.bo.buftype == 'nofile' then
+            return { 'ccb', 'path', 'buffer', 'lsp' }
           else
             return { 'lsp', 'path', 'snippets', 'buffer', 'latex' }
           end
@@ -110,6 +116,13 @@ return {
               end
             },
           },
+
+
+          ccb = {
+            name = "ccb",
+            module = "dev.ccb"
+          }
+
         },
       }
     }
