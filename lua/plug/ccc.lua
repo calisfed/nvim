@@ -1,5 +1,7 @@
 
 return {
+
+  enabled = false,
   'uga-rosa/ccc.nvim',
   event = "VeryLazy",
   -- enabled = false,

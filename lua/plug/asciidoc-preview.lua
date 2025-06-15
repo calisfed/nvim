@@ -1,4 +1,6 @@
 return {
+
+  enabled = false,
 	'tigion/nvim-asciidoc-preview',
 	ft = { 'asciidoc' },
 	keys = {

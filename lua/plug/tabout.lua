@@ -1,6 +1,7 @@
 
 return {
   {
+    enabled = false,
     'abecodes/tabout.nvim',
     lazy = true,
     config = function()

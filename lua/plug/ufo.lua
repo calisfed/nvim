@@ -1,5 +1,6 @@
 return
   {
+    enabled = false,
     'kevinhwang91/nvim-ufo',
     event = "VeryLazy",
     dependencies = {

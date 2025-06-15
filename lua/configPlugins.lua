@@ -14,9 +14,8 @@ return {
 
   { enabled = true,  'neovim/nvim-lspconfig', },           -- lspconfig
   { enabled = true,  'nvim-treesitter/nvim-treesitter', }, -- color text
-  { enabled = false, 'nvim-telescope/telescope.nvim', },   -- lua fzf search
+  { enabled = true,  'nvim-telescope/telescope.nvim', },   -- lua fzf search
   { enabled = true,  'aaronik/treewalker.nvim', },         -- move around with code syntax aware
-  { enabled = true,  'ibhagwan/fzf-lua', },                -- fzf search
   { enabled = false, 'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
 
 
@@ -76,6 +75,12 @@ return {
   { enabled = false, 'windwp/nvim-autopairs' },                -- autopair,  replaced by mini.pair
   { enabled = false, 'xzbdmw/clasp.nvim' },                    -- autopair,  replaced by mini.pair
   { enabled = false, 'sQVe/sort.nvim', },                      -- sort, considering re-try
+  { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
+  { enabled = false, 'markgandolfo/lightswitch.nvim' },        -- Switch menu, require nui.nvim
+  { enabled = false, 'ibhagwan/fzf-lua', },                    -- fzf search
+  { enabled = true,  'chrisgrieser/nvim-scissors', },          -- Create and Edit snippet
+  { enabled = true,  'NeogitOrg/neogit' },                     -- git integration
+
 
 
   -- html

@@ -1,4 +1,6 @@
 return {
+
+    enabled = false,
   "iguanacucumber/magazine.nvim",
   lazy = false,
   event = { 'InsertEnter', 'CmdlineEnter' },

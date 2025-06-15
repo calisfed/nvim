@@ -1,4 +1,6 @@
 return {
+
+    enabled = false,
   "yarospace/lua-console.nvim",
   lazy = true,
   keys = {

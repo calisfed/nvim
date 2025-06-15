@@ -1,5 +1,7 @@
 return {
-  'iguana{ "u", "p", "<C-r>" }cucumber/highlight-actions.nvim',
+
+  enabled = false,
+  'iguanacucumber/highlight-actions.nvim',
   event = "VeryLazy",
   -- keys = , -- Lazy load on keymap
   -- opts = {}, -- for a default config

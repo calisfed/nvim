@@ -1,4 +1,6 @@
 return {
+
+  enabled = false,
   "NeogitOrg/neogit",
   dependencies = {
     "nvim-lua/plenary.nvim",  -- required
@@ -10,7 +12,7 @@ return {
     -- "echasnovski/mini.pick",         -- optional
     -- "folke/snacks.nvim",             -- optional
   },
-  cmd = {'Neogit'},
+  cmd = { 'Neogit' },
   config = function()
     local neogit = require("neogit")
     neogit.setup {

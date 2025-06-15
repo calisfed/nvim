@@ -1,4 +1,5 @@
 return {
+    enabled = false,
   "kawre/neotab.nvim",
   -- event = "InsertEnter",
   lazy = false,

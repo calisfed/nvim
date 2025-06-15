@@ -1,5 +1,7 @@
 return
   {
+
+  enabled = false,
     'rmagatti/auto-session',
     lazy = true,
     event = "VeryLazy",

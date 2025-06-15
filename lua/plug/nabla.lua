@@ -1,4 +1,6 @@
 return {
+
+    enabled = false,
 	"jbyuki/nabla.nvim",
 	dependencies = {
 		-- "nvim-neo-tree/neo-tree.nvim",

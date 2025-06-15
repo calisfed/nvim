@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   'goolord/alpha-nvim',
   lazy = false,
   event = 'VimEnter',
