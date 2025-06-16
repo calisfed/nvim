@@ -29,6 +29,7 @@ return {
   { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
   { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
   { enabled = true,  'stevearc/oil.nvim', },                   -- file explorer
+  { enabled = true,  'Eutrius/Otree.nvim' },                   -- Tree view for oil.nvim
   { enabled = true,  'jiaoshijie/undotree', },                 -- undo, but tree
   { enabled = true,  'lambdalisue/suda.vim', },                -- auto read/write file with sudo
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor

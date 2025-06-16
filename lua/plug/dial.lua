@@ -98,6 +98,8 @@ return {
       callback = function()
         vim.api.nvim_buf_set_keymap(0, "n", "<C-a>", require("dial.map").inc_normal("neorg"), { noremap = true, desc = "Dial inc neorg" })
         vim.api.nvim_buf_set_keymap(0, "n", "<C-x>", require("dial.map").dec_normal("neorg"), { noremap = true, desc = "Dial dec neorg" })
+        vim.api.nvim_buf_set_keymap(0, "v", "<C-a>", require("dial.map").inc_visual("neorg"), { noremap = true, desc = "Dial inc neorg" })
+        vim.api.nvim_buf_set_keymap(0, "v", "<C-x>", require("dial.map").dec_visual("neorg"), { noremap = true, desc = "Dial dec neorg" })
       end
     })
   end
