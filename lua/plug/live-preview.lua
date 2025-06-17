@@ -7,6 +7,7 @@ return {
     'ibhagwan/fzf-lua',
     'echasnovski/mini.pick',
   },
+  cmd = {"LivePreview start"},
   -- require('livepreview.config').set()
   config = function()
     require('livepreview.config').set({

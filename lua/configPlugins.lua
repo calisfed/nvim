@@ -124,9 +124,9 @@ return {
   { enabled = true,  'gu-fan/easydigraph.vim' },                    -- some digraph
   { enabled = false, 'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
   { enabled = false, 'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-  { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview
+  { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, archive, use tinymist now
   { enabled = false, 'iamcco/markdown-preview.nvim' },              -- markdown preview on browser
-  { enabled = true,  'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins, currently not use because of export not good
+  { enabled = false, 'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins, currently not use because of export not good
   { enabled = false, 'nvim-telekasten/telekasten.nvim' },           -- zettekasten for neovim, only drawback is telescope
   { enabled = false, 'nvim-telekasten/calendar-vim' },              -- addon for telekasten
   { enabled = false, 'allaman/emoji.nvim' },                        -- Emoji insert

@@ -546,3 +546,10 @@ vim.api.nvim_create_autocmd('BufRead', {
     })
   end,
 })
+
+-- vim.api.nvim_create_autocmd('BufRead', {
+--   pattern = {"*.norg"},
+--   callback = function ()
+
+--   end
+-- })

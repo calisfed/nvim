@@ -349,12 +349,12 @@ return { -- Collection of various small independent plugins/modules
     local map_multistep = require('mini.keymap').map_multistep
 
     -- map_multistep('i', '<Tab>',   { 'pmenu_next' })
-    map_multistep('i', '<Tab>', { 'pmenu_accept', 'minisnippets_next','vimsnippet_next','luasnip_next', 'minisnippets_expand', 'jump_after_close'})
-    map_multistep('i', '<C-l>', {'minisnippets_next', 'vimsnippet_next', 'luasnip_next'})
-    map_multistep('i', '<C-h>', {'minisnippets_prev', 'vimsnippet_prev', 'luasnip_prev'})
+    -- map_multistep('i', '<Tab>', { 'pmenu_accept', 'minisnippets_next','vimsnippet_next','luasnip_next', 'minisnippets_expand', 'jump_after_close'})
+    -- map_multistep('i', '<C-l>', {'minisnippets_next', 'vimsnippet_next', 'luasnip_next'})
+    -- map_multistep('i', '<C-h>', {'minisnippets_prev', 'vimsnippet_prev', 'luasnip_prev'})
     -- map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
-    map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
-    map_multistep('i', '<BS>', { 'minipairs_bs' })
+    -- map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
+    -- map_multistep('i', '<BS>', { 'minipairs_bs' })
     -- map_multistep('i', '<Tab>', {'blink_accept', 'jump_after_tsnode', 'jump_after_close'})
 
     local map_combo = require('mini.keymap').map_combo

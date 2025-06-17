@@ -47,6 +47,22 @@ function M.get_git_root()
   return vim.fn.fnamemodify(dot_git_path, ':h')
 end
 
+function M.from_git_root()
+
+  local opts = {}
+  if M.is_git_repo() then
+    opts = {
+      cwd = M.get_git_root(),
+      sort = {
+        -- fields = {
+        --   "left","score:desc",
+        -- }
+      }
+    }
+  end
+  return opts
+end
+
 M.toggle = {
   diagnostic = function()
     local config = vim.diagnostic.config
