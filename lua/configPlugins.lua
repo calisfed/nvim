@@ -18,7 +18,6 @@ return {
   { enabled = true,  'aaronik/treewalker.nvim', },         -- move around with code syntax aware
   { enabled = false, 'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
 
-
   -- Plugins that many others require
 
   { enabled = true,  'MunifTanjim/nui.nvim' },   -- UI components library, it is not meant to run/config itself, but by other plugins
@@ -47,6 +46,8 @@ return {
   { enabled = true,  'rubiin/fortune.nvim' },                  -- Inspiration and Wisdom quotes, go with dashboard plugins like mini or alpha
   { enabled = true,  'monaqa/dial.nvim' },                     -- increment/decrement base on various rules
   { enabled = true,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
+  { enabled = true,  'chrisgrieser/nvim-scissors', },          -- Create and Edit snippet
+  { enabled = true,  'NeogitOrg/neogit' },                     -- git integration
   { enabled = false, 'folke/snacks.nvim' },                    -- QoL plugins
   { enabled = false, 'A7Lavinraj/fyler.nvim' },                -- like oil.nvim but have tree-view
   { enabled = false, 'Bilal2453/luvit-meta', },                -- part of lua dev
@@ -79,8 +80,6 @@ return {
   { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
   { enabled = false, 'markgandolfo/lightswitch.nvim' },        -- Switch menu, require nui.nvim
   { enabled = false, 'ibhagwan/fzf-lua', },                    -- fzf search
-  { enabled = true,  'chrisgrieser/nvim-scissors', },          -- Create and Edit snippet
-  { enabled = true,  'NeogitOrg/neogit' },                     -- git integration
 
 
 

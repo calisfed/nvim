@@ -65,7 +65,20 @@ return {
   },
   config = function()
     require('snacks').setup({
-      picker = {},
+      picker = {
+        -- files = {
+        --   auto_confirm = false,
+        --   confirm = function(picker, item)
+        --     picker:close()
+        --     if item then
+        --       vim.schedule(function()
+        --         -- vim.cmd("edit " .. item)
+        --         Snacks.picker.select(item)
+        --       end)
+        --     end
+        --   end,
+        -- }
+      },
       explorer = {},
     })
   end

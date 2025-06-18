@@ -58,17 +58,30 @@ return {
           nerd_font_variant = 'mono'
         },
         completion = {
-          keyword = { range = 'full' },
+          keyword = { range = 'prefix' }, -- 'prefix' or 'full'
+          trigger = {
+            show_on_accept_on_trigger_character = false,
+          },
+          list = {
+            max_items = 20, -- default 200
+            selection = {
+              auto_insert = true,
+            },
+          },
           menu = {
-            -- border = 'single',
+            border = 'single',
             draw = {
               treesitter = { "lsp" },
+              columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
             },
           },
           documentation = {
             auto_show = true,
             auto_show_delay_ms = 100,
             window = { border = 'single' }
+          },
+          ghost_text = {
+            enabled = true,
           },
         },
         signature = {

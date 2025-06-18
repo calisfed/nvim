@@ -26,6 +26,7 @@ return {
       },
       fzf_opts = {
         ['--tiebreak'] = 'begin',
+        ['--layout'] = 'default', -- reverse is default
       },
       files = {
         no_ignore = true, -- respect ".gitignore"  by default
@@ -33,7 +34,7 @@ return {
         cwd_prompt = false,
       },
       grep = {
-        prompt = "TODO >"
+        prompt = "Grep >"
       }
     }
 
