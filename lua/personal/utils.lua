@@ -86,7 +86,7 @@ end
 M.add_last_charv2 = function()
   local mode = vim.api.nvim_get_mode().mode
   local key = string.char(vim.fn.getchar())
-  local cmd = '<Esc>mmA' .. key .. '<Esc>`m'
+  local cmd = '<Esc><Esc>mmA' .. key .. '<Esc>`m'
   vim.api.nvim_input(cmd)
   if mode == "i" then
     vim.api.nvim_input("a")
@@ -96,7 +96,7 @@ end
 -- Change last character
 M.change_last_char = function()
   local key = string.char(vim.fn.getchar())
-  local cmd = '<Esc>mm$<Esc>r' .. key .. '<Esc>`m'
+  local cmd = '<Esc><Esc>mm$<Esc>r' .. key .. '<Esc>`m'
   vim.api.nvim_input(cmd)
 end
 

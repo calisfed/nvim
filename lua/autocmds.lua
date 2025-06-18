@@ -553,3 +553,33 @@ vim.api.nvim_create_autocmd('BufRead', {
 
 --   end
 -- })
+
+-- Zig
+-- Code Action on save
+vim.api.nvim_create_autocmd('BufWritePre',{
+  desc= "Fix all small error",
+  pattern = {"*.zig", "*.zon"},
+  callback = function(ev)
+    vim.lsp.buf.code_action({
+      context = { only = { "source.fixAll" } },
+      apply = true,
+    })
+  end
+})
+vim.api.nvim_create_autocmd('BufWritePre',{
+  desc = "Organize import",
+  pattern = {"*.zig", "*.zon"},
+  callback = function(ev)
+    vim.lsp.buf.code_action({
+      context = { only = { "source.organizeImports" } },
+      apply = true,
+    })
+  end
+})
+vim.api.nvim_create_autocmd('BufWritePre',{
+  desc = "Format on save for zig",
+  pattern = {"*.zig", "*.zon"},
+  callback = function(ev)
+    vim.lsp.buf.format()
+  end
+})
