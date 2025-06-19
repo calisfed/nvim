@@ -8,9 +8,15 @@ return { -- Collection of various small independent plugins/modules
     require('mini.surround').setup()
     require('mini.move').setup()
     require('mini.align').setup()
-    -- require('mini.operators').setup({exchange = { prefix = "" }})
+    require('mini.operators').setup({
+      evaluate = { prefix = 'g=', },
+      exchange = { prefix = "gX" },
+      multiply = { prefix = "gm" },
+      replace = { prefix = "gr" },
+      sort = { prefix = "gs" },
+    })
     require('mini.pairs').setup()
-    require('mini.animate').setup( { scroll = { enable = false, } })
+    require('mini.animate').setup({ scroll = { enable = false, } })
     require('mini.splitjoin').setup()
     require('mini.test').setup()
     require('mini.trailspace').setup()
@@ -22,7 +28,7 @@ return { -- Collection of various small independent plugins/modules
     require('mini.icons').setup({
       style = 'glyph',
       file = {
-        ['init.lua'] = { glyph = ' '},
+        ['init.lua'] = { glyph = ' ' },
       },
     })
     require('mini.extra').setup()
@@ -268,21 +274,21 @@ return { -- Collection of various small independent plugins/modules
       items = {
         -- require'mini.starter'.sections.telescope(),
 
-        { name = 'Edit new buffer', action = 'enew',                                     section = 'Commands' },
+        { name = 'Edit new buffer', action = 'enew',                                    section = 'Commands' },
         { name = 'Config Neovim',   action = 'Telescope find_files cwd=~/.config/nvim', section = 'Commands' },
-        { name = 'Files in cwd',    action = 'Telescope find_files',section = 'Commands' },
+        { name = 'Files in cwd',    action = 'Telescope find_files',                    section = 'Commands' },
         -- { name = 'Config Neovim',   action = ':lua MiniPick.builtin.files({},{source = {cwd = "~/.config/nvim/"}})',                     section = 'Commands' },
         -- { name = 'Files in cwd',    action = ':lua MiniPick.builtin.files({},{source = {cwd =require"personal.utils".get_git_root()}})', section = 'Commands' },
         -- { name = 'Recent file',     action = ':e#',                                                                                      section = 'Commands' },
-        { name = 'Update plugins',  action = 'Lazy sync',                                section = 'Commands' },
-        { name = 'Quit Neovim',     action = 'qall',                                     section = 'Commands' },
+        { name = 'Update plugins',  action = 'Lazy sync',                               section = 'Commands' },
+        { name = 'Quit Neovim',     action = 'qall',                                    section = 'Commands' },
 
         require 'mini.starter'.sections.recent_files(3, true),
         -- require 'mini.starter'.sections.sessions(5, true),
         require 'mini.starter'.sections.recent_files(3, false),
       },
       header =
-        [[
+      [[
                                              
       ████ ██████           █████      ██
      ███████████             █████ 
@@ -294,10 +300,10 @@ return { -- Collection of various small independent plugins/modules
 ]],
 
       -- dashboard.nvim reference
-      footer = function ()
+      footer = function()
         local quotes = require("fortune").get_fortune()
         local quote = ""
-        for _	, q	 in ipairs(quotes) do
+        for _, q in ipairs(quotes) do
           quote = quote .. '\n' .. q
         end
         return quote
@@ -387,7 +393,6 @@ return { -- Collection of various small independent plugins/modules
     -- Choose background and foreground
     -- this only work on Kitty and Ghostty
     -- require('mini.hues').setup( { background = '#11262d', foreground = '#c0c8cc', accent = 'blue', saturation= 'high', n_hues = 8, })
-
   end,
 
 }

@@ -26,60 +26,60 @@ return {
 
   -- QoL
   { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
-  { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
-  { enabled = true,  'stevearc/oil.nvim', },                   -- file explorer
   { enabled = true,  'Eutrius/Otree.nvim' },                   -- Tree view for oil.nvim
-  { enabled = true,  'jiaoshijie/undotree', },                 -- undo, but tree
-  { enabled = true,  'lambdalisue/suda.vim', },                -- auto read/write file with sudo
-  { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
-  { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
-  { enabled = true,  'SunnyTamang/select-undo.nvim', },        -- select part to undo
   { enabled = true,  'HawkinsT/pathfinder.nvim', },            -- enhanced gf gF gx
-  { enabled = true,  'leath-dub/snipe.nvim', },                -- fast buffer select
-  { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
-  { enabled = true,  'kawre/neotab.nvim', },                   -- tabout of parantheses
-  { enabled = true,  'norcalli/nvim-colorizer.lua', },         -- show color
-  { enabled = true,  'tridactyl/vim-tridactyl', },             -- tridactyl (Firefox extension)
-  { enabled = true,  'shellRaining/hlchunk.nvim', },           -- highlight part of working code
-  { enabled = true,  'danymat/neogen', },                      -- annotation toolkit
-  { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
-  { enabled = true,  'rubiin/fortune.nvim' },                  -- Inspiration and Wisdom quotes, go with dashboard plugins like mini or alpha
-  { enabled = true,  'monaqa/dial.nvim' },                     -- increment/decrement base on various rules
-  { enabled = true,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
-  { enabled = true,  'chrisgrieser/nvim-scissors', },          -- Create and Edit snippet
   { enabled = true,  'NeogitOrg/neogit' },                     -- git integration
-  { enabled = false, 'folke/snacks.nvim' },                    -- QoL plugins
+  { enabled = true,  'SunnyTamang/select-undo.nvim', },        -- select part to undo
+  { enabled = true,  'chrisgrieser/nvim-scissors', },          -- Create and Edit snippet
+  { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
+  { enabled = true,  'danymat/neogen', },                      -- annotation toolkit
+  { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
+  { enabled = true,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
+  { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
+  { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
+  { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
+  { enabled = true,  'jiaoshijie/undotree', },                 -- undo, but tree
+  { enabled = true,  'kawre/neotab.nvim', },                   -- tabout of parantheses
+  { enabled = true,  'lambdalisue/suda.vim', },                -- auto read/write file with sudo
+  { enabled = true,  'leath-dub/snipe.nvim', },                -- fast buffer select
+  { enabled = true,  'monaqa/dial.nvim' },                     -- increment/decrement base on various rules
+  { enabled = true,  'norcalli/nvim-colorizer.lua', },         -- show color
+  { enabled = true,  'rubiin/fortune.nvim' },                  -- Inspiration and Wisdom quotes, go with dashboard plugins like mini or alpha
+  { enabled = true,  'shellRaining/hlchunk.nvim', },           -- highlight part of working code
+  { enabled = true,  'stevearc/oil.nvim', },                   -- file explorer
+  { enabled = true,  'tridactyl/vim-tridactyl', },             -- tridactyl (Firefox extension)
   { enabled = false, 'A7Lavinraj/fyler.nvim' },                -- like oil.nvim but have tree-view
   { enabled = false, 'Bilal2453/luvit-meta', },                -- part of lua dev
+  { enabled = false, 'DanWlker/toolbox.nvim', },               -- place to put all custom function
+  { enabled = false, 'DimitrisDimitropoulos/yasp.nvim', },     -- simple way to manage your snippets in a completion engine agnostic way
   { enabled = false, 'NStefan002/screenkey.nvim', },           -- show what key typing
+  { enabled = false, 'ThePrimeagen/harpoon', },                -- quick navigate with saved buffers
+  { enabled = false, 'ThePrimeagen/refactoring.nvim' },        -- refactoring library based off the refactoring book
+  { enabled = false, 'abecodes/tabout.nvim', },                -- tabout of parantheses
   { enabled = false, 'akinsho/toggleterm.nvim', },             -- toggle terminal
+  { enabled = false, 'altermo/ultimate-autopair.nvim' },       -- autopairs, replaced by mini.pair
+  { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
   { enabled = false, 'emmanueltouzery/apidocs.nvim' },         -- devdocs.io integrated
+  { enabled = false, 'folke/snacks.nvim' },                    -- QoL plugins
+  { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
+  { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
+  { enabled = false, 'ibhagwan/fzf-lua', },                    -- fzf search
   { enabled = false, 'kevinhwang91/nvim-ufo', },               -- fold
   { enabled = false, 'lewis6991/gitsigns.nvim', },             -- gitsigns
   { enabled = false, 'lukas-reineke/indent-blankline.nvim', }, -- highlight part of waking code
-  { enabled = false, 'stevearc/conform.nvim', },               -- lightweight, powerful formatter
-  { enabled = false, 'tpope/vim-sleuth', },                    -- auto adjust shiftwidth and expandtab
-  { enabled = false, 'yarospace/lua-console.nvim', },          -- lua console
-  { enabled = false, 'DanWlker/toolbox.nvim', },               -- place to put all custom function
-  { enabled = false, 'DimitrisDimitropoulos/yasp.nvim', },     -- simple way to manage your snippets in a completion engine agnostic way
-  { enabled = false, 'ThePrimeagen/harpoon', },                -- quick navigate with saved buffers
-  { enabled = false, 'ThePrimeagen/refactoring.nvim' },        -- refactoring library based off the refactoring book
-  { enabled = false, 'stevearc/overseer.nvim', },              -- a task runner and job management plugin for Neovim
-  { enabled = false, 'stevearc/quicker.nvim', },               -- improved UI and workflow for the Neovim quickfix
-  { enabled = false, 'abecodes/tabout.nvim', },                -- tabout of parantheses
-  { enabled = false, 'altermo/ultimate-autopair.nvim' },       -- autopairs, replaced by mini.pair
-  { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
-  { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
+  { enabled = false, 'markgandolfo/lightswitch.nvim' },        -- Switch menu, require nui.nvim
   { enabled = false, 'max397574/better-escape.nvim', },        -- better Escape with jj, jk, ...., replaced by minmi.keymap
   { enabled = false, 'rmagatti/auto-session' },                -- session, replaced by mini.session
+  { enabled = false, 'sQVe/sort.nvim', },                      -- sort, considering re-try
+  { enabled = false, 'stevearc/conform.nvim', },               -- lightweight, powerful formatter
+  { enabled = false, 'stevearc/overseer.nvim', },              -- a task runner and job management plugin for Neovim
+  { enabled = false, 'stevearc/quicker.nvim', },               -- improved UI and workflow for the Neovim quickfix
+  { enabled = false, 'tpope/vim-sleuth', },                    -- auto adjust shiftwidth and expandtab
   { enabled = false, 'tris203/precognition.nvim', },           -- show movement keys
   { enabled = false, 'uga-rosa/ccc.nvim', },                   -- show color
   { enabled = false, 'windwp/nvim-autopairs' },                -- autopair,  replaced by mini.pair
   { enabled = false, 'xzbdmw/clasp.nvim' },                    -- autopair,  replaced by mini.pair
-  { enabled = false, 'sQVe/sort.nvim', },                      -- sort, considering re-try
-  { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
-  { enabled = false, 'markgandolfo/lightswitch.nvim' },        -- Switch menu, require nui.nvim
-  { enabled = false, 'ibhagwan/fzf-lua', },                    -- fzf search
+  { enabled = false, 'yarospace/lua-console.nvim', },          -- lua console
 
 
 
@@ -142,15 +142,15 @@ return {
 
   -- Eye candy plugins, turn on when bored
 
-  { enabled = false, 'iguanacucumber/highlight-actions.nvim' }, -- higlight action
-  { enabled = false, 'tamton-aquib/duck.nvim', },               -- duck/dog/cat follow cursor
-  { enabled = false, 'nvzone/volt', },                          -- from nvchad, tool for create interactive UI in neovim
-  { enabled = false, 'nvzone/minty', },                         -- from nvchad, Beautifully crafted color tools for Neovim
-  { enabled = false, 'nvzone/menu', },                          -- from nvchad, menu ui, supported nested menu, use mouse
-  { enabled = false, 'nvzone/timerly', },                       -- from nvchad, eye candy interactive timer plugin
   { enabled = false, 'OXY2DEV/helpview.nvim', },                -- A hackable & fancy vimdoc viewer for Neovim.
+  { enabled = false, 'iguanacucumber/highlight-actions.nvim' }, -- higlight action
   { enabled = false, 'meznaric/key-analyzer.nvim' },            -- analyze keymap used
+  { enabled = false, 'nvzone/menu', },                          -- from nvchad, menu ui, supported nested menu, use mouse
+  { enabled = false, 'nvzone/minty', },                         -- from nvchad, Beautifully crafted color tools for Neovim
+  { enabled = false, 'nvzone/timerly', },                       -- from nvchad, eye candy interactive timer plugin
+  { enabled = false, 'nvzone/volt', },                          -- from nvchad, tool for create interactive UI in neovim
   { enabled = false, 'sphamba/smear-cursor.nvim' },             -- smear cursor, currently using mini.animate
+  { enabled = false, 'tamton-aquib/duck.nvim', },               -- duck/dog/cat follow cursor
   { enabled = false, 'wildfunctions/myeyeshurt', },             -- resting eye after a while
 
 }
