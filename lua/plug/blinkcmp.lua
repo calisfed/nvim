@@ -53,20 +53,15 @@ return {
           ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
           ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
         },
-        appearance = {
-          use_nvim_cmp_as_default = true,
-          nerd_font_variant = 'mono'
-        },
+        appearance = {use_nvim_cmp_as_default = true, nerd_font_variant = 'mono'},
         completion = {
           keyword = { range = 'prefix' }, -- 'prefix' or 'full'
           trigger = {
             show_on_accept_on_trigger_character = false,
           },
           list = {
-            max_items = 20, -- default 200
-            selection = {
-              auto_insert = true,
-            },
+            max_items = 200, -- default 200
+            selection = { auto_insert = true, },
           },
           menu = {
             border = 'single',
@@ -75,14 +70,8 @@ return {
               columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
             },
           },
-          documentation = {
-            auto_show = true,
-            auto_show_delay_ms = 100,
-            window = { border = 'single' }
-          },
-          ghost_text = {
-            enabled = true,
-          },
+          documentation = {auto_show = true, auto_show_delay_ms = 100, window = {border = 'single'}},
+          ghost_text = { enabled = false, },
         },
         signature = {
           enabled = true,

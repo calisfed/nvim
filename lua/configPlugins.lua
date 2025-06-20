@@ -16,7 +16,7 @@ return {
   { enabled = true,  'nvim-treesitter/nvim-treesitter', }, -- color text
   { enabled = true,  'nvim-telescope/telescope.nvim', },   -- lua fzf search
   { enabled = true,  'aaronik/treewalker.nvim', },         -- move around with code syntax aware
-  { enabled = false, 'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
+  { enabled = true, 'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
 
   -- Plugins that many others require
 
