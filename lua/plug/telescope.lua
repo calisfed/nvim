@@ -112,9 +112,6 @@ return {
           follow = false,
           hidden = false,
         },
-        layout_config = {
-          preview_cutoff = 100,
-        }
       },
       extensions = {
         ['ui-select'] = {},
