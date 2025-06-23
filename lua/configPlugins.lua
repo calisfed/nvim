@@ -14,9 +14,14 @@ return {
 
   { enabled = true,  'neovim/nvim-lspconfig', },           -- lspconfig
   { enabled = true,  'nvim-treesitter/nvim-treesitter', }, -- color text
-  { enabled = true,  'nvim-telescope/telescope.nvim', },   -- lua fzf search
   { enabled = true,  'aaronik/treewalker.nvim', },         -- move around with code syntax aware
-  { enabled = true, 'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
+  { enabled = true,  'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
+
+  -- Pickers
+
+  { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
+  { enabled = false, 'folke/snacks.nvim' },             -- QoL plugins
+  { enabled = false, 'ibhagwan/fzf-lua', },             -- fzf search
 
   -- Plugins that many others require
 
@@ -60,10 +65,8 @@ return {
   { enabled = false, 'altermo/ultimate-autopair.nvim' },       -- autopairs, replaced by mini.pair
   { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
   { enabled = false, 'emmanueltouzery/apidocs.nvim' },         -- devdocs.io integrated
-  { enabled = false, 'folke/snacks.nvim' },                    -- QoL plugins
   { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
   { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
-  { enabled = false, 'ibhagwan/fzf-lua', },                    -- fzf search
   { enabled = false, 'kevinhwang91/nvim-ufo', },               -- fold
   { enabled = false, 'lewis6991/gitsigns.nvim', },             -- gitsigns
   { enabled = false, 'lukas-reineke/indent-blankline.nvim', }, -- highlight part of waking code
