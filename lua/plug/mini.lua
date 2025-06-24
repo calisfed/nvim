@@ -356,6 +356,7 @@ return { -- Collection of various small independent plugins/modules
 
     -- map_multistep('i', '<Tab>',   { 'pmenu_next' })
     -- map_multistep('i', '<Tab>', { 'pmenu_accept', 'minisnippets_next','vimsnippet_next','luasnip_next', 'minisnippets_expand', 'jump_after_close'})
+    -- map_multistep('i', '<Tab>', { 'pmenu_accept', 'minisnippets_next','vimsnippet_next','luasnip_next', 'minisnippets_expand', 'jump_after_close'})
     -- map_multistep('i', '<C-l>', {'minisnippets_next', 'vimsnippet_next', 'luasnip_next'})
     -- map_multistep('i', '<C-h>', {'minisnippets_prev', 'vimsnippet_prev', 'luasnip_prev'})
     -- map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
