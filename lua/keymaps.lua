@@ -90,4 +90,4 @@ vim.keymap.set('n', '<leader>cm', "<cmd>lua require('personal.man').run()<cr>", 
 vim.keymap.set('n', "<M-s>", "<cmd>source %<cr>", { desc = "[K] Source current file" })
 
 vim.keymap.set({ 'n', 'v' }, 'K', '<cmd>lua vim.lsp.buf.hover({border="single",max_height=25,max_width=120})<cr>', { desc = '[K] Code Hover' })
-vim.keymap.set({ 'n', 'v' }, '<M-k>', '<cmd>lua vim.lsp.buf.signature_help({border="single",max_height=25,max_width=120})<cr>', { desc = '[K] Signature help' })
+vim.keymap.set({ 'n', 'v' }, '<M-K>', '<cmd>lua vim.lsp.buf.signature_help({border="single",max_height=25,max_width=120})<cr>', { desc = '[K] Signature help' })
