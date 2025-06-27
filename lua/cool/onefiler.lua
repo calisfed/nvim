@@ -28,11 +28,6 @@
 --   end
 -- })
 
--- Known bug:
--- -Read the second times create a top blank line-
--- -This only happen after first time read file-
-
-
 
 local M = {}
 
@@ -46,6 +41,7 @@ M.gap = { "", "", "" } -- This gap mean 3 blank lines, always use blank lines.
 M.read = function(pattern)
   pattern = pattern or M.pattern
 
+  local cwfile = vim.fn.expand('%:t')        -- Get current file name
   vim.api.nvim_buf_set_lines(0, 0, -1, false, {})                                         -- Clear current file
 
   local cwDir = vim.fn.getcwd(0, 0)                                                       -- Get cwd
@@ -57,12 +53,16 @@ M.read = function(pattern)
     if M.short_filename then
       file = file:gsub(".*/", "")
     end
+    if file == cwfile then
+      goto continue
+    end
 
     local content = vim.fn.readfile(file)                                                         -- Read content each file
     vim.api.nvim_buf_set_lines(0, M.start_line, M.start_line, false, { M.filename_deco .. file }) -- Write file name on top first
     vim.api.nvim_buf_set_lines(0, M.start_line + 1, #content + M.start_line + 1, false, content)  -- Write file content
     vim.api.nvim_buf_set_lines(0, #content + M.start_line, #content + M.start_line, false, M.gap) -- Create gap
     M.start_line = M.start_line + #content + #M.gap + 1                                           -- Set new start line
+      ::continue::
   end
 end
 
