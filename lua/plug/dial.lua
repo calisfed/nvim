@@ -26,61 +26,37 @@ return {
           word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
           cyclic = true, -- "or" is incremented into "and".
         },
-        augend.constant.new {
-          elements = { "&&", "||" },
-          word = false,
-          cyclic = true,
-        },
-        augend.constant.new {
-          elements = { "[x]", "[ ]" },
-          word = false,
-          cyclic = true,
-        },
+        augend.constant.new {elements = { "&&", "||" }, word = false, cyclic = true,},
+        augend.constant.new {elements = { "[x]", "[ ]" }, word = false, cyclic = true,},
       },
 
       neorg = {
-        augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-        augend.integer.alias.hex,  -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-        augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
-        augend.constant.alias.bool, -- boolean value (true <-> false)
-        augend.constant.new {
-          elements = { "and", "or" },
-          word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
-          cyclic = true, -- "or" is incremented into "and".
-        },
-        augend.constant.new {
-          elements = { "&&", "||" },
-          word = false,
-          cyclic = true,
-        },
-        augend.constant.new {
-          elements = { "( )", "(x)", "(?)", "(!)", "(+)", "(-)", "(=)", "(_)" },
-          word = false,
-          cyclic = true,
-        },
-
-        augend.constant.new {
-          elements = {"*","**","***","****","*****","******"},
-          word = false,
-          cyclic = false,
-        },
-        augend.constant.new {
-          elements = {"-","--","---","----","-----","------"},
-          word = false,
-          cyclic = false,
-        },
-        augend.constant.new {
-          elements = {"~","~~","~~~","~~~~","~~~~~","~~~~~~"},
-          word = false,
-          cyclic = false,
-        },
-        augend.constant.new {
-          elements = {">",">>",">>>",">>>>",">>>>>",">>>>>>"},
-          word = false,
-          cyclic = false,
-        },
+        augend.integer.alias.decimal,
+        augend.integer.alias.hex,
+        augend.date.alias["%Y/%m/%d"],
+        augend.constant.alias.bool,
+        augend.constant.new {elements = { "and", "or" }, word = true, cyclic = true,},
+        augend.constant.new {elements = { "&&", "||" }, word = false, cyclic = true,},
+        augend.constant.new {elements = { "( )", "(x)", "(?)", "(!)", "(+)", "(-)", "(=)", "(_)" }, word = false, cyclic = true,},
+        augend.constant.new {elements = {"*","**","***","****","*****","******"}, word = false, cyclic = false,},
+        augend.constant.new {elements = {"-","--","---","----","-----","------"}, word = false, cyclic = false,},
+        augend.constant.new {elements = {"~","~~","~~~","~~~~","~~~~~","~~~~~~"}, word = false, cyclic = false,},
+        augend.constant.new {elements = {">",">>",">>>",">>>>",">>>>>",">>>>>>"}, word = false, cyclic = false,},
 
       },
+
+      asciidoc = {
+        augend.integer.alias.decimal,
+        augend.integer.alias.hex,
+        augend.date.alias["%Y/%m/%d"],
+        augend.constant.alias.bool,
+        augend.constant.new {elements = {"and", "or"}, word = true, cyclic = true,},
+        augend.constant.new {elements = {"[ ]", "[x]"}, word = true, cyclic = true,},
+        augend.constant.new {elements = {"=","==","===","====","=====","======"}, word = false, cyclic = false,},
+        augend.constant.new {elements = {"*","**","***","****","*****","******"}, word = false, cyclic = false,},
+        augend.constant.new {elements = {"NOTE:","IMPORTANT:","TIP:","CAUTION:","WARNING:"}, word = true, cyclic = true,},
+      },
+
 
       -- augends used when group with name `mygroup` is specified
       mygroup = {
