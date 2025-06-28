@@ -477,12 +477,24 @@ vim.diagnostic.config({
 
 	-- virtual_lines = { current_line = true },
 })
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-	vim.lsp.handlers.hover, {
-		border = 'single',
-    title = 'Hover'
-	}
-)
+
+
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+-- 	vim.lsp.handlers.hover, {
+-- 		border = 'single',
+--     title = 'Hover'
+-- 	}
+-- )
+
+
+vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
+  config = config or {}
+  config.border = 'single'
+  local bufnr, winnr = vim.lsp.util.open_floating_preview(result.contents, "markdown", config)
+  vim.wo[winnr].conceallevel = 0
+  vim.wo[winnr].concealcursor = ""
+  return bufnr, winnr
+end
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 	vim.lsp.handlers.signature_help, {
