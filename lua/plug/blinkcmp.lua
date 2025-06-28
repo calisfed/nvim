@@ -125,7 +125,7 @@ return {
             snippets = {
               opts = {
                 search_paths = {
-                  "~/.config/nvim/snippets/"
+                  -- "~/.config/nvim/snippets/"
                 }
               }
             },

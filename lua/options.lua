@@ -34,8 +34,8 @@ vim.opt.foldenable = true                        -- Enable folding
 vim.opt.hlsearch = false                         -- Highlight on search
 vim.opt.incsearch = true                         -- While typing a search command, show where the pattern matches
 
-vim.opt.conceallevel = 2                         -- so that `` is visible in markdown files
-vim.opt.concealcursor = 'nic'                    -- so that `` is visible in markdown files
+vim.opt.conceallevel = 0                         -- so that `` is visible in markdown files
+vim.opt.concealcursor ='v'                   -- so that `` is visible in markdown files
 -- vim.opt.formatoptions = vim.opt.fo:gsub('cro','') -- Avoid comments to continue on new lines
 vim.opt.updatetime = 200                         -- Faster completion
 vim.opt.ttimeoutlen = 5
@@ -51,7 +51,7 @@ vim.opt.splitright = true                        -- force all vertical splits to
 vim.opt.splitbelow = true                        -- force all horizontal splits to go below current window
 vim.opt.laststatus = 3                           -- Global statusline when on split
 
-vim.g.markdown_recommended_style = 0             -- Disable default markdown styles (see https://www.reddit.com/r/neovim/comments/z2lhyz/comment/ixjb7je)
+-- vim.g.markdown_recommended_style = 0             -- Disable default markdown styles (see https://www.reddit.com/r/neovim/comments/z2lhyz/comment/ixjb7je)
 -- vim.opt.list = true
 -- vim.opt.listchars = 'eol:↲'
 -- vim.opt.colorcolumn = "80,120"

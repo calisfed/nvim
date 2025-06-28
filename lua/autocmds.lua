@@ -43,7 +43,17 @@ vim.api.nvim_create_autocmd('FocusLost', {
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	callback = function()
 		vim.cmd.set("fo-=cro")
+    vim.cmd.set("concealcursor=")
 	end
+})
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype == "markdown" and vim.api.nvim_win_get_config(0).zindex ~= nil then
+      vim.wo.conceallevel = 0
+      vim.wo.concealcursor = ""
+    end
+  end,
 })
 
 
@@ -469,7 +479,8 @@ vim.diagnostic.config({
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 	vim.lsp.handlers.hover, {
-		border = 'single'
+		border = 'single',
+    title = 'Hover'
 	}
 )
 
