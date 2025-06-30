@@ -21,8 +21,6 @@ return {
     { 'archie-judd/telescope-words.nvim',           enabled = true, },
   },
   config = function()
-
-
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")
 
@@ -108,7 +106,7 @@ return {
       pickers = {
         find_files = {
           -- sorter = require('telescope.sorters').get_generic_fuzzy_sorter(),
-          find_command = {"fd"},
+          find_command = { "fd" },
           follow = false,
           hidden = false,
         },
@@ -171,7 +169,7 @@ return {
     local CallTelescope = function(input, opts)
       opts = opts or {}
       opts.layout_config = opts.layout_config or { height = 0.30 }
-      opts.previewer =  opts.previewer or false
+      opts.previewer = opts.previewer or false
       -- local theme = opts.theme or require('telescope.themes').get_dropdown(opts)
       local theme = opts.theme or require('telescope.themes').get_ivy(opts)
       -- local theme = opts.theme or require('telescope.themes').get_cursor(opts)
@@ -196,7 +194,7 @@ return {
     vim.keymap.set('n', '<Space>st', function() CallTelescope(require('telescope.builtin').treesitter, {}) end, { desc = 'Search treesitter' })
     vim.keymap.set('n', '<Space>s.', function() CallTelescope(require('telescope.builtin').resume, {}) end, { desc = 'Search resume' })
     vim.keymap.set('n', '<Space>sT', function() require('telescope').extensions.thesaurus.lookup() end, { desc = 'Search thesaurus' })
-    vim.keymap.set('n', '<Space>sa', "<cmd>Telescope<cr>", { desc = 'Telescope ready' })
+    vim.keymap.set('n', '<Space>sa', function() CallTelescope(require('telescope.builtin').builtin, {}) end, { desc = 'Search Telescope' })
   end,
 
 }
