@@ -28,7 +28,7 @@ return {
               library = {
                 '${3rd}/luv/library',
                 unpack(vim.api.nvim_get_runtime_file('', true)),
-                vim.env.VIMRUNTIME,
+                -- vim.env.VIMRUNTIME,
                 "/usr/share/awesome/lib",
               },
               -- If lua_ls is really slow on your computer, you can try this instead:
@@ -52,6 +52,7 @@ return {
         -- 	-- prefer_ast_check_as_child_process = false,
         -- },
       },
+      c3_lsp = {},
       bashls = {
         filetypes = { 'zsh', 'sh' },
         pattern = { 'sh' },
@@ -120,13 +121,18 @@ return {
       }
     }
     --
-    require('mason').setup()
+    require('mason').setup({
+      ui = {
+        border = 'rounded',
+      },
+    }
+    )
     require('mason-lspconfig').setup({
       ensure_installed = {
         -- 'tree-sitter-cli',
         'lua_ls',
       },
-      automatic_enable = {exclude = {'rusc_analyzer', 'ts_ls', 'typos_lsp', 'harper-ls',}}
+      automatic_enable = { exclude = { 'rusc_analyzer', 'ts_ls', 'typos_lsp', 'harper-ls', } }
     })
     for server_name, server_config in pairs(servers) do
       vim.lsp.config(server_name, server_config)

@@ -170,13 +170,13 @@ return {
     -- local ut = require('personal.utils')
     local CallTelescope = function(input, opts)
       opts = opts or {}
-      -- opts.layout_config = opts.layout_config or { height = 0.30 }
-      -- opts.previewer =  opts.previewer or true
+      opts.layout_config = opts.layout_config or { height = 0.30 }
+      opts.previewer =  opts.previewer or false
       -- local theme = opts.theme or require('telescope.themes').get_dropdown(opts)
-      -- local theme = opts.theme or require('telescope.themes').get_ivy(opts)
+      local theme = opts.theme or require('telescope.themes').get_ivy(opts)
       -- local theme = opts.theme or require('telescope.themes').get_cursor(opts)
-      -- input(theme)
-      input(opts)
+      input(theme)
+      -- input(opts)
     end
 
     vim.keymap.set('n', '<Space>sh', function() CallTelescope(require('telescope.builtin').help_tags, {}) end, { desc = 'Search helps' })

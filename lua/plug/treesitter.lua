@@ -5,6 +5,7 @@ return
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   enabled = false,
+  branch = 'main',
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     {
@@ -54,7 +55,7 @@ return
     }
 
     ---@diagnostic disable-next-line: missing-fields
-    require('nvim-treesitter.configs').setup {
+    require('nvim-treesitter').setup {
 
       modules = {},
 

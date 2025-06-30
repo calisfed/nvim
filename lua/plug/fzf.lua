@@ -25,8 +25,9 @@ return {
         -- end
       },
       fzf_opts = {
-        ['--tiebreak'] = 'begin',
         ['--layout'] = 'default', -- reverse is default
+        -- ['--scheme'] = 'path',
+        ['--tiebreak'] = 'begin,length,index',
       },
       files = {
         no_ignore = true, -- respect ".gitignore"  by default

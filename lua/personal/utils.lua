@@ -54,9 +54,9 @@ function M.from_git_root()
     opts = {
       cwd = M.get_git_root(),
       sort = {
-        -- fields = {
-        --   "left","score:desc",
-        -- }
+        fields = {
+          "left","score:desc",
+        }
       }
     }
   end

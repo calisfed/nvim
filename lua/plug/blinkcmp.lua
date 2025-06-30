@@ -95,7 +95,7 @@ return {
           default = function(ctx)
             local success, node = pcall(vim.treesitter.get_node)
             if vim.bo.filetype == 'lua' then
-              return { 'lsp', 'buffer', 'path', 'snippets' }
+              return { 'lsp', 'buffer', 'path', 'snippets', 'buffer' }
             elseif success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
               return { 'buffer' }
             elseif vim.bo.filetype == 'vim' and vim.bo.buftype == 'nofile' then
@@ -122,17 +122,17 @@ return {
                 end
               },
             },
-            snippets = {
-              opts = {
-                search_paths = {
-                  -- "~/.config/nvim/snippets/"
-                }
-              }
-            },
-            ccb = {
-              name = "ccb",
-              module = "dev.ccb"
-            }
+            -- snippets = {
+            --   opts = {
+            --     search_paths = {
+            --       -- "~/.config/nvim/snippets/"
+            --     }
+            --   }
+            -- },
+            -- ccb = {
+            --   name = "ccb",
+            --   module = "dev.ccb"
+            -- }
 
           },
         }
