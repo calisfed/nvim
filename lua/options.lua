@@ -89,9 +89,8 @@ vim.wo.list = false
 
 -- This might replace nvim-ufo
 -- https://www.reddit.com/r/neovim/comments/1gi7ush/treesitter_is_amazing/
--- vim.o.foldmethod = 'expr'
--- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
--- vim.o.foldlevelstart = 99
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevelstart = 99
 
 
--- vim.o.completeopt = 'menuone,noinsert' -- This option for mini.completion

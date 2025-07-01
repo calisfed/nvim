@@ -91,3 +91,36 @@ vim.keymap.set('n', "<M-s>", "<cmd>source %<cr>", { desc = "[K] Source current f
 
 vim.keymap.set({ 'n', 'v' }, 'K', '<cmd>lua vim.lsp.buf.hover({border="single",max_height=25,max_width=120})<cr>', { desc = '[K] Code Hover' })
 vim.keymap.set({ 'n', 'v' }, '<M-K>', '<cmd>lua vim.lsp.buf.signature_help({border="single",max_height=25,max_width=120})<cr>', { desc = '[K] Signature help' })
+
+function vn_telex_keymap()
+  if vim.api.nvim_get_option_value('keymap', {}) == '' then
+    vim.api.nvim_set_option_value('keymap', 'vietnamese-telex_utf-8', {})
+  else
+    vim.api.nvim_set_option_value('keymap', '', {})
+  end
+end
+
+vim.keymap.set('n', '<leader>V', function() vn_telex_keymap() end, { desc = '[K] Switch to VN telex keymap' })
+
+-- vim.keymap.set({})
+-- local view_asciidoc_img = function()
+--   -- check if line contain image: -- []
+--   local line = vim.api.nvim_get_current_line()
+--   local cw_dir = vim.fn.getcwd(0, 0)         -- Get cwd
+--   if line:match("image::") then
+--     local path = line:match("image::(.-)%[") -- get path
+--     if not path:match("https://") then
+--       local img = require("image").from_file(cw_dir .. '/' .. path, {})
+--       img:render()
+--       os.execute("sleep " .. tonumber(0.1))
+--       img:clear()
+--     else
+--       local img = require('image').from_url(path, {})
+--       img:render()
+--       os.execute("sleep " .. tonumber(0.1))
+--       img:clear()
+--     end
+--   else
+--   end
+-- end
+-- vim.keymap.set("n", "L", function() view_asciidoc_img() end)
