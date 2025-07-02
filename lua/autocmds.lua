@@ -629,6 +629,6 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 
 vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, {
   desc = "Ensure folds are expanded when open file",
-  pattern = "*.*",
+  pattern = "*",
   command = "normal zR"
 })

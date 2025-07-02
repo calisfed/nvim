@@ -31,7 +31,6 @@ return {
 
   -- QoL
   { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
-  { enabled = true,  'Eutrius/Otree.nvim' },                   -- Tree view for oil.nvim
   { enabled = true,  'HawkinsT/pathfinder.nvim', },            -- enhanced gf gF gx
   { enabled = true,  'NeogitOrg/neogit' },                     -- git integration
   { enabled = true,  'SunnyTamang/select-undo.nvim', },        -- select part to undo
@@ -51,7 +50,7 @@ return {
   { enabled = true,  'norcalli/nvim-colorizer.lua', },         -- show color
   { enabled = true,  'rubiin/fortune.nvim' },                  -- Inspiration and Wisdom quotes, go with dashboard plugins like mini or alpha
   { enabled = true,  'shellRaining/hlchunk.nvim', },           -- highlight part of working code
-  { enabled = true,  'stevearc/oil.nvim', },                   -- file explorer
+  { enabled = true,  'stevearc/oil.nvim', },                   -- file explore, with otree.nvim + oil-git
   { enabled = true,  'tridactyl/vim-tridactyl', },             -- tridactyl (Firefox extension)
   { enabled = false, 'A7Lavinraj/fyler.nvim' },                -- like oil.nvim but have tree-view
   { enabled = false, 'Bilal2453/luvit-meta', },                -- part of lua dev
