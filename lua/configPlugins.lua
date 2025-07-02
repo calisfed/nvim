@@ -20,8 +20,8 @@ return {
   -- Pickers
 
   { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
-  { enabled = false, 'folke/snacks.nvim' },             -- QoL plugins
-  { enabled = false, 'ibhagwan/fzf-lua', },             -- fzf search
+  { enabled = false, 'folke/snacks.nvim' },              -- QoL plugins
+  { enabled = false, 'ibhagwan/fzf-lua', },              -- fzf search
 
   -- Plugins that many others require
 
@@ -104,7 +104,7 @@ return {
   { enabled = true,  'saghen/blink.cmp', },                       -- better completion
   { enabled = false, 'Dan7h3x/signup.nvim', },                    -- LSP Sign help
   { enabled = false, 'ZWindL/orphans.nvim', },                    -- check if plugins haven't been update for a while
-  { enabled = false, 'folke/lazydev.nvim', },                     -- lua dev
+  { enabled = true,  'folke/lazydev.nvim', },                     -- lua dev
   { enabled = false, 'hrsh7th/nvim-cmp', },                       -- completion
   { enabled = false, 'iguanacucumber/magazine.nvim' },            -- nvim-cmp but with patches
   { enabled = false, 'rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions
@@ -155,4 +155,6 @@ return {
   { enabled = false, 'tamton-aquib/duck.nvim', },               -- duck/dog/cat follow cursor
   { enabled = false, 'wildfunctions/myeyeshurt', },             -- resting eye after a while
 
+  -- TODO: test
+  { enabled = false, 'notomo/cmdbuf.nvim' }, -- Buffer for cmdline
 }
