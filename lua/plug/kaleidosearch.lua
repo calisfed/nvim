@@ -7,10 +7,10 @@ return {
 	},
 	lazy = true,
 	keys = {
-		{ "<leader>Cs", "<cmd>Kaleidosearch<cr>", desc = "Color word" },
-		{ "<leader>Cc", "<cmd>KaleidosearchClear<cr>", desc = "Color word clear" },
-		{ "<leader>Cn", "<cmd>KaleidosearchAddWord<cr>", desc = "Color word add more" },
-		{ "<leader>Ca", "<cmd>KaleidosearchToggleCursorWord<cr>", desc = "Color word add cword" },
+		{ "<leader>sCs", "<cmd>Kaleidosearch<cr>", desc = "Color word" },
+		{ "<leader>sCc", "<cmd>KaleidosearchClear<cr>", desc = "Color word clear" },
+		{ "<leader>sCn", "<cmd>KaleidosearchAddWord<cr>", desc = "Color word add more" },
+		{ "<leader>sCa", "<cmd>KaleidosearchToggleCursorWord<cr>", desc = "Color word add cword" },
 	},
 	config = function()
 		require("kaleidosearch").setup({

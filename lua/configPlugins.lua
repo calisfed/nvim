@@ -39,7 +39,7 @@ return {
   { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
   { enabled = true,  'danymat/neogen', },                      -- annotation toolkit
   { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
-  { enabled = true, 'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
+  { enabled = true,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
   { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
   { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
@@ -65,7 +65,7 @@ return {
   { enabled = false, 'altermo/ultimate-autopair.nvim' },       -- autopairs, replaced by mini.pair
   { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
   { enabled = false, 'emmanueltouzery/apidocs.nvim' },         -- devdocs.io integrated
-  { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
+  { enabled = true, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
   { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
   { enabled = false, 'kevinhwang91/nvim-ufo', },               -- fold
   { enabled = false, 'lewis6991/gitsigns.nvim', },             -- gitsigns

@@ -3,6 +3,11 @@ return {
   lazy = true,
   event = "VeryLazy",
   'kdheepak/lazygit.nvim',
+  dependencies = {
+    "nvim-lua/plenary.nvim", -- optional for floating window border decoration
+  },
+  cmd = { "LazyGit", "LazyGitConfig", "LazyGitCurrentFile", "LazyGitFilter", "LazyGitFilterCurrentFile", },
+  -- keys = { { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" } },
   config = function()
     vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
     vim.g.lazygit_floating_window_scaling_factor = 0.9 -- scaling factor for floating window
@@ -16,6 +21,8 @@ return {
     vim.g.lazygit_config_file_path = {} -- table of custom config file paths
 
     vim.g.lazygit_on_exit_callback = nil -- optional function callback when exiting lazygit (useful for example to refresh some UI elements after lazy git has made some changes)
+    vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = "LazyGit" })
+    require("telescope").load_extension("lazygit")
   end
 
 }

@@ -3,7 +3,7 @@ return {
   enabled = false,
   lazy = true,
   keys = {
-    { "<leader>v", "<cmd>lua require'venn'<cr>", desc = "Toggle venn" }
+    { "<leader>nv", "<cmd>lua require'venn'<cr>", desc = "Toggle venn" }
   },
   config = function()
     -- venn.nvim: enable or disable keymappings
