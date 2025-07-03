@@ -30,15 +30,16 @@ return {
   { enabled = true,  'nvim-neotest/nvim-nio', }, -- debug adapter protocol ui
 
   -- QoL
+  { enabled = true,  'kdheepak/lazygit.nvim' },                -- Git integration
   { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
   { enabled = true,  'HawkinsT/pathfinder.nvim', },            -- enhanced gf gF gx
-  { enabled = true,  'NeogitOrg/neogit' },                     -- git integration
+  { enabled = false, 'NeogitOrg/neogit' },                     -- Git integration
   { enabled = true,  'SunnyTamang/select-undo.nvim', },        -- select part to undo
   { enabled = true,  'chrisgrieser/nvim-scissors', },          -- Create and Edit snippet
   { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
   { enabled = true,  'danymat/neogen', },                      -- annotation toolkit
   { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
-  { enabled = true,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
+  { enabled = false, 'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
   { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
   { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
@@ -92,7 +93,7 @@ return {
 
   -- Debugging
 
-  { enabled = true,  'andrewferrier/debugprint.nvim', }, -- print debug statement instead of DAP
+  { enabled = false, 'andrewferrier/debugprint.nvim', }, -- print debug statement instead of DAP
   { enabled = false, 'igorlfs/nvim-dap-view', },         -- DAP view replace ui
   { enabled = false, 'mfussenegger/nvim-dap', },         -- debug adapter protocol
   { enabled = false, 'rcarriga/nvim-dap-ui', },          -- debug adapter protocol ui

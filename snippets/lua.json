@@ -1,1 +1,1 @@
-{"{e}":{"body":"{ enabled = ${1:false}, '${2:url}'}, -- ${3:Usage}","prefix":"ez"}}
+{"az":{"prefix":"az","body":["add({","    source = ${1:'url'},","    depends = {","","      }","  })"]},"{e}":{"prefix":"ez","body":"{ enabled = ${1:false}, '${2:url}'}, -- ${3:Usage}"}}
