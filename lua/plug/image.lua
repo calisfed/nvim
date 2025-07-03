@@ -7,8 +7,7 @@ return
   -- event = 'VeryLazy',
   dependencies = { { "vhyrro/luarocks.nvim", priority = 1000, config = true, } },
   config = function()
-    -- default config
-    require("image").setup({
+local config = {
       backend = "ueberzug", --ueberzug or kitty
       processor = "magick_cli",
       integrations = {
@@ -49,6 +48,7 @@ return
       editor_only_render_when_focused = false,                                            -- auto show/hide images when the editor gains/looses focus
       tmux_show_only_in_active_window = true,                                             -- auto show/hide images in the correct Tmux window (needs visual-activity off)
       hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
-    })
+    }
+    return config
   end
 }

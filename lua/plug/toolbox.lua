@@ -3,8 +3,8 @@ return {
   enabled = false,
   event = "VeryLazy",
   'DanWlker/toolbox.nvim',
-  config = function()
-    require('toolbox').setup {
+  opts = function()
+    local config = {
       commands = {
         --replace the bottom two with your own custom functions
         { name = 'Format Json',                    execute = "%!jq '.'",                        require_input = true, },
@@ -13,5 +13,6 @@ return {
     }
 
     vim.keymap.set('n', '<leader>tb', require('toolbox').show_picker, { desc = 'Tool box' })
+    return config
   end,
 }

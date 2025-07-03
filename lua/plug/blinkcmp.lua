@@ -16,9 +16,8 @@ return {
   ---@type blink.cmp.Config
 
   opts = function()
-    require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
-    require('blink.cmp').setup(
-      {
+    -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
+    local config = {
         keymap = {
           -- preset = 'super-tab'
           -- ['<C-j>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -136,9 +135,10 @@ return {
 
           },
         }
-      })
+      }
+      -- local luasnip = require("luasnip")
+      return config
 
-    -- local luasnip = require("luasnip")
   end
 
 }

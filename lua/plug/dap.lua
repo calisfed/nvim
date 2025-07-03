@@ -35,7 +35,7 @@ return {{
     { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
   },
 
-  config = function()
+  opts = function()
     -- load mason-nvim-dap here, after all adapters have been setup
     if LazyVim.has("mason-nvim-dap.nvim") then
       require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))

@@ -4,7 +4,7 @@ return {
   "shellRaining/hlchunk.nvim",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    require("hlchunk").setup({
+    local config = {
       chunk = {
         enable = true,
         -- style = { {
@@ -36,9 +36,9 @@ return {
         enable = false,
         char = { "." },
       },
-    })
-
+    }
     vim.cmd("hi HLChunk1 guifg=LightGreen gui=bold ")
     vim.cmd("hi HLChunk2 guifg=Red gui=bold ")
+    return config
   end
 }

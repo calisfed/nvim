@@ -2,7 +2,8 @@ return {
     "max397574/better-escape.nvim",
   event = "VeryLazy",
     enabled = false,
-    opts = {
+    opst = function ()
+      local config = {
       timeout = vim.o.timeoutlen,
       default_mappings = true,
       mappings = {
@@ -13,4 +14,6 @@ return {
         s = { j = { k = "<Esc>", }, },
       },
     }
+    return config
+    end
   }

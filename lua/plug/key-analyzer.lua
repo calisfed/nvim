@@ -1,7 +1,8 @@
 return {
   enabled = false,
   "meznaric/key-analyzer.nvim",
-  opts = {
+  opts = function ()
+    local config = {
     -- Name of the command to use for the plugin
     command_name = "KeyAnalyzer",     -- or nil to disable the command
 
@@ -17,4 +18,6 @@ return {
       define_default_highlights = true,
     },
   }
+  return config
+end
 }

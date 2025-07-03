@@ -7,10 +7,10 @@ return{
 		{"<m-up>", function () require('multicursor-nvim').addCursor("k") end, desc = "MultiCursor - Add above" },
 		{"<m-down>", function () require('multicursor-nvim').addCursor("j") end, desc = "MultiCursor - Add below" }
 	},
-	config = function()
+	opts = function ()
+    local config = {}
 		local mc = require("multicursor-nvim")
 
-		mc.setup()
 
 		-- Add cursors above/below the main cursor.
 		vim.keymap.set({ "n", "v" }, "<m-up>", function() mc.addCursor("k") end, { desc = "MultiCursor - Add above" })
@@ -75,5 +75,6 @@ return{
 		-- vim.cmd.hi("link", "MultiCursorDisabledCursor", "Visual")
 		-- vim.cmd.hi("link", "MultiCursorDisabledVisual", "Visual")
 
+    return config
 	end,
 }

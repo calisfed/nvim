@@ -5,7 +5,7 @@ return {
   event = 'VimEnter',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 
-  config = function()
+  opts = function()
     local theta = require 'alpha.themes.theta'
     local dashboard = require("alpha.themes.dashboard")
     logo1 = [[
@@ -85,7 +85,8 @@ return {
       dashboard.button('u', '  Update plugins', '<cmd>Lazy sync<CR>'),
       dashboard.button('q', '󰗼  Quit', '<cmd>qa<CR>'),
     }
-    require('alpha').setup(theta.config)
+    -- require('alpha').setup(theta.config)
+    return theta.config
   end
 
 

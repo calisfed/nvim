@@ -6,11 +6,12 @@ return {
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope.nvim" },
   },
-  config = function()
-    require('tiny-code-action').setup()
+  opts = function()
+    local config = {}
 
     vim.keymap.set("n", "<leader>ca", function()
       require("tiny-code-action").code_action()
     end, { noremap = true, silent = true })
+    return config
   end
 }

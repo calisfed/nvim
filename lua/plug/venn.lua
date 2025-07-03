@@ -5,7 +5,7 @@ return {
   keys = {
     { "<leader>v", "<cmd>lua require'venn'<cr>", desc = "Toggle venn" }
   },
-  config = function()
+  opts = function()
     -- venn.nvim: enable or disable keymappings
     function _G.Toggle_venn()
       local venn_enabled = vim.inspect(vim.b.venn_enabled)
@@ -35,5 +35,6 @@ return {
     vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
     vim.api.nvim_buf_set_keymap(0, "v", "h", ":VBoxH<CR>", { noremap = true })
     vim.api.nvim_buf_set_keymap(0, "v", "d", ":VBoxD<CR>", { noremap = true })
+    return {}
   end
 }

@@ -4,7 +4,9 @@ return {
   "hat0uma/csvview.nvim",
   ---@module "csvview"
   ---@type CsvView.Options
-  opts = {
+  cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  opts = function ()
+    local config = {
     parser = { comments = { "#", "//" } },
     keymaps = {
       -- Text objects for selecting fields
@@ -19,6 +21,7 @@ return {
       jump_next_row = { "<Enter>", mode = { "n", "v" } },
       jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
     },
-  },
-  cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  }
+  return config
+end
 }

@@ -15,9 +15,9 @@ return
     {
       enabled = true,
       "nvim-treesitter/nvim-treesitter-context",
-      config = function()
-        require("treesitter-context").setup(
-          {
+      opts = function()
+        vim.keymap.set("n", "<leader>tc", "<cmd>lua require'treesitter-context'.toggle()<cr>", { desc = "Toggle TS Context" })
+          local config = {
             enable = true,           -- Enable this plugin (Can be enabled/disabled later via commands)
             max_lines = 3,           -- How many lines the window should span. Values <= 0 mean no limit.
             min_window_height = 0,   -- Minimum editor window height to enable context. Values <= 0 mean no limit.
@@ -30,11 +30,14 @@ return
             separator = nil,
             zindex = 20,     -- The Z-index of the context window
             on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-          })
-        vim.keymap.set("n", "<leader>tc", ":TSContextToggle<cr>", { desc = "Toggle TS Context" })
+          }
         -- vim.keymap.set("n", "[C", function()
         --   require("treesitter-context").go_to_context(vim.v.count1)
         -- end, { desc = "Back to [C]ontext", silent = true })
+
+        -- require("treesitter-context").setup(config)
+
+        return config
       end,
     },
 
@@ -43,7 +46,7 @@ return
 
   },
   build = ':TSUpdate',
-  config = function()
+  opts = function()
     vim.filetype.add {
       extension = { rasi = 'rasi' },
       pattern = {
@@ -55,7 +58,7 @@ return
     }
 
     ---@diagnostic disable-next-line: missing-fields
-    require('nvim-treesitter').setup {
+    local config = {
 
       modules = {},
 
@@ -145,5 +148,6 @@ return
         --       },
       },
     }
+    return config
   end,
 }

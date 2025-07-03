@@ -7,15 +7,16 @@ return {
     'ibhagwan/fzf-lua',
     'echasnovski/mini.pick',
   },
-  cmd = {"LivePreview start"},
+  cmd = { "LivePreview start" },
   -- require('livepreview.config').set()
   config = function()
-    require('livepreview.config').set({
+    local config = {
       port = 5500,
       browser = 'qutebrowser', -- default mean system default
       dynamic_root = false,
       sync_scroll = true,
       -- picker = "",
-    })
+    }
+    return config
   end
 }

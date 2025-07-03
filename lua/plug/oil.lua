@@ -4,10 +4,10 @@ return {
     'stevearc/oil.nvim',
     lazy = false,
     -- dependencies = { 'nvim-tree/nvim-web-devicons' },
-      -- dependencies =  { "echasnovski/mini.icons", opts = {} },
+    -- dependencies =  { "echasnovski/mini.icons", opts = {} },
     -- keys = { '-', '<cmd>Oil<CR>' , desc = "File explorer"},
-    config = function()
-      require('oil').setup({
+    opts = function()
+      local config = {
         vim.keymap.set('n', '-', '<cmd>lua require"oil".toggle_float()<CR>', { desc = 'File explorer', silent = true }),
         -- vim.keymap.set('n', '-', '<cmd>lua require"oil".open()<CR>', { desc = 'File explorer', silent = true }),
 
@@ -42,19 +42,20 @@ return {
           },
         },
       }
-
-      )
     end
   },
   {
     lazy = false,
     "benomahony/oil-git.nvim",
     dependencies = { "stevearc/oil.nvim" },
-    opts = {
-      highlights = {
-        OilGitModified = { fg = "#ff0000" }, -- Custom colors
+    opts = function()
+      local config = {
+        highlights = {
+          OilGitModified = { fg = "#ff0000" }, -- Custom colors
+        }
       }
-    }
+      return config
+    end
 
   },
   {
@@ -66,7 +67,8 @@ return {
       -- "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("Otree").setup()
+      local config = {}
+      return config
     end
   }
 }

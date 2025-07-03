@@ -3,8 +3,8 @@ return {
   'folke/todo-comments.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
   event = 'VimEnter',
-  opts =
-    {
+  opts = function ()
+    local config = {
       signs = true, -- show icons in the signs column
       sign_priority = 8, -- sign priority
       -- keywords recognized as todo comments
@@ -68,4 +68,6 @@ return {
         -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
       },
     }
+    return config
+  end
 }

@@ -7,5 +7,8 @@ return {
     { "`", desc = "Lua-console - toggle" },
     { "<Leader>`", desc = "Lua-console - attach to buffer" },
   },
-  opts = {},
+  opts = function ()
+    local config = {}
+    return config
+  end
 }

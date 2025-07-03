@@ -6,7 +6,7 @@ return {
   config = function()
     vim.diagnostic.config({ virtual_text = false })
     -- Default configuration
-    require("tiny-inline-diagnostic").setup({
+local config = {
       signs = {
         left = "",
         right = "",
@@ -89,6 +89,7 @@ return {
         -- does not works in your configuration, you may try to tweak it.
         overwrite_events = nil,
       },
-    })
+    }
+    return config
   end
 }

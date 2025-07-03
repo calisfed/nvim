@@ -2,5 +2,8 @@ return {
     'stevearc/dressing.nvim',
   event = "VeryLazy",
     enabled = false,
-    opts = {},
+    opts = function ()
+      local config = {}
+      return config
+    end
   }

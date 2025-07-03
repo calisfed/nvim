@@ -5,5 +5,8 @@ return {
   keys = {
     vim.keymap.set('n', '<leader>tp', '<cmd>lua require("precognition").toggle()<cr>', { desc = "Toggle Precognigtion" })
   },
-  opts = {},
+  opts = function ()
+    local config = {}
+    return config
+  end
 }

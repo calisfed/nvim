@@ -8,7 +8,7 @@ return {
   { enabled = false, 'olivercederborg/poimandres.nvim',          priority = 1000, },
   { enabled = false, 'rose-pine/neovim',                         priority = 1000, name = 'rose-pine', },
   { enabled = false, 'sainnhe/sonokai',                          priority = 1000, },
-  { enabled = false, "rktjmp/lush.nvim", }, -- interactive, create own colorscheme
+  { enabled = false, 'rktjmp/lush.nvim', }, -- interactive, create own colorscheme
 
   -- Core
 
@@ -19,7 +19,7 @@ return {
 
   -- Pickers
 
-  { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
+  { enabled = false, 'nvim-telescope/telescope.nvim', }, -- lua fzf search
   { enabled = false, 'folke/snacks.nvim' },              -- QoL plugins
   { enabled = false, 'ibhagwan/fzf-lua', },              -- fzf search
 
@@ -73,7 +73,7 @@ return {
   { enabled = false, 'max397574/better-escape.nvim', },        -- better Escape with jj, jk, ...., replaced by minmi.keymap
   { enabled = false, 'rmagatti/auto-session' },                -- session, replaced by mini.session
   { enabled = false, 'sQVe/sort.nvim', },                      -- sort, considering re-try
-  { enabled = false, 'stevearc/conform.nvim', },               -- lightweight, powerful formatter
+  { enabled = true,  'stevearc/conform.nvim', },               -- lightweight, powerful formatter
   { enabled = false, 'stevearc/overseer.nvim', },              -- a task runner and job management plugin for Neovim
   { enabled = false, 'stevearc/quicker.nvim', },               -- improved UI and workflow for the Neovim quickfix
   { enabled = false, 'tpope/vim-sleuth', },                    -- auto adjust shiftwidth and expandtab

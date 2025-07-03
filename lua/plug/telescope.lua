@@ -20,7 +20,7 @@ return {
     { 'nvim-telescope/telescope-file-browser.nvim', enabled = true, },
     { 'archie-judd/telescope-words.nvim',           enabled = true, },
   },
-  config = function()
+  opts = function()
     local actions = require("telescope.actions")
     local action_state = require("telescope.actions.state")
 
@@ -59,16 +59,18 @@ return {
       end
     end
 
-    require('telescope').setup {
+    local config = {
       defaults = {
-        mappings = { i = {
-          ['<c-enter>'] = 'to_fuzzy_refine',
-          ["<esc>"] = actions.close,
-          ['<C-k>'] = actions.move_selection_previous,
-          ['<C-j>'] = actions.move_selection_next,
-          ['<leader>Y'] = copy_all_results,
-          ['<CR>'] = select_one_or_multi,
-        }, },
+        mappings = {
+          i = {
+            ['<c-enter>'] = 'to_fuzzy_refine',
+            ["<esc>"] = actions.close,
+            ['<C-k>'] = actions.move_selection_previous,
+            ['<C-j>'] = actions.move_selection_next,
+            ['<leader>Y'] = copy_all_results,
+            ['<CR>'] = select_one_or_multi,
+          },
+        },
 
         sorting_strategy = 'descending', -- default is 'descending'
         layout_config = {
@@ -195,6 +197,7 @@ return {
     vim.keymap.set('n', '<Space>s.', function() CallTelescope(require('telescope.builtin').resume, {}) end, { desc = 'Search resume' })
     vim.keymap.set('n', '<Space>sT', function() require('telescope').extensions.thesaurus.lookup() end, { desc = 'Search thesaurus' })
     vim.keymap.set('n', '<Space>sa', function() CallTelescope(require('telescope.builtin').builtin, {}) end, { desc = 'Search Telescope' })
+    return config
   end,
 
 }
