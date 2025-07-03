@@ -30,9 +30,10 @@ return {
   { enabled = true,  'nvim-neotest/nvim-nio', }, -- debug adapter protocol ui
 
   -- QoL
+  { enabled = true,  'kdheepak/lazygit.nvim' },                -- Git integration
   { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
   { enabled = true,  'HawkinsT/pathfinder.nvim', },            -- enhanced gf gF gx
-  { enabled = true,  'NeogitOrg/neogit' },                     -- git integration
+  { enabled = false, 'NeogitOrg/neogit' },                     -- Git integration
   { enabled = true,  'SunnyTamang/select-undo.nvim', },        -- select part to undo
   { enabled = true,  'chrisgrieser/nvim-scissors', },          -- Create and Edit snippet
   { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
@@ -64,7 +65,7 @@ return {
   { enabled = false, 'altermo/ultimate-autopair.nvim' },       -- autopairs, replaced by mini.pair
   { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
   { enabled = false, 'emmanueltouzery/apidocs.nvim' },         -- devdocs.io integrated
-  { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
+  { enabled = true, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
   { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
   { enabled = false, 'kevinhwang91/nvim-ufo', },               -- fold
   { enabled = false, 'lewis6991/gitsigns.nvim', },             -- gitsigns
@@ -92,7 +93,7 @@ return {
 
   -- Debugging
 
-  { enabled = true,  'andrewferrier/debugprint.nvim', }, -- print debug statement instead of DAP
+  { enabled = false, 'andrewferrier/debugprint.nvim', }, -- print debug statement instead of DAP
   { enabled = false, 'igorlfs/nvim-dap-view', },         -- DAP view replace ui
   { enabled = false, 'mfussenegger/nvim-dap', },         -- debug adapter protocol
   { enabled = false, 'rcarriga/nvim-dap-ui', },          -- debug adapter protocol ui

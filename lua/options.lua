@@ -27,8 +27,8 @@ vim.opt.smartindent = true                       -- Makes indenting smart
 
 vim.opt.signcolumn = 'yes'                       -- Always show the signcolumn
 vim.opt.foldcolumn = '1'                         -- '0' is not bad
-vim.opt.foldlevel = 99                           -- Using ufo provider need a large value, feel free to decrease the value
-vim.opt.foldlevelstart = 99                      -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.opt.foldlevel = 99                           -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.opt.foldlevelstart = 99                      -- Using ufo provider need a large value, feel free to decrease the value
 vim.opt.foldenable = true                        -- Enable folding
 
 vim.opt.hlsearch = false                         -- Highlight on search

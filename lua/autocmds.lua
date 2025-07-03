@@ -609,7 +609,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 
-
 vim.api.nvim_create_autocmd('BufWinLeave', {
   desc = "Save view before exit",
   pattern = {"*.*"},
@@ -627,11 +626,11 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 })
 
 
-vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, {
-  desc = "Ensure folds are expanded when open file",
-  pattern = "*",
-  -- command = "normal! zR"
-  callback = function ()
-    vim.cmd("normal! zR")
-  end
-})
+-- vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, {
+--   desc = "Ensure folds are expanded when open file",
+--   pattern = "*",
+--   -- command = "normal! zR"
+--   callback = function ()
+--     vim.cmd("normal! zR")
+--   end
+-- })
