@@ -39,7 +39,7 @@ return {
   { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
   { enabled = true,  'danymat/neogen', },                      -- annotation toolkit
   { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
-  { enabled = false, 'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
+  { enabled = true, 'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
   { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
   { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
