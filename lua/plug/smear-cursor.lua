@@ -1,11 +1,10 @@
 return
-{
-  enabled = false,
-  lazy = false,
-  'sphamba/smear-cursor.nvim',
-  event = "VeryLazy",
-  opts = function()
-    local config = {
+  {
+    enabled = false,
+    lazy = false,
+    'sphamba/smear-cursor.nvim',
+    event = "VeryLazy",
+    opts = {
       -- Cursor color. Defaults to Normal foreground color
       cursor_color = '#d3cdc3',
 
@@ -19,7 +18,5 @@ return
 
       -- Attempt to hide the real cursor when smearing.
       hide_target_hack = false,
-    }
-    return config
-  end
-}
+    },
+  }

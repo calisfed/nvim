@@ -7,9 +7,7 @@ return
 		-- lazy = false, -- or ft = 'typst'
 		-- version = '0.3.*',
 		build = function() require 'typst-preview'.update() end,
-		opts =  function ()
-
-    local config ={  -- Setting this true will enable logging debug information to
+		opts = {  -- Setting this true will enable logging debug information to
 			-- `vim.fn.stdpath 'data' .. '/typst-preview/log.txt'`
 			debug = true,
 
@@ -61,9 +59,5 @@ return
 			get_main_file = function(path_of_buffer)
 				return path_of_buffer
 			end,
-		}
-    return config
-  end
-  }
-
+		}}
 

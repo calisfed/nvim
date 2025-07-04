@@ -10,13 +10,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 
 
-vim.api.nvim_create_autocmd('FocusLost', {
-  desc = "Copy to clipboard on FocusLost",
-  -- set -g focus-events on <== tmux
-  callback = function()
-    vim.fn.setreg("+", vim.fn.getreg("0"))
-  end,
-})
+-- vim.api.nvim_create_autocmd('FocusLost', {
+--   desc = "Copy to clipboard on FocusLost",
+--   -- set -g focus-events on <== tmux
+--   callback = function()
+--     vim.fn.setreg("+", vim.fn.getreg("0"))
+--   end,
+-- })
 
 -- vim.api.nvim_create_autocmd('BufWritePre', {
 --   desc = 'Auto indent whole document',
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd('FocusLost', {
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   callback = function()
     vim.cmd.set("fo-=cro")
-    vim.cmd.set("concealcursor=")
+    -- vim.cmd.set("concealcursor=") -- if set, affect oil.nvim
   end
 })
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -136,7 +136,6 @@ vim.filetype.add {
 -- vim.cmd [[
 --  autocmd BufEnter * highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=gray gui=bold
 -- ]]
-
 
 
 -- always open quickfix window automatically.
@@ -634,3 +633,4 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 --     vim.cmd("normal! zR")
 --   end
 -- })
+

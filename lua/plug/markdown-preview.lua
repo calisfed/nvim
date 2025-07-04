@@ -18,8 +18,8 @@ return
   end,
   ft = { "markdown" },
   opts = function()
-    local config = {}
+    require('markdow-preview').setup()
+
     vim.g.mkdp_browser = "qutebrowser %"
-    return config
   end
 }

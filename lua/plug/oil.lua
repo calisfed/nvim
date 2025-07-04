@@ -6,8 +6,9 @@ return {
     -- dependencies = { 'nvim-tree/nvim-web-devicons' },
     -- dependencies =  { "echasnovski/mini.icons", opts = {} },
     -- keys = { '-', '<cmd>Oil<CR>' , desc = "File explorer"},
-    opts = function()
-      local config = {
+    opts = false,
+    config = function()
+      require('oil').setup({
         vim.keymap.set('n', '-', '<cmd>lua require"oil".toggle_float()<CR>', { desc = 'File explorer', silent = true }),
         -- vim.keymap.set('n', '-', '<cmd>lua require"oil".open()<CR>', { desc = 'File explorer', silent = true }),
 
@@ -41,7 +42,7 @@ return {
             winblend = 0,
           },
         },
-      }
+      })
     end
   },
   {

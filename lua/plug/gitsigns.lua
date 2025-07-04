@@ -4,11 +4,8 @@ return
   enabled = false,
   'lewis6991/gitsigns.nvim',
   event = 'VeryLazy',
-  opts = function()
-    local config = {
-      signs = { add = { text = '+' }, change = { text = '~' }, delete = { text = '_' }, topdelete = { text = '‾' }, changedelete = { text = '~' } },
-    }
-    return config
-  end
+  opts = {
+    signs = { add = { text = '+' }, change = { text = '~' }, delete = { text = '_' }, topdelete = { text = '‾' }, changedelete = { text = '~' } },
+  },
 
 }

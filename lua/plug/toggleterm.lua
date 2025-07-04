@@ -3,8 +3,7 @@ return
   enabled = false,
   'akinsho/toggleterm.nvim',
   lazy = false,
-  opts = function()
-    local config = {}
+  config = function()
     require('toggleterm').setup()
     local tg = function()
       if vim.v.count >= 11 and vim.v.count <= 13 then
@@ -32,6 +31,5 @@ return
     vim.keymap.set({ 'n', 'v', 't' }, '<leader>Tv', tv, { desc = 'Send visual lines' })
     vim.keymap.set({ 'n', 'v', 't' }, '<leader>Ts', ts, { desc = 'Send visual selection' })
     vim.keymap.set('t', '<Esc>', '<C-\\><C-N>')
-    return config
   end,
 }

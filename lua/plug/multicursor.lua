@@ -7,8 +7,7 @@ return{
 		{"<m-up>", function () require('multicursor-nvim').addCursor("k") end, desc = "MultiCursor - Add above" },
 		{"<m-down>", function () require('multicursor-nvim').addCursor("j") end, desc = "MultiCursor - Add below" }
 	},
-	opts = function ()
-    local config = {}
+	config = function ()
 		local mc = require("multicursor-nvim")
 
 
@@ -17,10 +16,10 @@ return{
 		vim.keymap.set({ "n", "v" }, "<m-down>", function() mc.addCursor("j") end, { desc = "MultiCursor - Add below" })
 
 		-- Add a cursor and jump to the next word under cursor.
-		vim.keymap.set({ "n", "v" }, "<c-n>", function() mc.addCursor("*") end, { desc = "MultiCursor - Add and jump to next word" })
+		vim.keymap.set({ "n", "v" }, "<m-n>", function() mc.addCursor("*") end, { desc = "MultiCursor - Add and jump to next word" })
 
 		-- Jump to the next word under cursor but do not add a cursor.
-		vim.keymap.set({ "n", "v" }, "<c-s>", function() mc.skipCursor("*") end, { desc = "MultiCursor - Add and jump to next word" })
+		vim.keymap.set({ "n", "v" }, "<m-s>", function() mc.skipCursor("*") end, { desc = "MultiCursor - Add and jump to next word" })
 
 		-- Rotate the main cursor.
 		vim.keymap.set({ "n", "v" }, "<m-left>", mc.nextCursor, { desc = "MC - Rotate left the main cursor" })
@@ -75,6 +74,5 @@ return{
 		-- vim.cmd.hi("link", "MultiCursorDisabledCursor", "Visual")
 		-- vim.cmd.hi("link", "MultiCursorDisabledVisual", "Visual")
 
-    return config
 	end,
 }

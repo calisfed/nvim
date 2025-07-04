@@ -58,7 +58,7 @@ return
     }
 
     ---@diagnostic disable-next-line: missing-fields
-    local config = {
+    require('nvim-treesitter').setup {
 
       modules = {},
 
@@ -148,6 +148,5 @@ return
         --       },
       },
     }
-    return config
   end,
 }

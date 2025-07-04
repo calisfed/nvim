@@ -1,7 +1,7 @@
 return {
   "caliguIa/zendiagram.nvim",
   lazy = false,
-  opts  = function ()
+  config  = function ()
     -- require('zendiagram').setup(
     --   {
     -- -- Below are the default values

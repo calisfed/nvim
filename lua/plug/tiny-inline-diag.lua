@@ -1,12 +1,12 @@
 return {
-    enabled = false,
+  enabled = false,
   "rachartier/tiny-inline-diagnostic.nvim",
   event = "VeryLazy", -- Or `LspAttach`
-  priority = 1000, -- needs to be loaded in first
+  priority = 1000,    -- needs to be loaded in first
   config = function()
     vim.diagnostic.config({ virtual_text = false })
     -- Default configuration
-local config = {
+    require("tiny-inline-diagnostic").setup({
       signs = {
         left = "",
         right = "",
@@ -23,7 +23,7 @@ local config = {
         hint = "DiagnosticHint",
         arrow = "NonText",
         background = "CursorLine", -- Can be a highlight or a hexadecimal color (#RRGGBB)
-        mixing_color = "None", -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
+        mixing_color = "None",     -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
       },
       blend = {
         factor = 0.27,
@@ -89,7 +89,6 @@ local config = {
         -- does not works in your configuration, you may try to tweak it.
         overwrite_events = nil,
       },
-    }
-    return config
+    })
   end
 }

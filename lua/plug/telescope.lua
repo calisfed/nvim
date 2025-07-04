@@ -73,7 +73,7 @@ return {
 
         -- sorting_strategy = 'descending', -- default is 'descending'
         layout_config = {
-          bottom_pane = { height = 0.35, preview_cutoff = 20, prompt_position = "top" },
+          bottom_pane = { height = 0.4, preview_cutoff = 20, prompt_position = "top" },
           -- center = { height = 0.4, preview_cutoff = 40, prompt_position = "top", width = 0.5 },
           -- cursor = { height = 0.9, preview_cutoff = 40, width = 0.8 },
           -- horizontal = { height = 0.9, preview_cutoff = 120, prompt_position = "bottom", width = 0.8 },

@@ -11,8 +11,8 @@ return {
 		{ "<leader>nf", "<cmd>Telekasten find_notes<cr>", desc = "Telekasten find notes" },
 		{ "<leader>nn", "<cmd>Telekasten new_note<cr>", desc = "Telekasten new notes" }
 	},
-	opts = function()
-local config = {
+	config = function()
+		require('telekasten').setup({
 			home = vim.fn.expand("~/notes"),
         -- if true, telekasten will be enabled when opening a note within the configured home
         take_over_my_home = true,
@@ -144,12 +144,11 @@ local config = {
         -- Specify a clipboard program to use
         clipboard_program = "", -- xsel, xclip, wl-paste, osascript
 
-		}
+		})
 		vim.keymap.set("n", "<leader>np", "<cmd>Telekasten panel<cr>", { silent = true, desc = "Telekasten panel" })
 		vim.keymap.set("n", "<leader>nf", "<cmd>Telekasten find_notes<cr>", { silent = true, desc = "Telekasten find notes" })
 		vim.keymap.set("n", "<leader>nt", "<cmd>Telekasten show_tags<cr>", { silent = true, desc = "Telekasten show tags" })
 		vim.keymap.set("n", "<leader>ng", "<cmd>Telekasten search_notes<cr>", { silent = true, desc = "Telekasten grep notes" })
 		vim.keymap.set("n", "<leader>nc", "<cmd>Telekasten show_calendar<cr>", { silent = true, desc = "Telekasten calendar" })
-    return config
 	end
 }

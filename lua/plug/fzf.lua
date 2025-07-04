@@ -4,7 +4,8 @@ return {
   'ibhagwan/fzf-lua',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-local config = {
+    -- calling `setup` is optional for customization
+    require('fzf-lua').setup {
       keymap = {
         builtin = {
           ["<Esc>"] = "abort",
@@ -80,6 +81,5 @@ local config = {
     vim.keymap.set({ 'n', 'v' }, '<leader>cD', '<cmd>FzfLua lsp_document_diagnostics<cr>', { desc = 'Code list Diagnostics' })
     vim.keymap.set({ 'n', 'v' }, 'gd', '<cmd>FzfLua lsp_definitions<cr>', { desc = 'Goto Definition' })
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>FzfLua lsp_code_actions<cr>', { desc = 'Code Action' })
-    return config
   end,
 }

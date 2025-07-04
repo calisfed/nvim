@@ -3,8 +3,7 @@ return {
 		"folke/lazydev.nvim",
 		enabled = false,
 		ft = "lua", -- only load on lua files
-		opts = function ()
-      local config = {
+		opts = {
 			library = {
 				-- Library paths can be absolute
 				-- "~/projects/my-awesome-lib",
@@ -39,9 +38,7 @@ return {
 			-- enabled = function(root_dir)
 			--   return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
 			-- end,
-		}
-    return config
-  end
+		},
 	},
 	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 	-- {                                       -- optional cmp completion source for require statements and module annotations
@@ -56,8 +53,7 @@ return {
 	-- },
 	{ -- optional blink completion source for require statements and module annotations
 		"saghen/blink.cmp",
-		opts = function ()
-      local config = {
+		opts = {
 			sources = {
 				-- add lazydev to your completion providers
 				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
@@ -70,9 +66,7 @@ return {
 					},
 				},
 			},
-		}
-    return config
-  end
+		},
 	},
 	{ "folke/neodev.nvim",    enabled = false }, -- make sure to uninstall or disable neodev.nvim
 }

@@ -22,7 +22,7 @@ return {
 
     vim.g.lazygit_on_exit_callback = nil -- optional function callback when exiting lazygit (useful for example to refresh some UI elements after lazy git has made some changes)
     vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = "LazyGit" })
-    require("telescope").load_extension("lazygit")
+    -- require("telescope").load_extension("lazygit")
   end
 
 }

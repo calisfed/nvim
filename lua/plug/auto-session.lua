@@ -14,8 +14,8 @@ return {
   ---enables autocomplete for opts
   ---@module "auto-session"
   ---@type AutoSession.Config
-  opts = function()
-    local config = {
+  opts = {
+    {
       enabled = true,                                          -- Enables/disables auto creating, saving and restoring
       -- root_dir = vim.fn.stdpath "data" .. "/sessions/", -- Root dir where sessions will be stored
       auto_save = true,                                        -- Enables/disables auto saving session on exit
@@ -58,6 +58,5 @@ return {
         },
       },
     }
-    return config
-  end
+  }
 }

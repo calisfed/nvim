@@ -1,11 +1,10 @@
 return {
-  enabled = false,
-  lazy = false,
-  "cksidharthan/mentor.nvim",
-  config = function()
-    local config = {
-      -- your config here
-    }
-    return config
-  end,
+	enabled = false,
+	lazy = false,
+	"cksidharthan/mentor.nvim",
+	config = function()
+		require("mentor").setup({
+			-- your config here
+		})
+	end,
 }
