@@ -18,18 +18,9 @@ return {
     end
 
     function from_git_root()
-      local opts = {}
       if is_git_repo() then
-        opts = {
-          cwd = get_git_root(),
-          sort = {
-            fields = {
-              "left", "score:desc",
-            }
-          }
-        }
+          return get_git_root()
       end
-      return opts
     end
 
     require('snacks').setup({
@@ -44,18 +35,41 @@ return {
             fields = { "left", "score:desc", },
           },
           confirm = function(picker, item)
+            print(item.item)
             picker:close()
-            if item then
-              vim.schedule(function()
-                -- vim.cmd("edit " .. item)
-                Snacks.picker.select(item)
-              end)
-            end
+            -- if item then
+            --   vim.schedule(function()
+            --     -- vim.cmd("edit " .. item)
+            --     Snacks.picker.select(item)
+            --   end)
+            -- end
           end,
         }
       },
       explorer = {},
     })
+
+    function find_files()
+      require('snacks').picker.files(
+        {
+          confirm = function(picker, item)
+            picker:close()
+            -- print(vim.inspect(item))
+            if item then
+              vim.schedule(function()
+                vim.cmd("edit " .. item._path)
+              end)
+            end
+          end,
+          cwd = from_git_root(),
+          sort = {
+            fields = {
+              "left", "score:desc",
+            }
+          }
+        })
+    end
+
 
     -- vim.keymap.set({ "n" }, "<leader><space>", function() require 'snacks'.picker.smart() end, { desc = "Smart Find Files" })
     vim.keymap.set({ "n" }, "<leader>sb", function() require 'snacks'.picker.buffers() end, { desc = "Buffers" })
@@ -65,7 +79,7 @@ return {
     vim.keymap.set({ "n" }, "<leader>E", function() require 'snacks'.explorer() end, { desc = "File Explorer" })
     -- find
     vim.keymap.set({ "n" }, "<leader>sn", function() require 'snacks'.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
-    vim.keymap.set({ "n" }, "<leader>sf", function() require 'snacks'.picker.files(from_git_root()) end, { desc = "Find Files" })
+    vim.keymap.set({ "n" }, "<leader>sf", function() find_files() end, { desc = "Find Files" })
     vim.keymap.set({ "n" }, "<leader>sg", function() require 'snacks'.picker.git_files() end, { desc = "Find Git Files" })
     vim.keymap.set({ "n" }, "<leader>sp", function() require 'snacks'.picker.projects() end, { desc = "Projects" })
     vim.keymap.set({ "n" }, "<leader>sr", function() require 'snacks'.picker.recent() end, { desc = "Recent" })
@@ -110,7 +124,7 @@ return {
     -- vim.keymap.set({"n"}, "gr",              function() require'snacks'.picker.lsp_references() end,                                 nowait = true,{                     desc = "References" })
     -- vim.keymap.set({ "n" }, "gI", function() require 'snacks'.picker.lsp_implementations() end, { desc = "Goto Implementation" })
     -- vim.keymap.set({ "n" }, "gy", function() require 'snacks'.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
-    vim.keymap.set({ "n" }, "<leader>ss", function() require 'snacks'.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-    vim.keymap.set({ "n" }, "<leader>sS", function() require 'snacks'.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+    -- vim.keymap.set({ "n" }, "<leader>ss", function() require 'snacks'.picker.lsp_symbols() end, { desc = "LSP Symbols" })
+    -- vim.keymap.set({ "n" }, "<leader>sS", function() require 'snacks'.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
   end
 }

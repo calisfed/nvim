@@ -7,7 +7,7 @@ return {
   config = function()
     local theta = require 'alpha.themes.theta'
     local dashboard = require("alpha.themes.dashboard")
-    logo1 = [[
+    local logo1 = [[
           ████ ██████           █████      ██
          ███████████             █████ 
          █████████ ███████████████████ ███   ███████████

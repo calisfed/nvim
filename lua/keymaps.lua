@@ -47,7 +47,7 @@ vim.keymap.set({ 'n', 'v' }, '[b', '<cmd>bprevious<cr>', { desc = '[K] Buffer pr
 -- vim.keymap.set({ 'n', 'v' }, '<leader>bd', '<cmd>bdelete<cr>', { desc = '[K] Buffer delete' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>bw', utils.bufwipe, { desc = '[K] Wipe buffers' })
 vim.keymap.set({ 'n', 'v' }, '<C-w>b', utils.bufwipe, { desc = '[K] Wipe buffer' })
-vim.keymap.set({ 'n', 'v' }, '<C-c>', '<cmd>bdelete<cr>', { desc = '[K] Buffer delete' })
+vim.keymap.set({ 'n', 'v' }, '<C-c>', '<cmd>lua require"personal.bufdelete".delete()<cr>', { desc = '[K] Buffer delete' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>td', utils.toggle.diagnostic, { desc = '[K] Toggle Diagnostic' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>tl', '<cmd>lua require("base.lsp_lines").toggle()<cr>', { desc = '[K] Toggle lsp_lines' })

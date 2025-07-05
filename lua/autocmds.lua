@@ -634,3 +634,15 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 --   end
 -- })
 
+
+-- Auto command to stop LSP when UndoTree is opened
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype == "undotree" then
+      for _, client in pairs(vim.lsp.get_active_clients()) do
+        vim.lsp.stop_client(client.id)
+      end
+    end
+  end,
+})

@@ -39,11 +39,12 @@ return {
   { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
   { enabled = true,  'danymat/neogen', },                      -- annotation toolkit
   { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
-  { enabled = true,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
+  { enabled = false,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
   { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
   { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
-  { enabled = true,  'jiaoshijie/undotree', },                 -- undo, but tree
+  { enabled = false,  'jiaoshijie/undotree', },                 -- undo, but tree
+  { enabled = true,  'mbbill/undotree', },                 -- undo, but tree
   { enabled = true,  'kawre/neotab.nvim', },                   -- tabout of parantheses
   { enabled = true,  'lambdalisue/suda.vim', },                -- auto read/write file with sudo
   { enabled = true,  'leath-dub/snipe.nvim', },                -- fast buffer select

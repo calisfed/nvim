@@ -125,6 +125,11 @@ return {
       ui = {
         border = 'rounded',
       },
+      icons = {
+        package_installed = "✓",
+        package_pending = "➜",
+        package_uninstalled = "✗"
+      }
     }
     )
     require('mason-lspconfig').setup({
@@ -134,6 +139,7 @@ return {
       },
       automatic_enable = { exclude = { 'rusc_analyzer', 'ts_ls', 'typos_lsp', 'harper-ls', } }
     })
+
     for server_name, server_config in pairs(servers) do
       vim.lsp.config(server_name, server_config)
     end
