@@ -121,13 +121,13 @@ return {
                 end
               },
             },
-            snippets = {
-              opts = {
-                search_paths = {
-                  "~/.config/nvim/snippets/"
-                }
-              }
-            },
+            -- snippets = {
+            --   opts = {
+            --     search_paths = {
+            --       "$HOME/.config/nvim/snippets/"
+            --     }
+            --   }
+            -- },
             -- ccb = {
             --   name = "ccb",
             --   module = "dev.ccb"

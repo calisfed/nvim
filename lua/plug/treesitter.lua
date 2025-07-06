@@ -65,7 +65,7 @@ return
       sync_install = true,
       ignore_install = {},
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 'c', 'lua', 'python', 'vimdoc', 'vim', 'fish', 'rasi', 'bash', 'zig' },
+      ensure_installed = { 'c', 'lua', 'python', 'vimdoc', 'vim', 'bash', 'zig' },
       -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
       auto_install = true,
 

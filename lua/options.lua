@@ -89,7 +89,8 @@ vim.wo.list = false
 
 -- This might replace nvim-ufo
 -- https://www.reddit.com/r/neovim/comments/1gi7ush/treesitter_is_amazing/
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldmethod = 'syntax'
+-- vim.o.foldmethod = 'expr'
+-- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 

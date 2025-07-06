@@ -65,56 +65,79 @@ return { -- Collection of various small independent plugins/modules
         goto_right = 'g]',
       },
     }
-    -- require('mini.clue').setup({
-    --   triggers = {
-    --     -- Leader triggers
-    --     { mode = 'n', keys = '<Leader>' },
-    --     { mode = 'x', keys = '<Leader>' },
 
-    --     -- Built-in completion
-    --     { mode = 'i', keys = '<C-x>' },
+    require('mini.clue').setup({
+      triggers = {
+        -- Leader triggers
+        { mode = 'n', keys = '<Leader>' },
+        { mode = 'x', keys = '<Leader>' },
 
-    --     -- `g` key
-    --     { mode = 'n', keys = 'g' },
-    --     { mode = 'x', keys = 'g' },
+        -- Built-in completion
+        { mode = 'i', keys = '<C-x>' },
 
-    --     -- Marks
-    --     { mode = 'n', keys = "'" },
-    --     { mode = 'n', keys = '`' },
-    --     { mode = 'x', keys = "'" },
-    --     { mode = 'x', keys = '`' },
+        -- `g` key
+        { mode = 'n', keys = 'g' },
+        { mode = 'x', keys = 'g' },
 
-    --     -- Registers
-    --     { mode = 'n', keys = '"' },
-    --     { mode = 'x', keys = '"' },
-    --     { mode = 'i', keys = '<C-r>' },
-    --     { mode = 'c', keys = '<C-r>' },
+        -- Marks
+        { mode = 'n', keys = "'" },
+        { mode = 'n', keys = '`' },
+        { mode = 'x', keys = "'" },
+        { mode = 'x', keys = '`' },
 
-    --     -- Window commands
-    --     { mode = 'n', keys = '<C-w>' },
+        -- Registers
+        { mode = 'n', keys = '"' },
+        { mode = 'x', keys = '"' },
+        { mode = 'i', keys = '<C-r>' },
+        { mode = 'c', keys = '<C-r>' },
 
-    --     -- `z` key
-    --     { mode = 'n', keys = 'z' },
-    --     { mode = 'x', keys = 'z' },
+        -- Window commands
+        { mode = 'n', keys = '<C-w>' },
 
-    --     -- Moving around
-    --     { mode = 'n', keys = '[' },
-    --     { mode = 'n', keys = ']' },
-    --   },
+        -- `z` key
+        { mode = 'n', keys = 'z' },
+        { mode = 'x', keys = 'z' },
 
-    --   clues = {
-    --     -- Enhance this by adding descriptions for <Leader> mapping groups
-    --     require 'mini.clue'.gen_clues.builtin_completion(),
-    --     require 'mini.clue'.gen_clues.g(),
-    --     require 'mini.clue'.gen_clues.marks(),
-    --     require 'mini.clue'.gen_clues.registers(),
-    --     require 'mini.clue'.gen_clues.windows(),
-    --     require 'mini.clue'.gen_clues.z(),
-    --   },
-    --   window = {
-    --     delay = 200,
-    --   }
-    -- })
+        -- Moving around
+        { mode = 'n', keys = '[' },
+        { mode = 'n', keys = ']' },
+
+
+      },
+
+      clues = {
+        -- Enhance this by adding descriptions for <Leader> mapping groups
+        require 'mini.clue'.gen_clues.builtin_completion(),
+        require 'mini.clue'.gen_clues.g(),
+        require 'mini.clue'.gen_clues.marks(),
+        require 'mini.clue'.gen_clues.registers(),
+        require 'mini.clue'.gen_clues.windows(),
+        require 'mini.clue'.gen_clues.z(),
+
+        { mode = 'n', keys = '<leader>c',  desc = '+Code' },
+        { mode = 'n', keys = '<leader>cg', desc = '+Goto' },
+        { mode = 'n', keys = '<leader>g',  desc = '+Git/Go' },
+        { mode = 'n', keys = '<leader>n',  desc = '+Notes' },
+        { mode = 'n', keys = '<leader>s',  desc = '+Searchs' },
+        { mode = 'n', keys = '<leader>sC', desc = '+Colors' },
+        { mode = 'n', keys = '<leader>sW', desc = '+Dict' },
+        { mode = 'n', keys = '<leader>t',  desc = '+Toggle' },
+
+        { mode = 'n', keys = '<C-w>',      desc = '+Window' },
+
+        -- `z` key
+        { mode = 'n', keys = 'z',          desc = '+Folds' },
+        { mode = 'x', keys = 'z',          desc = '+Folds' },
+
+        -- Moving around
+        { mode = 'n', keys = '[',          desc = '->Next' },
+        { mode = 'n', keys = ']',          desc = '<-Prev' },
+      },
+      window = {
+        delay = 200,
+      }
+    })
+
     require('mini.statusline').setup(
       {
         -- Content of statusline as functions which return statusline string. See

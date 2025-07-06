@@ -66,7 +66,7 @@ return {
   { enabled = false, 'altermo/ultimate-autopair.nvim' },       -- autopairs, replaced by mini.pair
   { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
   { enabled = false, 'emmanueltouzery/apidocs.nvim' },         -- devdocs.io integrated
-  { enabled = true, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
+  { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
   { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
   { enabled = false, 'kevinhwang91/nvim-ufo', },               -- fold
   { enabled = false, 'lewis6991/gitsigns.nvim', },             -- gitsigns
