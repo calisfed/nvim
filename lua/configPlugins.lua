@@ -19,9 +19,9 @@ return {
 
   -- Pickers
 
-  { enabled = true, 'nvim-telescope/telescope.nvim', }, -- lua fzf search
-  { enabled = false, 'folke/snacks.nvim' },              -- QoL plugins
-  { enabled = false, 'ibhagwan/fzf-lua', },              -- fzf search
+  { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
+  { enabled = false, 'folke/snacks.nvim' },             -- QoL plugins
+  { enabled = false, 'ibhagwan/fzf-lua', },             -- fzf search
 
   -- Plugins that many others require
 
@@ -39,12 +39,12 @@ return {
   { enabled = true,  'cksidharthan/mentor.nvim' },             -- random tips after open nvim
   { enabled = true,  'danymat/neogen', },                      -- annotation toolkit
   { enabled = true,  'echasnovski/mini.nvim', },               -- QoL plugins
-  { enabled = false,  'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
+  { enabled = false, 'folke/noice.nvim' },                     -- replace UI for messages, cmdline or popupmenu
   { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
   { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
-  { enabled = false,  'jiaoshijie/undotree', },                 -- undo, but tree
-  { enabled = true,  'mbbill/undotree', },                 -- undo, but tree
+  { enabled = false, 'jiaoshijie/undotree', },                 -- undo, but tree
+  { enabled = true,  'mbbill/undotree', },                     -- undo, but tree
   { enabled = true,  'kawre/neotab.nvim', },                   -- tabout of parantheses
   { enabled = true,  'lambdalisue/suda.vim', },                -- auto read/write file with sudo
   { enabled = true,  'leath-dub/snipe.nvim', },                -- fast buffer select
@@ -141,8 +141,9 @@ return {
   { enabled = false, 'obsidian-nvim/obsidian.nvim', },              -- Obsidian neovim
   { enabled = false, 'junegunn/limelight.vim', },                   -- hyper focus writing in neovim,highlight only the writing part
   { enabled = false, 'nvim-orgmode/orgmode', },                     -- USAGE organize, replaced by above plugins, use neorg
-  { enabled = false, "pxwg/latex-conceal.nvim", },                  -- faster latex conceal
-  { enabled = false, "lervag/vimtex" },                             -- for TEX writting
+  { enabled = false, 'pxwg/latex-conceal.nvim', },                  -- faster latex conceal
+  { enabled = false, 'lervag/vimtex' },                             -- for TEX writting
+  { enabled = false, 'Owen-Dechow/nvim_json_graph_view' },          -- Json graph view
 
   -- Eye candy plugins, turn on when bored
 
