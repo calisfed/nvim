@@ -103,14 +103,23 @@ return {
       },
       clangd = {
         cmd = {
+          -- see clangd --help-hidden
           "clangd",
+          "--background-index",
           -- "--compile-commands-dir=build",
-          -- "--clang-tidy",
-          -- "--completion-style=detailed",
+          "--clang-tidy",
+          "--completion-style=bundled", -- bundled, detailed
           -- "--std=c99"
-          -- "--header-insertion=never"
+          "--header-insertion=iwyu",    -- never
+          -- "--cross-file-rename", --obsolete flag, no longer in used
         },
         filetypes = { "c" },
+        init_options = {
+          clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
+          usePlaceholders = true,
+          completeUnimported = true,
+          semanticHighlighting = true,
+        }
       },
       -- htmx = {},
       -- },
@@ -121,7 +130,7 @@ return {
       }
     }
     --
-    require('mason').setup({ui = { border = 'single', }, icons = { package_installed = "✓", package_pending = "➜", package_uninstalled = "✗" }})
+    require('mason').setup({ ui = { border = 'single', }, icons = { package_installed = "✓", package_pending = "➜", package_uninstalled = "✗" } })
 
     require('mason-lspconfig').setup({
       ensure_installed = {
