@@ -3,6 +3,7 @@ vim.g.maplocalleader = ' '
 vim.g.suda_smart_edit = true
 vim.opt.guicursor = 'n-v-c:block,i-ci-ve:ver100/,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
 vim.opt.cursorline = true -- highlight the current line
+vim.opt.cursorlineopt = "screenline"
 vim.opt.cursorcolumn = false
 
 vim.opt.undofile = true
@@ -18,15 +19,15 @@ vim.opt.linebreak = true      -- Wrap long lines at a character in 'breakat'
 -- vim.opt.textwidth = 80        -- Maximum width of text that is being inserted
 -- vim.cmd 'set fo-=1tcro'       -- :help fo-table
 
-vim.opt.showtabline = 1                          -- 0 for no show, 1 shows if more than 1 tab, 2 always shows
-vim.opt.tabstop = 2                              -- Insert 2 spaces for a tab
-vim.opt.softtabstop = 2                          -- Number of spaces tabs count for while editing
-vim.opt.shiftwidth = 2                           -- the number of spaces inserted for each indentation
-vim.opt.expandtab = true                         -- convert tabs to spaces
-vim.opt.smartindent = true                       -- Makes indenting smart
+vim.opt.showtabline = 1    -- 0 for no show, 1 shows if more than 1 tab, 2 always shows
+vim.opt.tabstop = 2        -- Insert 2 spaces for a tab
+vim.opt.softtabstop = 2    -- Number of spaces tabs count for while editing
+vim.opt.shiftwidth = 2     -- the number of spaces inserted for each indentation
+vim.opt.expandtab = true   -- convert tabs to spaces
+vim.opt.smartindent = true -- Makes indenting smart
 
-vim.opt.signcolumn = 'yes'                       -- Always show the signcolumn
-vim.opt.foldcolumn = '1'                         -- '0' is not bad
+vim.opt.signcolumn = 'yes' -- Always show the signcolumn
+vim.opt.foldcolumn = '1'   -- '0' is not bad
 -- vim.opt.foldlevel = 99                           -- Using ufo provider need a large value, feel free to decrease the value
 -- vim.opt.foldlevelstart = 99                      -- Using ufo provider need a large value, feel free to decrease the value
 vim.opt.foldenable = true                        -- Enable folding
@@ -35,7 +36,7 @@ vim.opt.hlsearch = false                         -- Highlight on search
 vim.opt.incsearch = true                         -- While typing a search command, show where the pattern matches
 
 vim.opt.conceallevel = 0                         -- so that `` is visible in markdown files
-vim.opt.concealcursor ='v'                   -- so that `` is visible in markdown files
+vim.opt.concealcursor = 'v'                      -- so that `` is visible in markdown files
 -- vim.opt.formatoptions = vim.opt.fo:gsub('cro','') -- Avoid comments to continue on new lines
 vim.opt.updatetime = 200                         -- Faster completion
 vim.opt.ttimeoutlen = 5
@@ -89,8 +90,10 @@ vim.wo.list = false
 
 -- This might replace nvim-ufo
 -- https://www.reddit.com/r/neovim/comments/1gi7ush/treesitter_is_amazing/
-vim.o.foldmethod = 'syntax'
+-- vim.o.foldmethod = 'syntax'
 -- vim.o.foldmethod = 'expr'
 -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

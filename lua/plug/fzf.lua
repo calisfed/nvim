@@ -6,51 +6,51 @@ return {
   config = function()
     -- calling `setup` is optional for customization
     require('fzf-lua').setup {
-      { 'ivy' },
+      { 'telescope','ivy' },
       keymap = {
         -- Below are the default binds, setting any value in these tables will override
         -- the defaults, to inherit from the defaults change [1] from `false` to `true`
-        builtin = {
-          -- neovim `:tmap` mappings for the fzf win
-          -- true,        -- uncomment to inherit all the below in your custom config
-          ["<Esc>"]      = 'abort',
-          ["<M-Esc>"]    = "hide", -- hide fzf-lua, `:FzfLua resume` to continue
-          ["<F1>"]       = "toggle-help",
-          ["<F2>"]       = "toggle-fullscreen",
-          -- Only valid with the 'builtin' previewer
-          ["<F3>"]       = "toggle-preview-wrap",
-          ["<F4>"]       = "toggle-preview",
-          -- Rotate preview clockwise/counter-clockwise
-          ["<F5>"]       = "toggle-preview-ccw",
-          ["<F6>"]       = "toggle-preview-cw",
-          -- `ts-ctx` binds require `nvim-treesitter-context`
-          ["<F7>"]       = "toggle-preview-ts-ctx",
-          ["<F8>"]       = "preview-ts-ctx-dec",
-          ["<F9>"]       = "preview-ts-ctx-inc",
-          ["<S-Left>"]   = "preview-reset",
-          ["<S-down>"]   = "preview-page-down",
-          ["<S-up>"]     = "preview-page-up",
-          ["<M-S-down>"] = "preview-down",
-          ["<M-S-up>"]   = "preview-up",
-        },
-        fzf = {
-          -- fzf '--bind=' options
-          -- true,        -- uncomment to inherit all the below in your custom config
-          ["ctrl-z"]     = "abort",
-          ["ctrl-u"]     = "unix-line-discard",
-          ["ctrl-f"]     = "half-page-down",
-          ["ctrl-b"]     = "half-page-up",
-          ["ctrl-a"]     = "beginning-of-line",
-          ["ctrl-e"]     = "end-of-line",
-          ["alt-a"]      = "toggle-all",
-          ["alt-g"]      = "first",
-          ["alt-G"]      = "last",
-          -- Only valid with fzf previewers (bat/cat/git/etc)
-          ["f3"]         = "toggle-preview-wrap",
-          ["f4"]         = "toggle-preview",
-          ["shift-down"] = "preview-page-down",
-          ["shift-up"]   = "preview-page-up",
-        },
+        -- builtin = {
+        --   -- neovim `:tmap` mappings for the fzf win
+        --   -- true,        -- uncomment to inherit all the below in your custom config
+        --   ["<Esc>"]      = 'abort',
+        --   ["<M-Esc>"]    = "hide", -- hide fzf-lua, `:FzfLua resume` to continue
+        --   ["<F1>"]       = "toggle-help",
+        --   ["<F2>"]       = "toggle-fullscreen",
+        --   -- Only valid with the 'builtin' previewer
+        --   ["<F3>"]       = "toggle-preview-wrap",
+        --   ["<F4>"]       = "toggle-preview",
+        --   -- Rotate preview clockwise/counter-clockwise
+        --   ["<F5>"]       = "toggle-preview-ccw",
+        --   ["<F6>"]       = "toggle-preview-cw",
+        --   -- `ts-ctx` binds require `nvim-treesitter-context`
+        --   ["<F7>"]       = "toggle-preview-ts-ctx",
+        --   ["<F8>"]       = "preview-ts-ctx-dec",
+        --   ["<F9>"]       = "preview-ts-ctx-inc",
+        --   ["<S-Left>"]   = "preview-reset",
+        --   ["<C-d>"]   = "preview-page-down",
+        --   ["<C-u>"]     = "preview-page-up",
+        --   -- [""] = "preview-down",
+        --   -- ["<M-S-up>"]   = "preview-up",
+        -- },
+        -- fzf = {
+        --   -- fzf '--bind=' options
+        --   -- true,        -- uncomment to inherit all the below in your custom config
+        --   ["ctrl-z"]     = "abort",
+        --   ["ctrl-u"]     = "unix-line-discard",
+        --   ["ctrl-f"]     = "half-page-down",
+        --   ["ctrl-b"]     = "half-page-up",
+        --   ["ctrl-a"]     = "beginning-of-line",
+        --   ["ctrl-e"]     = "end-of-line",
+        --   ["alt-a"]      = "toggle-all",
+        --   ["alt-g"]      = "first",
+        --   ["alt-G"]      = "last",
+        --   -- Only valid with fzf previewers (bat/cat/git/etc)
+        --   ["f3"]         = "toggle-preview-wrap",
+        --   ["f4"]         = "toggle-preview",
+        --   ["shift-down"] = "preview-page-down",
+        --   ["shift-up"]   = "preview-page-up",
+        -- },
       },
       previewers = {
         builtin = {
@@ -117,9 +117,9 @@ return {
     vim.keymap.set({ 'n', 'v' }, '<leader>sk', '<cmd>FzfLua keymaps<CR>', { desc = 'Search Keymaps' })
     -- vim.keymap.set({ 'n', 'v' }, '<leader>ss', '<cmd>FzfLua files<CR>', { desc = 'Search Files' })
     vim.keymap.set({ 'n', 'v' }, '<leader>sf', function() require('fzf-lua').files(from_git_root()) end, { desc = 'Search Files' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>sg', function() require('fzf-lua').live_grep(from_git_root()) end, { desc = 'Search Files' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>sw', function() require('fzf-lua').grep_cword(from_git_root()) end, { desc = 'Search Files' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>sG', '<cmd>FzfLua git_files<CR>', { desc = 'Search Files' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>sg', function() require('fzf-lua').live_grep(from_git_root()) end, { desc = 'Search Grep' })
+    -- vim.keymap.set({ 'n', 'v' }, '<leader>sw', function() require('fzf-lua').grep_cword(from_git_root()) end, { desc = 'Search cword' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>sG', '<cmd>FzfLua git_files<CR>', { desc = 'Search Git files' })
     -- vim.keymap.set({ 'n', 'v' }, '<leader>sw', '<cmd>FzfLua grep_cword<CR>', { desc = 'Search current Word' })
     -- vim.keymap.set({ 'n', 'v' }, '<leader>sg', '<cmd>FzfLua live_grep<CR>', { desc = 'Search by Grep' })
     vim.keymap.set({ 'n', 'v' }, '<leader>sd', '<cmd>FzfLua diagnostics_document<cr>', { desc = 'Search Diagnostics' })
@@ -128,11 +128,11 @@ return {
     -- vim.keymap.set({ 'n', 'v' }, '<leader><leader>', '<cmd>FzfLua buffers<cr>', { desc = '  Find existing buffers' })
     vim.keymap.set({ 'n', 'v' }, '<leader>sn', '<cmd>FzfLua files cwd=$HOME/.config/nvim/<CR>', { desc = 'Search Neovim files' })
     vim.keymap.set({ 'n', 'v' }, '<leader>sa', '<cmd>FzfLua<cr>', { desc = 'All search' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>cd', '<cmd>FzfLua lsp_definitions<cr>', { desc = 'Code go to Definitions' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>ct', '<cmd>FzfLua lsp_type_definitions<cr>', { desc = 'Code go to Type definitions' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>cr', '<cmd>FzfLua lsp_references<cr>', { desc = 'Code go to References' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>cD', '<cmd>FzfLua lsp_document_diagnostics<cr>', { desc = 'Code list Diagnostics' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>scd', '<cmd>FzfLua lsp_definitions<cr>', { desc = 'Code go to Definitions' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>sct', '<cmd>FzfLua lsp_type_definitions<cr>', { desc = 'Code go to Type definitions' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>scr', '<cmd>FzfLua lsp_references<cr>', { desc = 'Code go to References' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>scD', '<cmd>FzfLua lsp_document_diagnostics<cr>', { desc = 'Code list Diagnostics' })
     vim.keymap.set({ 'n', 'v' }, 'gd', '<cmd>FzfLua lsp_definitions<cr>', { desc = 'Goto Definition' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>FzfLua lsp_code_actions<cr>', { desc = 'Code Action' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>sca', '<cmd>FzfLua lsp_code_actions<cr>', { desc = 'Code Action' })
   end,
 }

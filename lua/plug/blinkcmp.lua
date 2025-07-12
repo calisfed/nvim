@@ -54,7 +54,7 @@ return {
       },
       appearance = { use_nvim_cmp_as_default = true, nerd_font_variant = 'mono' },
       completion = {
-        keyword = { range = 'prefix' },   -- 'prefix' or 'full'
+        keyword = { range = 'prefix' }, -- 'prefix' or 'full'
         trigger = {
           show_on_accept_on_trigger_character = false,
           show_on_backspace_in_keyword = true,
@@ -62,14 +62,28 @@ return {
 
         },
         list = {
-          max_items = 200,   -- default 200
+          max_items = 200, -- default 200
           selection = { auto_insert = true, },
         },
         menu = {
           border = 'single',
           draw = {
             treesitter = { "lsp" },
-            columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
+            columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'source_name' } },
+            components = {
+              kind_icon = {
+                text = function(ctx)
+                  if ctx.source_id == 'cmdline' then return end
+                  return ctx.kind_icon .. ctx.icon_gap
+                end,
+              },
+              source_name = {
+                text = function(ctx)
+                  if ctx.source_id == 'cmdline' then return end
+                  return ctx.source_name:sub(1, 4)
+                end,
+              },
+            },
           },
         },
         documentation = { auto_show = true, auto_show_delay_ms = 100, window = { border = 'single' } },
@@ -81,7 +95,7 @@ return {
         window = {
           border = 'single',
           show_documentation = true,
-          direction_priority = { 's' },   -- {'s'} | {'n'}
+          direction_priority = { 's' }, -- {'s'} | {'n'}
         },
       },
       cmdline = {

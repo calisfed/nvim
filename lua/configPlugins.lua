@@ -21,7 +21,7 @@ return {
 
   { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
   { enabled = false, 'folke/snacks.nvim' },             -- QoL plugins
-  { enabled = false, 'ibhagwan/fzf-lua', },             -- fzf search
+  { enabled = false, 'ibhagwan/fzf-lua', },             -- fzf search, results is not consistent with options i provided
 
   -- Plugins that many others require
 
