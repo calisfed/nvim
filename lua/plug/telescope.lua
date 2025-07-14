@@ -65,7 +65,7 @@ return {
 
 
 
-    local image_preview = require 'personal.image_telescope'.telescope_image_preview()
+    -- local image_preview = require 'personal.image_telescope'.telescope_image_preview()
 
     -- require('telescope').setup {
     --   defaults = require('telescope.themes').get_ivy({
@@ -186,7 +186,6 @@ return {
     --     },
     --   },
     -- }
-
 
     local Layout = require "telescope.pickers.layout"
     require("telescope").setup {
@@ -313,7 +312,7 @@ return {
             fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true,    -- override the file sorter
-            case_mode = "respect_case",       -- or "ignore_case" or "respect_case"
+            case_mode = "respect_case",     -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
           media_files = {
@@ -482,7 +481,8 @@ return {
       if is_git_repo() then
         opts = {
           cwd = get_git_root(),
-          sorter = require('telescope.sorters').get_generic_fuzzy_sorter(),
+
+          -- sorter = require('telescope.sorters').get_generic_fuzzy_sorter(),
           -- sorter = require('telescope.sorters').get_fuzzy_file()
           -- sorter = get_rgfs(),
           -- tiebreak = function(current_entry, existing_entry, prompt)
