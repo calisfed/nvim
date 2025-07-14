@@ -20,7 +20,7 @@ return {
   -- Pickers
 
   { enabled = false, 'nvim-telescope/telescope.nvim', }, -- lua fzf search
-  { enabled = false, 'folke/snacks.nvim' },              -- QoL plugins
+  { enabled = true, 'folke/snacks.nvim' },              -- QoL plugins
   { enabled = false, 'ibhagwan/fzf-lua', },              -- fzf search, results is not consistent with options i provided
 
   -- Plugins that many others require
@@ -31,7 +31,7 @@ return {
 
   -- QoL
   { enabled = false, 'kylechui/nvim-surround' },               -- Surround, currently not in use cause mini.surround and nvim-ts-autotag
-  { enabled = true,  'kdheepak/lazygit.nvim' },                -- Git integration
+  { enabled = false,  'kdheepak/lazygit.nvim' },                -- Git integration
   { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
   { enabled = true,  'HawkinsT/pathfinder.nvim', },            -- enhanced gf gF gx
   { enabled = false, 'NeogitOrg/neogit' },                     -- Git integration

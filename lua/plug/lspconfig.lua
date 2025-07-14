@@ -101,6 +101,21 @@ return {
           }
         }
       },
+      ccls = {
+        cmd = {
+          "ccls"
+        },
+        init_options = {
+          compilationDatabaseDirectory = "build",
+          index = {
+            threads = 0,
+          },
+          clang = {
+            excludeArgs = { "-frounding-math" },
+          },
+          filetypes = { "c" }
+        },
+      },
       clangd = {
         cmd = {
           -- see clangd --help-hidden
@@ -108,14 +123,14 @@ return {
           "--background-index",
           -- "--compile-commands-dir=build",
           "--clang-tidy",
-          "--completion-style=bundled", -- bundled, detailed
+          "--completion-style=bundled",         -- bundled, detailed
           -- "--std=c99"
-          "--header-insertion=iwyu",    -- never
+          "--header-insertion=iwyu",            -- never
           -- "--cross-file-rename", --obsolete flag, no longer in used
         },
         filetypes = { "c" },
         init_options = {
-          clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
+          clangdFileStatus = true,         -- Provides information about activity on clangd’s per-file worker thread
           usePlaceholders = true,
           completeUnimported = true,
           semanticHighlighting = true,
@@ -128,15 +143,15 @@ return {
       html = {
         filetypes = { "markdown", "html", "javascript", "typescript" },
         settings = {
-            format = {
-              templating = true,
-              -- wrapLineLength = 120,
-              wrapAttributes = 'auto',
-            },
-            hover = {
-              documentation = true,
-              references = true,
-            },
+          format = {
+            templating = true,
+            -- wrapLineLength = 120,
+            wrapAttributes = 'auto',
+          },
+          hover = {
+            documentation = true,
+            references = true,
+          },
         }
       },
       superhtml = {

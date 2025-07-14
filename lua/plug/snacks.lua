@@ -7,90 +7,82 @@ return {
     -- Top Pickers & Explorer
   },
   config = function()
-    function is_git_repo()
+    local function is_git_repo()
       vim.fn.system 'git rev-parse --is-inside-work-tree'
       return vim.v.shell_error == 0
     end
 
-    function get_git_root()
+    local function get_git_root()
       local dot_git_path = vim.fn.finddir('.git', '.;')
       return vim.fn.fnamemodify(dot_git_path, ':h')
     end
 
-    function from_git_root()
+    local function from_git_root()
       if is_git_repo() then
-          return get_git_root()
+        return get_git_root()
       end
     end
 
     require('snacks').setup({
-      -- sort = {
-      -- default sort is by score, text length and index
-      -- fields = { "left","score:desc","#text","index" },
-      -- },
+      bigfile = { enabled = true },
       picker = {
-        files = {
-          auto_confirm = false,
-          sort = {
-            fields = { "left", "score:desc", },
+        layout = {
+          preset = 'ivy',
+        },
+        win = {
+          input = {
+            keys = {
+              ["<Esc>"] = { "close", mode = { "n", "i" } },
+            },
           },
-          confirm = function(picker, item)
-            print(item.item)
-            picker:close()
-            -- if item then
-            --   vim.schedule(function()
-            --     -- vim.cmd("edit " .. item)
-            --     Snacks.picker.select(item)
-            --   end)
-            -- end
-          end,
-        }
+        },
       },
       explorer = {},
+
     })
 
     function find_files()
-      require('snacks').picker.files(
-        {
-          confirm = function(picker, item)
-            picker:close()
-            -- print(vim.inspect(item))
-            if item then
-              vim.schedule(function()
-                vim.cmd("edit " .. item._path)
-              end)
-            end
-          end,
-          cwd = from_git_root(),
-          sort = {
-            fields = {
-              "left", "score:desc",
-            }
+      require('snacks').picker.files({
+        confirm = function(picker, item)
+          picker:close()
+          -- print(vim.inspect(item))
+          if item then
+            vim.schedule(function()
+              vim.cmd("edit " .. item._path)
+            end)
+          end
+        end,
+        cwd = from_git_root(),
+        sort = {
+          fields = {
+            "left", "score:desc",
           }
-        })
+        }
+      })
     end
-
 
     -- vim.keymap.set({ "n" }, "<leader><space>", function() require 'snacks'.picker.smart() end, { desc = "Smart Find Files" })
     vim.keymap.set({ "n" }, "<leader>sb", function() require 'snacks'.picker.buffers() end, { desc = "Buffers" })
-    vim.keymap.set({ "n" }, "<leader>sw", function() require 'snacks'.picker.grep() end, { desc = "Grep" })
+    vim.keymap.set({ "n" }, "<leader>sg", function() require 'snacks'.picker.grep() end, { desc = "Grep" })
     -- vim.keymap.set({ "n" }, "<leader>:", function() require 'snacks'.picker.command_history() end, { desc = "Command History" })
     -- vim.keymap.set({ "n" }, "<leader>sN", function() require 'snacks'.picker.notifications() end, { desc = "Notification History" })
     vim.keymap.set({ "n" }, "<leader>E", function() require 'snacks'.explorer() end, { desc = "File Explorer" })
     -- find
     vim.keymap.set({ "n" }, "<leader>sn", function() require 'snacks'.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
     vim.keymap.set({ "n" }, "<leader>sf", function() find_files() end, { desc = "Find Files" })
-    vim.keymap.set({ "n" }, "<leader>sg", function() require 'snacks'.picker.git_files() end, { desc = "Find Git Files" })
+    -- vim.keymap.set({ "n" }, "<leader>sg", function() require 'snacks'.picker.git_files() end, { desc = "Find Git Files" })
     vim.keymap.set({ "n" }, "<leader>sp", function() require 'snacks'.picker.projects() end, { desc = "Projects" })
     vim.keymap.set({ "n" }, "<leader>sr", function() require 'snacks'.picker.recent() end, { desc = "Recent" })
     -- git
-    vim.keymap.set({ "n" }, "<leader>gb", function() require 'snacks'.picker.git_branches() end, { desc = "Git Branches" })
-    vim.keymap.set({ "n" }, "<leader>gl", function() require 'snacks'.picker.git_log() end, { desc = "Git Log" })
-    vim.keymap.set({ "n" }, "<leader>gL", function() require 'snacks'.picker.git_log_line() end, { desc = "Git Log Line" })
-    vim.keymap.set({ "n" }, "<leader>gs", function() require 'snacks'.picker.git_status() end, { desc = "Git Status" })
-    vim.keymap.set({ "n" }, "<leader>gS", function() require 'snacks'.picker.git_stash() end, { desc = "Git Stash" })
-    vim.keymap.set({ "n" }, "<leader>gd", function() require 'snacks'.picker.git_diff() end, { desc = "Git Diff (Hunks)" })
-    vim.keymap.set({ "n" }, "<leader>gf", function() require 'snacks'.picker.git_log_file() end, { desc = "Git Log File" })
+
+    vim.keymap.set({ "n" }, "<leader>gg", function() require 'snacks'.lazygit() end, { desc = "Lazygit" })
+    -- vim.keymap.set({ "n" }, "<leader>gb", function() require 'snacks'.picker.git_branches() end, { desc = "Git Branches" })
+    -- vim.keymap.set({ "n" }, "<leader>gl", function() require 'snacks'.picker.git_log() end, { desc = "Git Log" })
+    -- vim.keymap.set({ "n" }, "<leader>gL", function() require 'snacks'.picker.git_log_line() end, { desc = "Git Log Line" })
+    -- vim.keymap.set({ "n" }, "<leader>gs", function() require 'snacks'.picker.git_status() end, { desc = "Git Status" })
+    -- vim.keymap.set({ "n" }, "<leader>gS", function() require 'snacks'.picker.git_stash() end, { desc = "Git Stash" })
+    -- vim.keymap.set({ "n" }, "<leader>gd", function() require 'snacks'.picker.git_diff() end, { desc = "Git Diff (Hunks)" })
+    -- vim.keymap.set({ "n" }, "<leader>gf", function() require 'snacks'.picker.git_log_file() end, { desc = "Git Log File" })
     -- Grep
     -- vim.keymap.set({ "n" }, "<leader>sb", function() require 'snacks'.picker.lines() end, { desc = "Buffer Lines" })
     -- vim.keymap.set({ "n" }, "<leader>sB", function() require 'snacks'.picker.grep_buffers() end, { desc = "Grep Open Buffers" })

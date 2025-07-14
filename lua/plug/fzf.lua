@@ -85,8 +85,9 @@ return {
         no_ignore  = true, -- respect ".gitignore"  by default
         -- prompt = "",
 
-        formatter  = "path.filename_first",
+        -- formatter  = "path.filename_first",
         cwd_prompt = false,
+        fd_opts    = [[--color=never --hidden --type f --type l --exclude .git]],
       },
       grep = {
         prompt = "Grep >"

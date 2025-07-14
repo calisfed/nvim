@@ -313,7 +313,7 @@ return {
             fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+            case_mode = "respect_case",       -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
           media_files = {
@@ -483,6 +483,7 @@ return {
         opts = {
           cwd = get_git_root(),
           sorter = require('telescope.sorters').get_generic_fuzzy_sorter(),
+          -- sorter = require('telescope.sorters').get_fuzzy_file()
           -- sorter = get_rgfs(),
           -- tiebreak = function(current_entry, existing_entry, prompt)
           --   return false
@@ -513,7 +514,7 @@ return {
     vim.keymap.set('n', '<leader>sWt', function() require('telescope').extensions.telescope_words.search_thesaurus_for_word_under_cursor() end, { desc = 'Search thesaurus' })
     vim.keymap.set('n', '<leader>su', function() require('telescope').extensions.undo.undo() end, { desc = 'Search thesaurus' })
     -- vim.keymap.set('n', '<leader>si', function () require('telescope').extensions.media_files.media_files() end, {desc = 'Search image'})
-    vim.keymap.set('n', '<leader>ss', function() require('telescope.builtin').builtin({ include_extensions = true }) end, { desc = 'Search Telescope' })
+    vim.keymap.set('n', '<leader>sa', function() require('telescope.builtin').builtin({ include_extensions = true }) end, { desc = 'Search Telescope' })
 
     -- See `:help telescope.builtin`
     -- local ut = require('personal.utils')

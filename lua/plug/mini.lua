@@ -208,45 +208,143 @@ return { -- Collection of various small independent plugins/modules
       hooks = { pre = function() end, post = function() end, },
     })
 
-    require('mini.pick').setup(
-    	{
-    		window = {
-    			config = function()
-    				local height = math.floor(0.618 * vim.o.lines)
-    				local width = math.floor(0.618 * vim.o.columns)
-    				return {
-    					anchor = 'NW',
-    					height = height,
-    					width = width,
-    					row = math.floor(0.5 * (vim.o.lines - height)),
-    					col = math.floor(0.5 * (vim.o.columns - width)),
-    				}
-    			end,
-    			prompt_caret = '▏',
-    			-- String to use as prefix in prompt
-    			prompt_prefix = '> ',
-    		}
-    	}
-    )
-    vim.keymap.set('n', '<leader>sh', "<cmd>Pick help<cr>", { desc = 'Search Help' })
-    vim.keymap.set('n', '<leader>sk', "<cmd>Pick keymaps<cr>", { desc = 'Search Keymaps' })
-    vim.keymap.set('n', '<leader>sf', "<cmd>lua MiniPick.builtin.files({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>", { desc = 'Search Files' })
-    vim.keymap.set('n', '<leader>sw', "<cmd>lua MiniPick.builtin.grep({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>", { desc = 'Grep current word' })
-    vim.keymap.set('n', '<leader>sg', "<cmd>lua MiniPick.builtin.grep_live({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>", { desc = 'Live grep' })
-    vim.keymap.set('n', '<leader>sb', "<cmd>Pick buffers<cr>", { desc = 'Search existing buffers' })
-    vim.keymap.set('n', '<leader>sd', "<cmd>Pick diagnostic<cr>", { desc = 'Search Diagnostics' })
-    vim.keymap.set('n', '<leader>sr', "<cmd>Pick resume<cr>", { desc = 'Search Resume' })
-    vim.keymap.set('n', '<leader>s.', "<cmd>Pick oldfiles<cr>", { desc = 'Search Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader>sR', "<cmd>Pick lsp scope='references'<cr>", { desc = 'Search References' })
-    vim.keymap.set('n', '<leader>sS', "<cmd>Pick lsp scope='workspace_symbol'<cr>", { desc = 'Search Workspace Symbol' })
-    vim.keymap.set('n', '<leader>sI', "<cmd>Pick lsp scope='implementation'<cr>", { desc = 'Search Implementation' })
-    vim.keymap.set('n', '<leader>ss', "<cmd>Pick lsp scope='document_symbol'<cr>", { desc = 'Search Document Symbol' })
-    vim.keymap.set('n', '<leader>sd', "<cmd>Pick lsp scope='definition'<cr>", { desc = 'Search Definition' })
-    vim.keymap.set('n', '<leader>sD', "<cmd>Pick lsp scope='declaration'<cr>", { desc = 'Search Declaration' })
-    vim.keymap.set('n', '<leader>st', "<cmd>Pick lsp scope='type_definition'<cr>", { desc = 'Search Type definition' })
 
-    -- vim.keymap.set('n', '<leader>sm', '<cmd>Telescope man_pages sections=ALL<cr>', { desc = 'Search manpages' })
-    -- vim.keymap.set('n', '<leader>sZ', "<cmd>Telescope live_grep cwd=/usr/lib/zig/std/<cr>", { desc = "search text in zig lib" })
+
+
+
+
+    -- require('mini.pick').setup(
+    --   {
+    --     window = {
+    --       -- config = function()
+    --       --   local height = math.floor(0.618 * vim.o.lines)
+    --       --   local width = math.floor(0.618 * vim.o.columns)
+    --       --   return {
+    --       --     anchor = 'NW',
+    --       --     height = height,
+    --       --     width = width,
+    --       --     row = math.floor(0.5 * (vim.o.lines - height)),
+    --       --     col = math.floor(0.5 * (vim.o.columns - width)),
+    --       --   }
+    --       -- end,
+    --       prompt_caret = '▏',
+    --       -- String to use as prefix in prompt
+    --       prompt_prefix = '> ',
+    --     },
+    --     -- source = {
+    --     --   preview = function(buf_id, item, opts)
+    --     --     print(vim.inspect(item))
+    --     --     print(vim.inspect(opts))
+    --     --     print(vim.inspect(buf_id))
+
+    --     --     local bufnr = vim.api.nvim_create_buf(false, true)
+    --     --     local winid = vim.api.nvim_open_win(bufnr, false, {
+    --     --       style = 'minimal',
+    --     --       relative = 'editor',
+    --     --       width = 10,
+    --     --       height = 10,
+    --     --       row = 1,
+    --     --       col = 1,
+    --     --       title = 'preview'
+    --     --     })
+    --     --     vim.wo[winid].winhighlight = "Normal:Normal"
+    --     --     require('mini.pick').default_preview(bufnr, item, opts)
+    --     --     vim.api.nvim_create_autocmd('MiniPickStop', {
+    --     --       callback = function()
+    --     --         vim.api.nvim_win_close(winid, true)
+    --     --         vim.api.nvim_buf_delete(bufnr, { force = true })
+    --     --       end
+    --     --     })
+    --     --   end
+    --     -- },
+    --   }
+    -- )
+    -- vim.keymap.set('n', '<leader>sh', "<cmd>Pick help<cr>", { desc = 'Search Help' })
+    -- vim.keymap.set('n', '<leader>sk', "<cmd>Pick keymaps<cr>", { desc = 'Search Keymaps' })
+    -- vim.keymap.set('n', '<leader>sf', "<cmd>lua MiniPick.builtin.files({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>", { desc = 'Search Files' })
+    -- vim.keymap.set('n', '<leader>sw', "<cmd>lua MiniPick.builtin.grep({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>", { desc = 'Grep current word' })
+    -- vim.keymap.set('n', '<leader>sg', "<cmd>lua MiniPick.builtin.grep_live({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>", { desc = 'Live grep' })
+    -- vim.keymap.set('n', '<leader>sb', "<cmd>Pick buffers<cr>", { desc = 'Search existing buffers' })
+    -- vim.keymap.set('n', '<leader>sd', "<cmd>Pick diagnostic<cr>", { desc = 'Search Diagnostics' })
+    -- vim.keymap.set('n', '<leader>sr', "<cmd>Pick resume<cr>", { desc = 'Search Resume' })
+    -- vim.keymap.set('n', '<leader>s.', "<cmd>Pick oldfiles<cr>", { desc = 'Search Recent Files ("." for repeat)' })
+    -- vim.keymap.set('n', '<leader>sR', "<cmd>Pick lsp scope='references'<cr>", { desc = 'Search References' })
+    -- vim.keymap.set('n', '<leader>sS', "<cmd>Pick lsp scope='workspace_symbol'<cr>", { desc = 'Search Workspace Symbol' })
+    -- vim.keymap.set('n', '<leader>sI', "<cmd>Pick lsp scope='implementation'<cr>", { desc = 'Search Implementation' })
+    -- vim.keymap.set('n', '<leader>ss', "<cmd>Pick lsp scope='document_symbol'<cr>", { desc = 'Search Document Symbol' })
+    -- vim.keymap.set('n', '<leader>sd', "<cmd>Pick lsp scope='definition'<cr>", { desc = 'Search Definition' })
+    -- vim.keymap.set('n', '<leader>sD', "<cmd>Pick lsp scope='declaration'<cr>", { desc = 'Search Declaration' })
+    -- vim.keymap.set('n', '<leader>st', "<cmd>Pick lsp scope='type_definition'<cr>", { desc = 'Search Type definition' })
+
+    -- -- vim.keymap.set('n', '<leader>sm', '<cmd>Telescope man_pages sections=ALL<cr>', { desc = 'Search manpages' })
+    -- -- vim.keymap.set('n', '<leader>sZ', "<cmd>Telescope live_grep cwd=/usr/lib/zig/std/<cr>", { desc = "search text in zig lib" })
+
+
+
+
+    -- local MiniPick = require('mini.pick')
+
+    -- local au_source = function()
+    --   local autocmds = vim.api.nvim_get_autocmds({})
+    --   local items = {}
+
+    --   for _, ac in ipairs(autocmds) do
+    --     local group = ac.group_name or 'None'
+    --     local desc = ac.desc or ''
+    --     local pattern = ac.pattern or '*'
+    --     local event = ac.event or ''
+    --     local cmd = type(ac.command) == "string" and ac.command or "<Lua function>"
+
+    --     -- table.insert(items, {
+    --     --   string.format('[%s] %s | %s -> %s', group, event, pattern, cmd),
+    --     --   command = cmd,
+    --     --   event = event,
+    --     --   group = group,
+    --     --   pattern = pattern,
+    --     --   desc = desc
+    --     -- })
+    --     table.insert(items,  group .. '|' .. event .. ' > ' .. cmd )
+    --   end
+    --   return items
+    -- end
+
+    -- local function aaa()
+    --   MiniPick.start({
+    --     source = {
+    --       items = au_source(),
+    --     },
+    --     prompt = '🔍 Autocmds',
+    --     preview = function(item)
+    --       return string.format("Group: %s\nEvent: %s\nPattern: %s\nCommand: %s\nDescription: %s",
+    --         item.group, item.event, item.pattern, item.command, item.desc)
+    --     end,
+    --     on_choose = function(item)
+    --       vim.notify(string.format('Autocmd:\n%s', item[1]), vim.log.levels.INFO)
+    --     end,
+    --   })
+    -- end
+    -- -- MiniPick.start({ source = { items = vim.fn.readdir('.') } })
+
+    -- vim.keymap.set('n', '<leader>sa', function() aaa() end, { desc = 'Search Type definition' })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     require('mini.sessions').setup( -- No need to copy this inside `setup()`. Will be used automatically.
@@ -312,15 +410,15 @@ return { -- Collection of various small independent plugins/modules
       },
       header =
       [[
-                                             
-      ████ ██████           █████      ██
-     ███████████             █████ 
-     █████████ ███████████████████ ███   ███████████
-    █████████  ███    █████████████ █████ ██████████████
-   █████████ ██████████ █████████ █████ █████ ████ █████
- ███████████ ███    ███ █████████ █████ █████ ████ █████
-██████  █████████████████████ ████ █████ █████ ████ ██████
-]],
+                        
+                        ████ ██████           █████      ██
+                        ███████████             █████ 
+                        █████████ ███████████████████ ███   ███████████
+                        █████████  ███    █████████████ █████ ██████████████
+                        █████████ ██████████ █████████ █████ █████ ████ █████
+                        ███████████ ███    ███ █████████ █████ █████ ████ █████
+                        ██████  █████████████████████ ████ █████ █████ ████ ██████
+                        ]],
 
       -- dashboard.nvim reference
       footer = function()
