@@ -649,15 +649,19 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'lua' },
-  callback = function()
-    vim.treesitter.start()
-    vim.wo.foldmethod = 'expr'
-    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-  end,
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = { 'lua' },
+--   callback = function()
+--     vim.treesitter.start()
+--     vim.wo.foldmethod = 'expr'
+--     vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+--     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+--   end,
+-- })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
 })
 
 -- vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',

@@ -127,7 +127,22 @@ return {
       -- ltex_plus = {},
       html = {
         filetypes = { "markdown", "html", "javascript", "typescript" },
-      }
+        settings = {
+            format = {
+              templating = true,
+              -- wrapLineLength = 120,
+              wrapAttributes = 'auto',
+            },
+            hover = {
+              documentation = true,
+              references = true,
+            },
+        }
+      },
+      superhtml = {
+        cmd = { "superhtml", "lsp" },
+        filetypes = { 'html' }
+      },
     }
     --
     require('mason').setup({ ui = { border = 'single', }, icons = { package_installed = "✓", package_pending = "➜", package_uninstalled = "✗" } })

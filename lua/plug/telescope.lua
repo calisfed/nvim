@@ -192,7 +192,7 @@ return {
     require("telescope").setup {
       defaults = {
         create_layout = function(picker)
-          local function create_window(enter, win_opts, wo)
+          local function create_window(enter, win_opts)
             local bufnr = vim.api.nvim_create_buf(false, true)
             local winid = vim.api.nvim_open_win(bufnr, enter, win_opts)
             vim.wo[winid].winhighlight = "Normal:Normal"
@@ -202,12 +202,12 @@ return {
             }
           end
 
-          local parent_height = vim.api.nvim_win_get_height(0)
-          local parent_width = vim.api.nvim_win_get_width(0)
+          local ph = vim.api.nvim_win_get_height(0)
+          local pw = vim.api.nvim_win_get_width(0)
           local percent = 0.4
-          local w = math.floor(parent_width / 2)
+          local w = math.floor(pw * 0.4)
           -- percentage of the mock ivy layout
-          local h = math.floor(parent_height * 0.4)
+          local h = math.floor(ph * 0.4)
 
           local function destory_window(window)
             if window then
@@ -221,14 +221,51 @@ return {
           end
 
           local layout = Layout {
-            picker = pickeet,
+            picker = picker,
             mount = function(self)
-              self.prompt  = create_window(true,
-                { style = 'minimal', relative = 'editor', width = parent_width, height = 1, row = parent_height - h - 2, col = 0, title = 'prompt', title_pos = 'center', border = { "─", "─", "─", " ", "─", "─", "─", " " } })
+              -- relative = editor
+              -- self.prompt  = create_window(true,{style = 'minimal', relative = 'editor', width = math.floor(pw / 2) - math.floor(pw * 0.2), height = 1, row = ph - h - 2, col = 0, title = '', title_pos = 'center', border = { "─", "─", "─", " ", "─", "─", "─", " " }, border = { "─", "─", "┬", "│", "┤", "─", "─", " " },})
+              -- self.results = create_window(false,{style = 'minimal', relative = 'editor', width = w - math.floor(pw * 0.2), height = h - 3, row = ph, col = 0, anchor = 'SW', title = "cwd: " .. vim.fn.getcwd(0), title_pos = 'left', border = { " ", " ", "│", "│", " ", " ", " ", " " }})
+              -- self.preview = create_window(false,{style = 'minimal', relative = 'editor', width = w + math.floor(pw * 0.2) - 2, height = h, row = ph, col = pw, anchor = 'SE', title = '', title_pos = 'center', border = { "┌", "─", "┐", " ", " ", " ", "│", "│" }})
+              -- print(vim.inspect(picker))
+
+              local tit = function()
+                if picker.prompt_title == 'Find Files' then
+                  if picker.cwd then
+                    return 'cwd: ' .. picker.cwd
+                  else
+                    return vim.fn.getcwd(0)
+                  end
+                else
+                  return ''
+                end
+              end
+              -- relative = win
               self.results = create_window(false,
-                { style = 'minimal', relative = 'editor', width = w - 2, height = h - 3, row = parent_height, col = 0, anchor = 'SW', title = "cwd: " .. vim.fn.getcwd(0), title_pos = 'left', border = { " ", " ", "│", "│", " ", " ", " ", " " } })
+                {
+                  style = 'minimal',
+                  relative = 'win',
+                  width = w,
+                  height = 10,
+                  row = ph,
+                  col = 0,
+                  anchor = 'SW',
+                  title = tit(),
+                  border = { " ", " ", "│", "│", "│", " ", " ", " " }
+                })
               self.preview = create_window(false,
-                { style = 'minimal', relative = 'editor', width = w, height = h - 2, row = parent_height, col = parent_width, anchor = 'SE', title = '', title_pos = 'center', border = { "│", " ", " ", " ", " ", " ", "│", "│" } })
+                {
+                  style = 'minimal',
+                  relative = 'win',
+                  width = pw - w - 3,
+                  height = 13,
+                  row = ph,
+                  col = pw,
+                  anchor = 'SE',
+                  border = { "┌", "─", "─", " ", " ", " ", "│", "│" }
+                })
+              self.prompt = create_window(true,
+                { style = 'minimal', relative = 'win', width = w, height = 1, row = ph - 15, col = 0, title = picker.prompt_title, border = { "─", "─", "┬", "│", "┤", "─", "─", " " }, })
             end,
             unmount = function(self)
               destory_window(self.results)
@@ -324,6 +361,111 @@ return {
     pcall(require('telescope').load_extension, 'media_files')
     pcall(require('telescope').load_extension, 'undo')
 
+    local ngram_highlighter = function(ngram_len, prompt, display)
+      local highlights = {}
+      display = display:lower()
+
+      for disp_index = 1, #display do
+        local char = display:sub(disp_index, disp_index + ngram_len - 1)
+        if prompt:find(char, 1, true) then
+          table.insert(highlights, {
+            start = disp_index,
+            finish = disp_index + ngram_len - 1,
+          })
+        end
+      end
+
+      return highlights
+    end
+    local Sorter = require('telescope.sorters').Sorter
+    local get_rgfs = function(opts)
+      opts = opts or {}
+
+      local ngram_len = opts.ngram_len or 2
+
+      local cached_ngrams = {}
+      local function overlapping_ngrams(s, n)
+        if cached_ngrams[s] and cached_ngrams[s][n] then
+          return cached_ngrams[s][n]
+        end
+
+        local R = {}
+        for i = 1, s:len() - n + 1 do
+          R[#R + 1] = s:sub(i, i + n - 1)
+        end
+
+        if not cached_ngrams[s] then
+          cached_ngrams[s] = {}
+        end
+
+        cached_ngrams[s][n] = R
+
+        return R
+      end
+
+      return Sorter:new {
+        -- self
+        -- prompt (which is the text on the line)
+        -- line (entry.ordinal)
+        -- entry (the whole entry)
+        scoring_function = function(_, prompt, line, _)
+          if prompt == 0 or #prompt < ngram_len then
+            return 1
+          end
+
+          local prompt_lower = prompt:lower()
+          local line_lower = line:lower()
+
+          local prompt_ngrams = overlapping_ngrams(prompt_lower, ngram_len)
+
+          local N = #prompt
+
+          local contains_string = line_lower:find(prompt_lower, 1, true)
+
+          local consecutive_matches = 0
+          local previous_match_index = 0
+          local match_count = 0
+
+          for i = 1, #prompt_ngrams do
+            local match_start = line_lower:find(prompt_ngrams[i], 1, true)
+            if match_start then
+              match_count = match_count + 1
+              if match_start > previous_match_index then
+                consecutive_matches = consecutive_matches + 1
+              end
+
+              previous_match_index = match_start
+            end
+          end
+
+          -- TODO: Copied from ashkan.
+          local denominator = (
+            (10 * match_count / #prompt_ngrams)
+            -- biases for shorter strings
+            -- TODO(ashkan): this can bias towards repeated finds of the same
+            -- subpattern with overlapping_ngrams
+            + 3 * match_count * ngram_len / #line
+            + consecutive_matches
+            + N / (contains_string or (2 * #line)) -- + 30/(c1 or 2*N)
+
+          )
+
+          if denominator == 0 or denominator ~= denominator then
+            return -1
+          end
+
+          if #prompt > 2 and denominator < 0.5 then
+            return -1
+          end
+
+          return 1 / denominator
+        end,
+
+        highlighter = opts.highlighter or function(_, prompt, display)
+          return ngram_highlighter(ngram_len, prompt, display)
+        end,
+      }
+    end
 
     local function from_git_root()
       local function is_git_repo()
@@ -341,6 +483,10 @@ return {
         opts = {
           cwd = get_git_root(),
           sorter = require('telescope.sorters').get_generic_fuzzy_sorter(),
+          -- sorter = get_rgfs(),
+          -- tiebreak = function(current_entry, existing_entry, prompt)
+          --   return false
+          -- end
         }
       end
       return opts

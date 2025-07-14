@@ -6,7 +6,7 @@ return
   lazy = false,
   enabled = false,
   branch = 'main',
-  event = { 'BufReadPost', 'BufNewFile' },
+  -- event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -46,7 +46,7 @@ return
 
   },
   build = ':TSUpdate',
-  opts = function()
+  config = function()
     vim.filetype.add {
       extension = { rasi = 'rasi' },
       pattern = {

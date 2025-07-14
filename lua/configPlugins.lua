@@ -19,9 +19,9 @@ return {
 
   -- Pickers
 
-  { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
-  { enabled = false, 'folke/snacks.nvim' },             -- QoL plugins
-  { enabled = false, 'ibhagwan/fzf-lua', },             -- fzf search, results is not consistent with options i provided
+  { enabled = false, 'nvim-telescope/telescope.nvim', }, -- lua fzf search
+  { enabled = false, 'folke/snacks.nvim' },              -- QoL plugins
+  { enabled = false, 'ibhagwan/fzf-lua', },              -- fzf search, results is not consistent with options i provided
 
   -- Plugins that many others require
 
@@ -30,6 +30,7 @@ return {
   { enabled = true,  'nvim-neotest/nvim-nio', }, -- debug adapter protocol ui
 
   -- QoL
+  { enabled = false, 'kylechui/nvim-surround' },               -- Surround, currently not in use cause mini.surround and nvim-ts-autotag
   { enabled = true,  'kdheepak/lazygit.nvim' },                -- Git integration
   { enabled = true,  "sindrets/diffview.nvim", },              -- Diff integration
   { enabled = true,  'HawkinsT/pathfinder.nvim', },            -- enhanced gf gF gx
@@ -75,7 +76,7 @@ return {
   { enabled = false, 'max397574/better-escape.nvim', },        -- better Escape with jj, jk, ...., replaced by minmi.keymap
   { enabled = false, 'rmagatti/auto-session' },                -- session, replaced by mini.session
   { enabled = false, 'sQVe/sort.nvim', },                      -- sort, considering re-try
-  { enabled = true,  'stevearc/conform.nvim', },               -- lightweight, powerful formatter
+  { enabled = false, 'stevearc/conform.nvim', },               -- lightweight, powerful formatter
   { enabled = false, 'stevearc/overseer.nvim', },              -- a task runner and job management plugin for Neovim
   { enabled = false, 'stevearc/quicker.nvim', },               -- improved UI and workflow for the Neovim quickfix
   { enabled = false, 'tpope/vim-sleuth', },                    -- auto adjust shiftwidth and expandtab
@@ -106,7 +107,7 @@ return {
   { enabled = true,  'saghen/blink.cmp', },                       -- better completion
   { enabled = false, 'Dan7h3x/signup.nvim', },                    -- LSP Sign help
   { enabled = false, 'ZWindL/orphans.nvim', },                    -- check if plugins haven't been update for a while
-  { enabled = true,  'folke/lazydev.nvim', },                     -- lua dev
+  { enabled = false, 'folke/lazydev.nvim', },                     -- lua dev
   { enabled = false, 'hrsh7th/nvim-cmp', },                       -- completion
   { enabled = false, 'iguanacucumber/magazine.nvim' },            -- nvim-cmp but with patches
   { enabled = false, 'rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions

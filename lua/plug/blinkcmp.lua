@@ -3,10 +3,11 @@ return {
   enabled = false,
   'saghen/blink.cmp',
   lazy = false,
-  -- dependencies = 'rafamadriz/friendly-snippets',
+  -- dependencies =
 
   dependencies = {
-    { 'L3MON4D3/LuaSnip', version = 'v2.*', },
+    -- { 'L3MON4D3/LuaSnip', version = 'v2.*', },
+    'rafamadriz/friendly-snippets',
     "erooke/blink-cmp-latex",
   },
   version = '*',
@@ -16,7 +17,7 @@ return {
   ---@type blink.cmp.Config
 
   opts = function()
-    require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
+    -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
     require('blink.cmp').setup({
       keymap = {
         -- preset = 'super-tab'
@@ -103,7 +104,10 @@ return {
         completion = { menu = { auto_show = true } },
       },
 
-      snippets = { preset = 'luasnip' },
+      snippets = {
+        -- preset = 'luasnip'
+        preset = 'default'
+      },
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
@@ -126,6 +130,7 @@ return {
             module = "blink-cmp-latex",
             opts = {
               -- set to true to insert the latex command instead of the symbol
+
               insert_command = function(ctx)
                 local ft = vim.api.nvim_get_option_value("filetype", {
                   scope = "local",
@@ -154,5 +159,4 @@ return {
       }
     })
   end
-
 }

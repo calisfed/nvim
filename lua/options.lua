@@ -27,10 +27,10 @@ vim.opt.expandtab = true   -- convert tabs to spaces
 vim.opt.smartindent = true -- Makes indenting smart
 
 vim.opt.signcolumn = 'yes' -- Always show the signcolumn
-vim.opt.foldcolumn = '1'   -- '0' is not bad
+-- vim.opt.foldcolumn = '1'   -- '0' is not bad
 -- vim.opt.foldlevel = 99                           -- Using ufo provider need a large value, feel free to decrease the value
 -- vim.opt.foldlevelstart = 99                      -- Using ufo provider need a large value, feel free to decrease the value
-vim.opt.foldenable = true                        -- Enable folding
+-- vim.opt.foldenable = true                        -- Enable folding
 
 vim.opt.hlsearch = false                         -- Highlight on search
 vim.opt.incsearch = true                         -- While typing a search command, show where the pattern matches
@@ -95,5 +95,6 @@ vim.wo.list = false
 -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldmethod = 'manual'

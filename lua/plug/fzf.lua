@@ -6,14 +6,14 @@ return {
   config = function()
     -- calling `setup` is optional for customization
     require('fzf-lua').setup {
-      { 'telescope','ivy' },
+      { 'ivy' },
       keymap = {
         -- Below are the default binds, setting any value in these tables will override
         -- the defaults, to inherit from the defaults change [1] from `false` to `true`
         -- builtin = {
         --   -- neovim `:tmap` mappings for the fzf win
         --   -- true,        -- uncomment to inherit all the below in your custom config
-        --   ["<Esc>"]      = 'abort',
+        -- ["<Esc>"]      = 'abort',
         --   ["<M-Esc>"]    = "hide", -- hide fzf-lua, `:FzfLua resume` to continue
         --   ["<F1>"]       = "toggle-help",
         --   ["<F2>"]       = "toggle-fullscreen",
@@ -77,13 +77,15 @@ return {
         -- end
       },
       fzf_opts = {
-        ['--layout'] = 'default', -- reverse is default
+        -- ['--layout'] = 'default', -- reverse is default
         -- ['--scheme'] = 'path',
         ['--tiebreak'] = 'begin,length,index',
       },
       files = {
-        no_ignore = true, -- respect ".gitignore"  by default
+        no_ignore  = true, -- respect ".gitignore"  by default
         -- prompt = "",
+
+        formatter  = "path.filename_first",
         cwd_prompt = false,
       },
       grep = {
