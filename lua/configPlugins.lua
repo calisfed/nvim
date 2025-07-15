@@ -19,7 +19,7 @@ return {
 
   -- Pickers
 
-  { enabled = true, 'nvim-telescope/telescope.nvim', }, -- lua fzf search
+  { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
   { enabled = false, 'folke/snacks.nvim' },              -- QoL plugins
   { enabled = false, 'ibhagwan/fzf-lua', },              -- fzf search, results is not consistent with options i provided
 
@@ -44,8 +44,8 @@ return {
   { enabled = true,  'folke/todo-comments.nvim', },            -- color keywore
   { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
-  { enabled = false, 'jiaoshijie/undotree', },                 -- undo, but tree
-  { enabled = true,  'mbbill/undotree', },                     -- undo, but tree
+  { enabled = false, 'mbbill/undotree', },                     -- undo, but tree
+  { enabled = true, 'jiaoshijie/undotree', },                 -- undo, but tree
   { enabled = true,  'kawre/neotab.nvim', },                   -- tabout of parantheses
   { enabled = true,  'lambdalisue/suda.vim', },                -- auto read/write file with sudo
   { enabled = true,  'leath-dub/snipe.nvim', },                -- fast buffer select

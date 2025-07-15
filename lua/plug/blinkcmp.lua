@@ -60,7 +60,6 @@ return {
           show_on_accept_on_trigger_character = false,
           show_on_backspace_in_keyword = true,
           show_on_trigger_character = true,
-
         },
         list = {
           max_items = 50, -- default 200
@@ -101,7 +100,7 @@ return {
       },
       cmdline = {
         keymap = { preset = 'inherit' },
-        completion = { menu = { auto_show = true } },
+        completion = { menu = {auto_show = true} },
       },
 
       snippets = {
