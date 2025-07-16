@@ -9,6 +9,7 @@ return {
   { enabled = false, 'rose-pine/neovim',                         priority = 1000, name = 'rose-pine', },
   { enabled = false, 'sainnhe/sonokai',                          priority = 1000, },
   { enabled = false, 'rktjmp/lush.nvim', }, -- interactive, create own colorscheme
+  { enabled = false, 'adibhanna/forest-night.nvim',              priority = 1000 },
 
   -- Core
 
@@ -45,7 +46,7 @@ return {
   { enabled = true,  'hamidi-dev/kaleidosearch.nvim', },       -- color keyword
   { enabled = true,  'jake-stewart/multicursor.nvim', },       -- multi cursor
   { enabled = false, 'mbbill/undotree', },                     -- undo, but tree
-  { enabled = true, 'jiaoshijie/undotree', },                 -- undo, but tree
+  { enabled = true,  'jiaoshijie/undotree', },                 -- undo, but tree
   { enabled = true,  'kawre/neotab.nvim', },                   -- tabout of parantheses
   { enabled = true,  'lambdalisue/suda.vim', },                -- auto read/write file with sudo
   { enabled = true,  'leath-dub/snipe.nvim', },                -- fast buffer select

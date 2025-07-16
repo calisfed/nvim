@@ -59,7 +59,7 @@ return { -- Treesitter
       -- Directory to install parsers and queries to
       -- install_dir = vim.fn.stdpath('data') .. '/site'
     })
-    require('nvim-treesitter').install({ 'c', 'lua', 'python', 'vimdoc', 'vim', 'bash', 'zig' })
+    require('nvim-treesitter').install({ 'c', 'lua', 'python', 'vimdoc', 'vim', 'bash', 'zig', 'markdown', 'markdown_inline'})
 
     vim.api.nvim_create_autocmd('FileType', {
       pattern = { '<filetype>' },
