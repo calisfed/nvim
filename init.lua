@@ -21,7 +21,7 @@ require('lazy').setup({
 	spec = {
 		{ import = "color" },
 		{ import = "plug" },
-		{ import = "configPlugins" },
+		{ import = "cfg" },
 	},
 	checker = {
 		-- automatically check for plugin updates
