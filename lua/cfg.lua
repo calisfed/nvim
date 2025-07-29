@@ -20,7 +20,7 @@ return {
 
   -- Pickers
 
-  { enabled = false,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
+  { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
   { enabled = false, 'folke/snacks.nvim' },              -- QoL plugins
   { enabled = false, 'ibhagwan/fzf-lua', },              -- fzf search, results is not consistent with options i provided
 
@@ -71,7 +71,7 @@ return {
   { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
   { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
   { enabled = false, 'kevinhwang91/nvim-ufo', },               -- fold
-  { enabled = false, 'lewis6991/gitsigns.nvim', },             -- gitsigns
+  { enabled = true,  'lewis6991/gitsigns.nvim', },             -- gitsigns
   { enabled = false, 'lukas-reineke/indent-blankline.nvim', }, -- highlight part of waking code
   { enabled = false, 'markgandolfo/lightswitch.nvim' },        -- Switch menu, require nui.nvim
   { enabled = false, 'max397574/better-escape.nvim', },        -- better Escape with jj, jk, ...., replaced by minmi.keymap
