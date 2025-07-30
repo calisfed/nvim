@@ -16,7 +16,7 @@ return {
   { enabled = true,  'neovim/nvim-lspconfig', },           -- lspconfig
   { enabled = true,  'nvim-treesitter/nvim-treesitter', }, -- color text
   { enabled = true,  'aaronik/treewalker.nvim', },         -- move around with code syntax aware
-  { enabled = true,  'nvimdev/lspsaga.nvim', },            -- nany config, features for lsp
+  { enabled = false, 'nvimdev/lspsaga.nvim', },            -- many config, features for lsp
 
   -- Pickers
 
@@ -111,8 +111,8 @@ return {
   { enabled = false, 'folke/lazydev.nvim', },                     -- lua dev
   { enabled = false, 'hrsh7th/nvim-cmp', },                       -- completion
   { enabled = false, 'iguanacucumber/magazine.nvim' },            -- nvim-cmp but with patches
-  { enabled = false, 'rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions
-  { enabled = false, 'rachartier/tiny-inline-diagnostic.nvim', }, -- inline diagnostic
+  { enabled = true,  'rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions
+  { enabled = true, 'rachartier/tiny-inline-diagnostic.nvim', }, -- inline diagnostic
 
   -- Note
 
