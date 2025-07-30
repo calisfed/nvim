@@ -5,7 +5,7 @@ return{
       require('nightfox').setup {
         options = {
           transparent = true,
-          dim_inactive = true,
+          dim_inactive = false,
           terminal_colors = true,
           styles = {             -- Style to be applied to different syntax groups
             comments = "italic", -- Value is any valid attr-list value `:help attr-list`
@@ -27,21 +27,21 @@ return{
         },
         paletes = {
           all = {
-            bg = '#1B0E25',
+            bg = '#171928',
           },
         },
         groups = {
-          -- carbonfox = {
-          --   StatusLine = { bg = '#2e3440' },
-          --   NormalFloat = { bg = '#011627' },
-          --   FloatBorder = { bg = '#011627' },
-          --   ColorColumn = { bg = '#112637' },
-          --   CursorLine = { bg = '#112637' },
-          --   StatusLineNC = {bg = '#112637' },
-          --   -- WarningMsg = {bg = '#112637' },
-          -- },
+          carbonfox = {
+            StatusLine = { bg = '#2e3440' },
+            NormalFloat = { bg = '#011627' },
+            FloatBorder = { bg = '#011627' },
+            ColorColumn = { bg = '#112637' },
+            CursorLine = { bg = '#112637' },
+            StatusLineNC = {bg = '#112637' },
+            WarningMsg = {bg = '#112637' },
+          },
         },
       }
-      -- vim.cmd.colorscheme 'carbonfox'
+      vim.cmd.colorscheme 'carbonfox'
     end,
   }

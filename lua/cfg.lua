@@ -1,8 +1,8 @@
 return {
   -- Colorscheme
 
-  { enabled = true,  'EdenEast/nightfox.nvim',                   priority = 1000, },
-  { enabled = true,  'diegoulloao/neofusion.nvim',               priority = 1000, },
+  { enabled = false,  'EdenEast/nightfox.nvim',                   priority = 1000, },
+  { enabled = false,  'diegoulloao/neofusion.nvim',               priority = 1000, },
   { enabled = true,  'eldritch-theme/eldritch.nvim',             priority = 1000, },
   { enabled = false, 'folke/tokyonight.nvim',                    priority = 1000, },
   { enabled = false, 'olivercederborg/poimandres.nvim',          priority = 1000, },

@@ -4,7 +4,7 @@ return {
     { 'mason-org/mason.nvim',           opts = { ensure_installed = { "tree-sitter-cli", "lua_ls" } }, },
     { 'mason-org/mason-lspconfig.nvim', dependencies = { 'neovim/nvim-lspconfig', 'mason-org/mason.nvim' } },
     -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
-    { 'j-hui/fidget.nvim',              opts = { notification = { window = { winblend = 0, } } } },
+    { 'j-hui/fidget.nvim',              opts = { notification = { window = { winblend = 100, } } } },
   },
   lazy = false,
   'neovim/nvim-lspconfig',
