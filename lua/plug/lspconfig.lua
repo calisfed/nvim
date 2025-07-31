@@ -160,36 +160,6 @@ return {
             },
 
 
-            -- emmylua_ls = {
-            --   settings = {
-            --     format = {
-            --         -- column_witdh = vim.fn.winwidth(0),
-            --         defaultConfig = { max_line_length = "200", },
-            --         -- editorConfig = {
-            --         --   max_line_length = 200,
-            --         -- }
-            --     },
-            --     runtime = {
-            --         version = "LuaJIT",
-            --         requirePattern = {
-            --             "lua/*.lua",
-            --             "lua/*/init.lua",
-            --             "*/lua/*.lua",
-            --             "*/lua/*/init.lua"
-            --         },
-            --     },
-            --     workspace = {
-            --         library = {
-            --             "$HOME/.local/share/bob/v0.11.3/share/nvim/runtime",
-            --             "$HOME/.local/share/nvim/lazy/",
-            --         },
-            --         ignoreGlobs = {
-            --             "**/*_spec.lua",
-            --         },
-            --     },
-            --   },
-            -- },
-
         }
 
 
@@ -199,6 +169,7 @@ return {
             ensure_installed = {
                 -- 'tree-sitter-cli',
                 -- 'lua_ls',
+                'emmylua_ls',
             },
             automatic_enable = { exclude = { 'rusc_analyzer', 'ts_ls', 'typos_lsp', 'harper-ls', } }
         })
