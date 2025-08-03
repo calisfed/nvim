@@ -63,18 +63,14 @@ return {
         }
 
       },
-      winops = {
-        border = 'single',
+      winopts = {
         preview = {
-          border = 'single',
           winopts = {
             number = true,
             relativenumber = true,
           }
         },
-        -- on_create = function ()
-        --   vim.b.completion = true
-        -- end
+        height = 0.3,
       },
       fzf_opts = {
         -- ['--layout'] = 'default', -- reverse is default

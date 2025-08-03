@@ -42,12 +42,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- vim.cmd 'autocmd BufEnter * set formatoptions-=cro'
 -- vim.cmd 'autocmd BufEnter * setlocal formatoptions-=cro'
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  desc = "Disable commenting new lines",
   callback = function()
     vim.cmd.set("fo-=cro")
     -- vim.cmd.set("concealcursor=") -- if set, affect oil.nvim
   end
 })
+
 vim.api.nvim_create_autocmd("BufEnter", {
+  desc = "Turn off conceal for markdow or floating window",
   pattern = "*",
   callback = function()
     if vim.bo.filetype == "markdown" and vim.api.nvim_win_get_config(0).zindex ~= nil then
@@ -141,12 +144,14 @@ vim.filetype.add {
 -- always open quickfix window automatically.
 -- this uses cwindows which will open it only if there are entries.
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  desc = "Open quickfix window automatically",
   group = vim.api.nvim_create_augroup("AutoOpenQuickfix", { clear = true }),
   pattern = { "[^l]*" },
   command = "cwindow"
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  desc = "Disable mini indent scope, session, trailspace for certain filetypes",
   pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
   callback = function()
     vim.b.miniindentscope_disable = true
@@ -156,6 +161,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  desc = "Set number and wrap for help filetype",
   pattern = { "help" },
   callback = function()
     vim.opt_local.nu = true
@@ -198,6 +204,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- More robust + tested version in Mini.Misc
 -- https://github.com/echasnovski/mini.nvim/blob/74e6b722c91113bc70d4bf67249ed8de0642b20e/doc/mini-misc.txt#L171
 vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
+  desc = "Remove padding around neovim when enter",
   callback = function()
     local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
     if not normal.bg then return end
@@ -206,6 +213,8 @@ vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
 })
 
 vim.api.nvim_create_autocmd("UILeave", {
+
+  desc = "Remove padding around neovim when leave",
   callback = function() io.write("\027]111\027\\") end,
 })
 
@@ -293,6 +302,7 @@ vim.api.nvim_create_autocmd("UILeave", {
 
 -- Show cursorline only on active windows
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+  desc = "Show cursor line on only acticve window when enter",
   callback = function()
     if vim.w.auto_cursorline then
       vim.wo.cursorline = true
@@ -302,6 +312,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
 })
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+  desc = "Show cursor line on only acticve window when leave",
   callback = function()
     if vim.wo.cursorline then
       vim.w.auto_cursorline = true
@@ -313,13 +324,13 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
 
 -- Auto resize splits when the terminal's window is resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
+  desc = "Auto resize splits when term window is resized",
   group = vim.api.nvim_create_augroup("EqualizeSplits", {}),
   callback = function()
     local current_tab = vim.api.nvim_get_current_tabpage()
     vim.cmd("tabdo wincmd =")
     vim.api.nvim_set_current_tabpage(current_tab)
   end,
-  desc = "Resize splits with terminal window",
 })
 -- Behaviour to help "Zoom" behaviour
 --
@@ -396,32 +407,32 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 
 
 -- source: https://www.reddit.com/r/neovim/comments/1jm5atz/replacing_vimdiagnosticopen_float_with_virtual/
----@param jumpCount number
-local function jumpWithVirtLineDiags(jumpCount)
-  pcall(vim.api.nvim_del_augroup_by_name, "jumpWithVirtLineDiags") -- prevent autocmd for repeated jumps
+-- ---@param jumpCount int
+-- local function jumpWithVirtLineDiags(jumpCount)
+--   pcall(vim.api.nvim_del_augroup_by_name, "jumpWithVirtLineDiags") -- prevent autocmd for repeated jumps
 
-  vim.diagnostic.jump { count = jumpCount }
+--   vim.diagnostic.jump { count = jumpCount }
 
-  local initialVirtTextConf = vim.diagnostic.config().virtual_text
-  vim.diagnostic.config {
-    virtual_text = false,
-    virtual_lines = { current_line = true },
-  }
+--   local initialVirtTextConf = vim.diagnostic.config().virtual_text
+--   vim.diagnostic.config {
+--     virtual_text = false,
+--     virtual_lines = { current_line = true },
+--   }
 
-  vim.defer_fn(function() -- deferred to not trigger by jump itself
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      desc = "User(once): Reset diagnostics virtual lines",
-      once = true,
-      group = vim.api.nvim_create_augroup("jumpWithVirtLineDiags", {}),
-      callback = function()
-        vim.diagnostic.config { virtual_lines = false, virtual_text = initialVirtTextConf }
-      end,
-    })
-  end, 1)
-end
+--   vim.defer_fn(function() -- deferred to not trigger by jump itself
+--     vim.api.nvim_create_autocmd("CursorMoved", {
+--       desc = "User(once): Reset diagnostics virtual lines",
+--       once = true,
+--       group = vim.api.nvim_create_augroup("jumpWithVirtLineDiags", {}),
+--       callback = function()
+--         vim.diagnostic.config { virtual_lines = false, virtual_text = initialVirtTextConf }
+--       end,
+--     })
+--   end, 1)
+-- end
 
-vim.keymap.set("n", "ge", function() jumpWithVirtLineDiags(1) end, { desc = "󰒕 Next diagnostic" })
-vim.keymap.set("n", "gE", function() jumpWithVirtLineDiags(-1) end, { desc = "󰒕 Prev diagnostic" })
+-- vim.keymap.set("n", "ge", function() jumpWithVirtLineDiags(1) end, { desc = "󰒕 Next diagnostic" })
+-- vim.keymap.set("n", "gE", function() jumpWithVirtLineDiags(-1) end, { desc = "󰒕 Prev diagnostic" })
 
 
 
@@ -487,7 +498,7 @@ vim.diagnostic.config({
 -- )
 
 
-vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
+vim.lsp.handlers["textDocument/hover"] = function(_, result, _ctx, config)
   config = config or {}
   config.border = 'single'
   local bufnr, winnr = vim.lsp.util.open_floating_preview(result.contents, "markdown", config)
@@ -640,7 +651,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function()
     if vim.bo.filetype == "undotree" then
-      for _, client in pairs(vim.lsp.get_active_clients()) do
+      for _, client in pairs(vim.lsp.get_clients()) do
         vim.lsp.stop_client(client.id)
       end
     end

@@ -27,7 +27,7 @@ return {
           ['<C-space>'] = 'actions.select',
           -- ['h'] = 'actions.parent',
           ['<C-h>'] = 'actions.parent',
-          ['l'] = 'actions.select',
+          ['<C-l>'] = 'actions.select',
           ['<Down>'] = 'actions.preview_scroll_down',
           ['<Up>'] = 'actions.preview_scroll_up',
           ['<Esc>'] = 'actions.close',
