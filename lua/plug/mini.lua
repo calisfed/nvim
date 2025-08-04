@@ -13,7 +13,7 @@ return { -- Collection of various small independent plugins/modules
       exchange = { prefix = "gX" },
       -- multiply = { prefix = "gm" },
       multiply = { prefix = "" },
-      -- replace = { prefix = "gr" },
+      replace = { prefix = ""},
       sort = { prefix = "gs" },
     })
     -- require('mini.pairs').setup()
