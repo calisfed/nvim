@@ -20,9 +20,9 @@ return {
 
     -- Pickers
 
-    { enabled = false,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
+    { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
     { enabled = false,  'folke/snacks.nvim' },             -- QoL plugins
-    { enabled = true,   'ibhagwan/fzf-lua', },             -- fzf search, results is not consistent with options i provided
+    { enabled = false,   'ibhagwan/fzf-lua', },             -- fzf search, results is not consistent with options i provided
 
     -- Plugins that many others require
 
