@@ -7,7 +7,12 @@ return {
     { "nvim-telescope/telescope.nvim" },
   },
   config = function()
-    require('tiny-code-action').setup()
+    require('tiny-code-action').setup(
+      {
+        backend = 'delta', -- vim | delta | ...
+        picker = 'buffer', -- buffer | vim.ui.select | telescope | snacks | fzf-lua
+      }
+    )
 
     vim.keymap.set("n", "<leader>ca", function()
       require("tiny-code-action").code_action()

@@ -7,29 +7,16 @@ return {
         -- Top Pickers & Explorer
     },
     config = function()
-        local function is_git_repo()
-            vim.fn.system 'git rev-parse --is-inside-work-tree'
-            return vim.v.shell_error == 0
-        end
-
-        local function get_git_root()
-            local dot_git_path = vim.fn.finddir('.git', '.;')
-            return vim.fn.fnamemodify(dot_git_path, ':h')
-        end
-
-        local function from_git_root()
-            if is_git_repo() then
-                return get_git_root()
-            end
-        end
-
         require('snacks').setup({
             bigfile = { enabled = true },
+            dim = {
+                animated = false,
+            },
             picker = {
                 layout = {
                     preset = 'ivy',
                     layout = {
-                        height = 0.3,
+                        height = 0.35,
                     },
                 },
                 win = {
@@ -39,41 +26,67 @@ return {
                         },
                     },
                 },
+                sort = {
+                    fields = { "left", "score:desc", "#text", "idx" },
+                },
+                man = {
+                },
             },
             explorer = {},
+            zen = {},
 
         })
 
         function find_files()
             require('snacks').picker.files({
-                confirm = function(picker, item)
-                    picker:close()
-                    -- print(vim.inspect(item))
-                    if item then
-                        vim.schedule(function()
-                            vim.cmd("edit " .. item._path)
-                        end)
-                    end
-                end,
-                cwd = from_git_root(),
+                -- confirm = function(picker, item)
+                --     picker:close()
+                --     -- print(vim.inspect(item))
+                --     if item then
+                --         vim.schedule(function()
+                --             vim.cmd("edit " .. item._path)
+                --         end)
+                --     end
+                -- end,
+                -- cwd = from_git_root(),
+                cwd = Snacks.git.get_root(),
+                -- formatters = {
+                --   file = {
+                --     filename_first = true,
+                --   }
+                -- },
+                -- format = "file",
                 sort = {
                     fields = {
-                        "left", "score:desc",
+                        "left", "score:desc", "#text", "idx"
                     }
                 }
             })
         end
 
-        -- vim.keymap.set({ "n" }, "<leader><space>", function() require 'snacks'.picker.smart() end, { desc = "Smart Find Files" })
+        vim.keymap.set({ "n" }, "<leader>s<space>", function() require 'snacks'.picker.smart() end,
+            { desc = "Smart Find Files" })
+        vim.keymap.set({ "n" }, "<leader>sa", function() require 'snacks'.picker.pickers() end,
+            { desc = "Snacks Pickers" })
         vim.keymap.set({ "n" }, "<leader>sb", function() require 'snacks'.picker.buffers() end, { desc = "Buffers" })
         vim.keymap.set({ "n" }, "<leader>sg", function() require 'snacks'.picker.grep() end, { desc = "Grep" })
-        -- vim.keymap.set({ "n" }, "<leader>:", function() require 'snacks'.picker.command_history() end, { desc = "Command History" })
-        -- vim.keymap.set({ "n" }, "<leader>sN", function() require 'snacks'.picker.notifications() end, { desc = "Notification History" })
+        vim.keymap.set({ "n" }, "<leader>:", function() require 'snacks'.picker.command_history() end,
+            { desc = "Command History" })
+        vim.keymap.set({ "n" }, "<leader>sN", function() require 'snacks'.picker.notifications() end,
+            { desc = "Notification History" })
         vim.keymap.set({ "n" }, "<leader>E", function() require 'snacks'.explorer() end, { desc = "File Explorer" })
         -- find
         vim.keymap.set({ "n" }, "<leader>sn",
             function() require 'snacks'.picker.files({ cwd = vim.fn.stdpath("config") }) end,
             { desc = "Find Config File" })
+
+        -- vim.keymap.set({ "n" }, "<leader>sf",
+        --     function() require 'snacks'.picker.files({ cwd = Snacks.git.get_root(), sort = { fields = { "left", "score:desc" } } }) end,
+        --     { desc = "Find Config File" })
+
+
+
+
         vim.keymap.set({ "n" }, "<leader>sf", function() find_files() end, { desc = "Find Files" })
         -- vim.keymap.set({ "n" }, "<leader>sg", function() require 'snacks'.picker.git_files() end, { desc = "Find Git Files" })
         vim.keymap.set({ "n" }, "<leader>sp", function() require 'snacks'.picker.projects() end, { desc = "Projects" })
@@ -93,7 +106,7 @@ return {
         -- vim.keymap.set({ "n" }, "<leader>sg", function() require 'snacks'.picker.grep() end, { desc = "Grep" })
         -- vim.keymap.set({"n"}, "<leader>sw",      function() require'snacks'.picker.grep_word() end,                                      desc = "Visual selection or word", mode = { "n",{ "x" } })
         -- search
-        -- vim.keymap.set({ "n" }, '<leader>s"', function() require 'snacks'.picker.registers() end, { desc = "Registers" })
+        vim.keymap.set({ "n" }, '<leader>s"', function() require 'snacks'.picker.registers() end, { desc = "Registers" })
         -- vim.keymap.set({ "n" }, '<leader>s/', function() require 'snacks'.picker.search_history() end, { desc = "Search History" })
         -- vim.keymap.set({ "n" }, "<leader>sa", function() require 'snacks'.picker.autocmds() end, { desc = "Autocmds" })
         -- vim.keymap.set({ "n" }, "<leader>sb", function() require 'snacks'.picker.lines() end, { desc = "Buffer Lines" })
@@ -113,7 +126,7 @@ return {
             { desc = "Location List" })
         vim.keymap.set({ "n" }, "<leader>sm", function() require 'snacks'.picker.marks() end, { desc = "Marks" })
         vim.keymap.set({ "n" }, "<leader>sM", function() require 'snacks'.picker.man() end, { desc = "Man Pages" })
-        vim.keymap.set({ "n" }, "<leader>sp", function() require 'snacks'.picker.lazy() end,
+        vim.keymap.set({ "n" }, "<leader>sP", function() require 'snacks'.picker.lazy() end,
             { desc = "Search for Plugin Spec" })
         vim.keymap.set({ "n" }, "<leader>sq", function() require 'snacks'.picker.qflist() end, { desc = "Quickfix List" })
         vim.keymap.set({ "n" }, "<leader>sR", function() require 'snacks'.picker.resume() end, { desc = "Resume" })

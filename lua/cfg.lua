@@ -21,7 +21,7 @@ return {
     -- Pickers
 
     { enabled = false,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
-    { enabled = true,  'folke/snacks.nvim' },             -- QoL plugins
+    { enabled = false,  'folke/snacks.nvim' },             -- QoL plugins
     { enabled = false,   'ibhagwan/fzf-lua', },             -- fzf search, results is not consistent with options i provided
 
     -- Plugins that many others require
@@ -32,14 +32,14 @@ return {
 
     -- Git
     { enabled = true,   'tpope/vim-fugitive' },      -- Git fugitive
-    { enabled = false,   'kdheepak/lazygit.nvim' },   -- Git integration
+    { enabled = true,   'kdheepak/lazygit.nvim' },   -- Git integration
     { enabled = true,   "sindrets/diffview.nvim", }, -- Diff integration
     { enabled = false,  'NeogitOrg/neogit' },        -- Git integration
     { enabled = true,   'lewis6991/gitsigns.nvim', }, -- gitsigns
 
     -- QoL
     { enabled = false,  'kylechui/nvim-surround' },              -- Surround, currently not in use cause mini.surround and nvim-ts-autotag
-    { enabled = true,   'HawkinsT/pathfinder.nvim', },           -- enhanced gf gF gx
+    { enabled = false,   'HawkinsT/pathfinder.nvim', },           -- enhanced gf gF gx
     { enabled = true,   'SunnyTamang/select-undo.nvim', },       -- select part to undo
     { enabled = true,   'chrisgrieser/nvim-scissors', },         -- Create and Edit snippet
     { enabled = true,   'cksidharthan/mentor.nvim' },            -- random tips after open nvim
@@ -50,7 +50,7 @@ return {
     { enabled = true,   'hamidi-dev/kaleidosearch.nvim', },      -- color keyword
     { enabled = true,   'jake-stewart/multicursor.nvim', },      -- multi cursor
     { enabled = false,  'mbbill/undotree', },                    -- undo, but tree
-    { enabled = true,   'jiaoshijie/undotree', },                -- undo, but tree
+    { enabled = false,   'jiaoshijie/undotree', },                -- undo, but tree
     { enabled = true,   'kawre/neotab.nvim', },                  -- tabout of parantheses
     { enabled = true,   'lambdalisue/suda.vim', },               -- auto read/write file with sudo
     { enabled = true,   'leath-dub/snipe.nvim', },               -- fast buffer select
