@@ -33,10 +33,10 @@ return {
               return cmp.select_and_accept()
             end
           end,
+          'snippet_forward',
           function()
             require('neotab').tabout()
           end,
-          'snippet_forward',
           'fallback'
         },
 

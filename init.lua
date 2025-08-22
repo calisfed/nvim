@@ -66,3 +66,4 @@ require('autocmds')
 require('keymaps')
 require('cool.quickfix')
 require('cool.close_qf_with_q')
+

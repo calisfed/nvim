@@ -10,7 +10,7 @@ return {
 				comments  = { italic = true },
 				keywords  = { italic = false },
 				functions = { bold   = false, italic = true },
-				variables = { bold   = true, italic = false },
+				variables = { bold   = false, italic = false },
 				sidebars  = "dark", -- dark, normal
 				floats    = "dark",
 			},

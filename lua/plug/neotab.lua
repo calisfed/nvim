@@ -7,7 +7,8 @@ return {
     tabkey = "<M-Tab>",
     act_as_tab = true,
     behavior = "nested", ---@type ntab.behavior
-    pairs = { ---@type ntab.pair[]
+    pairs = {
+      ---@type ntab.pair[]
       { open = "(", close = ")" },
       { open = "[", close = "]" },
       { open = "{", close = "}" },

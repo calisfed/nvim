@@ -124,3 +124,9 @@ vim.keymap.set('n', '<leader>V', function() vn_telex_keymap() end, { desc = '[K]
 --   end
 -- end
 -- vim.keymap.set("n", "L", function() view_asciidoc_img() end)
+
+
+-- Jumps to matching pair
+vim.keymap.set("n", "mm", "%")
+
+

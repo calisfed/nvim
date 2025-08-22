@@ -31,6 +31,12 @@ return {
                 },
                 man = {
                 },
+                previewers = {
+                    enabled = false,
+                },
+                preview = {
+                    enabled = false,
+                },
             },
             explorer = {},
             zen = {},
