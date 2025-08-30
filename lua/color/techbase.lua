@@ -29,5 +29,5 @@ return
     hl_overrides = {},
   },
   init = function() vim.cmd.colorscheme("techbase") end,
-  priority = 999,
+  priority = 1000,
 }
