@@ -15,7 +15,6 @@ return {
   -- build = 'nix run .#build-plugin',
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
-
   opts = function()
     -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
     require('blink.cmp').setup({

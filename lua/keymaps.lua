@@ -54,8 +54,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>td', utils.toggle.diagnostic, { desc = '[K
 
 
 -- vim.keymap.set({ 'n', 'v' }, '<leader>ch', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = '[K] LSP hover' }) -- replace by K
-vim.keymap.set({ 'n', 'v' }, '<leader>=', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = '[K] LSP format' })
-vim.keymap.set({ 'n', 'v' }, '<leader>f', utils.indent_and_return, { desc = '[K] Indent all doc><Esc>ument' })
+vim.keymap.set({ 'n', 'v' }, '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = '[K] LSP format' })
+vim.keymap.set({ 'n', 'v' }, '<leader>=', utils.indent_and_return, { desc = '[K] Indent all doc><Esc>ument' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>f', '<cmd>lua require("utils").indent_block()<cr>', { desc = '[K] Indent block' })
 
 

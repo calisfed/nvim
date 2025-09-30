@@ -214,6 +214,7 @@ return { -- Collection of various small independent plugins/modules
 
 
 
+    -- require('mini.pick').setup()
     require('mini.pick').setup(
       {
         window = {
@@ -232,6 +233,7 @@ return { -- Collection of various small independent plugins/modules
           -- String to use as prefix in prompt
           prompt_prefix = '> ',
         },
+        -- show  = MiniPick.default_show( { buf_id },{ items }, { query }, {false, {'1', '2', '3'}})
         -- source = {
         --   preview = function(buf_id, item, opts)
         --     print(vim.inspect(item))
@@ -358,13 +360,103 @@ return { -- Collection of various small independent plugins/modules
         show_help_in_tabpage = map_custom(config_mappings.choose_in_tabpage, 'tab '),
       }
 
-      local source = { items = man_pages, name = 'Man', choose = choose, preview = preview }
+      local source = {
+        items   = man_pages,
+        name    = 'Man',
+        choose  = choose,
+        preview = preview,
+        show    = MiniPick.default_show(
+          { buf_id },
+          { items },
+          { query },
+          { true, { '1', '2', '3' } }
+        )
+      }
       opts = vim.tbl_deep_extend('force', { source = source, mappings = mappings }, opts or {})
       return MiniPick.start(opts)
     end
 
     vim.keymap.set('n', '<leader>sm', function() pick_man() end, { desc = "Search man pages" })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    -- require('mini.files').setup(
+    -- -- No need to copy this inside `setup()`. Will be used automatically.
+    --   {
+    --     -- Customization of shown content
+    --     content = {
+    --       -- Predicate for which file system entries to show
+    --       filter = nil,
+    --       -- What prefix to show to the left of file system entry
+    --       prefix = nil,
+    --       -- In which order to show file system entries
+    --       sort = nil,
+    --     },
+
+    --     -- Module mappings created only inside explorer.
+    --     -- Use `''` (empty string) to not create one.
+    --     mappings = {
+    --       close       = 'q',
+    --       go_in       = 'l',
+    --       go_in_plus  = 'L',
+    --       go_out      = 'h',
+    --       go_out_plus = 'H',
+    --       mark_goto   = "'",
+    --       mark_set    = 'm',
+    --       reset       = '<BS>',
+    --       reveal_cwd  = '@',
+    --       show_help   = 'g?',
+    --       synchronize = '=',
+    --       trim_left   = '<',
+    --       trim_right  = '>',
+    --     },
+
+    --     -- General options
+    --     options = {
+    --       -- Whether to delete permanently or move into module-specific trash
+    --       permanent_delete = false,
+    --       -- Whether to use for editing directories
+    --       use_as_default_explorer = true,
+    --     },
+
+    --     -- Customization of explorer windows
+    --     windows = {
+    --       -- Maximum number of windows to show side by side
+    --       max_number = math.huge,
+    --       -- Whether to show preview of file/directory under cursor
+    --       preview = false,
+    --       -- Width of focused window
+    --       width_focus = 50,
+    --       -- Width of non-focused window
+    --       width_nofocus = 15,
+    --       -- Width of preview window
+    --       width_preview = 25,
+    --     },
+    --   }
+
+
+    -- )
+
+
+    -- vim.keymap.set('n', '-', MiniFiles.open, { desc = 'File Browser' })
 
 
 
@@ -428,30 +520,33 @@ return { -- Collection of various small independent plugins/modules
       items = {
         -- require'mini.starter'.sections.telescope(),
 
-        { name = 'Edit new buffer', action = 'enew',                                    section = 'Commands' },
+        { name = 'Edit new buffer', action = 'enew',                                                                                     section = 'Commands' },
         -- { name = 'Config Neovim',   action = 'Telescope find_files cwd=~/.config/nvim', section = 'Commands' },
         -- { name = 'Files in cwd',    action = 'Telescope find_files',                    section = 'Commands' },
         { name = 'Config Neovim',   action = ':lua MiniPick.builtin.files({},{source = {cwd = "~/.config/nvim/"}})',                     section = 'Commands' },
         { name = 'Files in cwd',    action = ':lua MiniPick.builtin.files({},{source = {cwd =require"personal.utils".get_git_root()}})', section = 'Commands' },
         -- { name = 'Recent file',     action = ':e#',                                                                                      section = 'Commands' },
-        { name = 'Update plugins',  action = 'Lazy sync',                               section = 'Commands' },
-        { name = 'Quit Neovim',     action = 'qall',                                    section = 'Commands' },
+        { name = 'Update plugins',  action = 'Lazy sync',                                                                                section = 'Commands' },
+        { name = 'Quit Neovim',     action = 'qall',                                                                                     section = 'Commands' },
         require 'mini.starter'.sections.recent_files(3, true),
         -- require 'mini.starter'.sections.sessions(5, true),
         require 'mini.starter'.sections.recent_files(3, false),
       },
       header =
+
+      -- stylua: ignore start
       [[
                                               
       ████ ██████           █████      ██
      ███████████             █████ 
-     █████████ ███████████████████ ███   ███████████
+     █████████ ███████████████████ ███  ███████████
     █████████  ███    █████████████ █████ ██████████████
    █████████ ██████████ █████████ █████ █████ ████ █████
  ███████████ ███    ███ █████████ █████ █████ ████ █████
 ██████  █████████████████████ ████ █████ █████ ████ ██████
-                                ]],
+                              ]],
 
+      -- stylua: ignore end
       -- dashboard.nvim reference
       footer = function()
         local quotes = require("fortune").get_fortune()
