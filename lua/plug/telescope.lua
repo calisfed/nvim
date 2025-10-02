@@ -81,7 +81,7 @@ return {
           ['<CR>'] = select_one_or_multi,
         }, },
 
-        -- sorting_strategy = 'descending', -- default is 'descending'
+        -- sorting_strategy = 'ascending', -- default is 'descending'
         layout_config = {
           bottom_pane = { height = 0.4, preview_cutoff = 20, prompt_position = "top" },
           -- center = { height = 0.4, preview_cutoff = 40, prompt_position = "top", width = 0.5 },
@@ -380,11 +380,11 @@ return {
 
 
     -- Enable Telescope extensions if they are installed
-    pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'file_browser')
     pcall(require('telescope').load_extension, 'ui-select')
     pcall(require('telescope').load_extension, 'media_files')
     pcall(require('telescope').load_extension, 'undo')
+    pcall(require('telescope').load_extension, 'fzf')
 
     local ngram_highlighter = function(ngram_len, prompt, display)
       local highlights = {}
