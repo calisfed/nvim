@@ -16,7 +16,7 @@ vim.opt.fillchars.eob = ' '   -- Empty lines at the end of a buffer as ` `
 vim.opt.wrap = false          -- Display long lines as just one line
 vim.opt.sidescrolloff = 0     -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 vim.opt.linebreak = true      -- Wrap long lines at a character in 'breakat'
--- vim.opt.textwidth = 80        -- Maximum width of text that is being inserted
+vim.opt.textwidth = 80        -- Maximum width of text that is being inserted
 -- vim.cmd 'set fo-=1tcro'       -- :help fo-table
 
 vim.opt.showtabline = 1    -- 0 for no show, 1 shows if more than 1 tab, 2 always shows
