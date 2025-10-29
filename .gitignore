@@ -2,3 +2,5 @@ Session.vim
 lazy-lock.json
 rocks.toml
 lua/dev/
+lua/personal/cpkio-asciidoc
+lua/personal/tree-sitter-asciidoc

@@ -22,7 +22,7 @@ return {
   { enabled = true,  'neovim/nvim-lspconfig', },                  -- lspconfig
   { enabled = true,  'rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions
   { enabled = true,  'rachartier/tiny-inline-diagnostic.nvim', }, -- inline diagnostic
-  { enabled = false, 'nvimdev/lspsaga.nvim', },                   -- many config, features for lsp
+  { enabled = true, 'nvimdev/lspsaga.nvim', },                   -- many config, features for lsp
 
   -- Pickers
 
@@ -123,7 +123,7 @@ return {
 
   -- Note
   { enabled = true,  'arnarg/todotxt.nvim' },                       -- For todo.txt
-  { enabled = true,  'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
+  { enabled = false,  'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
   { enabled = false, '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
   { enabled = true,  'jbyuki/nabla.nvim', },                        -- take scientific note (like formula), math
   { enabled = true,  'jbyuki/venn.nvim', },                         -- drawing diagram, pretty fun
@@ -134,8 +134,8 @@ return {
   { enabled = true,  'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
   { enabled = true,  'chrisbra/unicode.vim' },                      -- enter unicode
   { enabled = true,  'gu-fan/easydigraph.vim' },                    -- some digraph
-  { enabled = true, 'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-  { enabled = true, 'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+  { enabled = false, 'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+  { enabled = false, 'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
   { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, archive, use tinymist now
   { enabled = false, 'iamcco/markdown-preview.nvim' },              -- markdown preview on browser
   { enabled = false, 'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins, currently not use because of export not good

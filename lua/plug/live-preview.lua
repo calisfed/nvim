@@ -1,11 +1,12 @@
 return {
   enabled = false,
+  lazy = false,
   'brianhuster/live-preview.nvim',
   dependencies = {
     -- You can choose one of the following pickers
     'nvim-telescope/telescope.nvim',
-    'ibhagwan/fzf-lua',
-    'echasnovski/mini.pick',
+    -- 'ibhagwan/fzf-lua',
+    -- 'echasnovski/mini.pick',
   },
   cmd = {"LPs"},
   -- require('livepreview.config').set()
