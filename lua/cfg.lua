@@ -22,13 +22,13 @@ return {
   { enabled = true,  'neovim/nvim-lspconfig', },                  -- lspconfig
   { enabled = true,  'rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions
   { enabled = true,  'rachartier/tiny-inline-diagnostic.nvim', }, -- inline diagnostic
-  { enabled = true, 'nvimdev/lspsaga.nvim', },                   -- many config, features for lsp
+  { enabled = true,  'nvimdev/lspsaga.nvim', },                   -- many config, features for lsp
 
   -- Pickers
 
-  { enabled = true,  'nvim-telescope/telescope.nvim', }, -- lua fzf search
-  { enabled = false, 'folke/snacks.nvim' },             -- QoL plugins
-  { enabled = false, 'ibhagwan/fzf-lua', },             -- fzf search, results is not consistent with options i provided
+  { enabled = false, 'nvim-telescope/telescope.nvim', },  -- lua fzf search
+  { enabled = false, 'folke/snacks.nvim' },               -- QoL plugins
+  { enabled = false, 'ibhagwan/fzf-lua', },               -- fzf search, results is not consistent with options i provided
 
   -- Plugins that many others require
 
@@ -56,7 +56,7 @@ return {
   { enabled = true,  'monaqa/dial.nvim' },                     -- increment/decrement base on various rules
   { enabled = true,  'norcalli/nvim-colorizer.lua', },         -- show color
   { enabled = true,  'rubiin/fortune.nvim' },                  -- Inspiration and Wisdom quotes, go with dashboard plugins like mini or alpha
-  { enabled = true,  'shellRaining/hlchunk.nvim', },           -- highlight part of working code
+  { enabled = false, 'shellRaining/hlchunk.nvim', },           -- highlight part of working code
   { enabled = true,  'stevearc/oil.nvim', },                   -- file explore, with otree.nvim + oil-git
   { enabled = true,  'tridactyl/vim-tridactyl', },             -- tridactyl (Firefox extension)
   { enabled = false, 'danymat/neogen', },                      -- annotation toolkit
@@ -106,10 +106,11 @@ return {
   -- Debugging
 
   { enabled = false, 'andrewferrier/debugprint.nvim', }, -- print debug statement instead of DAP
-  { enabled = false, 'igorlfs/nvim-dap-view', },         -- DAP view replace ui
-  { enabled = false, 'mfussenegger/nvim-dap', },         -- debug adapter protocol
-  { enabled = false, 'rcarriga/nvim-dap-ui', },          -- debug adapter protocol ui
-  { enabled = false, 'jay-babu/mason-nvim-dap.nvim', },  -- Mason integration
+  { enabled = true,  'igorlfs/nvim-dap-view', },         -- DAP view replace ui
+  { enabled = true,  'theHamsta/nvim-dap-virtual-text' }, -- Show inline variable
+  { enabled = true,  'mfussenegger/nvim-dap', },         -- debug adapter protocol
+  { enabled = true,  'rcarriga/nvim-dap-ui', },          -- debug adapter protocol ui
+  { enabled = true,  'jay-babu/mason-nvim-dap.nvim', },  -- Mason integration
   { enabled = false, "miroshQa/debugmaster.nvim", },     -- dap-ui alternative, aka adebug mode
 
   -- Completion
@@ -123,7 +124,7 @@ return {
 
   -- Note
   { enabled = true,  'arnarg/todotxt.nvim' },                       -- For todo.txt
-  { enabled = false,  'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
+  { enabled = false, 'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
   { enabled = false, '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
   { enabled = true,  'jbyuki/nabla.nvim', },                        -- take scientific note (like formula), math
   { enabled = true,  'jbyuki/venn.nvim', },                         -- drawing diagram, pretty fun
@@ -134,9 +135,9 @@ return {
   { enabled = true,  'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
   { enabled = true,  'chrisbra/unicode.vim' },                      -- enter unicode
   { enabled = true,  'gu-fan/easydigraph.vim' },                    -- some digraph
-  { enabled = false, 'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-  { enabled = false, 'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-  { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, archive, use tinymist now
+  { enabled = true,  'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+  { enabled = true,  'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+  { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, NOTE: archive, use tinymist now
   { enabled = false, 'iamcco/markdown-preview.nvim' },              -- markdown preview on browser
   { enabled = false, 'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins, currently not use because of export not good
   { enabled = false, 'nvim-telekasten/telekasten.nvim' },           -- zettekasten for neovim, only drawback is telescope
@@ -168,20 +169,21 @@ return {
   { enabled = false, 'wildfunctions/myeyeshurt', },             -- resting eye after a while
 
   -- TODO: test
-  { enabled = false, 'notomo/cmdbuf.nvim' },            -- Buffer for cmdline
-  { enabled = false, 'mihaifm/MegaToggler' },           -- toggle all thing base on function
+  { enabled = false, 'notomo/cmdbuf.nvim' },             -- Buffer for cmdline
+  { enabled = false, 'mihaifm/MegaToggler' },            -- toggle all thing base on function
 
-  { enabled = false, 'mistweaverco/kulala.nvim' },      -- full feature rest client
-  { enabled = false, 'praem90/db.nvim' },               -- database plugin
-  { enabled = false, 'bennypowers/nvim-regexplainer' }, -- need kitty image-protocol
-  { enabled = false, 'Owen-Dechow/videre.nvim' },       -- json/yaml viewer
+  { enabled = false, 'mistweaverco/kulala.nvim' },       -- full feature rest client
+  { enabled = false, 'praem90/db.nvim' },                -- database plugin
+  { enabled = false, 'bennypowers/nvim-regexplainer' },  -- need kitty image-protocol
+  { enabled = false, 'Owen-Dechow/videre.nvim' },        -- json/yaml viewer
   -- :make
   { enabled = false, 'ImmanuelHaffner/pigmentor.nvim' }, -- color but have latex color support
-  { enabled = false, 'IstiCusi/docpair.nvim' },         -- keep dociment apart from code, open window side by side
-  { enabled = false, 'al-kot/typst-preview.nvim' },     -- preview typst inside neovim, neet kitty or wezterm
-  { enabled = false, 'mtrajano/tssorter.nvim' },        -- treesitter sorter
-  { enabled = false, 'pxwg/math-conceal.nvim' },        -- math conceal
-  { enabled = false,  'Pocco81/true-zen.nvim' },         -- Usage
-  { enabled = true, 'folke/zen-mode.nvim'}, -- Usage
-
+  { enabled = false, 'IstiCusi/docpair.nvim' },          -- keep dociment apart from code, open window side by side
+  { enabled = false, 'al-kot/typst-preview.nvim' },      -- preview typst inside neovim, neet kitty or wezterm
+  { enabled = false, 'mtrajano/tssorter.nvim' },         -- treesitter sorter
+  { enabled = false, 'pxwg/math-conceal.nvim' },         -- math conceal
+  { enabled = false, 'Pocco81/true-zen.nvim' },          -- Usage
+  { enabled = true,  'folke/zen-mode.nvim' },            -- Usage
+  { enabled = false, 'XXiaoA/atone.nvim' },              -- beauti undotree
+  { enabled = true,  'saghen/blink.indent', }
 }

@@ -124,7 +124,6 @@ return {
           -- "--compile-commands-dir=build",
           "--clang-tidy",
           "--completion-style=bundled", -- bundled, detailed
-          -- "--std=c99"
           "--header-insertion=iwyu",    -- never
           -- "--cross-file-rename", --obsolete flag, no longer in used
         },

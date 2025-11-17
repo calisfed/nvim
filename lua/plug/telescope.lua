@@ -532,8 +532,8 @@ return {
       { desc = 'Search diagnostics' })
     vim.keymap.set('n', '<leader>sb', function() require('telescope.builtin').buffers() end, { desc = 'Search buffers' })
     ---@diagnostic disable-next-line: undefined-global
-    vim.keymap.set('n', '<leader>sm', function() require('telescope.builtin').man_pages({ sections = ALL }) end,
-      { desc = 'Search manunals' })
+    vim.keymap.set('n', '<leader>sm', function() require('telescope.builtin').man_pages({sections = {"ALL"}}) end,
+      { desc = 'Search manuals' })
     vim.keymap.set('n', '<leader>sr', function() require('telescope.builtin').registers() end,
       { desc = 'Search registers' })
     vim.keymap.set('n', '<leader>sl', function() require('telescope.builtin').loclist() end,

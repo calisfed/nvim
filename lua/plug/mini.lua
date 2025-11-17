@@ -215,171 +215,171 @@ return { -- Collection of various small independent plugins/modules
 
 
     -- require('mini.pick').setup()
-    -- require('mini.pick').setup(
-    --   {
-    --     window = {
-    --       config = function()
-    --         local height = math.floor(0.618 * vim.o.lines)
-    --         local width = math.floor(0.618 * vim.o.columns)
-    --         return {
-    --           anchor = 'NW',
-    --           height = height,
-    --           width = width,
-    --           row = math.floor(0.5 * (vim.o.lines - height)),
-    --           col = math.floor(0.5 * (vim.o.columns - width)),
-    --         }
-    --       end,
-    --       prompt_caret = '▏',
-    --       -- String to use as prefix in prompt
-    --       prompt_prefix = '> ',
-    --     },
-    --     options = {
-    --       content_from_bottom = true,
-    --     },
-    --     -- show  = MiniPick.default_show( { buf_id },{ items }, { query }, {false, {'1', '2', '3'}})
-    --     -- source = {
-    --     --   preview = function(buf_id, item, opts)
-    --     --     print(vim.inspect(item))
-    --     --     print(vim.inspect(opts))
-    --     --     print(vim.inspect(buf_id))
-    --     --     local bufnr = vim.api.nvim_create_buf(false, true)
-    --     --     local winid = vim.api.nvim_open_win(bufnr, false, {
-    --     --       style = 'minimal',
-    --     --       relative = 'editor',
-    --     --       width = 10,
-    --     --       height = 10,
-    --     --       row = 1,
-    --     --       col = 1,
-    --     --       title = 'preview'
-    --     --     })
-    --     --     vim.wo[winid].winhighlight = "Normal:Normal"
-    --     --     require('mini.pick').default_preview(bufnr, item, opts)
-    --     --     vim.api.nvim_create_autocmd('MiniPickStop', {
-    --     --       callback = function()
-    --     --         vim.api.nvim_win_close(winid, true)
-    --     --         vim.api.nvim_buf_delete(bufnr, { force = true })
-    --     --       end
-    --     --     })
-    --     --   end
-    --     -- },
-    --   }
-    -- )
-    -- vim.keymap.set('n', '<leader>sh', "<cmd>Pick help<cr>", { desc = 'Search Help' })
-    -- vim.keymap.set('n', '<leader>sk', "<cmd>Pick keymaps<cr>", { desc = 'Search Keymaps' })
-    -- vim.keymap.set('n', '<leader>sf',
-    --   "<cmd>lua MiniPick.builtin.files({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
-    --   { desc = 'Search Files' })
-    -- vim.keymap.set('n', '<leader>sw',
-    --   "<cmd>lua MiniPick.builtin.grep({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
-    --   { desc = 'Grep current word' })
-    -- vim.keymap.set('n', '<leader>sg',
-    --   "<cmd>lua MiniPick.builtin.grep_live({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
-    --   { desc = 'Live grep' })
-    -- vim.keymap.set('n', '<leader>sb', "<cmd>Pick buffers<cr>", { desc = 'Search existing buffers' })
-    -- vim.keymap.set('n', '<leader>sd', "<cmd>Pick diagnostic<cr>", { desc = 'Search Diagnostics' })
-    -- vim.keymap.set('n', '<leader>sr', "<cmd>Pick resume<cr>", { desc = 'Search Resume' })
-    -- vim.keymap.set('n', '<leader>s.', "<cmd>Pick oldfiles<cr>", { desc = 'Search Recent Files ("." for repeat)' })
-    -- vim.keymap.set('n', '<leader>sR', "<cmd>Pick lsp scope='references'<cr>", { desc = 'Search References' })
-    -- vim.keymap.set('n', '<leader>sS', "<cmd>Pick lsp scope='workspace_symbol'<cr>",
-    --   { desc = 'Search Workspace Symbol' })
-    -- vim.keymap.set('n', '<leader>sI', "<cmd>Pick lsp scope='implementation'<cr>", { desc = 'Search Implementation' })
-    -- vim.keymap.set('n', '<leader>ss', "<cmd>Pick lsp scope='document_symbol'<cr>",
-    --   { desc = 'Search Document Symbol' })
-    -- vim.keymap.set('n', '<leader>sD', "<cmd>Pick lsp scope='definition'<cr>", { desc = 'Search Definition' })
-    -- vim.keymap.set('n', '<leader>sy', "<cmd>Pick lsp scope='declaration'<cr>", { desc = 'Search Declaration' })
-    -- vim.keymap.set('n', '<leader>st', "<cmd>Pick lsp scope='type_definition'<cr>",
-    --   { desc = 'Search Type definition' })
-    -- local pick_man = function(local_opts, opts)
-    --   local_opts = vim.tbl_deep_extend('force', { default_split = 'horizontal' }, local_opts or {})
-    --   local default_modifier = ({ horizontal = '', vertical = 'vert ', tab = 'tab ' })[local_opts.default_split]
-    --   if default_modifier == nil then
-    --     error('(mini.pick) ' ..
-    --       '`opts.default_split` should be one of "horizontal", "vertical", "tab"', 0)
-    --   end
+    require('mini.pick').setup(
+      {
+        window = {
+          config = function()
+            local height = math.floor(0.618 * vim.o.lines)
+            local width = math.floor(0.618 * vim.o.columns)
+            return {
+              anchor = 'NW',
+              height = height,
+              width = width,
+              row = math.floor(0.5 * (vim.o.lines - height)),
+              col = math.floor(0.5 * (vim.o.columns - width)),
+            }
+          end,
+          prompt_caret = '▏',
+          -- String to use as prefix in prompt
+          prompt_prefix = '> ',
+        },
+        options = {
+          content_from_bottom = true,
+        },
+        -- show  = MiniPick.default_show( { buf_id },{ items }, { query }, {false, {'1', '2', '3'}})
+        -- source = {
+        --   preview = function(buf_id, item, opts)
+        --     print(vim.inspect(item))
+        --     print(vim.inspect(opts))
+        --     print(vim.inspect(buf_id))
+        --     local bufnr = vim.api.nvim_create_buf(false, true)
+        --     local winid = vim.api.nvim_open_win(bufnr, false, {
+        --       style = 'minimal',
+        --       relative = 'editor',
+        --       width = 10,
+        --       height = 10,
+        --       row = 1,
+        --       col = 1,
+        --       title = 'preview'
+        --     })
+        --     vim.wo[winid].winhighlight = "Normal:Normal"
+        --     require('mini.pick').default_preview(bufnr, item, opts)
+        --     vim.api.nvim_create_autocmd('MiniPickStop', {
+        --       callback = function()
+        --         vim.api.nvim_win_close(winid, true)
+        --         vim.api.nvim_buf_delete(bufnr, { force = true })
+        --       end
+        --     })
+        --   end
+        -- },
+      }
+    )
+    vim.keymap.set('n', '<leader>sh', "<cmd>Pick help<cr>", { desc = 'Search Help' })
+    vim.keymap.set('n', '<leader>sk', "<cmd>Pick keymaps<cr>", { desc = 'Search Keymaps' })
+    vim.keymap.set('n', '<leader>sf',
+      "<cmd>lua MiniPick.builtin.files({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
+      { desc = 'Search Files' })
+    vim.keymap.set('n', '<leader>sw',
+      "<cmd>lua MiniPick.builtin.grep({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
+      { desc = 'Grep current word' })
+    vim.keymap.set('n', '<leader>sg',
+      "<cmd>lua MiniPick.builtin.grep_live({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
+      { desc = 'Live grep' })
+    vim.keymap.set('n', '<leader>sb', "<cmd>Pick buffers<cr>", { desc = 'Search existing buffers' })
+    vim.keymap.set('n', '<leader>sd', "<cmd>Pick diagnostic<cr>", { desc = 'Search Diagnostics' })
+    vim.keymap.set('n', '<leader>sr', "<cmd>Pick resume<cr>", { desc = 'Search Resume' })
+    vim.keymap.set('n', '<leader>s.', "<cmd>Pick oldfiles<cr>", { desc = 'Search Recent Files ("." for repeat)' })
+    vim.keymap.set('n', '<leader>sR', "<cmd>Pick lsp scope='references'<cr>", { desc = 'Search References' })
+    vim.keymap.set('n', '<leader>sS', "<cmd>Pick lsp scope='workspace_symbol'<cr>",
+      { desc = 'Search Workspace Symbol' })
+    vim.keymap.set('n', '<leader>sI', "<cmd>Pick lsp scope='implementation'<cr>", { desc = 'Search Implementation' })
+    vim.keymap.set('n', '<leader>ss', "<cmd>Pick lsp scope='document_symbol'<cr>",
+      { desc = 'Search Document Symbol' })
+    vim.keymap.set('n', '<leader>sD', "<cmd>Pick lsp scope='definition'<cr>", { desc = 'Search Definition' })
+    vim.keymap.set('n', '<leader>sy', "<cmd>Pick lsp scope='declaration'<cr>", { desc = 'Search Declaration' })
+    vim.keymap.set('n', '<leader>st', "<cmd>Pick lsp scope='type_definition'<cr>",
+      { desc = 'Search Type definition' })
+    local pick_man = function(local_opts, opts)
+      local_opts = vim.tbl_deep_extend('force', { default_split = 'horizontal' }, local_opts or {})
+      local default_modifier = ({ horizontal = '', vertical = 'vert ', tab = 'tab ' })[local_opts.default_split]
+      if default_modifier == nil then
+        error('(mini.pick) ' ..
+          '`opts.default_split` should be one of "horizontal", "vertical", "tab"', 0)
+      end
 
-    --   local man_buf = vim.api.nvim_create_buf(false, true)
-    --   -- vim.bo[man_buf].buftype = 'help'
+      local man_buf = vim.api.nvim_create_buf(false, true)
+      -- vim.bo[man_buf].buftype = 'help'
 
-    --   local function get_man_pages()
-    --     -- local output = vim.fn.systemlist("apropos .")
-    --     local output = vim.fn.systemlist("man -k .")
-    --     local items = {}
+      local function get_man_pages()
+        -- local output = vim.fn.systemlist("apropos .")
+        local output = vim.fn.systemlist("man -k .")
+        local items = {}
 
-    --     for _, line in ipairs(output) do
-    --       -- local name, section, summary = line:match("^(%S+)%s+%(([%w]+)%)+%-%s+(.*)$")
-    --       local name, section, summary = line:match("^(%S+)%s+%((.-)%)%s+%-%s+(.*)$")
-    --       if name and section then
-    --         table.insert(items, {
-    --           name = name,
-    --           section = section,
-    --           cmd = string.format("%s %s", section, name),
-    --           filename = string.format("man://%s(%s)", name, section),
-    --           line = line,
-    --         })
-    --       end
-    --     end
-    --     return items
-    --   end
+        for _, line in ipairs(output) do
+          -- local name, section, summary = line:match("^(%S+)%s+%(([%w]+)%)+%-%s+(.*)$")
+          local name, section, summary = line:match("^(%S+)%s+%((.-)%)%s+%-%s+(.*)$")
+          if name and section then
+            table.insert(items, {
+              name = name,
+              section = section,
+              cmd = string.format("%s %s", section, name),
+              filename = string.format("man://%s(%s)", name, section),
+              line = line,
+            })
+          end
+        end
+        return items
+      end
 
-    --   local man_pages = vim.api.nvim_buf_call(man_buf, function() return get_man_pages() end)
-    --   vim.api.nvim_buf_delete(man_buf, { force = true })
-    --   vim.tbl_map(function(t) t.text = t.line end, man_pages)
+      local man_pages = vim.api.nvim_buf_call(man_buf, function() return get_man_pages() end)
+      vim.api.nvim_buf_delete(man_buf, { force = true })
+      vim.tbl_map(function(t) t.text = t.line end, man_pages)
 
-    --   local choose = function(item, modifier)
-    --     if item == nil then return end
-    --     vim.schedule(function()
-    --       vim.cmd((modifier or default_modifier) ..
-    --         'Man ' .. (item.cmd or ''))
-    --     end)
-    --   end
-    --   local preview = function(buf_id, item)
-    --     vim.api.nvim_buf_call(buf_id, function()
-    --       vim.cmd('edit ' .. vim.fn.fnameescape(item.filename))
-    --       vim.bo.buftype, vim.bo.buflisted, vim.bo.bufhidden = 'nofile', false, 'wipe'
-    --       local has_ts = pcall(vim.treesitter.start, 0)
-    --       if not has_ts then vim.bo.syntax = 'man' end
-    --       vim.cmd('normal! zt')
-    --     end)
-    --   end
+      local choose = function(item, modifier)
+        if item == nil then return end
+        vim.schedule(function()
+          vim.cmd((modifier or default_modifier) ..
+            'Man ' .. (item.cmd or ''))
+        end)
+      end
+      local preview = function(buf_id, item)
+        vim.api.nvim_buf_call(buf_id, function()
+          vim.cmd('edit ' .. vim.fn.fnameescape(item.filename))
+          vim.bo.buftype, vim.bo.buflisted, vim.bo.bufhidden = 'nofile', false, 'wipe'
+          local has_ts = pcall(vim.treesitter.start, 0)
+          if not has_ts then vim.bo.syntax = 'man' end
+          vim.cmd('normal! zt')
+        end)
+      end
 
-    --   -- Modify default mappings to work with special `:help` command
-    --   local map_custom = function(char, modifier)
-    --     local f = function()
-    --       choose(MiniPick.get_picker_matches().current, modifier)
-    --       return true
-    --     end
-    --     return { char = char, func = f }
-    --   end
+      -- Modify default mappings to work with special `:help` command
+      local map_custom = function(char, modifier)
+        local f = function()
+          choose(MiniPick.get_picker_matches().current, modifier)
+          return true
+        end
+        return { char = char, func = f }
+      end
 
-    --   local config_mappings = vim.tbl_deep_extend('force', MiniPick.config, vim.b.minipick_config or {},
-    --     config or {}).mappings
-    --   --stylua: ignore
-    --   local mappings = {
-    --     choose_in_split = '',
-    --     show_help_in_split = map_custom(config_mappings.choose_in_split, ''),
-    --     choose_in_vsplit = '',
-    --     show_help_in_vsplit = map_custom(config_mappings.choose_in_vsplit, 'vertical '),
-    --     choose_in_tabpage = '',
-    --     show_help_in_tabpage = map_custom(config_mappings.choose_in_tabpage, 'tab '),
-    --   }
+      local config_mappings = vim.tbl_deep_extend('force', MiniPick.config, vim.b.minipick_config or {},
+        config or {}).mappings
+      --stylua: ignore
+      local mappings = {
+        choose_in_split = '',
+        show_help_in_split = map_custom(config_mappings.choose_in_split, ''),
+        choose_in_vsplit = '',
+        show_help_in_vsplit = map_custom(config_mappings.choose_in_vsplit, 'vertical '),
+        choose_in_tabpage = '',
+        show_help_in_tabpage = map_custom(config_mappings.choose_in_tabpage, 'tab '),
+      }
 
-    --   local source = {
-    --     items   = man_pages,
-    --     name    = 'Man',
-    --     choose  = choose,
-    --     preview = preview,
-    --     show    = MiniPick.default_show(
-    --       { buf_id },
-    --       { items },
-    --       { query },
-    --       { true, { '1', '2', '3' } }
-    --     )
-    --   }
-    --   opts = vim.tbl_deep_extend('force', { source = source, mappings = mappings }, opts or {})
-    --   return MiniPick.start(opts)
-    -- end
+      local source = {
+        items   = man_pages,
+        name    = 'Man',
+        choose  = choose,
+        preview = preview,
+        show    = MiniPick.default_show(
+          { buf_id },
+          { items },
+          { query },
+          { true, { '1', '2', '3' } }
+        )
+      }
+      opts = vim.tbl_deep_extend('force', { source = source, mappings = mappings }, opts or {})
+      return MiniPick.start(opts)
+    end
 
-    -- vim.keymap.set('n', '<leader>sm', function() pick_man() end, { desc = "Search man pages" })
+    vim.keymap.set('n', '<leader>sm', function() pick_man() end, { desc = "Search man pages" })
 
 
 
