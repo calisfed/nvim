@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-global
+---@diagnostic disable: undefined-global, need-check-nil
 return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
   -- event = "VeryLazy",
@@ -523,14 +523,14 @@ return { -- Collection of various small independent plugins/modules
       items = {
         -- require'mini.starter'.sections.telescope(),
 
-        { name = 'Edit new buffer', action = 'enew',                                                                                     section = 'Commands' },
+        { name = 'Edit new buffer', action = 'enew',                                    section = 'Commands' },
         { name = 'Config Neovim',   action = 'Telescope find_files cwd=~/.config/nvim', section = 'Commands' },
         { name = 'Files in cwd',    action = 'Telescope find_files',                    section = 'Commands' },
         -- { name = 'Config Neovim',   action = ':lua MiniPick.builtin.files({},{source = {cwd = "~/.config/nvim/"}})',                     section = 'Commands' },
         -- { name = 'Files in cwd',    action = ':lua MiniPick.builtin.files({},{source = {cwd =require"personal.utils".get_git_root()}})', section = 'Commands' },
         -- { name = 'Recent file',     action = ':e#',                                                                                      section = 'Commands' },
-        { name = 'Update plugins',  action = 'Lazy sync',                                                                                section = 'Commands' },
-        { name = 'Quit Neovim',     action = 'qall',                                                                                     section = 'Commands' },
+        { name = 'Update plugins',  action = 'Lazy sync',                               section = 'Commands' },
+        { name = 'Quit Neovim',     action = 'qall',                                    section = 'Commands' },
         require 'mini.starter'.sections.recent_files(3, true),
         -- require 'mini.starter'.sections.sessions(5, true),
         require 'mini.starter'.sections.recent_files(3, false),
@@ -572,34 +572,49 @@ return { -- Collection of various small independent plugins/modules
 
 
 
-    -- require('mini.completion').setup({
-    --   lsp_completion = {
-    --     source_func = 'omnifunc',
-    --   },
-    --   delay = { completion = 0, info = 0, signature = 0 },
-    --   window = {
-    --     info = { height = 25, width = 80, border = 'single' },
-    --     signature = { height = 25, width = 80, border = 'single' },
-    --   },
-    -- })
+    require('mini.completion').setup({
+      lsp_completion = {
+        source_func = 'omnifunc',
+      },
+      delay = { completion = 0, info = 0, signature = 0 },
+      window = {
+        info = { height = 25, width = 80, border = 'single' },
+        signature = { height = 25, width = 80, border = 'single' },
+      },
+    })
 
-    -- vim.o.completeopt = 'menuone,noinsert' -- This option for mini.completion to work as my intended
+    vim.o.completeopt = 'menuone,noinsert' -- This option for mini.completion to work as my intended
+
+    require('mini.cmdline').setup(
+      {
+        autocomplete = {
+          enable = true,
+        },
+      }
+    )
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "MiniCmdlineEnter",
+      callback = function()
+        vim.keymap.set("c", "<Tab>", "<C-l><Space>", { buffer = true })
+      end,
+    })
+    -- vim.o.pumborder = 'single'
 
 
-    --
-    --
-    -- local gen_loader = require('mini.snippets').gen_loader
-    --
-    -- require('mini.snippets').setup({
-    -- 	snippets = {
-    -- 		-- Load custom file with global snippets first (adjust for Windows)
-    -- 		gen_loader.from_file('~/.config/nvim/snippets/global.json'),
-    --
-    -- 		-- Load snippets based on current language by reading files from
-    -- 		-- "snippets/" subdirectories from 'runtimepath' directories.
-    -- 		gen_loader.from_lang(),
-    -- 	},
-    -- })
+
+    local gen_loader = require('mini.snippets').gen_loader
+
+    require('mini.snippets').setup({
+      snippets = {
+        -- Load custom file with global snippets first (adjust for Windows)
+        gen_loader.from_file('~/.config/nvim/snippets/package.json'),
+
+        -- Load snippets based on current language by reading files from
+        -- "snippets/" subdirectories from 'runtimepath' directories.
+        gen_loader.from_lang(),
+      },
+    })
+
 
 
     require('mini.keymap').setup()
@@ -607,12 +622,13 @@ return { -- Collection of various small independent plugins/modules
 
     -- map_multistep('i', '<Tab>',   { 'pmenu_next' })
     -- map_multistep('i', '<Tab>', { 'pmenu_accept', 'minisnippets_next','vimsnippet_next','luasnip_next', 'minisnippets_expand', 'jump_after_close'})
-    -- map_multistep('i', '<Tab>', { 'pmenu_accept', 'minisnippets_next','vimsnippet_next','luasnip_next', 'minisnippets_expand', 'jump_after_close'})
-    -- map_multistep('i', '<C-l>', {'minisnippets_next', 'vimsnippet_next', 'luasnip_next'})
-    -- map_multistep('i', '<C-h>', {'minisnippets_prev', 'vimsnippet_prev', 'luasnip_prev'})
-    -- map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
-    -- map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
-    -- map_multistep('i', '<BS>', { 'minipairs_bs' })
+    map_multistep('i', '<Tab>',
+      { 'pmenu_accept', 'minisnippets_next', 'vimsnippet_next', 'luasnip_next', 'minisnippets_expand', 'jump_after_close' })
+    map_multistep('i', '<C-l>', { 'minisnippets_next', 'vimsnippet_next', 'luasnip_next' })
+    map_multistep('i', '<C-h>', { 'minisnippets_prev', 'vimsnippet_prev', 'luasnip_prev' })
+    map_multistep('i', '<S-Tab>', { 'pmenu_prev' })
+    map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
+    map_multistep('i', '<BS>', { 'minipairs_bs' })
     -- map_multistep('i', '<Tab>', {'blink_accept', 'jump_after_tsnode', 'jump_after_close'})
 
     local map_combo = require('mini.keymap').map_combo
@@ -627,6 +643,12 @@ return { -- Collection of various small independent plugins/modules
     -- Escape into Normal mode from Terminal mode
     map_combo('t', 'jk', '<BS><BS><C-\\><C-n>')
     map_combo('t', 'kj', '<BS><BS><C-\\><C-n>')
+
+
+    -- map_combo({ 'n', 'x' }, 'll', 'g$')
+    -- map_combo({ 'n', 'x' }, 'hh', 'g^')
+    -- map_combo({ 'n', 'x' }, 'jj', '}')
+    -- map_combo({ 'n', 'x' }, 'kk', '{')
 
     -- local hipatterns = require('mini.hipatterns')
     -- hipatterns.setup({
@@ -645,6 +667,9 @@ return { -- Collection of various small independent plugins/modules
     -- Choose background and foreground
     -- this only work on Kitty and Ghostty
     -- require('mini.hues').setup( { background = '#11262d', foreground = '#c0c8cc', accent = 'blue', saturation= 'high', n_hues = 8, })
+		--   require('mini.hues').setup()
+		-- vim.cmd.colorscheme 'miniwinter'
   end,
+
 
 }

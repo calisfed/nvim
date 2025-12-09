@@ -10,7 +10,7 @@ return {
     'jghauser/follow-md-links.nvim',
   },
   enabled = false,
-  lazy = true, -- Recommended
+  lazy = false, -- Recommended
   -- ft = "markdown", -- If you decide to lazy-load anyway
   ft = { "markdown", "typst" },
   opts = function()
@@ -18,7 +18,7 @@ return {
     require('markview').setup({
       preview = {
         enable = true,
-        enable_hybrid_mode = true,
+        enable_hybrid_mode = false,
         map_gx = true,
 
         debounce = 150,
@@ -42,14 +42,14 @@ return {
         },
       },
       markdown = {
-        headings = presets.headings.glow,                 -- glow | glow_center | slanted | arrowed | simple | marker
+        headings = presets.headings.marker,                 -- glow | glow_center | slanted | arrowed | simple | marker
         horizontal_rules = presets.horizontal_rules.thin, -- thin | thick | solid | double | dashed | dotted | arrowed
         tables = presets.tables.rounded,                  -- none | single | double | rounded | solid
+        list_items = {
+          enable = true,
+          indent_size = 0,
+        }
       },
-      list_items = {
-        enable = false,
-        indent_size = 0,
-      }
     })
     require("markview.extras.headings").setup() -- Command :Headings increase|decrease
     require("markview.extras.editor").setup()   -- Command :Editor create|edit

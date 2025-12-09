@@ -115,7 +115,7 @@ return {
 
   -- Completion
 
-  { enabled = true,  'saghen/blink.cmp', },            -- better completion
+  { enabled = false,  'saghen/blink.cmp', },            -- better completion
   { enabled = false, 'Dan7h3x/signup.nvim', },         -- LSP Sign help
   { enabled = false, 'ZWindL/orphans.nvim', },         -- check if plugins haven't been update for a while
   { enabled = false, 'folke/lazydev.nvim', },          -- lua dev

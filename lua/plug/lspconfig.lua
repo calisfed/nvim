@@ -162,14 +162,16 @@ return {
     }
 
 
-    capabilities = require('blink.cmp').get_lsp_capabilities({
-      textDocument = {
-        completion = { completionItem = { snippetSupport = true } },
-        onTypeFormatting = { dynamicRegistration = false },
-      },
-    })
+    -- capabilities = require('blink.cmp').get_lsp_capabilities({
+    --   textDocument = {
+    --     completion = { completionItem = { snippetSupport = true } },
+    --     onTypeFormatting = { dynamicRegistration = false },
+    --   },
+    -- })
 
     -- capabilities.textDocument.onTypeFormatting = { dynamicRegistration = false }
+
+
 
     require('mason').setup({ ui = { border = 'single', }, icons = { package_installed = "✓", package_pending = "➜", package_uninstalled = "✗" } })
 
