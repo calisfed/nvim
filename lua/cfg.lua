@@ -22,12 +22,12 @@ return {
   { enabled = true,  'neovim/nvim-lspconfig', },                  -- lspconfig
   { enabled = true,  'rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions
   { enabled = true,  'rachartier/tiny-inline-diagnostic.nvim', }, -- inline diagnostic
-  { enabled = true,  'nvimdev/lspsaga.nvim', },                   -- many config, features for lsp
+  { enabled = false,  'nvimdev/lspsaga.nvim', },                   -- many config, features for lsp
 
   -- Pickers
 
   { enabled = false, 'nvim-telescope/telescope.nvim', },  -- lua fzf search
-  { enabled = false, 'folke/snacks.nvim' },               -- QoL plugins
+  { enabled = true, 'folke/snacks.nvim' },               -- QoL plugins
   { enabled = false, 'ibhagwan/fzf-lua', },               -- fzf search, results is not consistent with options i provided
 
   -- Plugins that many others require
@@ -38,7 +38,7 @@ return {
 
   -- Git
   { enabled = true,  'tpope/vim-fugitive' },       -- Git fugitive
-  { enabled = true,  'kdheepak/lazygit.nvim' },    -- Git integration
+  { enabled = false,  'kdheepak/lazygit.nvim' },    -- Git integration
   { enabled = true,  "sindrets/diffview.nvim", },  -- Diff integration
   { enabled = true,  'lewis6991/gitsigns.nvim', }, -- gitsigns
   { enabled = false, 'NeogitOrg/neogit' },         -- Git integration
@@ -78,7 +78,7 @@ return {
   { enabled = false, 'altermo/ultimate-autopair.nvim' },       -- autopairs, replaced by mini.pair
   { enabled = false, 'camerondixon/hex-reader.nvim' },         -- Hex reader
   { enabled = false, 'emmanueltouzery/apidocs.nvim' },         -- devdocs.io integrated
-  { enabled = false, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
+  { enabled = true, 'folke/which-key.nvim', },                -- keymapping helper, currently replaced by mini.clue
   { enabled = false, 'goolord/alpha-nvim', },                  -- dashboard, replaced by mini.starter
   { enabled = false, 'kevinhwang91/nvim-ufo', },               -- fold
   { enabled = false, 'lukas-reineke/indent-blankline.nvim', }, -- highlight part of waking code
@@ -115,7 +115,7 @@ return {
 
   -- Completion
 
-  { enabled = false,  'saghen/blink.cmp', },            -- better completion
+  { enabled = true,  'saghen/blink.cmp', },            -- better completion
   { enabled = false, 'Dan7h3x/signup.nvim', },         -- LSP Sign help
   { enabled = false, 'ZWindL/orphans.nvim', },         -- check if plugins haven't been update for a while
   { enabled = false, 'folke/lazydev.nvim', },          -- lua dev
@@ -135,7 +135,7 @@ return {
   { enabled = true,  'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
   { enabled = true,  'chrisbra/unicode.vim' },                      -- enter unicode
   { enabled = true,  'gu-fan/easydigraph.vim' },                    -- some digraph
-  { enabled = true,  'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+  { enabled = false,  'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
   { enabled = true,  'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
   { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, NOTE: archive, use tinymist now
   { enabled = false, 'iamcco/markdown-preview.nvim' },              -- markdown preview on browser
@@ -183,7 +183,7 @@ return {
   { enabled = false, 'mtrajano/tssorter.nvim' },         -- treesitter sorter
   { enabled = false, 'pxwg/math-conceal.nvim' },         -- math conceal
   { enabled = false, 'Pocco81/true-zen.nvim' },          -- Usage
-  { enabled = true,  'folke/zen-mode.nvim' },            -- Usage
+  { enabled = false,  'folke/zen-mode.nvim' },            -- Usage
   { enabled = false, 'XXiaoA/atone.nvim' },              -- beauti undotree
   { enabled = true,  'saghen/blink.indent', }
 }
