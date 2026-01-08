@@ -44,53 +44,169 @@ return { -- Treesitter
 
   },
   build = ':TSUpdate',
-  config = function()
-    vim.filetype.add {
-      extension = { rasi = 'rasi' },
-      pattern = {
-        ['.*/waybar/config'] = 'jsonc',
-        ['.*/mako/config'] = 'dosini',
-        ['.*/hypr/.*.conf'] = 'hyprlang',
-        ['.*/kitty/*.conf'] = 'bash',
-      },
-    }
+  -- config = function()
+  --   vim.filetype.add {
+  --     extension = { rasi = 'rasi' },
+  --     pattern = {
+  --       ['.*/waybar/config'] = 'jsonc',
+  --       ['.*/mako/config'] = 'dosini',
+  --       ['.*/hypr/.*.conf'] = 'hyprlang',
+  --       ['.*/kitty/*.conf'] = 'bash',
+  --     },
+  --   }
 
-    require('nvim-treesitter').setup({
-      -- Directory to install parsers and queries to
-      -- install_dir = vim.fn.stdpath('data') .. '/site'
-    })
-    require('nvim-treesitter').install({ 'c', 'lua', 'python', 'vimdoc', 'vim', 'bash', 'zig', 'markdown', 'markdown_inline'})
+  --   require('nvim-treesitter').setup({
+  --     -- Directory to install parsers and queries to
+  --     -- install_dir = vim.fn.stdpath('data') .. '/site'
+  --   })
+  --   require('nvim-treesitter').install({ 'c', 'lua', 'python', 'vimdoc', 'vim', 'bash', 'zig', 'markdown', 'markdown_inline'})
 
-    vim.api.nvim_create_autocmd('FileType', {
-      pattern = { '<filetype>' },
+  --   vim.api.nvim_create_autocmd('FileType', {
+  --     pattern = { '<filetype>' },
+  --     callback = function()
+  --       -- Highlight feature
+  --       vim.treesitter.start()
+  --       -- Indent feature
+  --       vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  --       -- Fold feature
+  --       vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+  --     end,
+  --   })
+
+  --   -- Custom languages, check readme or help for more
+  --   -- vim.api.nvim_create_autocmd('User', {
+  --   --   pattern = 'TSUpdate',
+  --   --   callback = function()
+  --   --     require('nvim-treesitter.parsers').zimbu = {
+  --   --       install_info = {
+  --   --         url = 'https://github.com/zimbulang/tree-sitter-zimbu',
+  --   --         -- revision = <sha>, -- commit hash for revision to check out; HEAD if missing
+  --   --         -- optional entries:
+  --   --         branch = 'develop',   -- only needed if different from default branch
+  --   --         location = 'parser',  -- only needed if the parser is in subdirectory of a "monorepo"
+  --   --         generate = true,      -- only needed if repo does not contain pre-generated `src/parser.c`
+  --   --         generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+  --   --         queries = 'queries/neovim', -- also install queries from given directory
+  --   --       },
+  --   --     }
+  --   --   end
+  --   -- })
+  -- end,
+ config = function()
+    local ts = require('nvim-treesitter')
+
+    -- Track buffers waiting for parser installation: { lang = { [buf] = true, ... } }
+    local waiting_buffers = {}
+    -- Track languages currently being installed to avoid duplicate install tasks
+    local installing_langs = {}
+
+    local group = vim.api.nvim_create_augroup('TreesitterSetup', { clear = true })
+
+    -- Enable treesitter for a buffer
+    local function enable_treesitter(buf, lang)
+      if not vim.api.nvim_buf_is_valid(buf) then
+        return false
+      end
+
+      local ok = pcall(vim.treesitter.start, buf, lang)
+      if ok then
+        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+      return ok
+    end
+
+    -- Install core parsers after lazy.nvim finishes loading all plugins
+    vim.api.nvim_create_autocmd('User', {
+      group = group,
+      pattern = 'LazyDone',
+      once = true,
+      desc = 'Install core treesitter parsers',
       callback = function()
-        -- Highlight feature
-        vim.treesitter.start()
-        -- Indent feature
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        -- Fold feature
-        vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        ts.install({
+          'bash',
+          'lua',
+          'luadoc',
+          'markdown',
+          'markdown_inline',
+          'regex',
+          'vim',
+          'vimdoc',
+        })
       end,
     })
 
-    -- Custom languages, check readme or help for more
-    -- vim.api.nvim_create_autocmd('User', {
-    --   pattern = 'TSUpdate',
-    --   callback = function()
-    --     require('nvim-treesitter.parsers').zimbu = {
-    --       install_info = {
-    --         url = 'https://github.com/zimbulang/tree-sitter-zimbu',
-    --         -- revision = <sha>, -- commit hash for revision to check out; HEAD if missing
-    --         -- optional entries:
-    --         branch = 'develop',   -- only needed if different from default branch
-    --         location = 'parser',  -- only needed if the parser is in subdirectory of a "monorepo"
-    --         generate = true,      -- only needed if repo does not contain pre-generated `src/parser.c`
-    --         generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
-    --         queries = 'queries/neovim', -- also install queries from given directory
-    --       },
-    --     }
-    --   end
-    -- })
+    local ignore_filetypes = {
+      checkhealth = true,
+      lazy = true,
+      mason = true,
+      qf = true,
+      snacks_dashboard = true,
+      snacks_notif = true,
+      snacks_win = true,
+      toggleterm = true,
+    }
+
+    -- Auto-install parsers and enable highlighting on FileType
+    vim.api.nvim_create_autocmd('FileType', {
+      group = group,
+      desc = 'Enable treesitter highlighting and indentation',
+      callback = function(event)
+        if ignore_filetypes[event.match] then
+          return
+        end
+
+        local lang = vim.treesitter.language.get_lang(event.match) or event.match
+        local buf = event.buf
+
+        if not enable_treesitter(buf, lang) then
+          -- Parser not available, queue buffer (set handles duplicates)
+          waiting_buffers[lang] = waiting_buffers[lang] or {}
+          waiting_buffers[lang][buf] = true
+
+          -- Only start install if not already in progress
+          if not installing_langs[lang] then
+            installing_langs[lang] = true
+            local task = ts.install({ lang })
+
+            -- Register callback for when installation completes
+            if task and task.await then
+              task:await(function()
+                vim.schedule(function()
+                  installing_langs[lang] = nil
+
+                  -- Enable treesitter on all waiting buffers for this language
+                  local buffers = waiting_buffers[lang]
+                  if buffers then
+                    for b in pairs(buffers) do
+                      enable_treesitter(b, lang)
+                    end
+                    waiting_buffers[lang] = nil
+                  end
+                end)
+              end)
+            else
+              -- Fallback: clear state if task doesn't support await
+              installing_langs[lang] = nil
+              waiting_buffers[lang] = nil
+            end
+          end
+        end
+      end,
+    })
+
+    -- Clean up waiting buffers when buffer is deleted
+    vim.api.nvim_create_autocmd('BufDelete', {
+      group = group,
+      desc = 'Clean up treesitter waiting buffers',
+      callback = function(event)
+        for lang, buffers in pairs(waiting_buffers) do
+          buffers[event.buf] = nil
+          if next(buffers) == nil then
+            waiting_buffers[lang] = nil
+          end
+        end
+      end,
+    })
   end,
 }
 

@@ -83,6 +83,7 @@ return { {
     }
     dap.configurations.c = dap.configurations.cpp
     dap.configurations.rust = dap.configurations.cpp
+    -- vim.fn.sign_define('DapBreakpoint', { text = '•', texthl = 'red', linehl = '', numhl = '' })
   end,
 
 },
@@ -173,16 +174,16 @@ return { {
       }
     end
   },
-    {
-  "igorlfs/nvim-dap-view",
+  {
+    "igorlfs/nvim-dap-view",
 
     keys = {
       { "<leader>dv", "<cmd>DapViewToggle<cr>", desc = "Dap View" },
     },
-  config = function()
+    config = function()
 
-  end
-    }
+    end
+  }
 
 
 }

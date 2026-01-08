@@ -127,7 +127,7 @@ return {
           "--header-insertion=iwyu",    -- never
           -- "--cross-file-rename", --obsolete flag, no longer in used
         },
-        filetypes = { "c" },
+        -- filetypes = { "c" },
         init_options = {
           clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
           usePlaceholders = true,

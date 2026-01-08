@@ -9,7 +9,7 @@ return
       spec   = {
         { "<leader>s",  group = "Search" },
         { "<leader>t",  group = "Toggle" },
-        -- { "<leader>b", group = "Buffer" },
+        { "<leader>b", group = "Buffer" },
         { "<leader>c",  group = "Code" },
         { "<leader>sC", group = "Color" },
         { "<leader>sW", group = "Words" },
@@ -18,6 +18,7 @@ return
         { "<leader>n",  group = "Notes" },
         -- { "<leader>S", group = "Session" },
         -- { "<leader>u", group = "Undotree" },
+        { "<leader>d",  group = "Debug" },
       },
       win    = {
         border = 'single',

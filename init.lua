@@ -112,3 +112,33 @@ vim.api.nvim_create_autocmd('User', {
 --   end
 -- })
 
+-- if vim.env.PROF then
+--   -- example for lazy.nvim
+--   -- change this to the correct path for your plugin manager
+--   local snacks = vim.fn.stdpath("data") .. "/lazy/snacks.nvim"
+--   vim.opt.rtp:append(snacks)
+--   require("snacks.profiler").startup({
+--     startup = {
+--       event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
+--       -- event = "UIEnter",
+--       -- event = "VeryLazy",
+--     },
+--   })
+-- end
+
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+-- 	pattern = "*",
+-- 	group = "UserDefLoadOnce",
+-- 	desc = "prevent colorscheme clears self-defined DAP icon colors.",
+-- 	callback = function()
+-- 		vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939' })
+-- 		vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef' })
+-- 		vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#98c379' })
+-- 	end
+-- })
+
+-- vim.fn.sign_define('DapBreakpoint', { text=' ', texthl='DapBreakpoint' })
+-- vim.fn.sign_define('DapBreakpointCondition', { text=' ﳁ', texthl='DapBreakpoint' })
+-- vim.fn.sign_define('DapBreakpointRejected', { text=' ', texthl='DapBreakpoint' })
+-- vim.fn.sign_define('DapLogPoint', { text=' ', texthl='DapLogPoint' })
+-- vim.fn.sign_define('DapStopped', { text=' ', texthl='DapStopped' })

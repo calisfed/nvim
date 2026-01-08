@@ -33,7 +33,7 @@ return {
     -- toggle keymappings for venn using <leader>v
     vim.api.nvim_set_keymap('n', '<leader>nv', ":lua Toggle_venn()<CR>", { noremap = true, desc = "Toggle venn" })
     vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", { noremap = true })
-    vim.api.nvim_buf_set_keymap(0, "v", "h", ":VBoxH<CR>", { noremap = true })
+    vim.api.nvim_buf_set_keymap(0, "v", "H", ":VBoxH<CR>", { noremap = true })
     vim.api.nvim_buf_set_keymap(0, "v", "d", ":VBoxD<CR>", { noremap = true })
   end
 }
