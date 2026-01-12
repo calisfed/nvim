@@ -130,3 +130,22 @@ vim.keymap.set('n', '<leader>V', function() vn_telex_keymap() end, { desc = '[K]
 vim.keymap.set("n", "mm", "%")
 
 
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = '[K] Definition' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = '[K] Definition' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cgr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = '[K] Definition' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cgi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = '[K] Definition' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cgt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = '[K] Definition' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cds', '<cmd>lua vim.lsp.buf.document_symbol()<cr>', { desc = '[K] Definition' })
+
+
+vim.keymap.set({ 'n', 'v' }, 'grd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = '[K] Definition' })
+vim.keymap.set({ 'n', 'v' }, 'grD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = '[K] Declaration' })
+vim.keymap.set({ 'n', 'v' }, 'grt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = '[K] Type Definition' })
+vim.keymap.set({ 'n', 'v' }, 'grT', '<cmd>lua vim.lsp.buf.typehierarchy()<cr>', { desc = '[K] Type Hierarchy' })
+
+
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cl', '<cmd>lua vim.lsp.codelens.display(vim.lsp.codelens.get(0),0,nil)<cr>', { desc = '[K] Type Hierarchy' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cc', '<cmd>lua vim.lsp.codelens.clear(nil,0)<cr>', { desc = '[K] Type Hierarchy' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>cc', '<cmd>lua vim.lsp.codelens.run()<cr>', { desc = '[K] Type Hierarchy' })
+
+

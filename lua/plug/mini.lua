@@ -214,7 +214,6 @@ return { -- Collection of various small independent plugins/modules
 
 
 
-    -- require('mini.pick').setup()
     -- require('mini.pick').setup(
     --   {
     --     window = {
@@ -299,12 +298,10 @@ return { -- Collection of various small independent plugins/modules
 
     --   local man_buf = vim.api.nvim_create_buf(false, true)
     --   -- vim.bo[man_buf].buftype = 'help'
-
     --   local function get_man_pages()
-    --     -- local output = vim.fn.systemlist("apropos .")
-    --     local output = vim.fn.systemlist("man -k .")
+    --     local output = vim.fn.systemlist("apropos .")
+    --     -- local output = vim.fn.systemlist("man -k .")
     --     local items = {}
-
     --     for _, line in ipairs(output) do
     --       -- local name, section, summary = line:match("^(%S+)%s+%(([%w]+)%)+%-%s+(.*)$")
     --       local name, section, summary = line:match("^(%S+)%s+%((.-)%)%s+%-%s+(.*)$")
@@ -320,11 +317,9 @@ return { -- Collection of various small independent plugins/modules
     --     end
     --     return items
     --   end
-
     --   local man_pages = vim.api.nvim_buf_call(man_buf, function() return get_man_pages() end)
     --   vim.api.nvim_buf_delete(man_buf, { force = true })
     --   vim.tbl_map(function(t) t.text = t.line end, man_pages)
-
     --   local choose = function(item, modifier)
     --     if item == nil then return end
     --     vim.schedule(function()
@@ -341,7 +336,6 @@ return { -- Collection of various small independent plugins/modules
     --       vim.cmd('normal! zt')
     --     end)
     --   end
-
     --   -- Modify default mappings to work with special `:help` command
     --   local map_custom = function(char, modifier)
     --     local f = function()
@@ -350,7 +344,6 @@ return { -- Collection of various small independent plugins/modules
     --     end
     --     return { char = char, func = f }
     --   end
-
     --   local config_mappings = vim.tbl_deep_extend('force', MiniPick.config, vim.b.minipick_config or {},
     --     config or {}).mappings
     --   --stylua: ignore
@@ -362,7 +355,6 @@ return { -- Collection of various small independent plugins/modules
     --     choose_in_tabpage = '',
     --     show_help_in_tabpage = map_custom(config_mappings.choose_in_tabpage, 'tab '),
     --   }
-
     --   local source = {
     --     items   = man_pages,
     --     name    = 'Man',
@@ -378,7 +370,6 @@ return { -- Collection of various small independent plugins/modules
     --   opts = vim.tbl_deep_extend('force', { source = source, mappings = mappings }, opts or {})
     --   return MiniPick.start(opts)
     -- end
-
     -- vim.keymap.set('n', '<leader>sm', function() pick_man() end, { desc = "Search man pages" })
 
 

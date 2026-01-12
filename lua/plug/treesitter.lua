@@ -14,7 +14,8 @@ return { -- Treesitter
       enabled = true,
       "nvim-treesitter/nvim-treesitter-context",
       opts = function()
-        vim.keymap.set("n", "<leader>tc", "<cmd>lua require'treesitter-context'.toggle()<cr>", { desc = "Toggle TS Context" })
+        vim.keymap.set("n", "<leader>tc", "<cmd>lua require'treesitter-context'.toggle()<cr>",
+          { desc = "Toggle TS Context" })
         local config = {
           enable = true,           -- Enable this plugin (Can be enabled/disabled later via commands)
           max_lines = 3,           -- How many lines the window should span. Values <= 0 mean no limit.
@@ -43,6 +44,11 @@ return { -- Treesitter
     { 'JoosepAlviste/nvim-ts-context-commentstring', enabled = false },
 
   },
+  -- Pin to f7955203: commit 8cdffc6d added "tab" to vim query but parser
+  -- doesn't support it yet. See: [github.com/nvim-treesitter/nvim-treesitter](http://github.com/nvim-treesitter/nvim-treesitter)
+  -- Remove this pin once vim parser is updated with :tab support.
+
+  -- commit = "f7955203bb16eed15f9e0fbf7e39b86e0de96b47",
   build = ':TSUpdate',
   -- config = function()
   --   vim.filetype.add {
@@ -92,7 +98,7 @@ return { -- Treesitter
   --   --   end
   --   -- })
   -- end,
- config = function()
+  config = function()
     local ts = require('nvim-treesitter')
 
     -- Track buffers waiting for parser installation: { lang = { [buf] = true, ... } }

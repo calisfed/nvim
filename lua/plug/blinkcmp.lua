@@ -114,7 +114,7 @@ return {
           if success and node and vim.tbl_contains({ 'comment', 'line_comment', 'block_comment' }, node:type()) then
             return { 'buffer' }
           else
-            return { 'lsp', 'path', 'snippets', 'buffer' }
+            return { 'lsp', 'path', 'snippets', 'buffer', 'latex' }
           end
         end,
         providers = {
@@ -124,16 +124,17 @@ return {
             opts = {
               -- set to true to insert the latex command instead of the symbol
 
-              insert_command = function(ctx)
-                local ft = vim.api.nvim_get_option_value("filetype", {
-                  scope = "local",
-                  buf = ctx.bufnr,
-                })
-                if ft == "tex" then
-                  return true
-                end
-                return false
-              end
+              -- insert_command = function(ctx)
+              --   local ft = vim.api.nvim_get_option_value("filetype", {
+              --     scope = "local",
+              --     buf = ctx.bufnr,
+              --   })
+              --   if ft == "tex" or ft == "md" then
+              --     return true
+              --   end
+              --   return false
+              -- end
+              insert_command = true
             },
           },
           -- snippets = {

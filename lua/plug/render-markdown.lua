@@ -13,6 +13,15 @@ return {
     require('render-markdown').setup({
       render_modes = { 'n', 'c', 't' },
       completions = { lsp = { enabled = true } },
+    latex = {
+        enabled = false,
+        render_modes = true,
+        converter = { 'utftex', 'latex2text' },
+        highlight = 'RenderMarkdownMath',
+        position = 'center',
+        top_pad = 0,
+        bottom_pad = 0,
+    },
     })
   end
 }

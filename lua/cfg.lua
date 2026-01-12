@@ -32,14 +32,14 @@ return {
 
   -- Plugins that many others require
 
-  { enabled = true,  'MunifTanjim/nui.nvim' },   -- UI components library, it is not meant to run/config itself, but by other plugins
-  { enabled = true,  'nvim-lua/plenary.nvim' },  --
-  { enabled = true,  'nvim-neotest/nvim-nio', }, -- debug adapter protocol ui
+  { enabled = false, 'MunifTanjim/nui.nvim' },    -- UI components library, it is not meant to run/config itself, but by other plugins
+  { enabled = true,  'nvim-lua/plenary.nvim' },   --
+  { enabled = false, 'nvim-neotest/nvim-nio', },  -- debug adapter protocol ui
 
   -- Git
-  { enabled = true,  'tpope/vim-fugitive' },       -- Git fugitive
+  { enabled = false, 'tpope/vim-fugitive' },       -- Git fugitive
   { enabled = false, 'kdheepak/lazygit.nvim' },    -- Git integration
-  { enabled = true,  "sindrets/diffview.nvim", },  -- Diff integration
+  { enabled = false, "sindrets/diffview.nvim", },  -- Diff integration
   { enabled = true,  'lewis6991/gitsigns.nvim', }, -- gitsigns
   { enabled = false, 'NeogitOrg/neogit' },         -- Git integration
 
@@ -125,28 +125,28 @@ return {
   { enabled = false, 'iguanacucumber/magazine.nvim' }, -- nvim-cmp but with patches
 
   -- Note
-  { enabled = false,  'arnarg/todotxt.nvim' },                       -- For todo.txt
+  { enabled = false, 'arnarg/todotxt.nvim' },                       -- For todo.txt
   { enabled = false, 'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
-  { enabled = true, '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
+  { enabled = true,  '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
   { enabled = true,  'jbyuki/nabla.nvim', },                        -- take scientific note (like formula), math
   { enabled = true,  'jbyuki/venn.nvim', },                         -- drawing diagram, pretty fun
   { enabled = true,  'Myzel394/easytables.nvim', },                 -- markdown table,WIP
   { enabled = true,  'vidocqh/data-viewer.nvim', },                 -- Lightweight neovim plugin provides a table view for inspect data files such as csv, tsv
   { enabled = true,  'HakonHarnes/img-clip.nvim', },                -- Effortlessly embed images into any markup language,like LaTeX, Markdown or Typst.
   { enabled = true,  'jghauser/follow-md-links.nvim' },             -- follow markdown links, paths, refs,...
-  { enabled = false,  'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
+  { enabled = false, 'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
   { enabled = true,  'chrisbra/unicode.vim' },                      -- enter unicode
   { enabled = true,  'gu-fan/easydigraph.vim' },                    -- some digraph
   { enabled = false, 'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-  { enabled = false, 'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-  { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, NOTE: archive, use tinymist now
-  { enabled = false, 'iamcco/markdown-preview.nvim' },              -- markdown preview on browser
+  { enabled = true,  'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+  { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, WARNING: archive, use tinymist now
   { enabled = false, 'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins, currently not use because of export not good
   { enabled = false, 'nvim-telekasten/telekasten.nvim' },           -- zettekasten for neovim, only drawback is telescope
   { enabled = false, 'nvim-telekasten/calendar-vim' },              -- addon for telekasten
   { enabled = false, 'allaman/emoji.nvim' },                        -- Emoji insert
   { enabled = true, 'MeanderingProgrammer/render-markdown.nvim' }, -- improve viewing markdown in neovim, compare with markview but less support
-  { enabled = false, 'iamcco/markdown-preview.nvim' },             -- Another markdown-preview
+  { enabled = false, 'Thiago4532/mdmath.nvim', },                   -- show math in neovim
+  { enabled = false, 'iamcco/markdown-preview.nvim' },              -- Another markdown-preview in browser
   { enabled = false, 'kaarmu/typst.vim', },                         -- Note, can conceal, but let try markview first
   { enabled = false, 'hat0uma/csvview.nvim', },                     -- A comfortable CSV/TSV editing plugin for Neovim.
   { enabled = false, 'caliguIa/zendiagram.nvim' },                  -- A minimal, good looking diagnostic float window for Neovim.
@@ -186,10 +186,9 @@ return {
   { enabled = false, 'mtrajano/tssorter.nvim' },         -- treesitter sorter
   { enabled = false, 'pxwg/math-conceal.nvim' },         -- math conceal
   { enabled = false, 'Pocco81/true-zen.nvim' },          -- Usage
-  { enabled = false, 'folke/zen-mode.nvim' },            -- Usage
+  { enabled = true,  'folke/zen-mode.nvim' },            -- Usage
   { enabled = false, 'XXiaoA/atone.nvim' },              -- beauti undotree
-  { enabled = true,  'saghen/blink.indent', },
-
+  { enabled = false, 'saghen/blink.indent', },
 
   -- { enabled = true,  'habamax/vim-asciidoctor' },                  -- Asciidoc
 }

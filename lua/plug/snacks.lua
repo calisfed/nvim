@@ -13,31 +13,46 @@ return {
         animated = false,
       },
       picker = {
-        layout = { preset = 'ivy', layout = { height = 0.35, }, },
+        -- layout = { preset = 'ivy', layout = { height = 0.35, }, },
         win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } }, }, }, },
         sort = { fields = { "left", "score:desc", "#text", "idx" }, },
         man = {},
+        layout = {
+          preset = 'ivy',
+          preview = false,
+          layout = { height = 0.35},
+          keymap =  { ["<M-p>"] = { "toggle_preview", mode = { "n", "i" } }, },
+        }
       },
       explorer = {},
       zen = {
         win = {
-            enter = true,
-            fixbuf = false,
-            minimal = false,
-            width = 150,
-            height = 0,
-            backdrop = { transparent = false, blend = 0 },
-            keys = { q = false },
-            zindex = 40,
-            wo = {
-              winhighlight = "NormalFloat:Normal",
-            },
-            w = {
-              snacks_main = true,
-            },
+          enter = true,
+          fixbuf = false,
+          minimal = false,
+          width = 150,
+          height = 0,
+          backdrop = { transparent = false, blend = 0 },
+          keys = { q = false },
+          zindex = 40,
+          wo = {
+            winhighlight = "NormalFloat:Normal",
+          },
+          w = {
+            snacks_main = true,
+          },
         }
       },
       profiler = {},
+      image = {
+        doc = {
+          enabled = true,
+          inline = true,
+          float = false, -- only when inline = false
+          max_width = 120,
+          max_height = 40,
+        },
+      },
 
     })
 
