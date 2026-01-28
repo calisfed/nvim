@@ -16,12 +16,12 @@ vim.opt.fillchars.eob = ' '   -- Empty lines at the end of a buffer as ` `
 vim.opt.wrap = false          -- Display long lines as just one line
 vim.opt.sidescrolloff = 0     -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 vim.opt.linebreak = true      -- Wrap long lines at a character in 'breakat'
-vim.opt.textwidth = 80        -- Maximum width of text that is being inserted
+vim.opt.textwidth = 120        -- Maximum width of text that is being inserted
 -- vim.cmd 'set fo-=1tcro'       -- :help fo-table
 
 vim.opt.showtabline = 1    -- 0 for no show, 1 shows if more than 1 tab, 2 always shows
 vim.opt.tabstop = 2        -- Insert 2 spaces for a tab
-vim.opt.softtabstop = 2    -- Number of spaces tabs count for while editing
+vim.opt.softtabstop = 1    -- Number of spaces tabs count for while editing
 vim.opt.shiftwidth = 2     -- the number of spaces inserted for each indentation
 vim.opt.expandtab = true   -- convert tabs to spaces
 vim.opt.smartindent = true -- Makes indenting smart
@@ -31,6 +31,7 @@ vim.opt.signcolumn = 'yes' -- Always show the signcolumn
 -- vim.opt.foldlevel = 99                           -- Using ufo provider need a large value, feel free to decrease the value
 -- vim.opt.foldlevelstart = 99                      -- Using ufo provider need a large value, feel free to decrease the value
 -- vim.opt.foldenable = true                        -- Enable folding
+
 
 vim.opt.hlsearch = false                         -- Highlight on search
 vim.opt.incsearch = true                         -- While typing a search command, show where the pattern matches

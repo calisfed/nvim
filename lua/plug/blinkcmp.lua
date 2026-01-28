@@ -33,9 +33,9 @@ return {
             end
           end,
           'snippet_forward',
-          function()
-            require('neotab').tabout()
-          end,
+          -- function()
+          --   require('neotab').tabout()
+          -- end,
           'fallback'
         },
 

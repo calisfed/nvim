@@ -5,7 +5,7 @@ return {
   lazy = false,
   opts = {
     tabkey = "<M-Tab>",
-    act_as_tab = true,
+    act_as_tab = false,
     behavior = "nested", ---@type ntab.behavior
     pairs = {
       ---@type ntab.pair[]

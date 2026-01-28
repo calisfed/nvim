@@ -24,7 +24,7 @@ return {
         debounce = 150,
         icon_provider = "internal",
 
-        filetypes = { "markdown", "quarto", "rmd", "typst" },
+        -- filetypes = { "markdown", "quarto", "rmd", "typst", "adoc", "asciidoc" },
         ignore_buftypes = { "nofile" },
         raw_previews = {},
 

@@ -32,9 +32,9 @@ return {
 
   -- Plugins that many others require
 
-  { enabled = false, 'MunifTanjim/nui.nvim' },    -- UI components library, it is not meant to run/config itself, but by other plugins
-  { enabled = true,  'nvim-lua/plenary.nvim' },   --
-  { enabled = false, 'nvim-neotest/nvim-nio', },  -- debug adapter protocol ui
+  { enabled = false, 'MunifTanjim/nui.nvim' },   -- UI components library, it is not meant to run/config itself, but by other plugins
+  { enabled = true,  'nvim-lua/plenary.nvim' },  --
+  { enabled = false, 'nvim-neotest/nvim-nio', }, -- debug adapter protocol ui
 
   -- Git
   { enabled = false, 'tpope/vim-fugitive' },       -- Git fugitive
@@ -134,17 +134,17 @@ return {
   { enabled = true,  'vidocqh/data-viewer.nvim', },                 -- Lightweight neovim plugin provides a table view for inspect data files such as csv, tsv
   { enabled = true,  'HakonHarnes/img-clip.nvim', },                -- Effortlessly embed images into any markup language,like LaTeX, Markdown or Typst.
   { enabled = true,  'jghauser/follow-md-links.nvim' },             -- follow markdown links, paths, refs,...
-  { enabled = false, 'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
+  { enabled = true,  'tigion/nvim-asciidoc-preview' },              -- Asciidoc preview, will back in future
   { enabled = true,  'chrisbra/unicode.vim' },                      -- enter unicode
   { enabled = true,  'gu-fan/easydigraph.vim' },                    -- some digraph
   { enabled = false, 'OXY2DEV/markview.nvim', },                    -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
-  { enabled = true,  'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
+  { enabled = false, 'hedyhli/markdown-toc.nvim', },                -- A hackable Markdown,HTML,LaTeX, Typst & YAML previewer for Neovim.
   { enabled = false, 'chomosuke/typst-preview.nvim', },             -- typst preview, WARNING: archive, use tinymist now
   { enabled = false, 'nvim-neorg/neorg', },                         -- USAGE organize, replaced by above plugins, currently not use because of export not good
   { enabled = false, 'nvim-telekasten/telekasten.nvim' },           -- zettekasten for neovim, only drawback is telescope
   { enabled = false, 'nvim-telekasten/calendar-vim' },              -- addon for telekasten
   { enabled = false, 'allaman/emoji.nvim' },                        -- Emoji insert
-  { enabled = true, 'MeanderingProgrammer/render-markdown.nvim' }, -- improve viewing markdown in neovim, compare with markview but less support
+  { enabled = false, 'MeanderingProgrammer/render-markdown.nvim' }, -- improve viewing markdown in neovim, compare with markview but less support
   { enabled = false, 'Thiago4532/mdmath.nvim', },                   -- show math in neovim
   { enabled = false, 'iamcco/markdown-preview.nvim' },              -- Another markdown-preview in browser
   { enabled = false, 'kaarmu/typst.vim', },                         -- Note, can conceal, but let try markview first
@@ -182,7 +182,7 @@ return {
   -- :make
   { enabled = false, 'ImmanuelHaffner/pigmentor.nvim' }, -- color but have latex color support
   { enabled = false, 'IstiCusi/docpair.nvim' },          -- keep dociment apart from code, open window side by side
-  { enabled = false, 'al-kot/typst-preview.nvim' },      -- preview typst inside neovim, neet kitty or wezterm
+  { enabled = true,  'al-kot/typst-preview.nvim' },      -- preview typst inside neovim, neet kitty or wezterm
   { enabled = false, 'mtrajano/tssorter.nvim' },         -- treesitter sorter
   { enabled = false, 'pxwg/math-conceal.nvim' },         -- math conceal
   { enabled = false, 'Pocco81/true-zen.nvim' },          -- Usage
