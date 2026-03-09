@@ -126,7 +126,7 @@ return {
 
   -- Note
   { enabled = false, 'arnarg/todotxt.nvim' },                       -- For todo.txt
-  { enabled = false, 'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
+  { enabled = true, 'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
   { enabled = true,  '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
   { enabled = true,  'jbyuki/nabla.nvim', },                        -- take scientific note (like formula), math
   { enabled = true,  'jbyuki/venn.nvim', },                         -- drawing diagram, pretty fun
@@ -190,5 +190,10 @@ return {
   { enabled = false, 'XXiaoA/atone.nvim' },              -- beauti undotree
   { enabled = false, 'saghen/blink.indent', },
 
+  -- ML in mechatronic setup
+  -- just for Jupyter notebook -_-
+  { enabled = true,  "benlubas/molten-nvim", },  -- for jupyter notebook in neovim
+  { enabled = true,  'quarto-dev/quarto-nvim' }, -- quarto manuscript in neovim
+  { enabled = false,  "GCBallesteros/jupytext.nvim",   }
   -- { enabled = true,  'habamax/vim-asciidoctor' },                  -- Asciidoc
 }

@@ -46,7 +46,7 @@ return {
       profiler = {},
       image = {
         doc = {
-          enabled = true,
+          enabled = false,
           inline = true,
           float = false, -- only when inline = false
           max_width = 120,

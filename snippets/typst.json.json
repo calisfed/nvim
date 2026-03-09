@@ -1,0 +1,11 @@
+{
+  "~za":{"body":"\\$hat(Z)_1\\$","prefix":"~za"},
+  "~ha":{"body":"hat(${1:})_${2:}","prefix":"~ha"},
+  "~hx":{"body":"\\$hat(X)_1\\$","prefix":"~hx"},
+  "~hy":{"body":"\\$hat(Y)_1\\$","prefix":"~hy"},
+  "~hz":{"body":"\\$hat(Z)_1\\$","prefix":"~hz"},
+  "~ya":{"prefix":"~ya","body":"\\$hat(Y)_1\\$"},
+  "#me":{"body":["#math.equation(","  block: true,","  numbering: none,","  \\$","  ${1:} ","  \\$",")"],"prefix":"~me"},
+  "~xa":{"body":"\\$hat(X)_1\\$","prefix":"~xa"},
+  "~ft":{"body":"zws^${1:0}_${2:N} ${3:T}","prefix":"~ft"}
+}

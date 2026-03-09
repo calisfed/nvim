@@ -141,24 +141,21 @@ return { -- Treesitter
       end,
     })
 
-    local ignore_filetypes = {
-      checkhealth = true,
-      lazy = true,
-      mason = true,
-      qf = true,
-      snacks_dashboard = true,
-      snacks_notif = true,
-      snacks_win = true,
-      toggleterm = true,
-    }
+    -- local ignore_filetypes = {checkhealth = true, lazy = true, mason = true, qf = true, snacks_dashboard = true, snacks_notif = true, snacks_win = true, toggleterm = true, oil = true, fidget = true,}
+    local ignore_filetypes_2 = {"checkhealth", "lazy", "mason", "qf", "snacks_dashboard", "snacks_notif", "snacks_win", "toggleterm", "oil", "fidget", "blink-cmp-menu", "blink-cmp-documentation",}
 
     -- Auto-install parsers and enable highlighting on FileType
     vim.api.nvim_create_autocmd('FileType', {
       group = group,
       desc = 'Enable treesitter highlighting and indentation',
       callback = function(event)
-        if ignore_filetypes[event.match] then
-          return
+        -- if ignore_filetypes[event.match] then
+        --   return
+        -- end
+        for _, v in pairs(ignore_filetypes_2) do
+          if v == event.match then
+            return
+          end
         end
 
         local lang = vim.treesitter.language.get_lang(event.match) or event.match

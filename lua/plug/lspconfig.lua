@@ -71,13 +71,13 @@ return {
       },
 
       harper_ls = {
-        filetypes = { "markdown", "text", "doc" },
+        filetypes = { "markdown", "text", "doc", "typst" },
         settings = {
           ["harper-ls"] = {
             userDictPath = "",
             fileDictPath = "",
             linters = {
-              SpellCheck = false,
+              SpellCheck = true,
               SpelledNumbers = false,
               AnA = true,
               SentenceCapitalization = true,
@@ -90,7 +90,7 @@ return {
               CorrectNumberSuffix = true
             },
             codeActions = {
-              ForceStable = false
+              ForceStable = true
             },
             markdown = {
               IgnoreLinkTitle = false
@@ -157,7 +157,6 @@ return {
         cmd = { "superhtml", "lsp" },
         filetypes = { 'html' }
       },
-
 
     }
 
