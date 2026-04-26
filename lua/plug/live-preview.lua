@@ -13,7 +13,7 @@ return {
   config = function()
     require('livepreview.config').set({
       port = 5500,
-      browser = 'qutebrowser', -- default mean system default
+      -- browser = 'qutebrowser', -- default mean system default
       dynamic_root = false,
       sync_scroll = true,
       -- picker = "",

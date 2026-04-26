@@ -157,6 +157,9 @@ return {
         cmd = { "superhtml", "lsp" },
         filetypes = { 'html' }
       },
+      ty = {
+        filetypes = { 'python' },
+      },
 
     }
 
@@ -180,7 +183,10 @@ return {
         -- 'lua_ls',
         'emmylua_ls',
       },
-      automatic_enable = { exclude = { 'rusc_analyzer', 'ts_ls', 'typos_lsp', 'harper-ls', } }
+      -- automatic_enable = {
+      --   exclude = { 'rusc_analyzer', 'ts_ls', 'typos_lsp', 'harper-ls', }
+      -- }
+      automatic_enable = true,
     })
 
     for server_name, server_config in pairs(servers) do

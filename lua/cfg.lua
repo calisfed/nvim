@@ -14,7 +14,7 @@ return {
 
   -- Core
 
-  { enabled = true,  'nvim-treesitter/nvim-treesitter', }, -- color text
+  { enabled = false,  'nvim-treesitter/nvim-treesitter', }, -- color text
   { enabled = true,  'aaronik/treewalker.nvim', },         -- move around with code syntax aware
   { enabled = true,  'echasnovski/mini.nvim', },           -- QoL plugins
 
@@ -127,7 +127,7 @@ return {
   -- Note
   { enabled = false, 'arnarg/todotxt.nvim' },                       -- For todo.txt
   { enabled = true, 'brianhuster/live-preview.nvim' },             -- live preview html asciidoc svg
-  { enabled = true,  '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
+  { enabled = false,  '3rd/image.nvim', },                           -- show image in neovim with kitty  protocol or uebzugpp
   { enabled = true,  'jbyuki/nabla.nvim', },                        -- take scientific note (like formula), math
   { enabled = true,  'jbyuki/venn.nvim', },                         -- drawing diagram, pretty fun
   { enabled = true,  'Myzel394/easytables.nvim', },                 -- markdown table,WIP
@@ -192,8 +192,8 @@ return {
 
   -- ML in mechatronic setup
   -- just for Jupyter notebook -_-
-  { enabled = true,  "benlubas/molten-nvim", },  -- for jupyter notebook in neovim
-  { enabled = true,  'quarto-dev/quarto-nvim' }, -- quarto manuscript in neovim
+  { enabled = false,  "benlubas/molten-nvim", },  -- for jupyter notebook in neovim
+  { enabled = false,  'quarto-dev/quarto-nvim' }, -- quarto manuscript in neovim
   { enabled = false,  "GCBallesteros/jupytext.nvim",   }
   -- { enabled = true,  'habamax/vim-asciidoctor' },                  -- Asciidoc
 }
