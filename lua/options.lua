@@ -3,7 +3,7 @@ vim.g.maplocalleader = ' '
 vim.g.suda_smart_edit = true
 vim.opt.guicursor = 'n-v-c:block,i-ci-ve:ver100/,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
 vim.opt.cursorline = true -- highlight the current line
-vim.opt.cursorlineopt = "both"
+vim.opt.cursorlineopt = "screenline"
 vim.opt.cursorcolumn = false
 
 vim.opt.undofile = true
@@ -16,12 +16,12 @@ vim.opt.fillchars.eob = ' '   -- Empty lines at the end of a buffer as ` `
 vim.opt.wrap = false          -- Display long lines as just one line
 vim.opt.sidescrolloff = 0     -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 vim.opt.linebreak = true      -- Wrap long lines at a character in 'breakat'
-vim.opt.textwidth = 90        -- Maximum width of text that is being inserted
+-- vim.opt.textwidth = 80        -- Maximum width of text that is being inserted
 -- vim.cmd 'set fo-=1tcro'       -- :help fo-table
 
 vim.opt.showtabline = 1    -- 0 for no show, 1 shows if more than 1 tab, 2 always shows
 vim.opt.tabstop = 2        -- Insert 2 spaces for a tab
-vim.opt.softtabstop = 1    -- Number of spaces tabs count for while editing
+vim.opt.softtabstop = 2    -- Number of spaces tabs count for while editing
 vim.opt.shiftwidth = 2     -- the number of spaces inserted for each indentation
 vim.opt.expandtab = true   -- convert tabs to spaces
 vim.opt.smartindent = true -- Makes indenting smart
@@ -31,7 +31,6 @@ vim.opt.signcolumn = 'yes' -- Always show the signcolumn
 -- vim.opt.foldlevel = 99                           -- Using ufo provider need a large value, feel free to decrease the value
 -- vim.opt.foldlevelstart = 99                      -- Using ufo provider need a large value, feel free to decrease the value
 -- vim.opt.foldenable = true                        -- Enable folding
-
 
 vim.opt.hlsearch = false                         -- Highlight on search
 vim.opt.incsearch = true                         -- While typing a search command, show where the pattern matches
@@ -64,7 +63,7 @@ vim.opt.laststatus = 3                           -- Global statusline when on sp
 -- vim.opt_local.linebreak = true
 -- vim.opt_local.spelllang = "en"
 -- vim.opt_local.concealcursor = "nv"
-vim.opt_local.formatoptions = "tcqjn"
+-- vim.opt_local.formatoptions = "tcqjn"
 -- vim.opt_local.formatlistpat = "^\\s*\\([~]\\+\\|[-]\\+\\)\\s*"
 vim.opt.autoread = true
 vim.opt.autochdir = true
@@ -99,6 +98,3 @@ vim.wo.list = false
 -- vim.opt.foldmethod = 'expr'
 -- vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldmethod = 'manual'
-
-vim.g.kitty_image_protocol = 0
-vim.g.wezterm_image_protocol = 1
