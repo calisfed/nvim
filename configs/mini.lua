@@ -418,7 +418,7 @@ require('mini.sessions').setup( -- No need to copy this inside `setup()`. Will b
         },
 
         -- Whether to print session path after action
-        verbose = { read = false, write = true, delete = true },
+        verbose = { read = false, write = false, delete = true },
     })
 -- local ss_ls = function()
 --   local detected = require("mini.sessions").detected
