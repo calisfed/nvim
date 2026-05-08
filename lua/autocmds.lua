@@ -660,3 +660,30 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 
+-- vim.cmd [[
+-- augroup auto_cd_at_edit
+--   autocmd!
+--   autocmd BufEnter * if expand('%p:h') !~ getcwd() | silent! lcd %:p:h | endif
+-- augroup END
+
+-- " Pointing rm to `~/` gives me the chills! :-)
+-- " Change the *path_name, file_name according to your own desire.
+-- function! Vim_Cd_At_Exit()
+--   let l:file_name = 'cwd'
+--   let l:sub_pathname = 'vim_auto_cd'
+--   let l:path_name = getenv('TMPDIR') . '/' . l:sub_pathname
+--   call mkdir(l:path_name, 'p')
+--   call writefile(['cd -- '  .  shellescape(getcwd())], l:path_name . '/' . l:file_name)
+-- endfunction
+
+-- augroup Auto_Cd_After_Leave
+--   autocmd!
+--   autocmd VimLeave * call Vim_Cd_At_Exit()
+-- augroup END
+-- ]]
+-- vim.api.nvim_create_autocmd("VimLeave", {
+--   callback = function()
+--     local cwd = vim.fn.get_cwd()
+--     vim.system({ 'cd', cwd }, { text = true })
+--   end
+-- })

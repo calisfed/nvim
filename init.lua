@@ -7,7 +7,11 @@ vim.g.mapleader = ' '
 vim.o.winborder = 'rounded'
 vim.o.splitright = true
 vim.o.splitbelow = true
-
+require 'vim._core.ui2'.enable()
+vim.o.cmdheight = 1
+vim.o.cmdwinheight = 1
+-- vim.keymap.set("n","<leader>;","<Esc>q:i")
+-- vim.keymap.set("n",":","<cmd>source " .. vim.fn.stdpath('config') .."/cmdline.lua<cr>")
 
 vim.keymap.set('n', '<leader>w', '<cmd>update<cr>')
 vim.keymap.set('n', '<leader>q', '<cmd>quit<cr>')
@@ -15,25 +19,31 @@ vim.keymap.set('n', '<leader>=', '<cmd>lua vim.lsp.buf.format()<cr>')
 
 
 
+-- Get the full path to your config directory
+local config_path = vim.fn.stdpath("config") .. "/?.lua"
+local config_subdirs = vim.fn.stdpath("config") .. "/?/init.lua"
+package.path = package.path .. ";" .. config_path .. ";" .. config_subdirs
 
 
 
 vim.pack.add({
   { src = 'https://github.com/eldritch-theme/eldritch.nvim' },
-  -- { src = 'https://github.com/stevearc/oil.nvim' },
+  { src = 'https://github.com/stevearc/oil.nvim' },
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/rachartier/tiny-code-action.nvim', },       -- require telescope/fzf for code actions
   { src = 'https://github.com/rachartier/tiny-inline-diagnostic.nvim', }, -- inline diagnostic
-  { src = 'https://github.com/rachartier/tiny-cmdline.nvim', },           -- inline diagnostic
   { src = 'https://github.com/kdheepak/lazygit.nvim', },                  -- git integration
   { src = 'https://github.com/lambdalisue/suda.vim', },                   -- auto read/write file with sudo
-})
-require 'tiny-code-action'.setup()
-require 'tiny-inline-diagnostic'.setup()
-require 'tiny-cmdline'.setup()
--- require'lazygit'.setup()
+  { src = 'https://github.com/b0o/incline.nvim', },
+  { src = 'https://github.com/nvim-tree/nvim-web-devicons', },
 
-vim.keymap.set("n", "<leader>ca", function() require("tiny-code-action").code_action() end,
+})
+require 'tiny-code-action'.setup({})
+require 'tiny-inline-diagnostic'.setup()
+require('lua.personal.cmd').setup({})
+vim.keymap.set('n', '<leader><leader>', '<cmd>source %<cr>')
+
+vim.keymap.set("n", "<leader>ca", function() require("tiny-code-action").code_action({}) end,
   { noremap = true, silent = true, desc = "Code action" })
 vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = "LazyGit" })
 
@@ -44,22 +54,20 @@ vim.cmd 'colorscheme eldritch-dark'
 
 vim.pack.add({ 'https://github.com/echasnovski/mini.nvim' })
 require 'configs.mini'
+-- source '$HOME/.config/nvim/lua/configs/mini.lua'
+
 vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 -- vim.pack.add({ 'https://github.com/ibhagwan/fzf-lua' })
 -- require 'configs.fzf'
 vim.pack.add({ 'https://github.com/onsails/lspkind.nvim' })
 vim.pack.add({ 'https://github.com/chaoren/vim-wordmotion' })
 vim.pack.add({ 'https://github.com/nvim-lua/plenary.nvim' })
-vim.pack.add({ 'https://github.com/mikavilpas/yazi.nvim' })
+-- vim.pack.add({ 'https://github.com/mikavilpas/yazi.nvim' })
 vim.pack.add({ 'https://github.com/aserowy/tmux.nvim' })
 vim.pack.add { 'https://github.com/monaqa/dial.nvim' }
--- require 'configs.oil'
+require 'configs.oil'
 
 
--- Get the full path to your config directory
-local config_path = vim.fn.stdpath("config") .. "/?.lua"
-local config_subdirs = vim.fn.stdpath("config") .. "/?/init.lua"
-package.path = package.path .. ";" .. config_path .. ";" .. config_subdirs
 
 
 
@@ -123,7 +131,7 @@ vim.pack.add({
 
 require 'mason'.setup()
 require 'mason-lspconfig'.setup({
-  ensure_installed = { 'emmylua_ls', 'clangd', 'bashls', },
+  ensure_installed = { 'emmylua_ls', 'clangd', 'bashls', 'tinymist' },
   automatic_enable = true,
 })
 
@@ -141,7 +149,7 @@ vim.o.pumborder = "rounded"
 require 'autocmds'
 require 'keymaps'
 require 'options'
-require 'vim._core.ui2'.enable()
+
 vim.api.nvim_command("packadd nvim.undotree")
 
 vim.lsp.config.emmylua_ls = {
@@ -188,25 +196,34 @@ vim.lsp.config.clangd = {
     "--background-index",
     -- "--compile-commands-dir=build",
     "--clang-tidy",
-    "--completion-style=bundled",       -- bundled, detailed
-    "--header-insertion=iwyu",          -- never
+    "--completion-style=bundled", -- bundled, detailed
+    "--header-insertion=iwyu",    -- never
     -- "--cross-file-rename", --obsolete flag, no longer in used
   },
   -- filetypes = { "c" },
   init_options = {
-    clangdFileStatus = true,       -- Provides information about activity on clangd’s per-file worker thread
+    clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
     usePlaceholders = true,
     completeUnimported = true,
     semanticHighlighting = true,
   }
 }
 
-
-vim.lsp.config.bashls = {
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'sh', 'zsh' }
+vim.lsp.config.tinymist = {
+  -- https://github.com/Myriad-Dreamin/tinymist/blob/main/editors/vscode/Configuration.md
+  settings = {
+    -- exportTarget = "html",
+    exportPdf = "onType",
+    outputPath = "$root/target/$dir/$name",
+  }
 }
-vim.lsp.enable({ 'emmylua_ls', 'zls', 'clangd', 'bashls' })
+
+
+-- vim.lsp.config.bashls = {
+--   cmd = { 'bash-language-server', 'start' },
+--   filetypes = { 'sh', 'zsh' }
+-- }
+vim.lsp.enable({ 'emmylua_ls', 'zls', 'clangd', 'bashls', 'tinymist' })
 
 -- vim.lsp.inlay_hint.enable()
 
@@ -229,17 +246,17 @@ vim.api.nvim_create_autocmd('FileType', {
 
 
 require 'lspkind'.setup({ mode = 'symbol' })
-vim.g.loaded_netrwPlugin = 1
-require 'yazi'.setup({ open_for_directories = false, keymaps = { show_help = "<f1>", }, })
-vim.keymap.set({ 'n', 'v' }, '-', '<cmd>Yazi toggle<cr>', { desc = 'Open yazi at the current file' })
-vim.keymap.set({ 'n', 'v' }, '<leader>_', '<cmd>Yazi cwd<cr>', { desc = 'Open yazi at the current file' })
-vim.keymap.set({ 'n', 'v' }, '<leader>-', '<cmd>Yazi<cr>', { desc = 'Open yazi at the current file' })
+-- vim.g.loaded_netrwPlugin = 1
+-- require 'yazi'.setup({ open_for_directories = true, keymaps = { show_help = "<f1>", }, })
+-- vim.keymap.set({ 'n', 'v' }, '-', '<cmd>Yazi toggle<cr>', { desc = 'Open yazi at the current file' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>_', '<cmd>Yazi cwd<cr>', { desc = 'Open yazi at the current file' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>-', '<cmd>Yazi<cr>', { desc = 'Open yazi at the current file' })
 require 'tmux'.setup({
-
   copy_sync = {
     -- enables copy sync. by default, all registers are synchronized.
     -- to control which registers are synced, see the `sync_*` options.
     enable = true,
+
 
     -- ignore specific tmux buffers e.g. buffer0 = true to ignore the
     -- first buffer or named_buffer_name = true to ignore a named tmux
@@ -257,7 +274,7 @@ require 'tmux'.setup({
     -- overwrites vim.g.clipboard to redirect * and + to the system
     -- clipboard using tmux. If you sync your system clipboard without tmux,
     -- disable this option!
-    sync_clipboard = true,
+    sync_clipboard = false,
 
     -- synchronizes registers *, +, unnamed, and 0 till 9 with tmux buffers.
     sync_registers = true,
@@ -325,14 +342,14 @@ local augend = require("dial.augend")
 require("dial.config").augends:register_group {
   -- default augends used when no group name is specified
   default = {
-    augend.integer.alias.decimal,        -- nonnegative decimal number (0, 1, 2, 3, ...)
-    augend.integer.alias.hex,            -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-    augend.date.alias["%Y/%m/%d"],       -- date (2022/02/19, etc.)
-    augend.constant.alias.bool,          -- boolean value (true <-> false)
+    augend.integer.alias.decimal,  -- nonnegative decimal number (0, 1, 2, 3, ...)
+    augend.integer.alias.hex,      -- nonnegative hex number  (0x01, 0x1a1f, etc.)
+    augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
+    augend.constant.alias.bool,    -- boolean value (true <-> false)
     augend.constant.new {
       elements = { "and", "or" },
-      word = true,         -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
-      cyclic = true,       -- "or" is incremented into "and".
+      word = true,   -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
+      cyclic = true, -- "or" is incremented into "and".
     },
     augend.constant.new { elements = { "&&", "||" }, word = false, cyclic = true, },
     augend.constant.new { elements = { "[x]", "[ ]" }, word = false, cyclic = true, },
@@ -369,7 +386,7 @@ require("dial.config").augends:register_group {
   -- augends used when group with name `mygroup` is specified
   mygroup = {
     augend.integer.alias.decimal,
-    augend.date.alias["%m/%d/%Y"],       -- date (02/19/2022, etc.)
+    augend.date.alias["%m/%d/%Y"], -- date (02/19/2022, etc.)
   }
 }
 
@@ -389,4 +406,81 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.api.nvim_buf_set_keymap(0, "v", "<C-x>", require("dial.map").dec_visual("neorg"),
       { noremap = true, desc = "Dial dec neorg" })
   end
+})
+
+local helpers = require 'incline.helpers'
+-- local devicons = require 'nvim-web-devicons'
+local devicons = require 'nvim-web-devicons'
+require('incline').setup {
+  window = {
+    padding = 0,
+    margin = { horizontal = 0 },
+  },
+  render = function(props)
+    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+    if filename == '' then
+      filename = '[No Name]'
+    end
+    local ft_icon, ft_color = devicons.get_icon_color(filename)
+    local modified = vim.bo[props.buf].modified
+    return {
+      ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+      ' ',
+      { filename, gui = modified and 'bold,italic' or 'bold' },
+      ' ',
+      guibg = '#44406e',
+    }
+  end,
+}
+vim.pack.add({ 'https://github.com/3rd/image.nvim'})
+require("image").setup({
+  backend = "sixel", -- or "ueberzug" or "sixel" or "kitty
+  processor = "magick_cli", -- or "magick_rock"
+  integrations = {
+    markdown = {
+      enabled = true,
+      clear_in_insert_mode = false,
+      download_remote_images = true,
+      only_render_image_at_cursor = false,
+      only_render_image_at_cursor_mode = "popup", -- or "inline"
+      floating_windows = false, -- if true, images will be rendered in floating markdown windows
+      filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+    },
+    asciidoc = {
+      enabled = true,
+      clear_in_insert_mode = false,
+      download_remote_images = true,
+      only_render_image_at_cursor = false,
+      only_render_image_at_cursor_mode = "popup",
+      floating_windows = false,
+      filetypes = { "asciidoc", "adoc" },
+    },
+    neorg = {
+      enabled = true,
+      filetypes = { "norg" },
+    },
+    rst = {
+      enabled = true,
+    },
+    typst = {
+      enabled = true,
+      filetypes = { "typst" },
+    },
+    html = {
+      enabled = false,
+    },
+    css = {
+      enabled = false,
+    },
+  },
+  max_width = nil,
+  max_height = nil,
+  max_width_window_percentage = nil,
+  max_height_window_percentage = 50,
+  scale_factor = 1.0,
+  window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+  window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
+  editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
+  tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+  hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
 })
