@@ -7,7 +7,7 @@ vim.g.mapleader = ' '
 vim.o.winborder = 'rounded'
 vim.o.splitright = true
 vim.o.splitbelow = true
-require 'vim._core.ui2'.enable()
+-- require 'vim._core.ui2'.enable()
 vim.o.cmdheight = 1
 vim.o.cmdwinheight = 1
 -- vim.keymap.set("n","<leader>;","<Esc>q:i")
@@ -57,8 +57,8 @@ require 'configs.mini'
 -- source '$HOME/.config/nvim/lua/configs/mini.lua'
 
 vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
--- vim.pack.add({ 'https://github.com/ibhagwan/fzf-lua' })
--- require 'configs.fzf'
+vim.pack.add({ 'https://github.com/ibhagwan/fzf-lua' })
+require 'configs.fzf'
 vim.pack.add({ 'https://github.com/onsails/lspkind.nvim' })
 vim.pack.add({ 'https://github.com/chaoren/vim-wordmotion' })
 vim.pack.add({ 'https://github.com/nvim-lua/plenary.nvim' })
@@ -131,7 +131,7 @@ vim.pack.add({
 
 require 'mason'.setup()
 require 'mason-lspconfig'.setup({
-  ensure_installed = { 'emmylua_ls', 'clangd', 'bashls', 'tinymist' },
+  ensure_installed = { 'emmylua_ls', 'clangd', 'ty', 'bashls', 'tinymist' },
   automatic_enable = true,
 })
 
@@ -139,7 +139,7 @@ require 'mason-lspconfig'.setup({
 
 
 vim.o.complete = ".,o"                       -- use buffer and omnifunc
-vim.o.completeopt = "fuzzy,menuone,noinsert" -- add 'popup' for docs (sometimes)
+vim.o.completeopt = "fuzzy,menuone,noinsert" --,preselect" -- add 'popup' for docs (sometimes)
 -- vim.o.autocomplete = true
 vim.o.pumheight = 10
 vim.o.pummaxwidth = 40
@@ -219,10 +219,10 @@ vim.lsp.config.tinymist = {
 }
 
 
--- vim.lsp.config.bashls = {
---   cmd = { 'bash-language-server', 'start' },
---   filetypes = { 'sh', 'zsh' }
--- }
+vim.lsp.config.bashls = {
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh', 'zsh' }
+}
 vim.lsp.enable({ 'emmylua_ls', 'zls', 'clangd', 'bashls', 'tinymist' })
 
 -- vim.lsp.inlay_hint.enable()
@@ -432,9 +432,9 @@ require('incline').setup {
     }
   end,
 }
-vim.pack.add({ 'https://github.com/3rd/image.nvim'})
+vim.pack.add({ 'https://github.com/3rd/image.nvim' })
 require("image").setup({
-  backend = "sixel", -- or "ueberzug" or "sixel" or "kitty
+  backend = "sixel",        -- or "ueberzug" or "sixel" or "kitty
   processor = "magick_cli", -- or "magick_rock"
   integrations = {
     markdown = {
@@ -443,8 +443,8 @@ require("image").setup({
       download_remote_images = true,
       only_render_image_at_cursor = false,
       only_render_image_at_cursor_mode = "popup", -- or "inline"
-      floating_windows = false, -- if true, images will be rendered in floating markdown windows
-      filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+      floating_windows = false,                   -- if true, images will be rendered in floating markdown windows
+      filetypes = { "markdown", "vimwiki" },      -- markdown extensions (ie. quarto) can go here
     },
     asciidoc = {
       enabled = true,
@@ -478,9 +478,9 @@ require("image").setup({
   max_width_window_percentage = nil,
   max_height_window_percentage = 50,
   scale_factor = 1.0,
-  window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+  window_overlap_clear_enabled = false,                                               -- toggles images when windows are overlapped
   window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
-  editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
-  tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+  editor_only_render_when_focused = false,                                            -- auto show/hide images when the editor gains/looses focus
+  tmux_show_only_in_active_window = false,                                            -- auto show/hide images in the correct Tmux window (needs visual-activity off)
   hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
 })

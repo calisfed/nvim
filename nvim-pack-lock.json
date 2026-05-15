@@ -12,6 +12,10 @@
       "rev": "0415fa72c348e814a7a6cc9405593a4f812fe12f",
       "src": "https://github.com/eldritch-theme/eldritch.nvim"
     },
+    "fzf-lua": {
+      "rev": "23f71140754b9162551dc8ccc1d6346e4275ecc2",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
     "image.nvim": {
       "rev": "da2be65c153ba15a14a342b05591652a6df70d58",
       "src": "https://github.com/3rd/image.nvim"
