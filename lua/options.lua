@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.g.suda_smart_edit = true
+-- vim.g.suda_smart_edit = true
 vim.opt.guicursor = 'n-v-c:block,i-ci-ve:ver100/,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.cursorlineopt = "screenline"
@@ -85,7 +85,7 @@ vim.opt.swapfile = false
 -- vim.opt_local.wrap = false
 
 -- vim.wo.wrap = false          -- Display long lines as just one line
-vim.wo.linebreak = true
+vim.wo.linebreak = false
 vim.wo.list = false
 
 -- This might replace nvim-ufo

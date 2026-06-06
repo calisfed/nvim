@@ -10,6 +10,8 @@ vim.keymap.set({ 'n', 'v' }, ']d', "<cmd>lua vim.diagnostic.jump({count=1})<cr>"
 vim.keymap.set({ 'n', 'v' }, '<leader>e', vim.diagnostic.open_float, { desc = '[K] Show diagnostic [E]rror messages' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>Q', vim.diagnostic.setloclist, { desc = '[K] Open diagnostic [Q]uickfix list' })
 vim.keymap.set({ 'n', 'v' }, '<leader>Q', vim.diagnostic.setqflist, { desc = '[K] Open diagnostic [Q]uickfix list' })
+vim.keymap.set({ 'n', 'v' }, 'H', "0", { desc = '0' })
+vim.keymap.set({ 'n', 'v' }, 'L', "$", { desc = '$' })
 
 -- vim.keymap.set({ 'n', 'v' }, '<leader>x', utils.system_open, { desc = '[K] Open file under cursor' }) -- gx default
 -- vim.keymap.set({ 'n', 'v' }, '<leader>x', utils.open_local_file_in_new_buffer, { desc = '[K] Open file under cursor' }) -- gf default
