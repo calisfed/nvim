@@ -7,7 +7,7 @@ vim.g.mapleader = " "
 vim.o.winborder = "rounded"
 vim.o.splitright = true
 vim.o.splitbelow = true
--- require("vim._core.ui2").enable()
+require("vim._core.ui2").enable()
 vim.ui.progress_status()
 vim.g.suda_smart_edit = 1
 vim.o.cmdheight = 1
@@ -159,10 +159,10 @@ vim.lsp.config.emmylua_ls = {
       },
       runtime = { version = "LuaJIT" },
       workspace = {
-        checkThirdParty = false,
+        checkThirdParty = true,
         library = {
           "${3rd}/luv/library",
-          -- unpack(vim.api.nvim_get_runtime_file("", true)),
+          unpack(vim.api.nvim_get_runtime_file("", true)),
           vim.env.VIMRUNTIME,
           -- "/usr/share/awesome/lib",
           -- For LSP Settings Type Annotations: https://github.com/neovim/nvim-lspconfig#lsp-settings-type-annotations
@@ -178,6 +178,7 @@ vim.lsp.config.emmylua_ls = {
     }
   }
 }
+
 vim.lsp.config.clangd = {
   cmd = {
     -- see clangd --help-hidden
@@ -424,58 +425,59 @@ require("incline").setup({
     }
   end
 })
-vim.pack.add({ "https://github.com/3rd/image.nvim" })
-require("image").setup({
-  backend = "sixel",                                                                 -- or "ueberzug" or "sixel" or "kitty
-  processor = "magick_cli",                                                          -- or "magick_rock"
-  integrations = {
-    markdown = {
-      enabled = true,
-      clear_in_insert_mode = false,
-      download_remote_images = true,
-      only_render_image_at_cursor = false,
-      only_render_image_at_cursor_mode = "popup", -- or "inline"
-      floating_windows = false,                   -- if true, images will be rendered in floating markdown windows
-      filetypes = { "markdown", "vimwiki" }       -- markdown extensions (ie. quarto) can go here
-    },
-    asciidoc = {
-      enabled = true,
-      clear_in_insert_mode = false,
-      download_remote_images = true,
-      only_render_image_at_cursor = false,
-      only_render_image_at_cursor_mode = "popup",
-      floating_windows = false,
-      filetypes = { "asciidoc", "adoc" }
-    },
-    neorg = {
-      enabled = true,
-      filetypes = { "norg" }
-    },
-    rst = {
-      enabled = true
-    },
-    typst = {
-      enabled = true,
-      filetypes = { "typst" }
-    },
-    html = {
-      enabled = false
-    },
-    css = {
-      enabled = false
-    }
-  },
-  max_width = nil,
-  max_height = nil,
-  max_width_window_percentage = nil,
-  max_height_window_percentage = 50,
-  scale_factor = 1.0,
-  window_overlap_clear_enabled = false,                                              -- toggles images when windows are overlapped
-  window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
-  editor_only_render_when_focused = false,                                           -- auto show/hide images when the editor gains/looses focus
-  tmux_show_only_in_active_window = false,                                           -- auto show/hide images in the correct Tmux window (needs visual-activity off)
-  hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" } -- render image files as images when opened
-})
+
+-- vim.pack.add({ "https://github.com/3rd/image.nvim" })
+-- require("image").setup({
+--   backend = "sixel",                                                                 -- or "ueberzug" or "sixel" or "kitty
+--   processor = "magick_cli",                                                          -- or "magick_rock"
+--   integrations = {
+--     markdown = {
+--       enabled = true,
+--       clear_in_insert_mode = false,
+--       download_remote_images = true,
+--       only_render_image_at_cursor = false,
+--       only_render_image_at_cursor_mode = "popup", -- or "inline"
+--       floating_windows = false,                   -- if true, images will be rendered in floating markdown windows
+--       filetypes = { "markdown", "vimwiki" }       -- markdown extensions (ie. quarto) can go here
+--     },
+--     asciidoc = {
+--       enabled = true,
+--       clear_in_insert_mode = false,
+--       download_remote_images = true,
+--       only_render_image_at_cursor = false,
+--       only_render_image_at_cursor_mode = "popup",
+--       floating_windows = false,
+--       filetypes = { "asciidoc", "adoc" }
+--     },
+--     neorg = {
+--       enabled = true,
+--       filetypes = { "norg" }
+--     },
+--     rst = {
+--       enabled = true
+--     },
+--     typst = {
+--       enabled = true,
+--       filetypes = { "typst" }
+--     },
+--     html = {
+--       enabled = false
+--     },
+--     css = {
+--       enabled = false
+--     }
+--   },
+--   max_width = nil,
+--   max_height = nil,
+--   max_width_window_percentage = nil,
+--   max_height_window_percentage = 50,
+--   scale_factor = 1.0,
+--   window_overlap_clear_enabled = false,                                              -- toggles images when windows are overlapped
+--   window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
+--   editor_only_render_when_focused = false,                                           -- auto show/hide images when the editor gains/looses focus
+--   tmux_show_only_in_active_window = false,                                           -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+--   hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" } -- render image files as images when opened
+-- })
 
 -- vim.pack.add( {'https://github.com/nvim-telescope/telescope.nvim',
 -- 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' })
@@ -494,3 +496,55 @@ require("image").setup({
       -- -- load_extension, somewhere after setup function:
       -- require('telescope').load_extension('fzf')
       -- require'configs.telescope'
+
+
+vim.pack.add({"https://github.com/tjgao/quickbuf.nvim"})
+require("quickbuf").setup({
+    include_special = false,
+    auto_jump_single = false,
+    isolate_keymaps = true,
+    fuzzy_key = "/",
+    fuzzy_backend = "auto",
+    fuzzy_open = nil,
+    alternate_key = "<Tab>",
+    alternate_key_display = "",
+    alternate_without_label = true,
+    label_before_name = true,
+    picker = {
+        move_up_key = "k",
+        move_down_key = "j",
+        select_key = "<CR>",
+        toggle_pin_key = "T",
+    },
+    show_icons = true,
+    pin_display = "P",
+    persistence = {
+        enabled = false,
+        debounce_ms = 1000,
+    },
+    highlights = {
+        label = { fg = "#ff8800", bold = true },
+        pinned = { link = "DiagnosticOk", bold = true },
+        flags = { link = "Comment" },
+        alternate = { fg = "#ff8800", bold = true },
+        filename = { link = "Normal" },
+        path = { link = "Comment" },
+        muted = { link = "Comment" },
+        cursorline = { link = "Visual" },
+        footer_svt = { link = "DiagnosticWarn" },
+    },
+    window = {
+        border = "single",
+        width = nil,
+        height = nil,
+        max_width = 80,
+        min_width = 36,
+        padding = 2,
+        vertical_padding = 1,
+    },
+})
+vim.keymap.set("n", "<leader><leader>", "<cmd>QuickBuf<cr>", {desc = "Quick change buffers"})
+
+vim.pack.add({"https://github.com/norcalli/nvim-colorizer.lua"})
+require"colorizer".setup()
+

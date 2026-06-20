@@ -22,7 +22,7 @@ require('mini.operators').setup({
   replace = { prefix = "" },
   sort = { prefix = "gs" }
 })
--- require('mini.pairs').setup()
+require('mini.pairs').setup()
 -- require('mini.animate').setup({ scroll = { enable = false, } })
 -- require('mini.notify').setup()
 require('mini.splitjoin').setup()
