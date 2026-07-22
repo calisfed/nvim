@@ -75,3 +75,5 @@ vim.keymap.set({ "n", "v" }, "<leader>scr", "<cmd>FzfLua lsp_references<cr>", { 
 vim.keymap.set({ "n", "v" }, "<leader>scD", "<cmd>FzfLua lsp_document_diagnostics<cr>", { desc = "Code list Diagnostics", })
 vim.keymap.set({ "n", "v" }, "gd", "<cmd>FzfLua lsp_definitions<cr>", { desc = "Goto Definition" })
 vim.keymap.set({ "n", "v" }, "<leader>sca", "<cmd>FzfLua lsp_code_actions<cr>", { desc = "Code Action" })
+
+

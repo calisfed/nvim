@@ -160,6 +160,5 @@ return {
     { enabled = false, 'tamton-aquib/duck.nvim', },             -- duck/dog/cat follow cursor
     { enabled = false, 'wildfunctions/myeyeshurt', },           -- resting eye after a while
 
-    -- TODO: test
     { enabled = false, 'notomo/cmdbuf.nvim' }, -- Buffer for cmdline
 }
