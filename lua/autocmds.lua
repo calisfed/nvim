@@ -687,3 +687,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --     vim.system({ 'cd', cwd }, { text = true })
 --   end
 -- })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text", "typst" },
+  callback = function()
+    vim.opt_local.formatexpr = ""
+    vim.opt_local.textwidth = 80
+  end,
+})
