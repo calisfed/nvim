@@ -1,26 +1,26 @@
 require('mini.surround').setup()
 require('mini.move').setup({
-  mappings = {
-    -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-    left = '<M-h>',
-    right = '<M-l>',
-    down = '<M-j>',
-    up = '<M-k>',
-    -- Move current line in Normal mode
-    line_left = '',
-    line_right = '',
-    line_down = '',
-    line_up = ''
-  }
+	mappings = {
+		-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+		left = '<M-h>',
+		right = '<M-l>',
+		down = '<M-j>',
+		up = '<M-k>',
+		-- Move current line in Normal mode
+		line_left = '',
+		line_right = '',
+		line_down = '',
+		line_up = ''
+	}
 })
 require('mini.align').setup()
 require('mini.operators').setup({
-  evaluate = { prefix = 'g=' },
-  exchange = { prefix = "gX" },
-  -- multiply = { prefix = "gm" },
-  multiply = { prefix = "" },
-  replace = { prefix = "" },
-  sort = { prefix = "gs" }
+	evaluate = { prefix = 'g=' },
+	exchange = { prefix = "gX" },
+	-- multiply = { prefix = "gm" },
+	multiply = { prefix = "" },
+	replace = { prefix = "" },
+	sort = { prefix = "gs" }
 })
 require('mini.pairs').setup()
 -- require('mini.animate').setup({ scroll = { enable = false, } })
@@ -39,130 +39,130 @@ require('mini.extra').setup(nil)
 
 local spec = require('mini.ai').gen_spec
 require('mini.ai').setup {
-  n_lines = 500,
-  custom_textobjects = {
-    ['*'] = spec.pair('*', '*', { type = 'greedy' }),
-    ['_'] = spec.pair('_', '_', { type = 'greedy' }),
-    ['|'] = spec.pair('|', '|', { type = 'greedy' }),
-    ['v'] = spec.pair('|', '|', { type = 'greedy' }),
-    -- ['b'] = spec.pair('|', '|', { type = 'balanced' }),
-    F = spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
-    o = spec.treesitter({
-      a = { '@conditional.outer', '@loop.outer' },
-      i = { '@conditional.inner', '@loop.inner' }
-    })
-  },
-  mappings = {
-    -- Main textobject prefixes
-    around = 'a',
-    inside = 'i',
-    -- Next/last textobjects
-    around_next = 'an',
-    inside_next = 'in',
-    around_last = 'al',
-    inside_last = 'il',
-    -- Move cursor to corresponding edge of `a` textobject
-    goto_left = 'g[',
-    goto_right = 'g]'
-  }
+	n_lines = 500,
+	custom_textobjects = {
+		['*'] = spec.pair('*', '*', { type = 'greedy' }),
+		['_'] = spec.pair('_', '_', { type = 'greedy' }),
+		['|'] = spec.pair('|', '|', { type = 'greedy' }),
+		['v'] = spec.pair('|', '|', { type = 'greedy' }),
+		-- ['b'] = spec.pair('|', '|', { type = 'balanced' }),
+		F = spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
+		o = spec.treesitter({
+			a = { '@conditional.outer', '@loop.outer' },
+			i = { '@conditional.inner', '@loop.inner' }
+		})
+	},
+	mappings = {
+		-- Main textobject prefixes
+		around = 'a',
+		inside = 'i',
+		-- Next/last textobjects
+		around_next = 'an',
+		inside_next = 'in',
+		around_last = 'al',
+		inside_last = 'il',
+		-- Move cursor to corresponding edge of `a` textobject
+		goto_left = 'g[',
+		goto_right = 'g]'
+	}
 }
 
 require('mini.clue').setup({
-  triggers = {
-    -- Leader triggers
-    { mode = 'n', keys = '<Leader>' },
-    { mode = 'x', keys = '<Leader>' },
-    -- Built-in completion
-    { mode = 'i', keys = '<C-x>' },
-    -- `g` key
-    { mode = 'n', keys = 'g' },
-    { mode = 'x', keys = 'g' },
-    -- Marks
-    { mode = 'n', keys = "'" },
-    { mode = 'n', keys = '`' },
-    { mode = 'x', keys = "'" },
-    { mode = 'x', keys = '`' },
-    -- Registers
-    { mode = 'n', keys = '"' },
-    { mode = 'x', keys = '"' },
-    { mode = 'i', keys = '<C-r>' },
-    { mode = 'c', keys = '<C-r>' },
-    -- Window commands
-    { mode = 'n', keys = '<C-w>' },
-    -- `z` key
-    { mode = 'n', keys = 'z' },
-    { mode = 'x', keys = 'z' },
-    -- Moving around
-    { mode = 'n', keys = '[' },
-    { mode = 'n', keys = ']' }
-  },
-  clues = {
-    -- Enhance this by adding descriptions for <Leader> mapping groups
-    require 'mini.clue'.gen_clues.builtin_completion(),
-    require 'mini.clue'.gen_clues.g(),
-    require 'mini.clue'.gen_clues.marks(),
-    require 'mini.clue'.gen_clues.registers(),
-    require 'mini.clue'.gen_clues.windows(),
-    require 'mini.clue'.gen_clues.z(),
-    { mode = 'n', keys = '<leader>c', desc = '+Code' },
-    { mode = 'n', keys = '<leader>cg', desc = '+Goto' },
-    { mode = 'n', keys = '<leader>g', desc = '+Git/Go' },
-    { mode = 'n', keys = '<leader>n', desc = '+Notes' },
-    { mode = 'n', keys = '<leader>s', desc = '+Searchs' },
-    { mode = 'n', keys = '<leader>sC', desc = '+Colors' },
-    { mode = 'n', keys = '<leader>sW', desc = '+Dict' },
-    { mode = 'n', keys = '<leader>t', desc = '+Toggle' },
-    { mode = 'n', keys = '<C-w>', desc = '+Window' },
-    -- `z` key
-    { mode = 'n', keys = 'z', desc = '+Folds' },
-    { mode = 'x', keys = 'z', desc = '+Folds' },
-    -- Moving around
-    { mode = 'n', keys = '[', desc = '->Next' },
-    { mode = 'n', keys = ']', desc = '<-Prev' }
-  },
-  window = {
-    delay = 200
-  }
+	triggers = {
+		-- Leader triggers
+		{ mode = 'n', keys = '<Leader>' },
+		{ mode = 'x', keys = '<Leader>' },
+		-- Built-in completion
+		{ mode = 'i', keys = '<C-x>' },
+		-- `g` key
+		{ mode = 'n', keys = 'g' },
+		{ mode = 'x', keys = 'g' },
+		-- Marks
+		{ mode = 'n', keys = "'" },
+		{ mode = 'n', keys = '`' },
+		{ mode = 'x', keys = "'" },
+		{ mode = 'x', keys = '`' },
+		-- Registers
+		{ mode = 'n', keys = '"' },
+		{ mode = 'x', keys = '"' },
+		{ mode = 'i', keys = '<C-r>' },
+		{ mode = 'c', keys = '<C-r>' },
+		-- Window commands
+		{ mode = 'n', keys = '<C-w>' },
+		-- `z` key
+		{ mode = 'n', keys = 'z' },
+		{ mode = 'x', keys = 'z' },
+		-- Moving around
+		{ mode = 'n', keys = '[' },
+		{ mode = 'n', keys = ']' }
+	},
+	clues = {
+		-- Enhance this by adding descriptions for <Leader> mapping groups
+		require 'mini.clue'.gen_clues.builtin_completion(),
+		require 'mini.clue'.gen_clues.g(),
+		require 'mini.clue'.gen_clues.marks(),
+		require 'mini.clue'.gen_clues.registers(),
+		require 'mini.clue'.gen_clues.windows(),
+		require 'mini.clue'.gen_clues.z(),
+		{ mode = 'n', keys = '<leader>c',  desc = '+Code' },
+		{ mode = 'n', keys = '<leader>cg', desc = '+Goto' },
+		{ mode = 'n', keys = '<leader>g',  desc = '+Git/Go' },
+		{ mode = 'n', keys = '<leader>n',  desc = '+Notes' },
+		{ mode = 'n', keys = '<leader>s',  desc = '+Searchs' },
+		{ mode = 'n', keys = '<leader>sC', desc = '+Colors' },
+		{ mode = 'n', keys = '<leader>sW', desc = '+Dict' },
+		{ mode = 'n', keys = '<leader>t',  desc = '+Toggle' },
+		{ mode = 'n', keys = '<C-w>',      desc = '+Window' },
+		-- `z` key
+		{ mode = 'n', keys = 'z',          desc = '+Folds' },
+		{ mode = 'x', keys = 'z',          desc = '+Folds' },
+		-- Moving around
+		{ mode = 'n', keys = '[',          desc = '->Next' },
+		{ mode = 'n', keys = ']',          desc = '<-Prev' }
+	},
+	window = {
+		delay = 200
+	}
 })
 
 require('mini.statusline').setup({
-  -- Content of statusline as functions which return statusline string. See
-    -- `:h statusline` and code of default contents (used instead of `nil`).
-  content = {
-    -- Content for active window
-    active = function ()
-      local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
-      local git = MiniStatusline.section_git({ trunc_width = 40 })
-      local diff = MiniStatusline.section_diff({ trunc_width = 75 })
-      local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-      local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
-      local filename = MiniStatusline.section_filename({ trunc_width = 140 })
-      local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-      local location = MiniStatusline.section_location({ trunc_width = 75 })
-      local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
-      local spell = vim.wo.spell and (MiniStatusline.is_truncated(120) and 'S' or 'SPELL') or ''
-      -- local clipboard = function ()
-      --
-      -- end
+	-- Content of statusline as functions which return statusline string. See
+	-- `:h statusline` and code of default contents (used instead of `nil`).
+	content = {
+		-- Content for active window
+		active = function()
+			local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+			local git = MiniStatusline.section_git({ trunc_width = 40 })
+			local diff = MiniStatusline.section_diff({ trunc_width = 75 })
+			local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+			local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
+			local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+			local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+			local location = MiniStatusline.section_location({ trunc_width = 75 })
+			local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
+			local spell = vim.wo.spell and (MiniStatusline.is_truncated(120) and 'S' or 'SPELL') or ''
+			-- local clipboard = function ()
+			--
+			-- end
 
-      return MiniStatusline.combine_groups({
-        { hl = mode_hl, strings = { mode } },
-        { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
-        '%<', -- Mark general truncate point
-        { hl = mode_hl, strings = { spell } },
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
-        '%=', -- End left alignment
-        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-        { hl = mode_hl, strings = { search, location } }
-      })
-    end,
-    -- Content for inactive window(s)
-    inactive = nil
-  },
-  -- Whether to use icons by default
-  use_icons = true,
-  -- Whether to set Vim's settings for statusline (make it always shown)
-  set_vim_settings = true
+			return MiniStatusline.combine_groups({
+				{ hl = mode_hl,                 strings = { mode } },
+				{ hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+				'%<', -- Mark general truncate point
+				{ hl = mode_hl,                  strings = { spell } },
+				{ hl = 'MiniStatuslineFilename', strings = { filename } },
+				'%=', -- End left alignment
+				{ hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+				{ hl = mode_hl,                  strings = { search, location } }
+			})
+		end,
+		-- Content for inactive window(s)
+		inactive = nil
+	},
+	-- Whether to use icons by default
+	use_icons = true,
+	-- Whether to set Vim's settings for statusline (make it always shown)
+	set_vim_settings = true
 })
 
 ---@diagnostic disable-next-line: duplicate-set-field
@@ -181,95 +181,150 @@ require('mini.statusline').setup({
 -- }
 
 require('mini.comment').setup({
-  options = {
-    custom_commentstring = nil,
-    ignore_blank_line = true,
-    start_of_line = false,
-    pad_comment_parts = true
-  },
-  mappings = { comment = 'gc', comment_line = 'gcc', comment_visual = 'gc', textobject = 'gc' },
-  hooks = { pre = function () end, post = function () end }
+	options = {
+		custom_commentstring = nil,
+		ignore_blank_line = true,
+		start_of_line = false,
+		pad_comment_parts = true
+	},
+	mappings = { comment = 'gc', comment_line = 'gcc', comment_visual = 'gc', textobject = 'gc' },
+	hooks = { pre = function() end, post = function() end }
 })
 
 require('mini.pick').setup({
-  window = {
-    -- config = function()
-      --   local height = math.floor(0.618 * vim.o.lines)
-      --   local width = math.floor(0.618 * vim.o.columns)
-      --   return {
-      --     anchor = 'NW',
-      --     height = height,
-      --     width = width,
-      --     row = math.floor(0.5 * (vim.o.lines - height)),
-      --     col = math.floor(0.5 * (vim.o.columns - width)),
-      --   }
-      -- end,
-    config = function ()
-      -- local height = math.floor(0.25 * vim.o.lines)
-      -- local width = vim.o.columns
-      local current_win = vim.api.nvim_win_get_config(0)
-      local height = math.floor(0.25 * current_win.height)
-      local width = current_win.width - 2
+	window = {
+		-- config = function()
+		--   local height = math.floor(0.618 * vim.o.lines)
+		--   local width = math.floor(0.618 * vim.o.columns)
+		--   return {
+		--     anchor = 'NW',
+		--     height = height,
+		--     width = width,
+		--     row = math.floor(0.5 * (vim.o.lines - height)),
+		--     col = math.floor(0.5 * (vim.o.columns - width)),
+		--   }
+		-- end,
+		config = function()
+			-- local height = math.floor(0.25 * vim.o.lines)
+			-- local width = vim.o.columns
+			local current_win = vim.api.nvim_win_get_config(0)
+			local height = math.floor(0.25 * current_win.height)
+			local width = current_win.width - 2
 
-      return {
-        relative = 'win',
-        anchor = 'SW',
-        height = height,
-        width = width,
-        row = vim.o.lines,
-        col = 0,
-        border = 'single',
-        -- border = { '', '─', '', '', '', '─', '', '' }
-      }
-    end,
-    prompt_caret = '▏',
-    -- String to use as prefix in prompt
-    prompt_prefix = '> '
-  },
-  options = {
-    content_from_bottom = true
-  }
-  -- source = {
-    --   preview = function(buf_id, item, opts)
-    --     print(vim.inspect(item))
-    --     print(vim.inspect(opts))
-    --     print(vim.inspect(buf_id))
-    --     local bufnr = vim.api.nvim_create_buf(false, true)
-    --     local winid = vim.api.nvim_open_win(bufnr, false, {
-    --       style = 'minimal',
-    --       relative = 'editor',
-    --       width = 10,
-    --       height = 10,
-    --       row = 1,
-    --       col = 1,
-    --       title = 'preview'
-    --     })
-    --     vim.wo[winid].winhighlight = "Normal:Normal"
-    --     require('mini.pick').default_preview(bufnr, item, opts)
-    --     vim.api.nvim_create_autocmd('MiniPickStop', {
-    --       callback = function()
-    --         vim.api.nvim_win_close(winid, true)
-    --         vim.api.nvim_buf_delete(bufnr, { force = true })
-    --       end
-    --     })
-    --   end
-    -- },
+			return {
+				relative = 'win',
+				anchor = 'SW',
+				height = height,
+				width = width,
+				row = vim.o.lines,
+				col = 0,
+				border = 'single',
+				-- border = { '', '─', '', '', '', '─', '', '' }
+			}
+		end,
+		prompt_caret = '▏',
+		-- String to use as prefix in prompt
+		prompt_prefix = '> '
+	},
+	options = {
+		content_from_bottom = true
+	}
+	-- source = {
+	--   preview = function(buf_id, item, opts)
+	--     print(vim.inspect(item))
+	--     print(vim.inspect(opts))
+	--     print(vim.inspect(buf_id))
+	--     local bufnr = vim.api.nvim_create_buf(false, true)
+	--     local winid = vim.api.nvim_open_win(bufnr, false, {
+	--       style = 'minimal',
+	--       relative = 'editor',
+	--       width = 10,
+	--       height = 10,
+	--       row = 1,
+	--       col = 1,
+	--       title = 'preview'
+	--     })
+	--     vim.wo[winid].winhighlight = "Normal:Normal"
+	--     require('mini.pick').default_preview(bufnr, item, opts)
+	--     vim.api.nvim_create_autocmd('MiniPickStop', {
+	--       callback = function()
+	--         vim.api.nvim_win_close(winid, true)
+	--         vim.api.nvim_buf_delete(bufnr, { force = true })
+	--       end
+	--     })
+	--   end
+	-- },
 })
+
+local pick = require("mini.pick")
+
+pick.registry.files = function()
+  local cwd = require('personal.utils').get_git_root()
+
+  return pick.start({
+    source = {
+      name = 'Files',
+      cwd = cwd,
+      show = function(buf_id, items, query)
+        pick.default_show(buf_id, items, query, { show_icons = true })
+      end,
+      items = function()
+        local result = vim.system({
+          'rg', '--files', '--hidden', '--no-ignore',
+          '-g', '!.git',
+        }, { cwd = cwd, text = true }):wait()
+
+        if result.code ~= 0 or result.stdout == '' then return {} end
+        return vim.split(vim.trim(result.stdout), '\n')
+      end,
+    },
+  })
+end
+
+
+pick.registry.grep = function()
+	return pick.builtin.grep({},
+		{
+			source = {
+				name = "Grep",
+				cwd = require 'personal.utils'.get_git_root(),
+			},
+		}
+	)
+end
+pick.registry.grep_live = function()
+	return pick.builtin.grep_live({},
+		{
+			source = {
+				name = "Live Grep",
+				cwd = require 'personal.utils'.get_git_root(),
+			},
+		}
+	)
+end
+
+
 vim.keymap.set('n', '<leader>sh', "<cmd>Pick help<cr>", { desc = 'Search Help' })
 vim.keymap.set('n', '<leader>sk', "<cmd>Pick keymaps<cr>", { desc = 'Search Keymaps' })
-vim.keymap.set(
-  'n', '<leader>sf', "<cmd>lua MiniPick.builtin.files({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
-  { desc = 'Search Files' }
-)
-vim.keymap.set(
-  'n', '<leader>sw', "<cmd>lua MiniPick.builtin.grep({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
-  { desc = 'Grep current word' }
-)
-vim.keymap.set(
-  'n', '<leader>sg',
-  "<cmd>lua MiniPick.builtin.grep_live({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
-  { desc = 'Live grep' }
-)
+-- vim.keymap.set(
+-- 	'n', '<leader>sf',
+-- 	"<cmd>lua MiniPick.builtin.files({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
+-- 	{ desc = 'Search Files' }
+-- )
+
+vim.keymap.set('n', '<leader>sf', "<cmd>Pick files<cr>", { desc = 'Search Files' })
+vim.keymap.set('n', '<leader>sw', "<cmd>Pick grep<cr>", { desc = 'Search Files' })
+vim.keymap.set('n', '<leader>sg', "<cmd>Pick grep_live<cr>", { desc = 'Search Files' })
+-- vim.keymap.set(
+-- 	'n', '<leader>sw',
+-- 	"<cmd>lua MiniPick.builtin.grep({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
+-- 	{ desc = 'Grep current word' }
+-- )
+-- vim.keymap.set(
+-- 	'n', '<leader>sg',
+-- 	"<cmd>lua MiniPick.builtin.grep_live({},{source = {cwd =require'personal.utils'.get_git_root()}})<cr>",
+-- 	{ desc = 'Live grep' }
+-- )
 vim.keymap.set('n', '<leader>sb', "<cmd>Pick buffers<cr>", { desc = 'Search existing buffers' })
 vim.keymap.set('n', '<leader>sd', "<cmd>Pick diagnostic<cr>", { desc = 'Search Diagnostics' })
 vim.keymap.set('n', '<leader>sr', "<cmd>Pick resume<cr>", { desc = 'Search Resume' })
@@ -378,32 +433,32 @@ vim.keymap.set('n', '<leader>st', "<cmd>Pick lsp scope='type_definition'<cr>", {
 
 
 require('mini.sessions').setup( -- No need to copy this inside `setup()`. Will be used automatically.
-  {
-    -- Whether to read default session if Neovim opened without file arguments
-    autoread = true,
-    -- Whether to write currently read session before quitting Neovim
-    autowrite = true,
-    -- Directory where global sessions are stored (use `''` to disable)
-    -- directory = --<"session" subdir of user data directory from |stdpath()|>,
-    -- directory = vim.fn.stdpath('data') .. '/session',
-    -- File for local session (use `''` to disable)
-    file = 'Session.vim',
-    -- Whether to force possibly harmful actions (meaning depends on function)
-    force = { read = false, write = true, delete = false },
-    -- Hook functions for actions. Default `nil` means 'do nothing'.
-    hooks = {
-      -- Before successful action
-      pre = {
-        read = nil,
-        write = nil,
-        delete = nil
-      },
-      -- After successful action
-      post = { read = nil, write = nil, delete = nil }
-    },
-    -- Whether to print session path after action
-    verbose = { read = false, write = false, delete = true }
-  }
+	{
+		-- Whether to read default session if Neovim opened without file arguments
+		autoread = true,
+		-- Whether to write currently read session before quitting Neovim
+		autowrite = true,
+		-- Directory where global sessions are stored (use `''` to disable)
+		-- directory = --<"session" subdir of user data directory from |stdpath()|>,
+		-- directory = vim.fn.stdpath('data') .. '/session',
+		-- File for local session (use `''` to disable)
+		file = 'Session.vim',
+		-- Whether to force possibly harmful actions (meaning depends on function)
+		force = { read = false, write = true, delete = false },
+		-- Hook functions for actions. Default `nil` means 'do nothing'.
+		hooks = {
+			-- Before successful action
+			pre = {
+				read = nil,
+				write = nil,
+				delete = nil
+			},
+			-- After successful action
+			post = { read = nil, write = nil, delete = nil }
+		},
+		-- Whether to print session path after action
+		verbose = { read = false, write = false, delete = true }
+	}
 )
 -- local ss_ls = function()
 -- local detected = require("mini.sessions").detected
@@ -414,26 +469,26 @@ require('mini.sessions').setup( -- No need to copy this inside `setup()`. Will b
 -- end
 -- -- ss_ls()
 require('mini.starter').setup({
-  query_updaters = 'abcdefghijklmnopqrstuvwxyz0123456789_.',
-  autoopen = true,
-  evaluate_single = true,
-  items = {
-    -- require'mini.starter'.sections.telescope(),
-    { name = 'Edit new buffer', action = 'enew', section = 'Commands' },
-    -- { name = 'Config Neovim',   action = 'Telescope find_files cwd=~/.config/nvim', section = 'Commands' },
-    -- { name = 'Files in cwd',    action = 'Telescope find_files',                    section = 'Commands' },
-    -- { name = 'Config Neovim', action = 'FzfLua files cwd=$HOME/.config/nvim/', section = 'Commands' },
-    -- { name = 'Files in cwd', action = 'FzfLua files', section = 'Commands' },
-    { name = 'Config Neovim',   action = ':lua MiniPick.builtin.files({},{source = {cwd = "~/.config/nvim/"}})',                     section = 'Commands' },
-    { name = 'Files in cwd',    action = ':lua MiniPick.builtin.files({},{source = {cwd =require"personal.utils".get_git_root()}})', section = 'Commands' },
-    -- { name = 'Recent file',     action = ':e#',                                                                                      section = 'Commands' },
-    -- { name = 'Update plugins',  action = 'Lazy sync',                               section = 'Commands' },
-    { name = 'Quit Neovim', action = 'qall', section = 'Commands' },
-    require 'mini.starter'.sections.recent_files(3, true),
-    -- require 'mini.starter'.sections.sessions(5, true),
-    require 'mini.starter'.sections.recent_files(3, false)
-  },
-  header = [[
+	query_updaters = 'abcdefghijklmnopqrstuvwxyz0123456789_.',
+	autoopen = true,
+	evaluate_single = true,
+	items = {
+		-- require'mini.starter'.sections.telescope(),
+		{ name = 'Edit new buffer', action = 'enew',                                                                                     section = 'Commands' },
+		-- { name = 'Config Neovim',   action = 'Telescope find_files cwd=~/.config/nvim', section = 'Commands' },
+		-- { name = 'Files in cwd',    action = 'Telescope find_files',                    section = 'Commands' },
+		-- { name = 'Config Neovim', action = 'FzfLua files cwd=$HOME/.config/nvim/', section = 'Commands' },
+		-- { name = 'Files in cwd', action = 'FzfLua files', section = 'Commands' },
+		{ name = 'Config Neovim',   action = ':lua MiniPick.builtin.files({},{source = {cwd = "~/.config/nvim/"}})',                     section = 'Commands' },
+		{ name = 'Files in cwd',    action = ':lua MiniPick.builtin.files({},{source = {cwd =require"personal.utils".get_git_root()}})', section = 'Commands' },
+		-- { name = 'Recent file',     action = ':e#',                                                                                      section = 'Commands' },
+		-- { name = 'Update plugins',  action = 'Lazy sync',                               section = 'Commands' },
+		{ name = 'Quit Neovim',     action = 'qall',                                                                                     section = 'Commands' },
+		require 'mini.starter'.sections.recent_files(3, true),
+		-- require 'mini.starter'.sections.sessions(5, true),
+		require 'mini.starter'.sections.recent_files(3, false)
+	},
+	header = [[
                                               
       ████ ██████           █████      ██
      ███████████             █████ 
@@ -443,67 +498,67 @@ require('mini.starter').setup({
  ███████████ ███    ███ █████████ █████ █████ ████ █████
 ██████  █████████████████████ ████ █████ █████ ████ ██████
                                 ]],
-  -- dashboard.nvim reference
-  -- footer = function()
-  --     local quotes = require("fortune").get_fortune()
-  --     local quote = ""
-  --     for _, q in ipairs(quotes) do
-  --         quote = quote .. '\n' .. q
-  --     end
-  --     return quote
-  -- end,
-  content_hooks = {
-    require 'mini.starter'.gen_hook.adding_bullet('  ', true),
-    require 'mini.starter'.gen_hook.indexing('all', { 'Commands', 'Sessions' }),
-    -- require'mini.starter'.gen_hook.padding(3, 2),
-    require('mini.starter').gen_hook.aligning('center', 'center')
-  },
-  -- Whether to disable showing non-error feedback
-  silent = false
+	-- dashboard.nvim reference
+	-- footer = function()
+	--     local quotes = require("fortune").get_fortune()
+	--     local quote = ""
+	--     for _, q in ipairs(quotes) do
+	--         quote = quote .. '\n' .. q
+	--     end
+	--     return quote
+	-- end,
+	content_hooks = {
+		require 'mini.starter'.gen_hook.adding_bullet('  ', true),
+		require 'mini.starter'.gen_hook.indexing('all', { 'Commands', 'Sessions' }),
+		-- require'mini.starter'.gen_hook.padding(3, 2),
+		require('mini.starter').gen_hook.aligning('center', 'center')
+	},
+	-- Whether to disable showing non-error feedback
+	silent = false
 })
 
 require('mini.completion').setup({
-  lsp_completion = {
-  --   -- source_func = 'completefunc',
-    source_func = 'omnifunc',
-    auto_setup = true,
-    process_item = function(items, base)
-      return MiniCompletion.default_process_items(items, base, {
-        filtersort = 'prefix',         -- none | prefix | fuzzy
-        kind_priority = {
-          Text = -99,
-          Snippet = 99,
-        },
-      })
-    end
-  },
-  delay = { completion = 0, info = 0, signature = 0 },
-  window = {
-    info = { height = 25, width = 80, border = 'single' },
-    signature = { height = 25, width = 80, border = 'single' }
-  }
+	lsp_completion = {
+		--   -- source_func = 'completefunc',
+		source_func = 'omnifunc',
+		auto_setup = true,
+		process_item = function(items, base)
+			return MiniCompletion.default_process_items(items, base, {
+				filtersort = 'prefix', -- none | prefix | fuzzy
+				kind_priority = {
+					Text = -99,
+					Snippet = 99,
+				},
+			})
+		end
+	},
+	delay = { completion = 0, info = 0, signature = 0 },
+	window = {
+		info = { height = 25, width = 80, border = 'single' },
+		signature = { height = 25, width = 80, border = 'single' }
+	}
 })
 
 require 'mini.cmdline'.setup({
-    autocomplete = {
-      enable = true,
-      delay = 0,
-      predicate = nil,
-      map_arrows = true,
-    },
-    autocorrect = {
-      enable = true,
-      func = nil,
-    },
-    autopeek = {
-      enable = true,
-      n_context = 1,
-      predicate = nil,
-      window = {
-        config = {},
-        statuscolumn = nil,
-      },
-    },
+	autocomplete = {
+		enable = true,
+		delay = 0,
+		predicate = nil,
+		map_arrows = true,
+	},
+	autocorrect = {
+		enable = true,
+		func = nil,
+	},
+	autopeek = {
+		enable = true,
+		n_context = 1,
+		predicate = nil,
+		window = {
+			config = {},
+			statuscolumn = nil,
+		},
+	},
 })
 
 require('mini.keymap').setup()
@@ -511,14 +566,14 @@ local map_multistep = require('mini.keymap').map_multistep
 
 -- map_multistep('i', '<Tab>',   { 'pmenu_accept' })
 map_multistep('i', '<Tab>', {
-  'pmenu_accept',
-  'pmenu_next',
-  'minisnippets_next',
-  'vimsnippet_next',
-  'luasnip_next',
-  'minisnippets_expand',
-  'increase_indent',
-  'jump_after_close'
+	'pmenu_accept',
+	'pmenu_next',
+	'minisnippets_next',
+	'vimsnippet_next',
+	'luasnip_next',
+	'minisnippets_expand',
+	'increase_indent',
+	'jump_after_close'
 })
 -- map_multistep('n', '<Tab>', { 'jump_after_close', 'jump_before_open'})
 -- map_multistep('i', '<Tab>', { 'pmenu_accept', 'minisnippets_next','vimsnippet_next','luasnip_next', 'minisnippets_expand', 'jump_after_close'})
@@ -544,14 +599,14 @@ map_combo('t', 'kj', '<BS><BS><C-\\><C-n>')
 
 local hipatterns = require('mini.hipatterns')
 hipatterns.setup({
-  highlighters = {
-    -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-    hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
-    todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
-    note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+	highlighters = {
+		-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+		fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+		hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+		todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+		note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
 
-    -- Highlight hex color strings (`#rrggbb`) using that color
-    hex_color = hipatterns.gen_highlighter.hex_color(),
-  },
+		-- Highlight hex color strings (`#rrggbb`) using that color
+		hex_color = hipatterns.gen_highlighter.hex_color(),
+	},
 })

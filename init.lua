@@ -28,8 +28,8 @@ local config_subdirs = vim.fn.stdpath("config") .. "/?/init.lua"
 package.path = package.path .. ";" .. config_path .. ";" .. config_subdirs
 
 
-require("lua.personal.cmd").setup({})                              -- Make cmd a buffer so it can work in normal mode
-vim.pack.add({ "https://github.com/lambdalisue/suda.vim" })        -- auto read/write file with sudo
+require("personal.cmd").setup({})                              -- Make cmd a buffer so it can work in normal mode
+-- vim.pack.add({ "https://github.com/lambdalisue/suda.vim" })        -- auto read/write file with sudo
 vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" }) -- icons
 vim.pack.add({ "https://github.com/nvim-lua/plenary.nvim" })
 
@@ -651,6 +651,11 @@ vim.keymap.set("n", "<leader><leader>", "<cmd>QuickBuf<cr>", { desc = "quick cha
 -- https://github.com/romus204/tree-sitter-manager.nvim?tab=readme-ov-file -- alternative for nvim-treesitter
 -- https://www.reddit.com/r/neovim/comments/1r4tho1/refernvim_a_picker_that_doesnt_get_in_your_way/ -- picker using vim ui
 -- https://www.reddit.com/r/neovim/comments/1t8ljkp/zealnvim/ -- zeal, document management
+-- https://github.com/ggml-org/whisper.cpp -- audio transcription
+
+-- https://github.com/SeniorMars/typst.nvim -- typst treesitter
+-- https://github.com/2KAbhishek/homegrown.nvim -- small stuff combined
+-- https://github.com/atiladefreitas/dooing -- new UI
 
 -- TODO: get a spell checker
 -- typos, harper,..
@@ -705,4 +710,4 @@ require("touchup").setup({
 
 
 -- Some how get an error/messages help in working with suda file
-vim.wo.formatexpr = ''
+-- vim.wo.formatexpr = ''
