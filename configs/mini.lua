@@ -31,8 +31,8 @@ require('mini.trailspace').setup()
 require('mini.bracketed').setup()
 require('mini.cursorword').setup({ delay = 50 }) -- for some reason it didn't show
 vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', { underline = true })
-require('mini.misc').setup()
-vim.keymap.set({ 'n', 'v' }, "<leader>zz", "<cmd>lua require'mini.misc'.zoom()<cr>", { desc = "Zoom" })
+
+
 require('mini.icons').setup({ style = 'glyph', file = { ['init.lua'] = { glyph = ' ' } } })
 -- MiniIcons.tweak_lsp_kind()
 require('mini.extra').setup(nil)

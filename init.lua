@@ -1,6 +1,6 @@
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.tabstop = 2
 vim.o.swapfile = false
 vim.g.mapleader = " "
@@ -13,6 +13,10 @@ vim.o.cmdheight = 1
 vim.o.cmdwinheight = 1
 vim.o.foldmethod = 'manual'
 vim.o.clipboard = "unnamedplus"
+vim.opt.guicursor = 'n-v-c:block,i-ci-ve:ver100/,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
+vim.opt.cursorline = true -- highlight the current line
+vim.opt.cursorlineopt = "screenline"
+vim.opt.cursorcolumn = true
 -- vim.cmd 'set fo-=1tcro'       -- :help fo-table
 require("vim._core.ui2").enable({ enable = true, msg = { target = "msg" }, cmd = { height = 0.5 } })
 
@@ -28,7 +32,8 @@ local config_subdirs = vim.fn.stdpath("config") .. "/?/init.lua"
 package.path = package.path .. ";" .. config_path .. ";" .. config_subdirs
 
 
-require("personal.cmd").setup({})                              -- Make cmd a buffer so it can work in normal mode
+require("personal.cmd").setup({}) -- Make cmd a buffer so it can work in normal mode
+vim.keymap.set("n", "<leader>zz", function() require("personal.zoom").zoom() end, { desc = "Zoom and Focus" })
 -- vim.pack.add({ "https://github.com/lambdalisue/suda.vim" })        -- auto read/write file with sudo
 vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" }) -- icons
 vim.pack.add({ "https://github.com/nvim-lua/plenary.nvim" })
@@ -201,7 +206,7 @@ vim.api.nvim_command("packadd nvim.undotree")
 -- }
 
 
-vim.lsp.config('lua_ls', {
+vim.lsp.config.lua_ls = {
 	on_init = function(client)
 		if client.workspace_folders then
 			local path = client.workspace_folders[1].name
@@ -256,9 +261,7 @@ vim.lsp.config('lua_ls', {
 			}
 		},
 	},
-})
-
-
+}
 
 
 vim.lsp.config.clangd = {
@@ -268,13 +271,13 @@ vim.lsp.config.clangd = {
 		"--background-index",
 		-- "--compile-commands-dir=build",
 		"--clang-tidy",
-		"--completion-style=bundled",                         -- bundled, detailed
-		"--header-insertion=iwyu"                             -- never
+		"--completion-style=bundled", -- bundled, detailed
+		"--header-insertion=iwyu" -- never
 		-- "--cross-file-rename", --obsolete flag, no longer in used
 	},
 	-- filetypes = { "c" },
 	init_options = {
-		clangdfilestatus = true,                         -- provides information about activity on clangd’s per-file worker thread
+		clangdfilestatus = true, -- provides information about activity on clangd’s per-file worker thread
 		useplaceholders = true,
 		completeunimported = true,
 		semantichighlighting = true
@@ -316,16 +319,8 @@ vim.api.nvim_create_autocmd("filetype", {
 
 
 
-
 vim.pack.add({ "https://github.com/onsails/lspkind.nvim" })
 require("lspkind").setup({ mode = "symbol" })
-
--- vim.g.loaded_netrwplugin = 1
--- require 'yazi'.setup({ open_for_directories = true, keymaps = { show_help = "<f1>", }, })
--- vim.keymap.set({ 'n', 'v' }, '-', '<cmd>yazi toggle<cr>', { desc = 'open yazi at the current file' })
--- vim.keymap.set({ 'n', 'v' }, '<leader>_', '<cmd>yazi cwd<cr>', { desc = 'open yazi at the current file' })
--- vim.keymap.set({ 'n', 'v' }, '<leader>-', '<cmd>yazi<cr>', { desc = 'open yazi at the current file' })
-
 
 
 vim.pack.add({ "https://github.com/aserowy/tmux.nvim" })
@@ -385,121 +380,7 @@ require("tmux").setup({
 	}
 })
 
-
-vim.pack.add({ "https://github.com/monaqa/dial.nvim" })
-local map = require("dial.map")
-vim.keymap.set("n", "<c-a>", function()
-	map.manipulate("increment", "normal")
-end, { desc = "dial inc" }
-)
-vim.keymap.set("n", "<c-x>", function()
-	map.manipulate("decrement", "normal")
-end, { desc = "dial dec" }
-)
-vim.keymap.set("n", "g<c-a>", function()
-	map.manipulate("increment", "gnormal")
-end, { desc = "dial inc" }
-)
-vim.keymap.set("n", "g<c-x>", function()
-	map.manipulate("decrement", "gnormal")
-end, { desc = "dial dec" }
-)
-vim.keymap.set("v", "<c-a>", function()
-	map.manipulate("increment", "visual")
-end, { desc = "dial inc" }
-)
-vim.keymap.set("v", "<c-x>", function()
-	map.manipulate("decrement", "visual")
-end, { desc = "dial dec" }
-)
-vim.keymap.set("v", "g<c-a>", function()
-	map.manipulate("increment", "gvisual")
-end, { desc = "dial inc" }
-)
-vim.keymap.set("v", "g<c-x>", function()
-	map.manipulate("decrement", "gvisual")
-end, { desc = "dial dec" }
-)
-local augend = require("dial.augend")
-require("dial.config").augends:register_group({
-	-- default augends used when no group name is specified
-	default = {
-		augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
-		augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-		augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
-		augend.constant.alias.bool, -- boolean value (true <-> false)
-		augend.constant.new({
-			elements = { "and", "or" },
-			word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
-			cyclic = true -- "or" is incremented into "and".
-		}),
-		augend.constant.new({ elements = { "&&", "||" }, word = false, cyclic = true }),
-		augend.constant.new({ elements = { "[x]", "[ ]" }, word = false, cyclic = true })
-	},
-	neorg = {
-		augend.integer.alias.decimal,
-		augend.integer.alias.hex,
-		augend.date.alias["%Y/%m/%d"],
-		augend.constant.alias.bool,
-		augend.constant.new({ elements = { "and", "or" }, word = true, cyclic = true }),
-		augend.constant.new({ elements = { "&&", "||" }, word = false, cyclic = true }),
-		augend.constant.new({
-			elements = { "( )", "(x)", "(?)", "(!)", "(+)", "(-)", "(=)", "(_)" },
-			word = false,
-			cyclic = true
-		}),
-		augend.constant.new({ elements = { "*", "**", "***", "****", "*****", "******" }, word = false, cyclic = false }),
-		augend.constant.new({ elements = { "-", "--", "---", "----", "-----", "------" }, word = false, cyclic = false }),
-		augend.constant.new({ elements = { "~", "~~", "~~~", "~~~~", "~~~~~", "~~~~~~" }, word = false, cyclic = false }),
-		augend.constant.new({ elements = { ">", ">>", ">>>", ">>>>", ">>>>>", ">>>>>>" }, word = false, cyclic = false })
-	},
-	asciidoc = {
-		augend.integer.alias.decimal,
-		augend.integer.alias.hex,
-		augend.date.alias["%Y/%m/%d"],
-		augend.constant.alias.bool,
-		augend.constant.new({ elements = { "and", "or" }, word = true, cyclic = true }),
-		augend.constant.new({ elements = { "[ ]", "[x]" }, word = true, cyclic = true }),
-		augend.constant.new({ elements = { "=", "==", "===", "====", "=====", "======" }, word = false, cyclic = false }),
-		augend.constant.new({ elements = { "*", "**", "***", "****", "*****", "******" }, word = false, cyclic = false }),
-		augend.constant.new({
-			elements = { "note:", "important:", "tip:", "caution:", "warning:" },
-			word = true,
-			cyclic = true
-		})
-	},
-	-- augends used when group with name `mygroup` is specified
-	mygroup = {
-		augend.integer.alias.decimal,
-		augend.date.alias["%m/%d/%Y"] -- date (02/19/2022, etc.)
-	}
-})
-
--- -- change augends in visual mode
--- vim.keymap.set("v", "<c-a>", require("dial.map").inc_visual("visual"), {noremap = true})
--- vim.keymap.set("v", "<c-x>", require("dial.map").dec_visual("visual"), {noremap = true})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "*.norg" },
-	callback = function()
-		vim.api.nvim_buf_set_keymap(0, "n", "<c-a>", require("dial.map").inc_normal("neorg"), {
-			noremap = true,
-			desc = "dial inc neorg"
-		})
-		vim.api.nvim_buf_set_keymap(0, "n", "<c-x>", require("dial.map").dec_normal("neorg"), {
-			noremap = true,
-			desc = "dial dec neorg"
-		})
-		vim.api.nvim_buf_set_keymap(0, "v", "<c-a>", require("dial.map").inc_visual("neorg"), {
-			noremap = true,
-			desc = "dial inc neorg"
-		})
-		vim.api.nvim_buf_set_keymap(0, "v", "<c-x>", require("dial.map").dec_visual("neorg"), {
-			noremap = true,
-			desc = "dial dec neorg"
-		})
-	end
-})
+require"configs.dial"
 
 local helpers = require("incline.helpers")
 -- local devicons = require 'nvim-web-devicons'
@@ -580,70 +461,36 @@ require("incline").setup({
 --   hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" } -- render image files as images when opened
 -- })
 
--- vim.pack.add( {'https://github.com/nvim-telescope/telescope.nvim',
--- 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' })
--- require('telescope').setup {
---   extensions = {
---     fzf = {
---       fuzzy = true,                    -- false will only do exact matching
---       override_generic_sorter = true,  -- override the generic sorter
---       override_file_sorter = true,     -- override the file sorter
---       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
---                                        -- the default case_mode is "smart_case"
---     }
---   }
--- }
--- -- to get fzf loaded and working with telescope, you need to call
--- -- load_extension, somewhere after setup function:
--- require('telescope').load_extension('fzf')
--- require'configs.telescope'
 
 vim.pack.add({ "https://github.com/tjgao/quickbuf.nvim" })
-require("quickbuf").setup({
-	include_special = false,
-	auto_jump_single = false,
-	isolate_keymaps = true,
-	fuzzy_key = "/",
-	fuzzy_backend = "auto",
-	fuzzy_open = nil,
-	alternate_key = "<tab>",
-	alternate_key_display = "",
-	alternate_without_label = true,
-	label_before_name = true,
-	picker = {
-		move_up_key = "k",
-		move_down_key = "j",
-		select_key = "<cr>",
-		toggle_pin_key = "t"
-	},
-	show_icons = true,
-	pin_display = "p",
-	persistence = {
-		enabled = false,
-		debounce_ms = 1000
-	},
-	highlights = {
-		label = { fg = "#ff8800", bold = true },
-		pinned = { link = "diagnosticok", bold = true },
-		flags = { link = "comment" },
-		alternate = { fg = "#ff8800", bold = true },
-		filename = { link = "normal" },
-		path = { link = "comment" },
-		muted = { link = "comment" },
-		cursorline = { link = "visual" },
-		footer_svt = { link = "diagnosticwarn" }
-	},
-	window = {
-		border = "single",
-		width = nil,
-		height = nil,
-		max_width = 80,
-		min_width = 36,
-		padding = 2,
-		vertical_padding = 1
-	}
-})
+require("quickbuf").setup()
 vim.keymap.set("n", "<leader><leader>", "<cmd>QuickBuf<cr>", { desc = "quick change buffers" })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- todo: check these
 -- cool thing to test
@@ -669,8 +516,6 @@ vim.keymap.set("n", "<leader><leader>", "<cmd>QuickBuf<cr>", { desc = "quick cha
 -- Some ideas
 -- https://github.com/syntaxpresso/bufstate.nvim -- workspace management, kindla tmux but nvim
 
--- vim.pack.add({ "https://github.com/ibhagwan/fzf-lua", })
--- require('configs.fzf')
 
 -- vim.pack.add({"https://github.com/simifalaye/minibuffer.nvim"})
 -- local minibuffer = require("minibuffer")
@@ -701,13 +546,4 @@ require("touchup").setup({
 })
 
 
-
-
-
-
-
-
-
-
--- Some how get an error/messages help in working with suda file
--- vim.wo.formatexpr = ''
+require("configs.dap")
