@@ -10,8 +10,8 @@ vim.keymap.set({ 'n', 'v' }, ']d', "<cmd>lua vim.diagnostic.jump({count=1})<cr>"
 vim.keymap.set({ 'n', 'v' }, '<leader>e', vim.diagnostic.open_float, { desc = '[K] Show diagnostic [E]rror messages' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>Q', vim.diagnostic.setloclist, { desc = '[K] Open diagnostic [Q]uickfix list' })
 vim.keymap.set({ 'n', 'v' }, '<leader>Q', vim.diagnostic.setqflist, { desc = '[K] Open diagnostic [Q]uickfix list' })
-vim.keymap.set({ 'n', 'v' }, 'H', "0", { desc = '0' })
-vim.keymap.set({ 'n', 'v' }, 'L', "$", { desc = '$' })
+vim.keymap.set({ 'n', 'v' }, 'H', "_", { desc = '_' })
+vim.keymap.set({ 'n', 'v' }, 'L', "g_", { desc = 'g_' })
 
 -- vim.keymap.set({ 'n', 'v' }, '<leader>x', utils.system_open, { desc = '[K] Open file under cursor' }) -- gx default
 -- vim.keymap.set({ 'n', 'v' }, '<leader>x', utils.open_local_file_in_new_buffer, { desc = '[K] Open file under cursor' }) -- gf default
@@ -20,6 +20,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>w', '<cmd>w<cr>', { desc = '[K] Write' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>p', [["_dP]], { desc = 'Multiple paste' }) -- Without yank to clipboard
 -- vim.keymap.set({ 'n', 'v' }, '<leader>P', [["+dP]], { desc = 'Multiple paste' }) -- Without yank to clipboard
 vim.keymap.set({ 'n', 'x' }, 'P', [["0p]], { desc = '[K] paste from yank register' })
+vim.keymap.set({ 'n', 'x' }, 'p', [["+p]], { desc = '[K] paste from plus register' })
 -- Invert highlight search
 -- vim.keymap.set({ 'n', 'v' }, '<leader><CR>', ':set invhlsearch<CR>', { desc = '[K] Inverse higlight' })
 
@@ -56,8 +57,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>td', utils.toggle.diagnostic, { desc = '[K
 
 
 -- vim.keymap.set({ 'n', 'v' }, '<leader>ch', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = '[K] LSP hover' }) -- replace by K
-vim.keymap.set({ 'n', 'v' }, '<leader>=', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = '[K] LSP format' })
-vim.keymap.set({ 'n', 'v' }, '<leader>f', utils.indent_and_return, { desc = '[K] Indent all doc><Esc>ument' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>=', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = '[K] LSP format' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>f', utils.indent_and_return, { desc = '[K] Indent all doc><Esc>' })
 -- vim.keymap.set({ 'n', 'v' }, '<leader>f', '<cmd>lua require("utils").indent_block()<cr>', { desc = '[K] Indent block' })
 
 
@@ -126,3 +127,5 @@ vim.keymap.set('n', '<leader>V', function() vn_telex_keymap() end, { desc = '[K]
 --   end
 -- end
 -- vim.keymap.set("n", "L", function() view_asciidoc_img() end)
+
+

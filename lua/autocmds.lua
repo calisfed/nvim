@@ -1,14 +1,28 @@
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight yank and trim linewise yanks",
   callback = function()
     vim.hl.on_yank()
+
+    -- if vim.v.event.operator ~= "y" or vim.v.event.regtype ~= "V" then
+    --   return
+    -- end
+
+    -- local lines = vim.fn.getreg("+", 1, true)
+    -- for i, line in ipairs(lines) do
+    --   lines[i] = line:gsub("^%s+", "")
+    -- end
+
+    -- local text = table.concat(lines, "\n")
+
+    -- vim.schedule(function()
+    --   vim.fn.setreg("+", text, "v")
+    --   vim.fn.setreg('', text, "v")
+    -- end)
   end,
 })
-
-
 
 -- vim.api.nvim_create_autocmd('FocusLost', {
 --   desc = "Copy to clipboard on FocusLost",
@@ -110,6 +124,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
   desc = "Always center cursor",
   callback = function()
     if (vim.api.nvim_get_mode()["mode"] == 's') then return end
+    if (vim.api.nvim_get_mode()["mode"] == 'nt') then return end
     local pos = vim.fn.getpos '.'
     vim.cmd 'normal! zz'
     vim.fn.setpos('.', pos)
@@ -687,10 +702,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --     vim.system({ 'cd', cwd }, { text = true })
 --   end
 -- })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "text", "typst" },
-  callback = function()
-    vim.opt_local.formatexpr = ""
-    vim.opt_local.textwidth = 80
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "markdown", "text", "typst" },
+--   callback = function()
+--     vim.opt_local.formatexpr = ""
+--     vim.opt_local.textwidth = 120
+--   end,
+-- })

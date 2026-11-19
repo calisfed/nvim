@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 vim.pack.add({ "https://github.com/mfussenegger/nvim-dap" })
 vim.pack.add({ "https://github.com/nvim-neotest/nvim-nio" })
 vim.pack.add({ "https://github.com/rcarriga/nvim-dap-ui" })
@@ -27,7 +19,7 @@ dap.adapters.gdb = {
 dap.configurations.cpp = {
 	{
 		name = "Launch",
-		type = "lldb",
+		type = "gdb",
 		request = "launch",
 		program = function()
 			return vim.fn.input(
@@ -36,8 +28,15 @@ dap.configurations.cpp = {
 				"file"
 			)
 		end,
-		cwd = "${workspaceFolder}",
-		stopOnEntry = false,
+		-- https://github.com/mfussenegger/nvim-dap/discussions/1262
+		-- program = function()
+		-- 	return vim.fn.input(
+		-- 		"Path to executable: " .. 	vim.fn.getcwd() .. "/"
+		-- 	)
+		-- end,
+		-- cwd = "${workspaceFolder}",
+		-- stopOnEntry = true,
+		stopAtBeginningOfMainSubprogram = true,
 		args = {},
 	},
 	{
@@ -64,7 +63,7 @@ dap.configurations.zig = {
 				"file"
 			)
 		end,
-		cwd = "${workspaceFolder}",
+		-- cwd = "${workspaceFolder}",
 		console = "integratedTerminal",
 	},
 }
@@ -291,3 +290,82 @@ require "dapui".setup({
 		max_value_lines = 100, -- Can be integer or nil.
 	},
 })
+
+
+
+
+
+
+local signs = {
+    -- DAP
+    DapBreakpoint = {
+        icon = "●",
+        color = "#ff5555",
+        bg = "#3a2028",
+    },
+    DapBreakpointCondition = {
+        icon = "◆",
+        color = "#ffb86c",
+        bg = "#3a3020",
+    },
+    DapBreakpointRejected = {
+        icon = "✕",
+        color = "#ff5555",
+        bg = "#3a2028",
+    },
+    DapLogPoint = {
+        icon = "◇",
+        color = "#8be9fd",
+    },
+    DapStopped = {
+        icon = "▶",
+        color = "#50fa7b",
+        bg = "#203a30",
+    },
+}
+
+-- DAP sign definitions
+for name, sign in pairs(signs) do
+    vim.api.nvim_set_hl(0, name, {
+        fg = sign.color,
+        bold = true,
+    })
+
+    if sign.bg then
+        vim.api.nvim_set_hl(0, name .. "Line", {
+            bg = sign.bg,
+        })
+
+        vim.api.nvim_set_hl(0, name .. "Num", {
+            fg = sign.color,
+            bg = sign.bg,
+            bold = true,
+        })
+    end
+
+    vim.fn.sign_define(name, {
+        text = sign.icon,
+        texthl = name,
+        linehl = sign.bg and (name .. "Line") or nil,
+        numhl = sign.bg and (name .. "Num") or nil,
+    })
+end
+
+-- Diagnostic signs (Neovim 0.11+)
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "󰅚",
+            [vim.diagnostic.severity.WARN] = "󰀪",
+            [vim.diagnostic.severity.INFO] = "󰋽",
+            [vim.diagnostic.severity.HINT] = "󰌶",
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+            [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+            [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+            [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+        },
+    },
+})
+

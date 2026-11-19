@@ -6,7 +6,7 @@ local zoom_win = nil
 local overlay_win = nil
 
 local config = {
-  width = 120,
+  width = 90,
   height_ratio = 0.95,
   dim_color = "#171928",
   dim_blend = 10, -- 0 = solid black, 100 = transparent
